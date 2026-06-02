@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analysis Idle</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Analysis Idle</p>
+          <h1>Build understanding from first principles.</h1>
+        </div>
+        <button id="save-button" class="secondary-button" type="button">Save</button>
+      </header>
+
+      <section class="resource-panel" aria-label="Understanding">
+        <div>
+          <p class="label">Understanding</p>
+          <p id="understanding-count" class="resource-value">0</p>
+        </div>
+        <div>
+          <p class="label">Per second</p>
+          <p id="understanding-rate" class="rate-value">0/s</p>
+        </div>
+        <div>
+          <p class="label">Chapter</p>
+          <p id="current-chapter" class="chapter-value">Natural Numbers</p>
+          <p id="chapter-theme" class="small-text">In the beginning, there was one.</p>
+          <p id="next-chapter" class="small-text">Next chapter at 0 Understanding</p>
+        </div>
+        <div>
+          <p class="label">Supremum Tracker</p>
+          <p id="supremum-rate" class="rate-value">0/s</p>
+          <p class="small-text">Highest Understanding rate this run</p>
+        </div>
+        <div class="production-breakdown">
+          <p class="label">Production Breakdown</p>
+          <div id="production-breakdown-list" class="breakdown-list"></div>
+        </div>
+      </section>
+
+      <section class="panel progression-panel" aria-labelledby="progression-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="label">Progression</p>
+            <h2 id="progression-heading">Next Unlocks</h2>
+          </div>
+        </div>
+
+        <div id="progression-list" class="progression-list"></div>
+      </section>
+
+      <section id="milestone-banner" class="milestone-banner hidden" aria-live="polite">
+        <p class="label">Chapter Complete</p>
+        <h2 id="milestone-title">Natural Numbers</h2>
+        <p id="milestone-reward">Production strengthened.</p>
+        <p id="milestone-copy"></p>
+      </section>
+
+      <section class="content-grid">
+        <section class="panel" aria-labelledby="buildings-heading">
+          <div class="panel-heading">
+            <div>
+              <p class="label">Study Work</p>
+              <h2 id="buildings-heading">Understanding</h2>
+              <p id="study-work-flavor" class="panel-note">
+                Definitions establish precision. Examples build intuition. Exercises turn both
+                into deeper practice.
+              </p>
+            </div>
+          </div>
+
+          <div id="buildings-list" class="shop-list"></div>
+        </section>
+
+        <section class="panel" aria-labelledby="upgrades-heading">
+          <div class="panel-heading">
+            <div>
+              <p class="label">Research</p>
+              <h2 id="upgrades-heading">Fields</h2>
+            </div>
+          </div>
+
+          <div id="upgrades-list" class="shop-list"></div>
+        </section>
+      </section>
+
+      <footer class="footer">
+        <p id="save-status">Autosave ready.</p>
+      </footer>
+    </main>
+
+    <div id="notifications" class="notifications" aria-live="polite"></div>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
