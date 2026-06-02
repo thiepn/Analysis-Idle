@@ -2,13 +2,17 @@ import { BUILDING_DEFINITIONS } from "./data/buildings.js";
 import { UPGRADE_DEFINITIONS } from "./data/upgrades.js";
 import { evaluateAchievements } from "./systems/achievements.js";
 import { buyBuilding } from "./systems/buildings.js";
-import { completeAvailableChapters } from "./systems/chapters.js";
+import { completeAvailableChapters, getChapterAfter } from "./systems/chapters.js";
 import { addUnderstanding, createInitialState } from "./systems/economy.js";
 import { buyUpgrade } from "./systems/upgrades.js";
 import { loadGame, saveGame } from "./systems/save.js";
 import { getUnlockedContent } from "./systems/unlocks.js";
 import { updateUI, bindUIEvents } from "./ui/ui.js";
-import { showMilestoneBanner, showNotification } from "./ui/notifications.js";
+import {
+  showChapterCompletion,
+  showMilestoneBanner,
+  showNotification,
+} from "./ui/notifications.js";
 
 const AUTOSAVE_INTERVAL_MS = 10000;
 
@@ -30,6 +34,8 @@ if (loadResult.loaded) {
   evaluateAchievements(game.state);
   saveGame(game.state);
 }
+
+evaluateAchievements(game.state);
 
 let knownUnlockedIds = new Set(getUnlockedContent(game.state).map((content) => content.id));
 
@@ -56,6 +62,9 @@ bindUIEvents({
     saveGame(game.state);
     updateUI(game.state, "Saved.");
     showNotification("Game saved.");
+  },
+  onRefresh: () => {
+    updateUI(game.state);
   },
 });
 
@@ -86,6 +95,7 @@ function announceChapterCompletions() {
     const rewardText = chapter.goal.reward.label;
     showNotification(`Completed ${chapter.name}: ${rewardText}`, "milestone");
     showMilestoneBanner(chapter.name, rewardText, chapter.completionBanner);
+    showChapterCompletion(chapter, getNextChapterForCompletion(chapter), getMasteredConcepts(chapter));
   }
 }
 
@@ -109,6 +119,16 @@ function announceNewUnlocks() {
 
 function formatWhole(value) {
   return Math.floor(value).toLocaleString();
+}
+
+function getNextChapterForCompletion(chapter) {
+  return getChapterAfter(chapter.id);
+}
+
+function getMasteredConcepts(chapter) {
+  return Object.values(UPGRADE_DEFINITIONS)
+    .filter((definition) => definition.chapterId === chapter.id)
+    .map((definition) => definition.name);
 }
 
 updateUI(game.state);

@@ -1,4 +1,5 @@
 import { BUILDING_DEFINITIONS } from "../data/buildings.js";
+import { ACHIEVEMENT_DEFINITIONS } from "../data/achievements.js";
 import { CHAPTER_DEFINITIONS } from "../data/chapters.js";
 import { UPGRADE_DEFINITIONS } from "../data/upgrades.js";
 import { getBuildingCost } from "../systems/buildings.js";
@@ -29,9 +30,13 @@ const elements = {
   supremumRate: document.querySelector("#supremum-rate"),
   productionBreakdownList: document.querySelector("#production-breakdown-list"),
   progressionList: document.querySelector("#progression-list"),
+  currentGoalContent: document.querySelector("#current-goal-content"),
   buildingsList: document.querySelector("#buildings-list"),
   studyWorkFlavor: document.querySelector("#study-work-flavor"),
   upgradesList: document.querySelector("#upgrades-list"),
+  researchFilterButtons: document.querySelectorAll("[data-research-filter]"),
+  proofJournalList: document.querySelector("#proof-journal-list"),
+  achievementsList: document.querySelector("#achievements-list"),
   saveButton: document.querySelector("#save-button"),
   saveStatus: document.querySelector("#save-status"),
 };
@@ -42,6 +47,7 @@ const rowCache = {
 };
 
 const upgradeGroupCache = new Map();
+let activeResearchFilter = "available";
 
 export function bindUIEvents(handlers) {
   elements.buildingsList.addEventListener("click", (event) => {
@@ -61,6 +67,13 @@ export function bindUIEvents(handlers) {
   });
 
   elements.saveButton.addEventListener("click", handlers.onSave);
+
+  for (const button of elements.researchFilterButtons) {
+    button.addEventListener("click", () => {
+      activeResearchFilter = button.dataset.researchFilter;
+      handlers.onRefresh();
+    });
+  }
 }
 
 export function updateUI(state, statusText = null) {
@@ -71,9 +84,12 @@ export function updateUI(state, statusText = null) {
   )}/s`;
   updateChapterDisplay(state);
   updateProductionBreakdown(state);
+  updateCurrentGoal(state);
   updateProgressionRows(state);
   updateBuildingRows(state);
   updateUpgradeRows(state);
+  updateProofJournal(state);
+  updateAchievementsPanel(state);
 
   if (statusText) {
     elements.saveStatus.textContent = statusText;
@@ -119,13 +135,22 @@ function updateBuildingRows(state) {
 function updateUpgradeRows(state) {
   const currentChapter = getCurrentChapter(state);
   const currentChapterIndex = getChapterIndex(currentChapter.id);
+  const visibleRowsByChapter = new Map();
+  let visibleRowCount = 0;
 
   for (const [upgradeId, upgradeDefinition] of Object.entries(UPGRADE_DEFINITIONS)) {
     const upgrade = state.upgrades[upgradeId];
     const group = getOrCreateUpgradeGroup(upgradeDefinition.chapterId);
     const row = getOrCreateRow("upgrades", upgradeId, group.list);
     const isUnlocked = isUpgradeUnlocked(state, upgradeId);
-    const isVisible = getChapterIndex(upgradeDefinition.chapterId) <= currentChapterIndex;
+    const isReached = getChapterIndex(upgradeDefinition.chapterId) <= currentChapterIndex;
+    const isVisible = shouldShowUpgrade(
+      upgradeDefinition,
+      upgrade,
+      isUnlocked,
+      isReached,
+      currentChapter,
+    );
 
     row.name.textContent = upgradeDefinition.name;
     row.description.textContent = upgradeDefinition.description;
@@ -144,11 +169,75 @@ function updateUpgradeRows(state) {
     );
     row.container.classList.toggle("purchased", upgrade.purchased);
     row.container.hidden = !isVisible;
+
+    if (isVisible) {
+      visibleRowsByChapter.set(upgradeDefinition.chapterId, true);
+      visibleRowCount += 1;
+    }
   }
 
   for (const [chapterId, group] of upgradeGroupCache) {
-    group.container.hidden = getChapterIndex(chapterId) > currentChapterIndex;
+    group.container.hidden = !visibleRowsByChapter.get(chapterId);
   }
+
+  updateResearchFilterButtons();
+  updateResearchEmptyState(visibleRowCount);
+}
+
+function shouldShowUpgrade(upgradeDefinition, upgrade, isUnlocked, isReached, currentChapter) {
+  if (activeResearchFilter === "available") {
+    return isReached && isUnlocked && !upgrade.purchased;
+  }
+
+  if (activeResearchFilter === "current") {
+    return upgradeDefinition.chapterId === currentChapter.id;
+  }
+
+  if (activeResearchFilter === "completed") {
+    return upgrade.purchased;
+  }
+
+  if (activeResearchFilter === "future") {
+    return !upgrade.purchased && (!isReached || !isUnlocked);
+  }
+
+  return true;
+}
+
+function updateResearchFilterButtons() {
+  for (const button of elements.researchFilterButtons) {
+    button.classList.toggle("active", button.dataset.researchFilter === activeResearchFilter);
+  }
+}
+
+function updateResearchEmptyState(visibleRowCount) {
+  let emptyState = elements.upgradesList.querySelector("[data-research-empty]");
+
+  if (!emptyState) {
+    emptyState = document.createElement("p");
+    emptyState.className = "research-empty";
+    emptyState.dataset.researchEmpty = "true";
+    elements.upgradesList.append(emptyState);
+  }
+
+  emptyState.textContent = getResearchEmptyText();
+  emptyState.hidden = visibleRowCount > 0;
+}
+
+function getResearchEmptyText() {
+  if (activeResearchFilter === "available") {
+    return "No available research yet. Keep building Understanding.";
+  }
+
+  if (activeResearchFilter === "completed") {
+    return "No completed research yet.";
+  }
+
+  if (activeResearchFilter === "future") {
+    return "No future research is hidden right now.";
+  }
+
+  return "No research is visible for this chapter yet.";
 }
 
 function updateProgressionRows(state) {
@@ -168,6 +257,54 @@ function updateProgressionRows(state) {
       : getUnlockCardsHtml(upcomingUnlocks);
 
   elements.progressionList.innerHTML = chapterGoalHtml + unlocksHtml;
+}
+
+function updateCurrentGoal(state) {
+  const chapterGoal = getCurrentChapterGoal(state);
+  const nextUnlock = getUpcomingUnlocks(state)
+    .sort((firstUnlock, secondUnlock) => {
+      const firstProgress = firstUnlock.current / firstUnlock.amount;
+      const secondProgress = secondUnlock.current / secondUnlock.amount;
+      return secondProgress - firstProgress;
+    })[0];
+  const nextAvailableConcept = Object.entries(UPGRADE_DEFINITIONS).find(
+    ([upgradeId, definition]) =>
+      isUpgradeUnlocked(state, upgradeId) &&
+      !state.upgrades[upgradeId].purchased &&
+      getChapterIndex(definition.chapterId) <= getChapterIndex(chapterGoal.chapter.id),
+  );
+  const condition = chapterGoal.conditions.find((goalCondition) => !goalCondition.isComplete);
+  const progressPercent = condition
+    ? Math.min(100, (condition.current / condition.amount) * 100)
+    : 100;
+
+  elements.currentGoalContent.innerHTML = `
+    <article class="current-goal-card">
+      <div>
+        <p class="label">Work Toward</p>
+        <h3>${chapterGoal.isComplete ? `Prepare for ${getNextChapterText(getChapterAfter(chapterGoal.chapter.id))}` : chapterGoal.chapter.name}</h3>
+        <p class="muted">${condition ? condition.label : chapterGoal.reward}</p>
+      </div>
+      <div class="progress-meter" aria-label="Current goal progress">
+        <span style="width: ${progressPercent}%"></span>
+      </div>
+      <p class="small-text">${condition ? `${formatNumber(condition.current)} / ${formatNumber(condition.amount)}` : "Complete"}</p>
+      <p class="current-goal-next">${getNextConceptText(nextAvailableConcept, nextUnlock)}</p>
+    </article>
+  `;
+}
+
+function getNextConceptText(nextAvailableConcept, nextUnlock) {
+  if (nextAvailableConcept) {
+    const [, definition] = nextAvailableConcept;
+    return `Next concept: ${definition.name}. ${definition.description}`;
+  }
+
+  if (nextUnlock) {
+    return `Next unlock: ${nextUnlock.name}. ${nextUnlock.description}`;
+  }
+
+  return "All visible goals are complete.";
 }
 
 function getChapterGoalHtml(chapterGoal) {
@@ -213,7 +350,7 @@ function getChapterMilestonesHtml(chapter) {
     return "";
   }
 
-  return `<p class="chapter-milestones"><strong>Milestones:</strong> ${milestones.join(" · ")}</p>`;
+  return `<p class="chapter-milestones"><strong>Milestones:</strong> ${milestones.join(" / ")}</p>`;
 }
 
 function getChapterTransitionHtml(currentChapter, nextChapter) {
@@ -261,6 +398,60 @@ function updateChapterDisplay(state) {
   elements.chapterTheme.textContent = currentChapter.theme ?? "";
   elements.studyWorkFlavor.textContent = getStudyWorkFlavor(currentChapter);
   elements.nextChapter.textContent = getNextChapterText(nextChapter);
+}
+
+function updateProofJournal(state) {
+  const completedChapters = Object.values(state.progression.completedChapters).filter(Boolean).length;
+  const researchedConcepts = Object.values(state.upgrades).filter((upgrade) => upgrade.purchased).length;
+  const unlockedAchievements = Object.values(state.achievements).filter(
+    (achievement) => achievement.unlocked,
+  ).length;
+  const totalStudyWork = Object.values(state.buildings).reduce(
+    (total, building) => total + building.owned,
+    0,
+  );
+
+  const stats = [
+    ["Total Understanding", formatNumber(state.progression.totalUnderstandingEarned)],
+    ["Current Rate", `${formatNumber(state.stats.understandingPerSecond)}/s`],
+    ["Highest Rate", `${formatNumber(state.progression.supremumUnderstandingPerSecond)}/s`],
+    ["Chapters Complete", `${completedChapters} / 4`],
+    ["Concepts Researched", `${researchedConcepts} / ${Object.keys(UPGRADE_DEFINITIONS).length}`],
+    ["Achievements", `${unlockedAchievements} / ${Object.keys(ACHIEVEMENT_DEFINITIONS).length}`],
+    ["Study Work Owned", formatNumber(totalStudyWork)],
+    ["Last Offline Gain", formatNumber(state.progression.lastOfflineUnderstanding ?? 0)],
+  ];
+
+  elements.proofJournalList.innerHTML = stats
+    .map(([label, value]) => {
+      return `
+        <article class="stat-item">
+          <p class="label">${label}</p>
+          <p>${value}</p>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function updateAchievementsPanel(state) {
+  elements.achievementsList.innerHTML = Object.entries(ACHIEVEMENT_DEFINITIONS)
+    .map(([achievementId, achievementDefinition]) => {
+      const achievement = state.achievements[achievementId];
+      const isUnlocked = achievement?.unlocked ?? false;
+
+      return `
+        <article class="achievement-item ${isUnlocked ? "unlocked" : "locked"}">
+          <div>
+            <p class="small-text">${achievementDefinition.category}</p>
+            <h3>${achievementDefinition.name}</h3>
+            <p class="muted">${achievementDefinition.description}</p>
+          </div>
+          <p class="achievement-status">${isUnlocked ? "Unlocked" : "Locked"}</p>
+        </article>
+      `;
+    })
+    .join("");
 }
 
 function getStudyWorkFlavor(chapter) {

@@ -3,10 +3,10 @@ export const CHAPTER_DEFINITIONS = [
     id: "naturalNumbers",
     name: "Natural Numbers",
     theme: "In the beginning, there was one.",
-    description: "Begin with counting, the successor operation, and induction on ℕ.",
+    description: "Begin with counting, the successor operation, and induction on N.",
     transitionToNext:
       "Counting is not enough. Subtraction forces mathematics to make room for negative numbers.",
-    completionBanner: "ℕ = {1, 2, 3, ...} - the first infinity, and the foundation of all the rest.",
+    completionBanner: "N = {1, 2, 3, ...}: the first infinity, and the foundation of all the rest.",
     implemented: true,
     unlock: {
       type: "understandingReached",
@@ -50,7 +50,7 @@ export const CHAPTER_DEFINITIONS = [
     id: "integers",
     name: "Integers",
     theme: "What lies below zero?",
-    description: "Extend counting into negatives, divisibility, and prime structure on ℤ.",
+    description: "Extend counting into negatives, divisibility, and prime structure on Z.",
     transitionToNext:
       "Integers count whole units. Division forces ratios, fractions, and density.",
     completionBanner:
@@ -70,12 +70,12 @@ export const CHAPTER_DEFINITIONS = [
       theorems: "Unique Factorization",
     },
     goal: {
-      objective: "Reach 100,000 Understanding and uncover the prime structure of ℤ.",
+      objective: "Reach 500,000 Understanding and uncover the prime structure of Z.",
       conditions: [
         {
           type: "understandingReached",
-          amount: 100000,
-          label: "Reach 100,000 Understanding",
+          amount: 500000,
+          label: "Reach 500,000 Understanding",
         },
         {
           type: "upgradePurchased",
@@ -98,13 +98,13 @@ export const CHAPTER_DEFINITIONS = [
     id: "rationalNumbers",
     name: "Rational Numbers",
     theme: "Between any two numbers, another number waits.",
-    description: "Study fractions, decimal expansions, and the density of ℚ.",
-    transitionToNext: "ℚ is dense, but it still has gaps. Completeness requires ℝ.",
-    completionBanner: "ℚ is dense in ℝ. But dense is not the same as complete.",
+    description: "Study fractions, decimal expansions, and the density of Q.",
+    transitionToNext: "Q is dense, but it still has gaps. Completeness requires R.",
+    completionBanner: "Q is dense in R. But dense is not the same as complete.",
     implemented: true,
     unlock: {
       type: "understandingReached",
-      amount: 100000,
+      amount: 500000,
     },
     milestones: ["First Fraction", "Repeating Decimals", "Dense Everywhere"],
     studyWork: {
@@ -116,17 +116,17 @@ export const CHAPTER_DEFINITIONS = [
       theorems: "Countability Theorem",
     },
     goal: {
-      objective: "Reach 1,000,000 Understanding and expose the gaps inside ℚ.",
+      objective: "Reach 15,000,000 Understanding and expose the gaps inside Q.",
       conditions: [
         {
           type: "understandingReached",
-          amount: 1000000,
-          label: "Reach 1,000,000 Understanding",
+          amount: 15000000,
+          label: "Reach 15,000,000 Understanding",
         },
         {
           type: "upgradePurchased",
           upgradeId: "irrationalitySqrt2",
-          label: "Prove the irrationality of √2",
+          label: "Prove the irrationality of sqrt(2)",
         },
       ],
       reward: {
@@ -144,15 +144,15 @@ export const CHAPTER_DEFINITIONS = [
     id: "realNumbers",
     name: "Real Numbers",
     theme: "The number line, finally complete.",
-    description: "Approach irrationals, completeness, suprema, and infima on ℝ.",
+    description: "Approach irrationals, completeness, suprema, and infima on R.",
     transitionToNext:
       "With the real line established, sequences reveal how mathematical objects approach a limit.",
     completionBanner:
-      "ℝ is the unique complete ordered field. Every Cauchy sequence converges. Every gap is filled.",
+      "R is the complete ordered field. Every Cauchy sequence converges. Every gap is filled.",
     implemented: true,
     unlock: {
       type: "understandingReached",
-      amount: 1000000,
+      amount: 15000000,
     },
     milestones: ["The Irrational Exists", "Least Upper Bound", "Archimedean Property"],
     studyWork: {
@@ -164,12 +164,12 @@ export const CHAPTER_DEFINITIONS = [
       theorems: "Completeness Theorem",
     },
     goal: {
-      objective: "Reach 10,000,000 Understanding and complete the real-number foundation.",
+      objective: "Reach 500,000,000 Understanding and complete the real-number foundation.",
       conditions: [
         {
           type: "understandingReached",
-          amount: 10000000,
-          label: "Reach 10,000,000 Understanding",
+          amount: 500000000,
+          label: "Reach 500,000,000 Understanding",
         },
         {
           type: "upgradePurchased",
@@ -196,7 +196,7 @@ export const CHAPTER_DEFINITIONS = [
     implemented: false,
     unlock: {
       type: "understandingReached",
-      amount: 10000000,
+      amount: 500000000,
     },
   },
   {
@@ -207,7 +207,7 @@ export const CHAPTER_DEFINITIONS = [
     implemented: false,
     unlock: {
       type: "understandingReached",
-      amount: 100000000,
+      amount: 1000000000,
     },
   },
   {
@@ -218,7 +218,7 @@ export const CHAPTER_DEFINITIONS = [
     implemented: false,
     unlock: {
       type: "understandingReached",
-      amount: 1000000000,
+      amount: 10000000000,
     },
   },
   {
@@ -229,7 +229,7 @@ export const CHAPTER_DEFINITIONS = [
     implemented: false,
     unlock: {
       type: "understandingReached",
-      amount: 10000000000,
+      amount: 100000000000,
     },
   },
   {
@@ -240,7 +240,7 @@ export const CHAPTER_DEFINITIONS = [
     implemented: false,
     unlock: {
       type: "understandingReached",
-      amount: 100000000000,
+      amount: 1000000000000,
     },
   },
   {
@@ -251,7 +251,7 @@ export const CHAPTER_DEFINITIONS = [
     implemented: false,
     unlock: {
       type: "understandingReached",
-      amount: 1000000000000,
+      amount: 10000000000000,
     },
   },
 ];

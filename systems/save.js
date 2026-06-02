@@ -64,9 +64,15 @@ function mergeWithDefaults(savedState) {
     progression: {
       ...defaultState.progression,
       highestUnderstanding: getHighestUnderstanding(savedState),
+      totalUnderstandingEarned:
+        savedState.progression?.totalUnderstandingEarned ??
+        getHighestUnderstanding(savedState),
       supremumUnderstandingPerSecond:
         savedState.progression?.supremumUnderstandingPerSecond ??
         defaultState.progression.supremumUnderstandingPerSecond,
+      lastOfflineUnderstanding:
+        savedState.progression?.lastOfflineUnderstanding ??
+        defaultState.progression.lastOfflineUnderstanding,
       completedChapters: {
         ...defaultState.progression.completedChapters,
         ...savedState.progression?.completedChapters,
@@ -312,6 +318,7 @@ function applyOfflineProgress(state) {
   const offlineUnderstanding = state.stats.understandingPerSecond * elapsedSeconds;
 
   addUnderstanding(state, offlineUnderstanding);
+  state.progression.lastOfflineUnderstanding = offlineUnderstanding;
   state.save.lastSavedAt = now;
 
   return offlineUnderstanding;

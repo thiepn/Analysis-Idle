@@ -42,6 +42,16 @@
         </div>
       </section>
 
+      <section class="panel current-goal-panel" aria-labelledby="current-goal-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="label">Current Goal</p>
+            <h2 id="current-goal-heading">Focus</h2>
+          </div>
+        </div>
+        <div id="current-goal-content" class="current-goal-content"></div>
+      </section>
+
       <section class="panel progression-panel" aria-labelledby="progression-heading">
         <div class="panel-heading">
           <div>
@@ -58,6 +68,29 @@
         <h2 id="milestone-title">Natural Numbers</h2>
         <p id="milestone-reward">Production strengthened.</p>
         <p id="milestone-copy"></p>
+      </section>
+
+      <section id="chapter-completion-modal" class="completion-modal hidden" aria-live="polite">
+        <div class="completion-card">
+          <button id="chapter-completion-close" class="icon-button" type="button" aria-label="Close">
+            x
+          </button>
+          <p class="label">Chapter Complete</p>
+          <h2 id="completion-title">Natural Numbers</h2>
+          <p id="completion-copy" class="completion-copy"></p>
+          <div class="completion-grid">
+            <div>
+              <p class="label">Mastered</p>
+              <ul id="completion-concepts"></ul>
+            </div>
+            <div>
+              <p class="label">Reward</p>
+              <p id="completion-reward"></p>
+              <p class="label completion-next-label">Next</p>
+              <p id="completion-next"></p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="content-grid">
@@ -84,7 +117,44 @@
             </div>
           </div>
 
+          <div class="filter-tabs" aria-label="Research filters">
+            <button class="filter-tab active" type="button" data-research-filter="available">
+              Available
+            </button>
+            <button class="filter-tab" type="button" data-research-filter="current">
+              Current
+            </button>
+            <button class="filter-tab" type="button" data-research-filter="completed">
+              Completed
+            </button>
+            <button class="filter-tab" type="button" data-research-filter="future">
+              Future
+            </button>
+          </div>
+
           <div id="upgrades-list" class="shop-list"></div>
+        </section>
+      </section>
+
+      <section class="insight-grid">
+        <section class="panel" aria-labelledby="journal-heading">
+          <div class="panel-heading">
+            <div>
+              <p class="label">Proof Journal</p>
+              <h2 id="journal-heading">Stats</h2>
+            </div>
+          </div>
+          <div id="proof-journal-list" class="stat-grid"></div>
+        </section>
+
+        <section class="panel" aria-labelledby="achievements-heading">
+          <div class="panel-heading">
+            <div>
+              <p class="label">Achievements</p>
+              <h2 id="achievements-heading">Record</h2>
+            </div>
+          </div>
+          <div id="achievements-list" class="achievement-list"></div>
         </section>
       </section>
 

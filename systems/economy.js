@@ -13,7 +13,9 @@ export function createInitialState() {
     achievements: createAchievementState(),
     progression: {
       highestUnderstanding: 10,
+      totalUnderstandingEarned: 10,
       supremumUnderstandingPerSecond: 0,
+      lastOfflineUnderstanding: 0,
       completedChapters: {},
     },
     prestige: {
@@ -35,6 +37,7 @@ export function createInitialState() {
 
 export function addUnderstanding(state, amount) {
   state.resources.understanding += amount;
+  state.progression.totalUnderstandingEarned += Math.max(0, amount);
   state.progression.highestUnderstanding = Math.max(
     state.progression.highestUnderstanding,
     state.resources.understanding,
