@@ -126,11 +126,11 @@ button:disabled {
 }
 
 .progression-panel {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .current-goal-panel {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .current-goal-content {
@@ -406,9 +406,27 @@ button:disabled {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 20px 14px;
+  gap: 14px;
+  padding: 14px 18px;
   background: var(--panel-strong);
   border-bottom: 1px solid var(--border-strong);
+}
+
+.collapsible-panel.collapsed .panel-heading {
+  border-bottom: 0;
+}
+
+.collapsible-panel.collapsed [data-panel-content] {
+  display: none;
+}
+
+.panel-toggle {
+  min-height: 32px;
+  padding: 0 12px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  color: var(--primary);
+  font-size: 13px;
 }
 
 .panel-note {
@@ -505,10 +523,10 @@ button:disabled {
 
 .shop-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(132px, auto);
-  gap: 14px;
+  grid-template-columns: minmax(0, 1fr) minmax(112px, auto);
+  gap: 10px;
   align-items: center;
-  padding: 14px 18px;
+  padding: 10px 14px;
 }
 
 .shop-row + .shop-row {
@@ -561,26 +579,26 @@ button:disabled {
 .compact-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
-  margin-top: 8px;
+  gap: 5px;
+  margin-top: 6px;
 }
 
 .compact-meta span,
 .details-panel span {
   display: inline-flex;
   align-items: center;
-  padding: 5px 8px;
+  padding: 4px 7px;
   background: #ffffff;
   border: 1px solid var(--border);
   border-radius: 8px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
 }
 
 .details-button {
   min-height: 30px;
-  margin-top: 8px;
+  margin-top: 5px;
   padding: 0;
   background: transparent;
   color: var(--primary);
@@ -589,7 +607,7 @@ button:disabled {
 }
 
 .details-panel {
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .building-row .muted[data-field="description"] {
@@ -600,10 +618,20 @@ button:disabled {
   padding-block: 10px;
 }
 
+.upgrade-row.purchased {
+  opacity: 0.82;
+}
+
 .upgrade-row.compact-research .muted,
 .upgrade-row.compact-research .details-button,
 .upgrade-row.compact-research .details-panel {
   display: none;
+}
+
+.upgrade-row .row-tag {
+  background: #fff7e8;
+  border-color: rgba(188, 108, 37, 0.28);
+  color: #8c4b16;
 }
 
 .muted,

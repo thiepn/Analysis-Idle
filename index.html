@@ -42,25 +42,39 @@
         </div>
       </section>
 
-      <section class="panel current-goal-panel" aria-labelledby="current-goal-heading">
+      <section
+        class="panel current-goal-panel collapsible-panel"
+        data-collapsible-panel="currentGoal"
+        aria-labelledby="current-goal-heading"
+      >
         <div class="panel-heading">
           <div>
             <p class="label">Current Goal</p>
             <h2 id="current-goal-heading">Focus</h2>
           </div>
+          <button class="panel-toggle" type="button" data-collapse-target="currentGoal">
+            Show
+          </button>
         </div>
-        <div id="current-goal-content" class="current-goal-content"></div>
+        <div id="current-goal-content" class="current-goal-content" data-panel-content></div>
       </section>
 
-      <section class="panel progression-panel" aria-labelledby="progression-heading">
+      <section
+        class="panel progression-panel collapsible-panel"
+        data-collapsible-panel="progression"
+        aria-labelledby="progression-heading"
+      >
         <div class="panel-heading">
           <div>
             <p class="label">Progression</p>
             <h2 id="progression-heading">Next Unlocks</h2>
           </div>
+          <button class="panel-toggle" type="button" data-collapse-target="progression">
+            Show
+          </button>
         </div>
 
-        <div id="progression-list" class="progression-list"></div>
+        <div id="progression-list" class="progression-list" data-panel-content></div>
       </section>
 
       <section id="milestone-banner" class="milestone-banner hidden" aria-live="polite">
@@ -154,14 +168,21 @@
       </section>
 
       <section class="insight-grid">
-        <section class="panel" aria-labelledby="journal-heading">
+        <section
+          class="panel collapsible-panel"
+          data-collapsible-panel="proofJournal"
+          aria-labelledby="journal-heading"
+        >
           <div class="panel-heading">
             <div>
               <p class="label">Proof Journal</p>
               <h2 id="journal-heading">Stats</h2>
             </div>
+            <button class="panel-toggle" type="button" data-collapse-target="proofJournal">
+              Show
+            </button>
           </div>
-          <div id="proof-journal-list" class="stat-grid"></div>
+          <div id="proof-journal-list" class="stat-grid" data-panel-content></div>
         </section>
 
         <section class="panel" aria-labelledby="achievements-heading">

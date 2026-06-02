@@ -31,7 +31,8 @@ export function getAffordableBuildingPurchase(state, buildingId, requestedQuanti
     };
   }
 
-  const maxQuantity = requestedQuantity === "max" ? Infinity : requestedQuantity;
+  const desiredQuantity = normalizeRequestedQuantity(requestedQuantity);
+  const maxQuantity = desiredQuantity === "max" ? Infinity : desiredQuantity;
   const owned = state.buildings[buildingId].owned;
   let quantity = 0;
   let totalCost = 0;
@@ -50,6 +51,7 @@ export function getAffordableBuildingPurchase(state, buildingId, requestedQuanti
   return {
     quantity,
     totalCost,
+    requestedQuantity: desiredQuantity,
   };
 }
 
@@ -67,7 +69,22 @@ export function buyBuilding(state, buildingId, requestedQuantity = 1) {
     success: true,
     quantity: purchase.quantity,
     totalCost: purchase.totalCost,
+    requestedQuantity: purchase.requestedQuantity,
   };
+}
+
+function normalizeRequestedQuantity(requestedQuantity) {
+  if (requestedQuantity === "max") {
+    return "max";
+  }
+
+  const quantity = Number(requestedQuantity);
+
+  if (!Number.isFinite(quantity) || quantity < 1) {
+    return 1;
+  }
+
+  return Math.floor(quantity);
 }
 
 function getBuildingCostAtOwned(state, buildingId, owned) {

@@ -31,6 +31,8 @@ const elements = {
   productionBreakdownList: document.querySelector("#production-breakdown-list"),
   progressionList: document.querySelector("#progression-list"),
   currentGoalContent: document.querySelector("#current-goal-content"),
+  collapsiblePanels: document.querySelectorAll("[data-collapsible-panel]"),
+  panelToggleButtons: document.querySelectorAll("[data-collapse-target]"),
   buildingsList: document.querySelector("#buildings-list"),
   studyWorkFlavor: document.querySelector("#study-work-flavor"),
   purchaseQuantityButtons: document.querySelectorAll("[data-purchase-quantity]"),
@@ -51,6 +53,11 @@ const upgradeGroupCache = new Map();
 let activeResearchFilter = "available";
 let activePurchaseQuantity = 1;
 const expandedRows = new Set();
+const expandedPanels = {
+  currentGoal: false,
+  progression: false,
+  proofJournal: false,
+};
 
 export function bindUIEvents(handlers) {
   elements.buildingsList.addEventListener("click", (event) => {
@@ -84,6 +91,14 @@ export function bindUIEvents(handlers) {
   });
 
   elements.saveButton.addEventListener("click", handlers.onSave);
+
+  for (const button of elements.panelToggleButtons) {
+    button.addEventListener("click", () => {
+      const panelId = button.dataset.collapseTarget;
+      expandedPanels[panelId] = !expandedPanels[panelId];
+      handlers.onRefresh();
+    });
+  }
 
   for (const button of elements.purchaseQuantityButtons) {
     button.addEventListener("click", () => {
@@ -121,6 +136,7 @@ export function updateUI(state, statusText = null) {
   )}/s`;
   updateChapterDisplay(state);
   updateProductionBreakdown(state);
+  updateCollapsiblePanels();
   updateCurrentGoal(state);
   updateProgressionRows(state);
   updatePurchaseQuantityButtons();
@@ -131,6 +147,21 @@ export function updateUI(state, statusText = null) {
 
   if (statusText) {
     elements.saveStatus.textContent = statusText;
+  }
+}
+
+function updateCollapsiblePanels() {
+  for (const panel of elements.collapsiblePanels) {
+    const panelId = panel.dataset.collapsiblePanel;
+    const isExpanded = expandedPanels[panelId] ?? false;
+    const toggle = panel.querySelector("[data-collapse-target]");
+
+    panel.classList.toggle("collapsed", !isExpanded);
+
+    if (toggle) {
+      toggle.textContent = isExpanded ? "Hide" : "Show";
+      toggle.setAttribute("aria-expanded", String(isExpanded));
+    }
   }
 }
 
@@ -161,7 +192,7 @@ function updateBuildingRows(state) {
       building.owned,
       production.totalProduction,
       displayCost,
-      purchase.quantity,
+      purchase,
     );
     row.details.innerHTML = getBuildingDetailsHtml(buildingDefinition, production, impacts);
     row.lock.textContent = isUnlocked ? "" : getUnlockText(buildingDefinition.unlock);
@@ -222,13 +253,15 @@ function updateUpgradeRows(state) {
       futurePreviewCount += 1;
     }
 
+    const importanceTag = getResearchImportanceTag(upgradeId, upgradeDefinition);
+
     row.container.classList.add("upgrade-row");
     row.name.textContent = upgradeDefinition.name;
-    row.description.textContent = upgradeDefinition.description;
-    row.flavor.textContent = getChapterName(upgradeDefinition.chapterId);
+    row.description.textContent = upgradeDefinition.flavor ?? "";
+    row.flavor.textContent = importanceTag;
     row.summary.innerHTML = getUpgradeSummaryHtml(upgradeDefinition);
     row.details.innerHTML = `
-      <span>${upgradeDefinition.flavor ?? ""}</span>
+      <span>${upgradeDefinition.description}</span>
       <span>${upgrade.purchased ? "Status: researched" : "Status: not researched"}</span>
     `;
     row.lock.textContent =
@@ -324,6 +357,7 @@ function getResearchEmptyText() {
 
 function getUpgradeSummaryHtml(upgradeDefinition) {
   return `
+    <span>Chapter: ${getChapterName(upgradeDefinition.chapterId)}</span>
     <span>Cost: ${formatNumber(upgradeDefinition.cost)}</span>
     ${getEffectListHtml(upgradeDefinition.effects)}
   `;
@@ -339,28 +373,57 @@ function getEffectListHtml(effects = []) {
 
 function getEffectDescription(effect) {
   if (effect.type === "buildingProductionMultiplier") {
-    return `${getBuildingName(effect.target)} produce x${formatMultiplier(
-      effect.value,
-    )} Understanding.`;
+    return `${getBuildingName(effect.target)} x${formatMultiplier(effect.value)}`;
   }
 
   if (effect.type === "globalProductionMultiplier") {
-    return `All Study Work produces x${formatMultiplier(effect.value)} Understanding.`;
+    return `All production x${formatMultiplier(effect.value)}`;
   }
 
   if (effect.type === "buildingSynergyProductionMultiplier") {
-    return `${getBuildingName(effect.target)} gain +${formatPercent(
+    return `${getBuildingName(effect.target)} +${formatPercent(
       effect.valuePerOwned * 100,
-    )}% production per ${getBuildingName(effect.source)} owned.`;
+    )}% per ${getBuildingName(effect.source)}`;
   }
 
   if (effect.type === "buildingCostMultiplier") {
-    return `${getBuildingName(effect.target)} costs ${formatPercent(
+    return `${getBuildingName(effect.target)} cost -${formatPercent(
       (1 - effect.value) * 100,
-    )}% less.`;
+    )}%`;
   }
 
   return "Unlocks future study.";
+}
+
+function getResearchImportanceTag(upgradeId, upgradeDefinition) {
+  const name = upgradeDefinition.name.toLowerCase();
+
+  if (
+    name.includes("theorem") ||
+    upgradeId === "wellOrderingPrinciple" ||
+    upgradeId === "irrationalitySqrt2" ||
+    upgradeId === "nestedIntervals"
+  ) {
+    return "CAPSTONE";
+  }
+
+  if (upgradeDefinition.unlock?.type === "chapterUnlocked") {
+    return "CORE";
+  }
+
+  if (
+    upgradeDefinition.effects.some(
+      (effect) => effect.type === "globalProductionMultiplier" || effect.value >= 1.35,
+    )
+  ) {
+    return "IMPORTANT";
+  }
+
+  if (upgradeDefinition.effects.some((effect) => effect.type === "buildingCostMultiplier")) {
+    return "UTILITY";
+  }
+
+  return "OPTIONAL";
 }
 
 function getBuildingName(buildingId) {
@@ -736,13 +799,13 @@ function updateProductionBreakdown(state) {
     .join("");
 }
 
-function getBuildingSummaryHtml(owned, totalProduction, displayCost, quantity) {
-  const quantityText = quantity > 0 ? `Buy ${quantity}` : "Cannot afford";
+function getBuildingSummaryHtml(owned, totalProduction, displayCost, purchase) {
+  const quantityText = purchase.quantity > 0 ? `Cost x${purchase.quantity}` : "Next cost";
 
   return `
-    <span>Owned: ${formatNumber(owned)}</span>
+    <span>Count: ${formatNumber(owned)}</span>
     <span>Produces: ${formatNumber(totalProduction)}/s</span>
-    <span>${quantityText}: ${formatNumber(displayCost)}</span>
+    <span>${quantityText}: ${formatNumber(displayCost)} Understanding</span>
   `;
 }
 
@@ -751,7 +814,7 @@ function getBuildingButtonText(buildingDefinition, purchase, displayCost) {
     return `${buildingDefinition.actionLabel} ${formatNumber(displayCost)}`;
   }
 
-  return `${buildingDefinition.actionLabel} x${purchase.quantity} - ${formatNumber(displayCost)}`;
+  return `${buildingDefinition.actionLabel} x${purchase.quantity}`;
 }
 
 function getBuildingDetailsHtml(buildingDefinition, production, impacts) {
