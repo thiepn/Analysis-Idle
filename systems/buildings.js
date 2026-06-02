@@ -11,28 +11,73 @@ export function getBuildingCost(state, buildingId) {
     return Infinity;
   }
 
-  return Math.floor(
-    buildingDefinition.baseCost *
-      buildingDefinition.costMultiplier ** building.owned *
-      getBuildingCostMultiplier(state, buildingId),
-  );
+  return getBuildingCostAtOwned(state, buildingId, building.owned);
 }
 
-export function buyBuilding(state, buildingId) {
-  const cost = getBuildingCost(state, buildingId);
+export function getBuildingCostForQuantity(state, buildingId, quantity) {
+  const affordable = getAffordableBuildingPurchase(state, buildingId, quantity);
+  return affordable.totalCost;
+}
 
+export function getAffordableBuildingPurchase(state, buildingId, requestedQuantity) {
   if (
     !state.buildings[buildingId] ||
-    !isBuildingUnlocked(state, buildingId) ||
-    state.resources.understanding < cost
+    !BUILDING_DEFINITIONS[buildingId] ||
+    !isBuildingUnlocked(state, buildingId)
   ) {
+    return {
+      quantity: 0,
+      totalCost: 0,
+    };
+  }
+
+  const maxQuantity = requestedQuantity === "max" ? Infinity : requestedQuantity;
+  const owned = state.buildings[buildingId].owned;
+  let quantity = 0;
+  let totalCost = 0;
+
+  while (quantity < maxQuantity && quantity < 10000) {
+    const nextCost = getBuildingCostAtOwned(state, buildingId, owned + quantity);
+
+    if (totalCost + nextCost > state.resources.understanding) {
+      break;
+    }
+
+    totalCost += nextCost;
+    quantity += 1;
+  }
+
+  return {
+    quantity,
+    totalCost,
+  };
+}
+
+export function buyBuilding(state, buildingId, requestedQuantity = 1) {
+  const purchase = getAffordableBuildingPurchase(state, buildingId, requestedQuantity);
+
+  if (purchase.quantity <= 0) {
     return false;
   }
 
-  state.resources.understanding -= cost;
-  state.buildings[buildingId].owned += 1;
+  state.resources.understanding -= purchase.totalCost;
+  state.buildings[buildingId].owned += purchase.quantity;
   recalculateStats(state);
-  return true;
+  return {
+    success: true,
+    quantity: purchase.quantity,
+    totalCost: purchase.totalCost,
+  };
+}
+
+function getBuildingCostAtOwned(state, buildingId, owned) {
+  const buildingDefinition = BUILDING_DEFINITIONS[buildingId];
+
+  return Math.floor(
+    buildingDefinition.baseCost *
+      buildingDefinition.costMultiplier ** owned *
+      getBuildingCostMultiplier(state, buildingId),
+  );
 }
 
 function getBuildingCostMultiplier(state, buildingId) {

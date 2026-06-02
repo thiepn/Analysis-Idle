@@ -152,7 +152,7 @@ function getBuildingProductionMultiplier(state, buildingId) {
       return applyBuildingEffects(state, buildingId, multiplier, upgradeDefinition.effects);
     },
     definitionMultiplier,
-  );
+  ) * getAchievementBuildingProductionMultiplier(state, buildingId);
 }
 
 function applyBuildingEffects(state, buildingId, multiplier, effects) {
@@ -228,13 +228,15 @@ function getGlobalProductionMultiplier(state) {
     1,
   );
 
-  return CHAPTER_DEFINITIONS.reduce((multiplier, chapterDefinition) => {
+  const chapterMultiplier = CHAPTER_DEFINITIONS.reduce((multiplier, chapterDefinition) => {
     if (!state.progression.completedChapters?.[chapterDefinition.id]) {
       return multiplier;
     }
 
     return applyGlobalEffects(multiplier, chapterDefinition.goal?.reward?.effects ?? []);
   }, upgradeMultiplier);
+
+  return applyGlobalEffects(chapterMultiplier, getAchievementEffects(state));
 }
 
 function applyGlobalEffects(multiplier, effects) {
@@ -245,6 +247,28 @@ function applyGlobalEffects(multiplier, effects) {
 
     return effectMultiplier;
   }, multiplier);
+}
+
+function getAchievementBuildingProductionMultiplier(state, buildingId) {
+  return getAchievementEffects(state).reduce((multiplier, effect) => {
+    if (effect.type === "buildingProductionMultiplier" && effect.target === buildingId) {
+      return multiplier * effect.value;
+    }
+
+    return multiplier;
+  }, 1);
+}
+
+function getAchievementEffects(state) {
+  return Object.entries(ACHIEVEMENT_DEFINITIONS).flatMap(
+    ([achievementId, achievementDefinition]) => {
+      if (!state.achievements[achievementId]?.unlocked) {
+        return [];
+      }
+
+      return achievementDefinition.reward?.effects ?? [];
+    },
+  );
 }
 
 function createBuildingState() {

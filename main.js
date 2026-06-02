@@ -3,7 +3,7 @@ import { UPGRADE_DEFINITIONS } from "./data/upgrades.js";
 import { evaluateAchievements } from "./systems/achievements.js";
 import { buyBuilding } from "./systems/buildings.js";
 import { completeAvailableChapters, getChapterAfter } from "./systems/chapters.js";
-import { addUnderstanding, createInitialState } from "./systems/economy.js";
+import { addUnderstanding, createInitialState, recalculateStats } from "./systems/economy.js";
 import { buyUpgrade } from "./systems/upgrades.js";
 import { loadGame, saveGame } from "./systems/save.js";
 import { getUnlockedContent } from "./systems/unlocks.js";
@@ -35,14 +35,18 @@ if (loadResult.loaded) {
   saveGame(game.state);
 }
 
-evaluateAchievements(game.state);
+if (evaluateAchievements(game.state).length > 0) {
+  recalculateStats(game.state);
+}
 
 let knownUnlockedIds = new Set(getUnlockedContent(game.state).map((content) => content.id));
 
 bindUIEvents({
-  onBuyBuilding: (buildingId) => {
-    if (buyBuilding(game.state, buildingId)) {
-      showNotification(BUILDING_DEFINITIONS[buildingId].purchaseMessage);
+  onBuyBuilding: (buildingId, quantity) => {
+    const purchase = buyBuilding(game.state, buildingId, quantity);
+
+    if (purchase) {
+      showNotification(getBuildingPurchaseMessage(buildingId, purchase.quantity));
       announceNewUnlocks();
       announceChapterCompletions();
       announceAchievements();
@@ -100,7 +104,13 @@ function announceChapterCompletions() {
 }
 
 function announceAchievements() {
-  for (const achievement of evaluateAchievements(game.state)) {
+  const newAchievements = evaluateAchievements(game.state);
+
+  if (newAchievements.length > 0) {
+    recalculateStats(game.state);
+  }
+
+  for (const achievement of newAchievements) {
     showNotification(`Achievement: ${achievement.name}`, "milestone");
   }
 }
@@ -119,6 +129,16 @@ function announceNewUnlocks() {
 
 function formatWhole(value) {
   return Math.floor(value).toLocaleString();
+}
+
+function getBuildingPurchaseMessage(buildingId, quantity) {
+  const definition = BUILDING_DEFINITIONS[buildingId];
+
+  if (quantity === 1) {
+    return definition.purchaseMessage;
+  }
+
+  return `${definition.purchaseMessage} x${quantity}`;
 }
 
 function getNextChapterForCompletion(chapter) {

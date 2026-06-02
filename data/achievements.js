@@ -244,12 +244,13 @@ export const ACHIEVEMENT_DEFINITIONS = {
   ),
 };
 
-function achievement(name, description, category, condition) {
+function achievement(name, description, category, condition, reward = getDefaultReward(category, condition)) {
   return {
     name,
     description,
     category,
     condition,
+    reward,
   };
 }
 
@@ -287,4 +288,51 @@ function completed(chapterId) {
     type: "chapterCompleted",
     chapterId,
   };
+}
+
+function getDefaultReward(category, condition) {
+  if (condition.type === "buildingOwned" && condition.buildingId) {
+    return productionReward(condition.buildingId, 1.005);
+  }
+
+  if (category === "chapterCompletion") {
+    return globalReward(1.005);
+  }
+
+  return globalReward(1.003);
+}
+
+function globalReward(value) {
+  return {
+    label: `All Study Work produces x${formatMultiplier(value)} Understanding.`,
+    effects: [
+      {
+        type: "globalProductionMultiplier",
+        value,
+      },
+    ],
+  };
+}
+
+function productionReward(buildingId, value) {
+  return {
+    label: `${formatBuildingName(buildingId)} produce x${formatMultiplier(value)} Understanding.`,
+    effects: [
+      {
+        type: "buildingProductionMultiplier",
+        target: buildingId,
+        value,
+      },
+    ],
+  };
+}
+
+function formatBuildingName(buildingId) {
+  return buildingId
+    .replace(/([A-Z])/g, " $1")
+    .replace(/^./, (letter) => letter.toUpperCase());
+}
+
+function formatMultiplier(value) {
+  return Number.isInteger(value) ? value.toFixed(0) : value.toFixed(2);
 }
