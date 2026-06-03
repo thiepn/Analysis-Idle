@@ -20,6 +20,8 @@ import {
   isBuildingUnlocked,
   isUpgradeUnlocked,
 } from "../systems/unlocks.js";
+import { getResearchIdsForFilter } from "../systems/research.js";
+import { formatNumber } from "../utils/format.js";
 
 const elements = {
   understandingCount: document.querySelector("#understanding-count"),
@@ -58,9 +60,9 @@ const expandedBuildingGroups = {
   definitions: true,
   examples: true,
   exercises: true,
-  proofAttempts: false,
-  lemmas: false,
-  theorems: false,
+  proofAttempts: true,
+  lemmas: true,
+  theorems: true,
 };
 const expandedPanels = {
   currentGoal: false,
@@ -227,9 +229,9 @@ function updateBuildingRows(state) {
     row.button.disabled = !isUnlocked || purchase.quantity <= 0;
     row.detailsToggle.textContent = expandedRows.has(detailKey) ? "Hide Details" : "Details";
     row.detailsToggle.dataset.detailKey = detailKey;
-    row.detailsToggle.hidden = isCompactLocked;
-    row.details.hidden = isCompactLocked || !expandedRows.has(detailKey);
-    row.container.hidden = isCompactLocked && buildingId !== groupData.firstLockedId;
+    row.detailsToggle.hidden = false;
+    row.details.hidden = !expandedRows.has(detailKey);
+    row.container.hidden = false;
     row.container.classList.toggle("locked", !isUnlocked);
     row.container.classList.toggle("compact-locked", isCompactLocked);
     row.container.classList.toggle(
@@ -265,18 +267,11 @@ function getGroupedBuildingData(state) {
         owned: 0,
         totalProduction: 0,
         visibleCount: 0,
-        firstLockedId: null,
       };
 
     groupData.owned += building.owned;
     groupData.totalProduction += production.totalProduction;
-
-    if (isBuildingUnlocked(state, buildingId) || building.owned > 0) {
-      groupData.visibleCount += 1;
-    } else if (!groupData.firstLockedId) {
-      groupData.firstLockedId = buildingId;
-      groupData.visibleCount += 1;
-    }
+    groupData.visibleCount += 1;
 
     groupedBuildings.set(groupId, groupData);
   }
@@ -309,9 +304,7 @@ function updatePurchaseQuantityButtons() {
 }
 
 function updateUpgradeRows(state) {
-  const currentChapter = getCurrentChapter(state);
-  const currentChapterIndex = getChapterIndex(currentChapter.id);
-  const nextChapter = getChapterAfter(currentChapter.id);
+  const visibleUpgradeIds = new Set(getResearchIdsForFilter(state, activeResearchFilter));
   const visibleRowsByChapter = new Map();
   let visibleRowCount = 0;
 
@@ -320,15 +313,7 @@ function updateUpgradeRows(state) {
     const group = getOrCreateUpgradeGroup(upgradeDefinition.chapterId);
     const row = getOrCreateRow("upgrades", upgradeId, group.list);
     const isUnlocked = isUpgradeUnlocked(state, upgradeId);
-    const isReached = getChapterIndex(upgradeDefinition.chapterId) <= currentChapterIndex;
-    const isVisible = shouldShowUpgrade(
-      upgradeDefinition,
-      upgrade,
-      isUnlocked,
-      isReached,
-      currentChapter,
-      nextChapter,
-    );
+    const isVisible = visibleUpgradeIds.has(upgradeId);
     const detailKey = `upgrade:${upgradeId}`;
 
     const importanceTag = getResearchImportanceTag(upgradeId, upgradeDefinition);
@@ -391,28 +376,6 @@ function getUpgradeDetailsHtml(upgradeDefinition, upgrade, isUnlocked, importanc
       ${!isUnlocked && !upgrade.purchased && unlockText ? `<span>${unlockText}</span>` : ""}
       <span>${upgrade.purchased ? "Status: researched" : "Status: not researched"}</span>
     `;
-}
-
-function shouldShowUpgrade(
-  upgradeDefinition,
-  upgrade,
-  isUnlocked,
-  isReached,
-  currentChapter,
-  nextChapter,
-) {
-  if (activeResearchFilter === "current") {
-    const isCurrentChapter = upgradeDefinition.chapterId === currentChapter.id;
-    const isNextChapter = nextChapter?.implemented && upgradeDefinition.chapterId === nextChapter.id;
-
-    return !upgrade.purchased && (isUnlocked || isCurrentChapter || isNextChapter || isReached);
-  }
-
-  if (activeResearchFilter === "completed") {
-    return upgrade.purchased;
-  }
-
-  return true;
 }
 
 function updateResearchFilterButtons() {
@@ -1100,32 +1063,6 @@ function getUpgradeButtonText(upgradeDefinition, upgrade, isUnlocked) {
   }
 
   return `Research ${formatNumber(upgradeDefinition.cost)}`;
-}
-
-function formatNumber(value) {
-  if (!Number.isFinite(value)) {
-    return "0";
-  }
-
-  const absoluteValue = Math.abs(value);
-
-  if (absoluteValue < 1000) {
-    return value.toFixed(absoluteValue >= 10 ? 0 : 1);
-  }
-
-  if (absoluteValue < 1000000) {
-    return `${formatCompact(value / 1000)}K`;
-  }
-
-  if (absoluteValue < 1000000000) {
-    return `${formatCompact(value / 1000000)}M`;
-  }
-
-  return value.toExponential(2).replace("+", "");
-}
-
-function formatCompact(value) {
-  return value.toFixed(value >= 100 ? 0 : value >= 10 ? 1 : 2).replace(/\.0+$/, "");
 }
 
 function formatMultiplier(value) {

@@ -14,6 +14,7 @@ import {
   showMilestoneBanner,
   showNotification,
 } from "./ui/notifications.js";
+import { formatNumber } from "./utils/format.js";
 
 const AUTOSAVE_INTERVAL_MS = 10000;
 
@@ -28,7 +29,7 @@ if (loadResult.loaded) {
   game.state = loadResult.state;
   if (loadResult.offlineUnderstanding > 0) {
     showNotification(
-      `Offline progress: +${formatWhole(loadResult.offlineUnderstanding)} Understanding`,
+      `Offline progress: +${formatNumber(loadResult.offlineUnderstanding)} Understanding`,
     );
   }
   completeAvailableChapters(game.state);
@@ -137,32 +138,6 @@ function announceNewUnlocks() {
   }
 
   knownUnlockedIds = new Set(unlockedContent.map((content) => content.id));
-}
-
-function formatWhole(value) {
-  if (!Number.isFinite(value)) {
-    return "0";
-  }
-
-  const absoluteValue = Math.abs(value);
-
-  if (absoluteValue < 1000) {
-    return Math.floor(value).toString();
-  }
-
-  if (absoluteValue < 1000000) {
-    return `${formatCompact(value / 1000)}K`;
-  }
-
-  if (absoluteValue < 1000000000) {
-    return `${formatCompact(value / 1000000)}M`;
-  }
-
-  return value.toExponential(2).replace("+", "");
-}
-
-function formatCompact(value) {
-  return value.toFixed(value >= 100 ? 0 : value >= 10 ? 1 : 2).replace(/\.0+$/, "");
 }
 
 function getBuildingPurchaseMessage(buildingId, quantity) {

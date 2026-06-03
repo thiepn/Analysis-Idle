@@ -103,6 +103,10 @@ button:disabled {
   box-shadow: var(--shadow);
 }
 
+.resource-panel > div {
+  min-width: 0;
+}
+
 .production-breakdown {
   grid-column: 1 / -1;
   padding-top: 16px;
@@ -363,6 +367,7 @@ button:disabled {
   margin: 4px 0 0;
   font-weight: 800;
   overflow-wrap: anywhere;
+  max-width: 100%;
 }
 
 .resource-value {

@@ -8,6 +8,8 @@ export const BUILDING_DEFINITIONS = {
     10,
     1.2,
     1,
+    undefined,
+    parentSynergy("examples", "definitions", 0.006),
   ),
   notationPractice: studyWork(
     "Notation Practice",
@@ -60,6 +62,8 @@ export const BUILDING_DEFINITIONS = {
     5,
     reached(55),
     synergy("definitions", "examples", 0.14),
+    parentSynergy("definitions", "examples", 0.004),
+    parentSynergy("exercises", "examples", 0.01),
   ),
   counterexamples: studyWork(
     "Counterexamples",
@@ -113,6 +117,7 @@ export const BUILDING_DEFINITIONS = {
     researched("mathematicalInduction"),
     synergy("exercises", "definitions", 0.018),
     synergy("exercises", "examples", 0.055),
+    parentSynergy("proofAttempts", "exercises", 0.004),
   ),
   challengeProblems: studyWork(
     "Challenge Problems",
@@ -162,10 +167,11 @@ export const BUILDING_DEFINITIONS = {
     "Drafted a Direct Proof.",
     65000,
     1.32,
-    105,
+    80,
     researched("wellOrderingPrinciple"),
-    synergy("proofAttempts", "exercises", 0.055),
+    synergy("proofAttempts", "exercises", 0.018),
     synergy("exercises", "proofAttempts", 0.035),
+    parentSynergy("lemmas", "proofAttempts", 0.016),
   ),
   contradictionDrafts: studyWork(
     "Contradiction Drafts",
@@ -190,7 +196,7 @@ export const BUILDING_DEFINITIONS = {
     1.35,
     580,
     researched("wellOrderingPrinciple"),
-    synergy("proofAttempts", "inductionDrafts", 0.035),
+    synergy("proofAttempts", "inductionDrafts", 0.015),
     synergy("lemmas", "inductionDrafts", 0.05),
   ),
   epsilonProofDrafts: studyWork(
@@ -201,11 +207,11 @@ export const BUILDING_DEFINITIONS = {
     "Drafted an Epsilon Proof.",
     850000000000,
     1.36,
-    14000,
+    6000,
     researched("epsilonDeltaDefinition"),
-    synergy("proofAttempts", "epsilonProofDrafts", 0.05),
-    synergy("lemmas", "epsilonProofDrafts", 0.04),
-    synergy("theorems", "epsilonProofDrafts", 0.025),
+    synergy("proofAttempts", "epsilonProofDrafts", 0.012),
+    synergy("lemmas", "epsilonProofDrafts", 0.06),
+    synergy("theorems", "epsilonProofDrafts", 0.04),
   ),
 
   lemmas: studyWork(
@@ -216,11 +222,12 @@ export const BUILDING_DEFINITIONS = {
     "Established an Auxiliary Lemma.",
     950000,
     1.34,
-    620,
+    1100,
     researched("densityOfQ"),
     synergy("lemmas", "proofAttempts", 0.045),
     synergy("proofAttempts", "lemmas", 0.06),
     synergy("theorems", "lemmas", 0.06),
+    parentSynergy("theorems", "lemmas", 0.024),
   ),
   boundingLemmas: studyWork(
     "Bounding Lemmas",
@@ -230,7 +237,7 @@ export const BUILDING_DEFINITIONS = {
     "Established a Bounding Lemma.",
     4200000,
     1.36,
-    1700,
+    2600,
     researched("suprema"),
     synergy("exercises", "boundingLemmas", 0.04),
     synergy("theorems", "boundingLemmas", 0.055),
@@ -243,7 +250,7 @@ export const BUILDING_DEFINITIONS = {
     "Established a Convergence Lemma.",
     45000000000,
     1.38,
-    9000,
+    26000,
     researched("sequenceConvergence"),
     synergy("lemmas", "convergenceLemmas", 0.045),
     synergy("theorems", "convergenceLemmas", 0.06),
@@ -256,7 +263,7 @@ export const BUILDING_DEFINITIONS = {
     "Established a Structural Lemma.",
     1200000000000,
     1.39,
-    21000,
+    62000,
     researched("limitLawsProducts"),
     synergy("proofAttempts", "structuralLemmas", 0.045),
     synergy("theorems", "structuralLemmas", 0.07),
@@ -393,6 +400,15 @@ function synergy(target, source, valuePerOwned) {
     type: "buildingSynergyProductionMultiplier",
     target,
     source,
+    valuePerOwned,
+  };
+}
+
+function parentSynergy(targetParent, sourceParent, valuePerOwned) {
+  return {
+    type: "parentTierSynergyProductionMultiplier",
+    targetParent,
+    sourceParent,
     valuePerOwned,
   };
 }

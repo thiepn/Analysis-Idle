@@ -119,6 +119,17 @@ export function getBuildingImpactDescriptions(buildingId) {
         const targetName = targetDefinition?.parentName ?? targetDefinition?.name;
         impacts.push(`+${formatPercent(effect.valuePerOwned * 100)}% ${targetName} production`);
       }
+
+      if (
+        effect.type === "parentTierSynergyProductionMultiplier" &&
+        effect.sourceParent === getBuildingParentTier(buildingId)
+      ) {
+        impacts.push(
+          `+${formatPercent(effect.valuePerOwned * 100)}% ${formatParentTierName(
+            effect.targetParent,
+          )} production`,
+        );
+      }
     }
   }
 
@@ -168,6 +179,14 @@ function applyBuildingEffects(state, buildingId, multiplier, effects) {
       return effectMultiplier * (1 + sourceOwned * effect.valuePerOwned);
     }
 
+    if (
+      effect.type === "parentTierSynergyProductionMultiplier" &&
+      getBuildingParentTier(buildingId) === effect.targetParent
+    ) {
+      const sourceOwned = getParentTierOwned(state, effect.sourceParent);
+      return effectMultiplier * (1 + sourceOwned * effect.valuePerOwned);
+    }
+
     return effectMultiplier;
   }, multiplier);
 }
@@ -207,7 +226,38 @@ function addBoostDescriptions(state, buildingId, effects, boosts, sourceName = "
         boosts.push(`From ${sourceDefinition.name}: +${formatPercent(percent)}%`);
       }
     }
+
+    if (effect.type === "parentTierSynergyProductionMultiplier") {
+      const sourceOwned = getParentTierOwned(state, effect.sourceParent);
+      const percent = sourceOwned * effect.valuePerOwned * 100;
+
+      if (percent > 0) {
+        boosts.push(`From ${formatParentTierName(effect.sourceParent)}: +${formatPercent(percent)}%`);
+      }
+    }
   }
+}
+
+function getParentTierOwned(state, parentTier) {
+  return Object.entries(BUILDING_DEFINITIONS).reduce((total, [buildingId, definition]) => {
+    if (getBuildingParentTier(buildingId, definition) !== parentTier) {
+      return total;
+    }
+
+    return total + (state.buildings[buildingId]?.owned ?? 0);
+  }, 0);
+}
+
+function getBuildingParentTier(buildingId, definition = BUILDING_DEFINITIONS[buildingId]) {
+  return definition?.parentTier ?? buildingId;
+}
+
+function formatParentTierName(parentTier) {
+  const matchingDefinition = Object.values(BUILDING_DEFINITIONS).find(
+    (definition) => definition.parentTier === parentTier,
+  );
+
+  return matchingDefinition?.parentName ?? parentTier;
 }
 
 function formatMultiplier(value) {

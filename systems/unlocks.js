@@ -1,6 +1,7 @@
 import { BUILDING_DEFINITIONS } from "../data/buildings.js";
 import { CHAPTER_DEFINITIONS } from "../data/chapters.js";
 import { UPGRADE_DEFINITIONS } from "../data/upgrades.js";
+import { formatNumber } from "../utils/format.js";
 
 export function isBuildingUnlocked(state, buildingId) {
   return isUnlocked(state, BUILDING_DEFINITIONS[buildingId]?.unlock);
@@ -21,7 +22,7 @@ export function getUnlockText(unlock) {
   }
 
   if (unlock.type === "understandingReached") {
-    return `Unlocks after reaching ${formatRequirementNumber(unlock.amount)} Understanding.`;
+    return `Unlocks after reaching ${formatNumber(unlock.amount)} Understanding.`;
   }
 
   if (unlock.type === "upgradePurchased") {
@@ -209,30 +210,4 @@ function getUnlockProgress(state, unlock) {
 
 function getHighestUnderstanding(state) {
   return state.progression?.highestUnderstanding ?? state.resources.understanding;
-}
-
-function formatRequirementNumber(value) {
-  if (!Number.isFinite(value)) {
-    return "0";
-  }
-
-  const absoluteValue = Math.abs(value);
-
-  if (absoluteValue < 1000) {
-    return Math.floor(value).toString();
-  }
-
-  if (absoluteValue < 1000000) {
-    return `${formatCompact(value / 1000)}K`;
-  }
-
-  if (absoluteValue < 1000000000) {
-    return `${formatCompact(value / 1000000)}M`;
-  }
-
-  return value.toExponential(2).replace("+", "");
-}
-
-function formatCompact(value) {
-  return value.toFixed(value >= 100 ? 0 : value >= 10 ? 1 : 2).replace(/\.0+$/, "");
 }
