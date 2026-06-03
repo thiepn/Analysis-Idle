@@ -183,6 +183,8 @@ function updateBuildingRows(state) {
     const isCompactLocked = !isUnlocked && building.owned === 0;
     const detailKey = `building:${buildingId}`;
     const chapterAlias = currentChapter.studyWork?.[buildingId] ?? buildingDefinition.name;
+    const chapterRole =
+      currentChapter.studyWorkDetails?.[buildingId] ?? buildingDefinition.description;
 
     row.container.classList.add("building-row");
     row.name.textContent = buildingDefinition.name;
@@ -194,7 +196,7 @@ function updateBuildingRows(state) {
       displayCost,
       purchase,
     );
-    row.details.innerHTML = getBuildingDetailsHtml(buildingDefinition, production, impacts);
+    row.details.innerHTML = getBuildingDetailsHtml(chapterRole, production, impacts);
     row.lock.textContent = isUnlocked ? "" : getUnlockText(buildingDefinition.unlock);
     row.button.textContent = isUnlocked
       ? getBuildingButtonText(buildingDefinition, purchase, displayCost)
@@ -633,7 +635,7 @@ function updateProofJournal(state) {
     ["Total Understanding", formatNumber(state.progression.totalUnderstandingEarned)],
     ["Current Rate", `${formatNumber(state.stats.understandingPerSecond)}/s`],
     ["Highest Rate", `${formatNumber(state.progression.supremumUnderstandingPerSecond)}/s`],
-    ["Chapters Complete", `${completedChapters} / 4`],
+    ["Chapters Complete", `${completedChapters} / ${getImplementedChapterCount()}`],
     ["Concepts Researched", `${researchedConcepts} / ${Object.keys(UPGRADE_DEFINITIONS).length}`],
     ["Achievements", `${unlockedAchievements} / ${Object.keys(ACHIEVEMENT_DEFINITIONS).length}`],
     ["Study Work Owned", formatNumber(totalStudyWork)],
@@ -698,6 +700,7 @@ function getGroupedAchievements() {
     "numberSystems",
     "understandingMilestone",
     "buildingMilestone",
+    "sequences",
     "chapterCompletion",
     "research",
     "optimization",
@@ -724,6 +727,7 @@ function getAchievementCategoryLabel(category) {
     numberSystems: "Number Systems",
     understandingMilestone: "Understanding Milestones",
     buildingMilestone: "Study Work",
+    sequences: "Sequences",
     chapterCompletion: "Chapter Completion",
     research: "Research",
     optimization: "Optimization",
@@ -754,6 +758,10 @@ function getAchievementRequirementText(condition) {
     return `Requirement: research ${UPGRADE_DEFINITIONS[condition.upgradeId]?.name ?? "a concept"}.`;
   }
 
+  if (condition.type === "allUpgradesPurchased") {
+    return `Requirement: research ${condition.upgradeIds.length} linked concepts.`;
+  }
+
   return "Requirement: keep progressing.";
 }
 
@@ -776,7 +784,11 @@ function getNextChapterText(nextChapter) {
     return `${nextChapter.name}: future chapter`;
   }
 
-  return `${nextChapter.name} at ${formatNumber(nextChapter.unlock.amount)} Understanding`;
+  return `${nextChapter.name}: ${getUnlockText(nextChapter.unlock)}`;
+}
+
+function getImplementedChapterCount() {
+  return CHAPTER_DEFINITIONS.filter((chapter) => chapter.implemented).length;
 }
 
 function updateProductionBreakdown(state) {
@@ -817,13 +829,13 @@ function getBuildingButtonText(buildingDefinition, purchase, displayCost) {
   return `${buildingDefinition.actionLabel} x${purchase.quantity}`;
 }
 
-function getBuildingDetailsHtml(buildingDefinition, production, impacts) {
+function getBuildingDetailsHtml(roleDescription, production, impacts) {
   const boosts = production.boosts.length > 0 ? production.boosts.join(" | ") : "No active synergy yet";
   const impactText =
     impacts.length > 0 ? `<span>Per owned: ${impacts.join(" | ")}</span>` : "";
 
   return `
-    <span>${buildingDefinition.description}</span>
+    <span>${roleDescription}</span>
     <span>Base: ${formatNumber(production.baseProduction)}/s</span>
     <span>Count: ${production.count}</span>
     <span>Multiplier: x${formatNumber(production.totalMultiplier)}</span>

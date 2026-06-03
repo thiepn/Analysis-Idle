@@ -4,6 +4,7 @@ import { evaluateAchievements } from "./systems/achievements.js";
 import { buyBuilding } from "./systems/buildings.js";
 import { completeAvailableChapters, getChapterAfter } from "./systems/chapters.js";
 import { addUnderstanding, createInitialState, recalculateStats } from "./systems/economy.js";
+import { evaluateMilestones } from "./systems/milestones.js";
 import { buyUpgrade } from "./systems/upgrades.js";
 import { loadGame, saveGame } from "./systems/save.js";
 import { getUnlockedContent } from "./systems/unlocks.js";
@@ -31,6 +32,7 @@ if (loadResult.loaded) {
     );
   }
   completeAvailableChapters(game.state);
+  evaluateMilestones(game.state);
   evaluateAchievements(game.state);
   saveGame(game.state);
 }
@@ -48,6 +50,7 @@ bindUIEvents({
     if (purchase) {
       showNotification(getBuildingPurchaseMessage(buildingId, purchase.quantity));
       announceNewUnlocks();
+      announceMilestones();
       announceChapterCompletions();
       announceAchievements();
       updateUI(game.state);
@@ -57,6 +60,7 @@ bindUIEvents({
     if (buyUpgrade(game.state, upgradeId)) {
       showNotification(`Researched ${UPGRADE_DEFINITIONS[upgradeId].name}.`);
       announceNewUnlocks();
+      announceMilestones();
       announceChapterCompletions();
       announceAchievements();
       updateUI(game.state);
@@ -78,6 +82,7 @@ function gameLoop(currentTime) {
 
   addUnderstanding(game.state, game.state.stats.understandingPerSecond * deltaSeconds);
   announceNewUnlocks();
+  announceMilestones();
   announceChapterCompletions();
   announceAchievements();
 
@@ -100,6 +105,13 @@ function announceChapterCompletions() {
     showNotification(`Completed ${chapter.name}: ${rewardText}`, "milestone");
     showMilestoneBanner(chapter.name, rewardText, chapter.completionBanner);
     showChapterCompletion(chapter, getNextChapterForCompletion(chapter), getMasteredConcepts(chapter));
+  }
+}
+
+function announceMilestones() {
+  for (const milestone of evaluateMilestones(game.state)) {
+    showNotification(`${milestone.chapter.name}: ${milestone.name}`, "milestone");
+    showMilestoneBanner(milestone.name, "Milestone reached", milestone.banner);
   }
 }
 

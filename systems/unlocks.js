@@ -36,6 +36,13 @@ export function getUnlockText(unlock) {
     return `Unlocks in ${chapterName}.`;
   }
 
+  if (unlock.type === "chapterCompleted") {
+    const chapterName =
+      CHAPTER_DEFINITIONS.find((chapter) => chapter.id === unlock.chapterId)?.name ??
+      "required chapter";
+    return `Unlocks after completing ${chapterName}.`;
+  }
+
   return "Locked.";
 }
 
@@ -75,6 +82,10 @@ function isUnlocked(state, unlock) {
   if (unlock.type === "chapterUnlocked") {
     const chapter = CHAPTER_DEFINITIONS.find((definition) => definition.id === unlock.chapterId);
     return chapter ? isUnlocked(state, chapter.unlock) : false;
+  }
+
+  if (unlock.type === "chapterCompleted") {
+    return state.progression.completedChapters?.[unlock.chapterId] ?? false;
   }
 
   return false;
@@ -147,7 +158,7 @@ function getUnlockedUpgrades(state) {
 
 function getUnlockedChapters(state) {
   return CHAPTER_DEFINITIONS.filter((chapter) => chapter.implemented)
-    .filter((chapter) => chapter.unlock.amount > 0)
+    .filter((chapter) => chapter.unlock)
     .filter((chapter) => isUnlocked(state, chapter.unlock))
     .map((chapter) => ({
       id: `chapter:${chapter.id}`,
@@ -181,6 +192,13 @@ function getUnlockProgress(state, unlock) {
   if (unlock.type === "chapterUnlocked") {
     const chapter = CHAPTER_DEFINITIONS.find((definition) => definition.id === unlock.chapterId);
     return chapter ? getUnlockProgress(state, chapter.unlock) : { current: 0, amount: 1 };
+  }
+
+  if (unlock.type === "chapterCompleted") {
+    return {
+      current: state.progression.completedChapters?.[unlock.chapterId] ? 1 : 0,
+      amount: 1,
+    };
   }
 
   return {

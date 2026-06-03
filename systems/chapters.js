@@ -3,10 +3,9 @@ import { recalculateStats } from "./economy.js";
 
 export function getCurrentChapter(state) {
   const implementedChapters = getImplementedChapters();
-  const highestUnderstanding = state.progression.highestUnderstanding;
 
   return implementedChapters.reduce((currentChapter, chapter) => {
-    if (highestUnderstanding >= chapter.unlock.amount) {
+    if (isUnlockComplete(state, chapter.unlock)) {
       return chapter;
     }
 
@@ -78,7 +77,7 @@ function getImplementedChapters() {
 }
 
 function isChapterGoalComplete(state, chapter) {
-  if (state.progression.highestUnderstanding < chapter.unlock.amount) {
+  if (!isUnlockComplete(state, chapter.unlock)) {
     return false;
   }
 
@@ -98,6 +97,10 @@ function isConditionComplete(state, condition) {
     return state.upgrades[condition.upgradeId]?.purchased ?? false;
   }
 
+  if (condition.type === "chapterCompleted") {
+    return state.progression.completedChapters?.[condition.chapterId] ?? false;
+  }
+
   return false;
 }
 
@@ -114,5 +117,25 @@ function getConditionCurrentValue(state, condition) {
     return state.upgrades[condition.upgradeId]?.purchased ? 1 : 0;
   }
 
+  if (condition.type === "chapterCompleted") {
+    return state.progression.completedChapters?.[condition.chapterId] ? 1 : 0;
+  }
+
   return 0;
+}
+
+function isUnlockComplete(state, unlock) {
+  if (!unlock) {
+    return true;
+  }
+
+  if (unlock.type === "understandingReached") {
+    return state.progression.highestUnderstanding >= unlock.amount;
+  }
+
+  if (unlock.type === "chapterCompleted") {
+    return state.progression.completedChapters?.[unlock.chapterId] ?? false;
+  }
+
+  return isConditionComplete(state, unlock);
 }

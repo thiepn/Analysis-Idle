@@ -242,6 +242,75 @@ export const ACHIEVEMENT_DEFINITIONS = {
     "buildingMilestone",
     owned("theorems", 3),
   ),
+
+  theFirstSequence: achievement(
+    "The First Sequence",
+    "Study Sequence Definition.",
+    "sequences",
+    researched("sequenceDefinition"),
+  ),
+  gettingCloser: achievement(
+    "Getting Closer",
+    "Study Convergence.",
+    "sequences",
+    researched("sequenceConvergence"),
+  ),
+  boundedAndMonotone: achievement(
+    "Bounded and Monotone",
+    "Study the Monotone Convergence Theorem.",
+    "sequences",
+    researched("monotoneConvergenceTheorem"),
+  ),
+  cauchyCriterionAchievement: achievement(
+    "Cauchy Criterion",
+    "Study Cauchy Sequences.",
+    "sequences",
+    researched("cauchySequences"),
+  ),
+  hiddenPattern: achievement(
+    "The Hidden Pattern",
+    "Study Subsequences.",
+    "sequences",
+    researched("subsequences"),
+  ),
+  theGreatTheorem: achievement(
+    "The Great Theorem",
+    "Prove Bolzano-Weierstrass.",
+    "sequences",
+    researched("bolzanoWeierstrass"),
+  ),
+  sequencesMastered: achievement(
+    "Sequences Mastered",
+    "Complete the Sequences chapter.",
+    "chapterCompletion",
+    completed("sequences"),
+  ),
+  infiniteList: achievement(
+    "Infinite List",
+    "Own 280 total Study Work items.",
+    "sequences",
+    totalBuildings(280),
+  ),
+  eventuallyAlwaysAchievement: achievement(
+    "Eventually Always",
+    "Study Eventually Always.",
+    "sequences",
+    researched("eventuallyAlways"),
+  ),
+  compactnessForeshadowed: achievement(
+    "Compactness Foreshadowed",
+    "Complete all major Sequences research.",
+    "sequences",
+    allResearched([
+      "sequenceDefinition",
+      "boundedSequences",
+      "monotoneSequences",
+      "sequenceConvergence",
+      "cauchySequences",
+      "subsequences",
+      "bolzanoWeierstrass",
+    ]),
+  ),
 };
 
 function achievement(name, description, category, condition, reward = getDefaultReward(category, condition)) {
@@ -287,6 +356,13 @@ function completed(chapterId) {
   return {
     type: "chapterCompleted",
     chapterId,
+  };
+}
+
+function allResearched(upgradeIds) {
+  return {
+    type: "allUpgradesPurchased",
+    upgradeIds,
   };
 }
 

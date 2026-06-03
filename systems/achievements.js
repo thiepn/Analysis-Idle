@@ -44,6 +44,10 @@ function isConditionComplete(state, condition) {
     return state.upgrades[condition.upgradeId]?.purchased ?? false;
   }
 
+  if (condition.type === "allUpgradesPurchased") {
+    return condition.upgradeIds.every((upgradeId) => state.upgrades[upgradeId]?.purchased);
+  }
+
   if (condition.type === "productionReached") {
     return state.stats.understandingPerSecond >= condition.amount;
   }

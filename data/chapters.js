@@ -191,12 +191,126 @@ export const CHAPTER_DEFINITIONS = [
   {
     id: "sequences",
     name: "Sequences",
-    theme: "Ordered terms begin to approach infinity.",
-    description: "Coming later: approach infinity through ordered terms.",
-    implemented: false,
+    theme: "Infinite lists that know where they're going.",
+    description:
+      "Study sequence definitions, boundedness, convergence, Cauchy behavior, and subsequences.",
+    transitionToNext:
+      "Sequences teach convergence in lists. Limits extend that precision to functions.",
+    completionBanner:
+      "A sequence that is bounded and monotone must converge. A sequence that is Cauchy must converge. The real numbers keep their promises.",
+    implemented: true,
     unlock: {
-      type: "understandingReached",
-      amount: 500000000,
+      type: "chapterCompleted",
+      chapterId: "realNumbers",
+    },
+    milestones: [
+      "The First Sequence",
+      "Convergence Witnessed",
+      "Cauchy's Criterion",
+      "Bolzano-Weierstrass",
+    ],
+    progressMilestones: [
+      {
+        id: "firstSequence",
+        name: "The First Sequence",
+        condition: {
+          type: "upgradePurchased",
+          upgradeId: "sequenceDefinition",
+        },
+        banner:
+          "A sequence is an ordered infinite list. Analysis begins to study motion through infinity.",
+      },
+      {
+        id: "convergenceWitnessed",
+        name: "Convergence Witnessed",
+        condition: {
+          type: "upgradePurchased",
+          upgradeId: "sequenceConvergence",
+        },
+        banner: "Eventually close. Permanently close. This is the language of limits.",
+      },
+      {
+        id: "cauchyCriterion",
+        name: "Cauchy's Criterion",
+        condition: {
+          type: "upgradePurchased",
+          upgradeId: "cauchySequences",
+        },
+        banner:
+          "The terms begin to agree with each other before the limit is even named.",
+      },
+      {
+        id: "greatSubsequence",
+        name: "The Great Subsequence",
+        condition: {
+          type: "upgradePurchased",
+          upgradeId: "subsequences",
+        },
+        banner: "Inside a bounded sequence, a convergent pattern can be extracted.",
+      },
+      {
+        id: "bolzanoWeierstrass",
+        name: "Bolzano-Weierstrass",
+        condition: {
+          type: "upgradePurchased",
+          upgradeId: "bolzanoWeierstrass",
+        },
+        banner:
+          "Every bounded sequence in R has a convergent subsequence. Compactness appears for the first time.",
+      },
+    ],
+    studyWork: {
+      definitions: "Sequence Indexer",
+      examples: "Convergence Tracer",
+      exercises: "Boundedness Checker",
+      proofAttempts: "Cauchy Drafts",
+      lemmas: "Subsequence Lemmas",
+      theorems: "Bolzano-Weierstrass Theorem",
+    },
+    studyWorkDetails: {
+      definitions:
+        "a_1, a_2, a_3, ... A sequence is a function from natural numbers into real numbers.",
+      examples:
+        "Watch a sequence approach its limit. Eventually close, then permanently close.",
+      exercises:
+        "Every term stays trapped within fixed bounds. Control is the first step toward convergence.",
+      proofAttempts:
+        "Prove the terms become arbitrarily close to each other before naming the limit.",
+      lemmas:
+        "Extract infinite structure from infinite data. A hidden convergent pattern may remain.",
+      theorems:
+        "Every bounded sequence in real numbers contains a convergent subsequence.",
+    },
+    goal: {
+      objective:
+        "Understand convergence, boundedness, Cauchy behavior, and subsequences.",
+      conditions: [
+        {
+          type: "understandingReached",
+          amount: 250000000000,
+          label: "Reach 250,000,000,000 Understanding",
+        },
+        {
+          type: "buildingOwned",
+          buildingId: "lemmas",
+          amount: 45,
+          label: "Establish 45 Lemmas",
+        },
+        {
+          type: "upgradePurchased",
+          upgradeId: "bolzanoWeierstrass",
+          label: "Prove Bolzano-Weierstrass",
+        },
+      ],
+      reward: {
+        label: "Sequence Mastery: x1.6 global production",
+        effects: [
+          {
+            type: "globalProductionMultiplier",
+            value: 1.6,
+          },
+        ],
+      },
     },
   },
   {
@@ -206,8 +320,8 @@ export const CHAPTER_DEFINITIONS = [
     description: "Coming later: formalize approaching behavior.",
     implemented: false,
     unlock: {
-      type: "understandingReached",
-      amount: 1000000000,
+      type: "chapterCompleted",
+      chapterId: "sequences",
     },
   },
   {

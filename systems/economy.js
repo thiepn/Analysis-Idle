@@ -17,6 +17,7 @@ export function createInitialState() {
       supremumUnderstandingPerSecond: 0,
       lastOfflineUnderstanding: 0,
       completedChapters: {},
+      milestones: {},
     },
     prestige: {
       scientificRevolutions: 0,

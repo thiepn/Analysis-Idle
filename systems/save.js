@@ -77,6 +77,10 @@ function mergeWithDefaults(savedState) {
         ...defaultState.progression.completedChapters,
         ...savedState.progression?.completedChapters,
       },
+      milestones: {
+        ...defaultState.progression.milestones,
+        ...savedState.progression?.milestones,
+      },
     },
     prestige: {
       scientificRevolutions:
