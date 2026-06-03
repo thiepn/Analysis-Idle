@@ -316,12 +316,129 @@ export const CHAPTER_DEFINITIONS = [
   {
     id: "limits",
     name: "Limits",
-    theme: "Approach becomes a mathematical promise.",
-    description: "Coming later: formalize approaching behavior.",
-    implemented: false,
+    theme: "Getting arbitrarily close to the truth.",
+    description:
+      "Formalize approaching with epsilon-delta precision, limit laws, and sequential tests.",
+    transitionToNext:
+      "Limits describe approaching. Continuity asks when approaching a point agrees with the value at the point.",
+    completionBanner:
+      "The limit is the foundation of calculus. Every derivative, every integral, every series is secretly a limit.",
+    implemented: true,
     unlock: {
       type: "chapterCompleted",
       chapterId: "sequences",
+    },
+    milestones: [
+      "The Language of Limits",
+      "Epsilon Precision",
+      "Algebra of Limits",
+      "Squeezed Into Truth",
+      "Sequences Return",
+    ],
+    progressMilestones: [
+      {
+        id: "languageOfLimits",
+        name: "The Language of Limits",
+        condition: {
+          type: "upgradePurchased",
+          upgradeId: "limitNotation",
+        },
+        banner:
+          "A limit names where a function is forced to go, even before it arrives.",
+      },
+      {
+        id: "epsilonPrecision",
+        name: "Epsilon Precision",
+        condition: {
+          type: "upgradePurchased",
+          upgradeId: "epsilonDeltaDefinition",
+        },
+        banner:
+          "Approximation becomes rigorous. Every tolerance demands a response.",
+      },
+      {
+        id: "algebraOfLimits",
+        name: "Algebra of Limits",
+        condition: {
+          type: "allUpgradesPurchased",
+          upgradeIds: ["limitLawsLinearity", "limitLawsProducts", "limitLawsQuotients"],
+        },
+        banner:
+          "Limits respect arithmetic. The algebra of Analysis begins to stabilize.",
+      },
+      {
+        id: "squeezedIntoTruth",
+        name: "Squeezed Into Truth",
+        condition: {
+          type: "upgradePurchased",
+          upgradeId: "squeezeTheorem",
+        },
+        banner:
+          "Trapped between two converging bounds, the middle has no choice but to converge.",
+      },
+      {
+        id: "sequencesReturn",
+        name: "Sequences Return",
+        condition: {
+          type: "upgradePurchased",
+          upgradeId: "sequentialCharacterization",
+        },
+        banner:
+          "The function limit and the sequence limit are two faces of the same idea.",
+      },
+    ],
+    studyWork: {
+      definitions: "Epsilon Workbench",
+      examples: "Limit Tables",
+      exercises: "Squeeze Apparatus",
+      proofAttempts: "Delta Drafts",
+      lemmas: "Limit Law Lemmas",
+      theorems: "Sequential Characterization",
+    },
+    studyWorkDetails: {
+      definitions:
+        "For every epsilon > 0, there exists a delta > 0. Precision becomes quantitative.",
+      examples:
+        "Approach from nearby values. The function reveals where it is forced to go.",
+      exercises:
+        "Trap a difficult function between two simpler ones and force its limit.",
+      proofAttempts:
+        "Choose delta carefully enough that every nearby x produces a nearby f(x).",
+      lemmas:
+        "Sums, products, quotients, and compositions behave predictably under limits.",
+      theorems:
+        "A function limit exists exactly when every approaching sequence produces the same limiting value.",
+    },
+    goal: {
+      objective:
+        "Formalize approaching using epsilon-delta precision and limit laws.",
+      conditions: [
+        {
+          type: "understandingReached",
+          amount: 25000000000000,
+          label: "Reach 25,000,000,000,000 Understanding",
+        },
+        {
+          type: "buildingOwned",
+          buildingId: "theorems",
+          amount: 38,
+          label: "Prove 38 Theorems",
+        },
+        {
+          type: "upgradePurchased",
+          upgradeId: "sequentialCharacterization",
+          label: "Prove Sequential Characterization",
+        },
+      ],
+      reward: {
+        label: "Limit Mastery: x1.8 global production",
+        effects: [
+          {
+            type: "globalProductionMultiplier",
+            value: 1.8,
+          },
+        ],
+      },
     },
   },
   {
@@ -331,8 +448,8 @@ export const CHAPTER_DEFINITIONS = [
     description: "Coming later: connect local behavior across the real line.",
     implemented: false,
     unlock: {
-      type: "understandingReached",
-      amount: 10000000000,
+      type: "chapterCompleted",
+      chapterId: "limits",
     },
   },
   {

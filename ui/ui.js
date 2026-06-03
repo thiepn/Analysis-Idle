@@ -404,7 +404,10 @@ function getResearchImportanceTag(upgradeId, upgradeDefinition) {
     name.includes("theorem") ||
     upgradeId === "wellOrderingPrinciple" ||
     upgradeId === "irrationalitySqrt2" ||
-    upgradeId === "nestedIntervals"
+    upgradeId === "nestedIntervals" ||
+    upgradeId === "squeezeTheorem" ||
+    upgradeId === "sequentialCharacterization" ||
+    upgradeId === "epsilonDeltaDefinition"
   ) {
     return "CAPSTONE";
   }
@@ -701,6 +704,7 @@ function getGroupedAchievements() {
     "understandingMilestone",
     "buildingMilestone",
     "sequences",
+    "limits",
     "chapterCompletion",
     "research",
     "optimization",
@@ -728,6 +732,7 @@ function getAchievementCategoryLabel(category) {
     understandingMilestone: "Understanding Milestones",
     buildingMilestone: "Study Work",
     sequences: "Sequences",
+    limits: "Limits",
     chapterCompletion: "Chapter Completion",
     research: "Research",
     optimization: "Optimization",

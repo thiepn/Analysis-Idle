@@ -31,6 +31,10 @@ function isConditionComplete(state, condition) {
     return state.upgrades[condition.upgradeId]?.purchased ?? false;
   }
 
+  if (condition.type === "allUpgradesPurchased") {
+    return condition.upgradeIds.every((upgradeId) => state.upgrades[upgradeId]?.purchased);
+  }
+
   if (condition.type === "understandingReached") {
     return state.progression.highestUnderstanding >= condition.amount;
   }

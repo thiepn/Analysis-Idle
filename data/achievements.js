@@ -311,6 +311,72 @@ export const ACHIEVEMENT_DEFINITIONS = {
       "bolzanoWeierstrass",
     ]),
   ),
+
+  firstLimit: achievement(
+    "The First Limit",
+    "Study Limit Notation.",
+    "limits",
+    researched("limitNotation"),
+  ),
+  epsilonGreaterThanZero: achievement(
+    "epsilon Greater Than Zero",
+    "Study the Epsilon-Delta Definition.",
+    "limits",
+    researched("epsilonDeltaDefinition"),
+  ),
+  algebraOfLimitsAchievement: achievement(
+    "Algebra of Limits",
+    "Study the main Limit Laws.",
+    "limits",
+    allResearched(["limitLawsLinearity", "limitLawsProducts", "limitLawsQuotients"]),
+  ),
+  oneSideAtATime: achievement(
+    "One Side at a Time",
+    "Study One-Sided Limits.",
+    "limits",
+    researched("oneSidedLimits"),
+  ),
+  toInfinity: achievement(
+    "To Infinity",
+    "Study Infinite Limits.",
+    "limits",
+    researched("infiniteLimits"),
+  ),
+  squeezedIntoTruthAchievement: achievement(
+    "Squeezed Into Truth",
+    "Study the Squeeze Theorem.",
+    "limits",
+    researched("squeezeTheorem"),
+  ),
+  sequentialReturn: achievement(
+    "Sequential Return",
+    "Study Sequential Characterization.",
+    "limits",
+    researched("sequentialCharacterization"),
+  ),
+  limitsMastered: achievement(
+    "Limits Mastered",
+    "Complete the Limits chapter.",
+    "chapterCompletion",
+    completed("limits"),
+  ),
+  boundController: achievement(
+    "Bound Controller",
+    "Own 360 total Study Work items.",
+    "limits",
+    totalBuildings(360),
+  ),
+  arbitrarilyClose: achievement(
+    "Arbitrarily Close",
+    "Complete all major Limits research.",
+    "limits",
+    allResearched([
+      "limitNotation",
+      "epsilonDeltaDefinition",
+      "squeezeTheorem",
+      "sequentialCharacterization",
+    ]),
+  ),
 };
 
 function achievement(name, description, category, condition, reward = getDefaultReward(category, condition)) {
