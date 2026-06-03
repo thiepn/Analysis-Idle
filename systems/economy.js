@@ -115,7 +115,8 @@ export function getBuildingImpactDescriptions(buildingId) {
         effect.type === "buildingSynergyProductionMultiplier" &&
         effect.source === buildingId
       ) {
-        const targetName = BUILDING_DEFINITIONS[effect.target]?.name;
+        const targetDefinition = BUILDING_DEFINITIONS[effect.target];
+        const targetName = targetDefinition?.parentName ?? targetDefinition?.name;
         impacts.push(`+${formatPercent(effect.valuePerOwned * 100)}% ${targetName} production`);
       }
     }
