@@ -174,6 +174,13 @@ function applyBuildingEffects(state, buildingId, multiplier, effects) {
       return effectMultiplier * effect.value;
     }
 
+    if (
+      effect.type === "parentGroupProductionMultiplier" &&
+      getBuildingParentTier(buildingId) === effect.targetParent
+    ) {
+      return effectMultiplier * effect.value;
+    }
+
     if (effect.type === "buildingSynergyProductionMultiplier" && effect.target === buildingId) {
       const sourceOwned = state.buildings[effect.source]?.owned ?? 0;
       return effectMultiplier * (1 + sourceOwned * effect.valuePerOwned);
@@ -209,12 +216,19 @@ function getBuildingBoostDescriptions(state, buildingId) {
 
 function addBoostDescriptions(state, buildingId, effects, boosts, sourceName = "") {
   for (const effect of effects) {
-    if (effect.target !== buildingId) {
+    if (effect.target && effect.target !== buildingId) {
       continue;
     }
 
     if (effect.type === "buildingProductionMultiplier") {
       boosts.push(`${sourceName}: x${formatMultiplier(effect.value)}`);
+    }
+
+    if (
+      effect.type === "parentGroupProductionMultiplier" &&
+      getBuildingParentTier(buildingId) === effect.targetParent
+    ) {
+      boosts.push(`${sourceName}: ${formatParentTierName(effect.targetParent)} x${formatMultiplier(effect.value)}`);
     }
 
     if (effect.type === "buildingSynergyProductionMultiplier") {
@@ -304,6 +318,13 @@ function applyGlobalEffects(multiplier, effects) {
 function getAchievementBuildingProductionMultiplier(state, buildingId) {
   return getAchievementEffects(state).reduce((multiplier, effect) => {
     if (effect.type === "buildingProductionMultiplier" && effect.target === buildingId) {
+      return multiplier * effect.value;
+    }
+
+    if (
+      effect.type === "parentGroupProductionMultiplier" &&
+      getBuildingParentTier(buildingId) === effect.targetParent
+    ) {
       return multiplier * effect.value;
     }
 

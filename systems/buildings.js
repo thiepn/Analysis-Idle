@@ -108,7 +108,18 @@ function getBuildingCostMultiplier(state, buildingId) {
         return effectMultiplier * effect.value;
       }
 
+      if (
+        effect.type === "parentGroupCostMultiplier" &&
+        getBuildingParentTier(buildingId) === effect.targetParent
+      ) {
+        return effectMultiplier * effect.value;
+      }
+
       return effectMultiplier;
     }, multiplier);
   }, 1);
+}
+
+function getBuildingParentTier(buildingId) {
+  return BUILDING_DEFINITIONS[buildingId]?.parentTier ?? buildingId;
 }

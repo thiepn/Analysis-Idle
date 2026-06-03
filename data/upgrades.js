@@ -494,6 +494,14 @@ function chapter(chapterId) {
 }
 
 function buildingMultiplier(target, value) {
+  if (isParentGroup(target)) {
+    return {
+      type: "parentGroupProductionMultiplier",
+      targetParent: target,
+      value,
+    };
+  }
+
   return {
     type: "buildingProductionMultiplier",
     target,
@@ -502,6 +510,15 @@ function buildingMultiplier(target, value) {
 }
 
 function synergyMultiplier(target, source, valuePerOwned) {
+  if (isParentGroup(target) || isParentGroup(source)) {
+    return {
+      type: "parentTierSynergyProductionMultiplier",
+      targetParent: target,
+      sourceParent: source,
+      valuePerOwned,
+    };
+  }
+
   return {
     type: "buildingSynergyProductionMultiplier",
     target,
@@ -518,9 +535,28 @@ function globalMultiplier(value) {
 }
 
 function costMultiplier(target, value) {
+  if (isParentGroup(target)) {
+    return {
+      type: "parentGroupCostMultiplier",
+      targetParent: target,
+      value,
+    };
+  }
+
   return {
     type: "buildingCostMultiplier",
     target,
     value,
   };
+}
+
+function isParentGroup(target) {
+  return [
+    "definitions",
+    "examples",
+    "exercises",
+    "proofAttempts",
+    "lemmas",
+    "theorems",
+  ].includes(target);
 }

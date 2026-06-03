@@ -1,7 +1,8 @@
 import { addUnderstanding, createInitialState, recalculateStats } from "./economy.js";
+import { BUILDING_DEFINITIONS } from "../data/buildings.js";
 
 const SAVE_KEY = "mathIdleSave";
-const CURRENT_SAVE_VERSION = 4;
+const CURRENT_SAVE_VERSION = 5;
 
 export function saveGame(state) {
   state.save.version = CURRENT_SAVE_VERSION;
@@ -117,9 +118,81 @@ function migrateSave(savedState) {
 
   if (savedVersion < 4) {
     migratedState = migrateToVersion4(migratedState);
+    savedVersion = 4;
+  }
+
+  if (savedVersion < 5) {
+    migratedState = migrateToVersion5(migratedState);
   }
 
   return migratedState;
+}
+
+function migrateToVersion5(savedState) {
+  return {
+    ...savedState,
+    buildings: distributeLegacyParentCounts(savedState.buildings ?? {}),
+    save: {
+      ...savedState.save,
+      version: 5,
+    },
+  };
+}
+
+function distributeLegacyParentCounts(savedBuildings) {
+  const distributedBuildings = {
+    ...savedBuildings,
+  };
+
+  for (const group of getBuildingGroups()) {
+    const defaultId = group[0];
+    const defaultOwned = savedBuildings[defaultId]?.owned ?? 0;
+    const siblingOwned = group
+      .slice(1)
+      .reduce((total, buildingId) => total + (savedBuildings[buildingId]?.owned ?? 0), 0);
+
+    if (defaultOwned <= 1 || siblingOwned > 0) {
+      continue;
+    }
+
+    const distributedCounts = distributeCount(defaultOwned, group.length);
+
+    for (const [index, buildingId] of group.entries()) {
+      distributedBuildings[buildingId] = {
+        owned: distributedCounts[index],
+      };
+    }
+  }
+
+  return distributedBuildings;
+}
+
+function distributeCount(totalCount, groupSize) {
+  const weights = [0.4, 0.25, 0.2, 0.15].slice(0, groupSize);
+  const distributedCounts = weights.map((weight) => Math.floor(totalCount * weight));
+  let remainingCount = totalCount - distributedCounts.reduce((total, count) => total + count, 0);
+  let index = 0;
+
+  while (remainingCount > 0) {
+    distributedCounts[index % distributedCounts.length] += 1;
+    remainingCount -= 1;
+    index += 1;
+  }
+
+  return distributedCounts;
+}
+
+function getBuildingGroups() {
+  const groups = new Map();
+
+  for (const [buildingId, definition] of Object.entries(BUILDING_DEFINITIONS)) {
+    const parentTier = definition.parentTier ?? buildingId;
+    const group = groups.get(parentTier) ?? [];
+    group.push(buildingId);
+    groups.set(parentTier, group);
+  }
+
+  return [...groups.values()];
 }
 
 function migrateToVersion4(savedState) {

@@ -220,7 +220,14 @@ function updateBuildingRows(state) {
       displayCost,
       purchase,
     );
-    row.details.innerHTML = getBuildingDetailsHtml(chapterRole, production, impacts);
+    row.details.innerHTML = getBuildingDetailsHtml(
+      buildingId,
+      buildingDefinition,
+      chapterRole,
+      production,
+      impacts,
+      groupData,
+    );
     row.lock.textContent = isUnlocked ? "" : getUnlockText(buildingDefinition.unlock);
     row.button.textContent = isUnlocked
       ? getBuildingButtonText(buildingDefinition, purchase, displayCost)
@@ -267,11 +274,18 @@ function getGroupedBuildingData(state) {
         owned: 0,
         totalProduction: 0,
         visibleCount: 0,
+        topName: definition.name,
+        topProduction: 0,
       };
 
     groupData.owned += building.owned;
     groupData.totalProduction += production.totalProduction;
     groupData.visibleCount += 1;
+
+    if (production.totalProduction > groupData.topProduction) {
+      groupData.topProduction = production.totalProduction;
+      groupData.topName = definition.name;
+    }
 
     groupedBuildings.set(groupId, groupData);
   }
@@ -290,7 +304,10 @@ function updateBuildingGroupHeading(group, groupData) {
 
   group.owned.textContent = `Owned: ${formatNumber(groupData.owned)}`;
   group.production.textContent = `${formatNumber(groupData.totalProduction)}/s`;
-  group.count.textContent = `${formatNumber(groupData.visibleCount)} visible`;
+  group.count.textContent = `Top: ${groupData.topName} ${getContributionPercent(
+    groupData.topProduction,
+    groupData.totalProduction,
+  )}`;
 }
 
 function updatePurchaseQuantityButtons() {
@@ -427,6 +444,10 @@ function getEffectDescription(effect) {
     return `${getBuildingName(effect.target)} x${formatMultiplier(effect.value)}`;
   }
 
+  if (effect.type === "parentGroupProductionMultiplier") {
+    return `${getParentGroupName(effect.targetParent)} x${formatMultiplier(effect.value)}`;
+  }
+
   if (effect.type === "globalProductionMultiplier") {
     return `All production x${formatMultiplier(effect.value)}`;
   }
@@ -441,6 +462,18 @@ function getEffectDescription(effect) {
     return `${getBuildingName(effect.target)} cost -${formatPercent(
       (1 - effect.value) * 100,
     )}%`;
+  }
+
+  if (effect.type === "parentGroupCostMultiplier") {
+    return `${getParentGroupName(effect.targetParent)} cost -${formatPercent(
+      (1 - effect.value) * 100,
+    )}%`;
+  }
+
+  if (effect.type === "parentTierSynergyProductionMultiplier") {
+    return `${getParentGroupName(effect.targetParent)} +${formatPercent(
+      effect.valuePerOwned * 100,
+    )}% per ${getParentGroupName(effect.sourceParent)}`;
   }
 
   return "Unlocks future study.";
@@ -483,6 +516,14 @@ function getResearchImportanceTag(upgradeId, upgradeDefinition) {
 function getBuildingName(buildingId) {
   const definition = BUILDING_DEFINITIONS[buildingId];
   return definition?.parentName ?? definition?.name ?? "Study Work";
+}
+
+function getParentGroupName(parentTier) {
+  const definition = Object.values(BUILDING_DEFINITIONS).find(
+    (buildingDefinition) => buildingDefinition.parentTier === parentTier,
+  );
+
+  return definition?.parentName ?? "Study Work";
 }
 
 function getChapterName(chapterId) {
@@ -920,20 +961,70 @@ function getBuildingButtonText(buildingDefinition, purchase, displayCost) {
   return `${buildingDefinition.actionLabel} x${purchase.quantity}`;
 }
 
-function getBuildingDetailsHtml(roleDescription, production, impacts) {
+function getBuildingDetailsHtml(
+  buildingId,
+  buildingDefinition,
+  roleDescription,
+  production,
+  impacts,
+  groupData,
+) {
   const boosts = production.boosts.length > 0 ? production.boosts.join(" | ") : "No active synergy yet";
   const impactText =
     impacts.length > 0 ? `<span>Per owned: ${impacts.join(" | ")}</span>` : "";
+  const contribution = getContributionPercent(production.totalProduction, groupData.totalProduction);
 
   return `
+    <span>Parent group: ${buildingDefinition.parentName ?? buildingDefinition.name}</span>
+    <span>Role: ${getVariantRole(buildingId)}</span>
     <span>${roleDescription}</span>
     <span>Base: ${formatNumber(production.baseProduction)}/s</span>
     <span>Count: ${production.count}</span>
     <span>Multiplier: x${formatNumber(production.totalMultiplier)}</span>
     <span>Total: ${formatNumber(production.totalProduction)}/s</span>
+    <span>Group share: ${contribution}</span>
     <span>${boosts}</span>
     ${impactText}
   `;
+}
+
+function getContributionPercent(value, total) {
+  if (total <= 0) {
+    return "0%";
+  }
+
+  return `${((value / total) * 100).toFixed(1)}%`;
+}
+
+function getVariantRole(buildingId) {
+  const roles = {
+    definitions: "Stable baseline for precise language.",
+    notationPractice: "Low-cost support that makes symbolic work easier.",
+    conceptMaps: "Synergy-focused connector between ideas.",
+    assumptionLists: "Higher-cost support for proof and lemma work.",
+    examples: "Baseline intuition builder.",
+    counterexamples: "Support variant for proof caution and theorem testing.",
+    visualExamples: "Exercise and limit intuition support.",
+    edgeCases: "Later-analysis support for boundary behavior.",
+    exercises: "Baseline practice engine.",
+    challengeProblems: "Higher-output practice at a higher cost.",
+    computationDrills: "Volume producer for routine manipulation.",
+    proofExercises: "Bridge from exercises into proof attempts.",
+    proofAttempts: "Baseline proof production.",
+    contradictionDrafts: "Lemma and theorem support through contradiction.",
+    inductionDrafts: "Early proof-pattern support.",
+    epsilonProofDrafts: "Limits-focused proof support.",
+    lemmas: "Baseline structural support.",
+    boundingLemmas: "Sequence and limit control support.",
+    convergenceLemmas: "Sequences/Limits structural producer.",
+    structuralLemmas: "Broad theorem support.",
+    theorems: "Baseline capstone production.",
+    capstoneTheorems: "Expensive chapter-level capstones.",
+    synthesisTheorems: "Cross-chapter theorem support.",
+    generalizationTheorems: "Late scaling and generalization support.",
+  };
+
+  return roles[buildingId] ?? "Study Work variant.";
 }
 
 function getOrCreateRow(type, itemId, parentElement) {
