@@ -1,0 +1,20 @@
+{
+  "repository": "thiepn/Analysis-Idle",
+  "capturedFor": "Analysis Idle v2 Phase 0",
+  "originalHead": "239d75fd0e223e91703e261d2196953a896609cb",
+  "originalCommit": "239d75fd0e223e91703e261d2196953a896609cb|2026-06-03T12:42:49+02:00|e2",
+  "defaultBranch": "main",
+  "legacyBranch": "legacy/v1",
+  "legacyTag": "v1.0.0-legacy",
+  "trackedFiles": 22,
+  "trackedBytes": 166352,
+  "physicalLines": 5913,
+  "runtime": "plain HTML, CSS, and browser JavaScript modules",
+  "storageKeys": [
+    "mathIdleSave"
+  ],
+  "saveVersions": {
+    "initialState": 4,
+    "currentWriter": 5
+  }
+}

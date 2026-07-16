@@ -1,0 +1,203 @@
+{
+  "originalHead": "239d75fd0e223e91703e261d2196953a896609cb",
+  "files": [
+    {
+      "path": ".nojekyll",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "bytes": 1,
+      "lines": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "36fb39a876631dc43034f4d733a569c9483ad919",
+      "bytes": 346,
+      "lines": 11,
+      "sha256": "686f17a54fef4b27e6650f1d966e4a48cc97eaca621b8898abe490a84cc30d19"
+    },
+    {
+      "path": "data/achievements.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "910ea32de3245f89ba25ce127e6e16809c9970d4",
+      "bytes": 11279,
+      "lines": 480,
+      "sha256": "02a2c02b9d71d7c8e3a49b91a815476022e0fcf748b152c725e720a3c3834ca9"
+    },
+    {
+      "path": "data/buildings.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "ede9790d9f400d2e835cd84f31abd0ea4a94d5c3",
+      "bytes": 11398,
+      "lines": 414,
+      "sha256": "8d5ed8f864fd4d9512b8691b0e82b81dd7c6623f64b2bdd9f0a349e980202395"
+    },
+    {
+      "path": "data/chapters.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "81ef268f202d5b915d13d428703438e88634900a",
+      "bytes": 15223,
+      "lines": 488,
+      "sha256": "398cfbcca97a6ac2198aa1788445b585e16f3a976ffb363a713a10b1dd69bf99"
+    },
+    {
+      "path": "data/upgrades.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "b80c3c73800b56b403921ec7ae2e715e959145e2",
+      "bytes": 16934,
+      "lines": 562,
+      "sha256": "d55f444dbca5860f0f1636d1da99bae1548f114149a0e0edf0d9307dab6e7f59"
+    },
+    {
+      "path": "index.html",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "13c3e64743ce8f0fece19d7308d5303d8c021af5",
+      "bytes": 7323,
+      "lines": 202,
+      "sha256": "d80ea3dbfefc7db1edb4015f2b3deecb86e300658eb1b1a3aa8def42fa7499b1"
+    },
+    {
+      "path": "main.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "f0f5f107e376cae070767b3812a3ba2224b2b42d",
+      "bytes": 5033,
+      "lines": 164,
+      "sha256": "332a1cae7ac1dbd052ac2cf3b9c4305d741a5ea0dfad342b325545d04cf6bd34"
+    },
+    {
+      "path": "style.css",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "ef8e0aa7c64a1016baf3ef6936323cf50ee159a2",
+      "bytes": 14454,
+      "lines": 899,
+      "sha256": "ef1df417f0a2bbc308a8fd589f21f5254ebe757a1e579ea4cd083ae0c48436b3"
+    },
+    {
+      "path": "systems/achievements.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "17cbdaa35a0b3d6e1db16a2f110a6a21905a30a9",
+      "bytes": 1742,
+      "lines": 60,
+      "sha256": "4689f04f8d67336a098b3f428141ff3b556c958a46195d83e529d6a5fb05de7f"
+    },
+    {
+      "path": "systems/buildings.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "ecdacc627794cfa0d40463d003e95e898b6ced77",
+      "bytes": 3510,
+      "lines": 125,
+      "sha256": "89e604d708088a95c522da2c81e1eb2e6324571bf403debe444c4bed33e8990d"
+    },
+    {
+      "path": "systems/chapters.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "658f0402fbe155b62ee3557b01ac0521c18b847b",
+      "bytes": 3953,
+      "lines": 141,
+      "sha256": "957d4b88b2b5c217084aa786b4787f648c4cd951b330da4d3c8d4348f3107251"
+    },
+    {
+      "path": "systems/economy.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "58cf3e18d1719cfaae602bfbdb4c0b0f0b8e3556",
+      "bytes": 11372,
+      "lines": 369,
+      "sha256": "d62ef2d80a0d1d3a90dc8a15cf9fda76358cbba628dfbc9072f7c80204d06a5c"
+    },
+    {
+      "path": "systems/milestones.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "530436af2c876febad64ca9e98b83f7e0b79cc0e",
+      "bytes": 1433,
+      "lines": 51,
+      "sha256": "ca4b6cf1369d882d3b5e09549e71bd430d8691abcce3e9d9f1ac0a6f9177241e"
+    },
+    {
+      "path": "systems/prestige.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "7131c5ea28908971e60f22ee5e1c2e52d4608e59",
+      "bytes": 109,
+      "lines": 3,
+      "sha256": "3668f023dc6c9a6949eb2080aa9724e14de547e7b471bab99045ee25dc8dd8bb"
+    },
+    {
+      "path": "systems/research.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "3e241f3d3c5c9cd1ca6beaff400efb936cad31c7",
+      "bytes": 1628,
+      "lines": 43,
+      "sha256": "8c37eca3d4a5a061b5fc500c5c87e2349c8039d0d9cab2d97c362152a68eabb9"
+    },
+    {
+      "path": "systems/save.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "4922daf5b31821fc4ff3faa6d0d23aa3b8e84a9c",
+      "bytes": 10927,
+      "lines": 402,
+      "sha256": "470339e53d0788d9d11513484d04cb1f79c3bb611a4040fb32a4c100761bcf86"
+    },
+    {
+      "path": "systems/unlocks.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "bc580567e4e001027758392008615b4cc02b6a17",
+      "bytes": 6298,
+      "lines": 213,
+      "sha256": "76852698c402a488b4201de2f8d651c74412efaaec8e7b60ae5dbc0584c8ed29"
+    },
+    {
+      "path": "systems/upgrades.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "53c417f53d10beabd7d43fc9bb1028c609c182ae",
+      "bytes": 649,
+      "lines": 23,
+      "sha256": "25418e17b1c13f5a2879595729472bbabc0c01721c5f3c601bdcd07acb3cfcd2"
+    },
+    {
+      "path": "ui/notifications.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "7c293c0b12eac98411fa8b1a9392c8b49cfd1a5e",
+      "bytes": 2313,
+      "lines": 57,
+      "sha256": "6605058d0e28073fc3282e700b6be2caf61e6fb583c9fc8d4b2850df29a97f68"
+    },
+    {
+      "path": "ui/ui.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "c48c3d95e8ea782cb02cccb588eb8542a666399c",
+      "bytes": 39502,
+      "lines": 1165,
+      "sha256": "9baa5e9fa31a0b1186b850f83ee9b76b586f75046a8fe7251b91e93245ca80a7"
+    },
+    {
+      "path": "utils/format.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "085fd7c0ce69ca38ce89c1cd8b1e1034e38456ec",
+      "bytes": 925,
+      "lines": 40,
+      "sha256": "97ed4addb03d21d4ca9825398719640721e900c7996074416a628d2cc2c188ba"
+    }
+  ]
+}
