@@ -1,12 +1,12 @@
 {
   "experimentId": "attention",
   "hypothesis": "Use 3→4 discrete slots, tap/plus-minus controls, presets, and a provisional 0.80 exponent.",
-  "modelVersion": "phase0-design-lab/1.0.0",
+  "modelVersion": "phase0-design-lab/1.1.0-reconciled",
   "seed": null,
   "playerPolicy": "deterministic heuristic policy enumeration",
   "horizon": "first chapter / first 30 minutes where applicable",
   "stoppingCondition": "all configured candidates evaluated",
-  "status": "supported",
+  "status": "selected-under-current-criteria",
   "deterministic": true,
   "result": {
     "discrete": [
@@ -1501,8 +1501,67 @@
       "capacity": "start at 3; unlock a fourth in Natural Numbers; do not use 6 as a default",
       "exponent": 0.8,
       "exponentStatus": "PROVISIONAL",
-      "reason": "Four slots preserve five legible two-lane policies; exponent 0.80 avoids all-in dominance in tested project contexts while retaining visible specialization gaps."
-    }
+      "appliesTo": "production activities only; the dedicated project slot uses linear work speed plus typed effects",
+      "reason": "Four slots preserve five legible two-lane policies; exponent 0.80 is the current activity center because 0.85-0.90 more often make specialization dominant in the tested weighted contexts."
+    },
+    "formulaCandidates": [
+      {
+        "id": "power-0.80",
+        "exponent": 0.8,
+        "status": "PROVISIONAL CENTER",
+        "risk": "May flatten the difference between adjacent allocations."
+      },
+      {
+        "id": "power-0.85",
+        "exponent": 0.85,
+        "status": "COMPARATOR",
+        "risk": "Specialization wins more weighted contexts."
+      },
+      {
+        "id": "power-0.90",
+        "exponent": 0.9,
+        "status": "FOUNDATION COMPARATOR",
+        "risk": "All-in production is more likely with only 3-4 slots."
+      },
+      {
+        "id": "explicit-marginals",
+        "marginalYields": [
+          1,
+          0.82,
+          0.68,
+          0.58
+        ],
+        "status": "DEFERRED COMPARATOR",
+        "risk": "More explainable per slot, but adds threshold semantics and tuning parameters."
+      }
+    ],
+    "openingAudit": [
+      {
+        "horizon": "10 seconds",
+        "state": "Formalize is guide-assigned; confirm/start feedback only.",
+        "strategicChoice": false
+      },
+      {
+        "horizon": "60 seconds",
+        "state": "Precision funds the guided Zero and Successor project; stockpiling versus the required opener is not presented as strategy.",
+        "strategicChoice": false
+      },
+      {
+        "horizon": "5 minutes",
+        "state": "Explore and Intuition are visible; 3/0 and 2/1 serve different visible requirements.",
+        "strategicChoice": true
+      },
+      {
+        "horizon": "15 minutes",
+        "state": "A project, local upgrades, and two production lanes create preparation/order choices.",
+        "strategicChoice": true
+      },
+      {
+        "horizon": "30 minutes",
+        "state": "Queue/completion automation and project approach output replace repeated execution.",
+        "strategicChoice": true
+      }
+    ]
   },
   "conclusion": "Use 3→4 discrete slots, tap/plus-minus controls, presets, and a provisional 0.80 exponent.",
   "limitations": [

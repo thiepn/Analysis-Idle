@@ -6,7 +6,7 @@ Simulate to unresolved decisions, then apply an explicit safe policy within boun
 
 ## Method
 
-Deterministic model `phase0-design-lab/1.0.0`; no randomness or timestamp enters the output. Inputs, candidate metrics, criteria weights, rankings, and sensitivity results are preserved in [`offline-model-results.json`](./data/offline-model-results.json). Scores are explained heuristics, while numerical allocation and offline outputs are enumerated calculations.
+Deterministic model `phase0-design-lab/1.1.0-reconciled`; no randomness or timestamp enters the output. Inputs, candidate metrics, criteria weights, rankings, and sensitivity results are preserved in [`offline-model-results.json`](./data/offline-model-results.json). Scores are explained heuristics, while numerical allocation and offline outputs are enumerated calculations.
 
 ## Limitation
 

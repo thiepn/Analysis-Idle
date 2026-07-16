@@ -1,12 +1,12 @@
 {
   "experimentId": "core-loop",
-  "hypothesis": "Candidate F wins all tested weight sets, provided disclosure is staged.",
-  "modelVersion": "phase0-design-lab/1.0.0",
+  "hypothesis": "Candidate F is provisionally favored across the tested weight sets, provided disclosure is staged.",
+  "modelVersion": "phase0-design-lab/1.1.0-reconciled",
   "seed": null,
   "playerPolicy": "deterministic heuristic policy enumeration",
   "horizon": "first chapter / first 30 minutes where applicable",
   "stoppingCondition": "all configured candidates evaluated",
-  "status": "supported",
+  "status": "selected-under-current-criteria",
   "deterministic": true,
   "result": {
     "candidates": [
@@ -367,7 +367,7 @@
       "testedWeightSets": 5
     }
   },
-  "conclusion": "Candidate F wins all tested weight sets, provided disclosure is staged.",
+  "conclusion": "Candidate F is provisionally favored across the tested weight sets, provided disclosure is staged.",
   "limitations": [
     "Scores and first-30-minute actions are design estimates, not playtest observations.",
     "This experiment cannot prove that a game is fun."

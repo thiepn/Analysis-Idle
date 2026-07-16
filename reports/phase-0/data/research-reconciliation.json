@@ -1,0 +1,731 @@
+{
+  "schemaVersion": 1,
+  "reconciliationDate": "2026-07-16",
+  "reconciliationStatus": "COMPLETE",
+  "requiredDecisionCount": 53,
+  "allowedStatuses": [
+    "ACCEPTED",
+    "ACCEPTED WITH REVISION",
+    "PROVISIONAL",
+    "DEFERRED",
+    "REJECTED",
+    "SUPERSEDED"
+  ],
+  "sources": {
+    "foundation": {
+      "path": "docs/research/DEEP_RESEARCH_FOUNDATION.md",
+      "sha256": "a4a5771965d0addfedc9f82655942ec0959078aab8285b8e507d2a44b6f1191c"
+    },
+    "completionAudit": {
+      "path": "docs/research/DEEP_RESEARCH_COMPLETION_AUDIT.md",
+      "sha256": "3b64ba6b78364dc5c1289228307e16e6584d6eb1dcda9eb713a1d4e6084a9ab6"
+    }
+  },
+  "decisions": [
+    {
+      "id": "R-001",
+      "decision": "Clean rewrite versus legacy refactor",
+      "foundation": "Replace the linear one-currency architecture; preserve only useful concepts.",
+      "audit": "High-level direction survives, but implementation requires falsifiable evidence.",
+      "existingPhase0": "Clean v2 paths and architecture; v1 preserved as evidence only.",
+      "experimentalEvidence": "Legacy audit plus core-loop comparison.",
+      "conflict": "None material.",
+      "status": "ACCEPTED",
+      "requiredRevision": "None."
+    },
+    {
+      "id": "R-002",
+      "decision": "Use of the existing repository",
+      "foundation": "Reuse data-driven lessons, history, static hosting, and migrations conceptually.",
+      "audit": "Does not require a new repository.",
+      "existingPhase0": "Isolated v2 branches and paths in the current repository.",
+      "experimentalEvidence": "Git and legacy preservation audit.",
+      "conflict": "None.",
+      "status": "ACCEPTED",
+      "requiredRevision": "None."
+    },
+    {
+      "id": "R-003",
+      "decision": "Core-loop hybrid architecture",
+      "foundation": "Attention economy plus projects plus simplified dependencies.",
+      "audit": "Supported with revision; must avoid a solved allocation dashboard.",
+      "existingPhase0": "Candidate F with staged disclosure and later priority automation.",
+      "experimentalEvidence": "Six-candidate heuristic comparison across five weight sets.",
+      "conflict": "Experiment is comparative evidence, not proof of fun.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Retain F; require Phase 1 decision-density policies and Phase 2 playtests."
+    },
+    {
+      "id": "R-004",
+      "decision": "Discrete versus continuous Attention",
+      "foundation": "Finite allocation; representation not locked.",
+      "audit": "Requires discrete/percentage/queue and slider-fatigue comparison.",
+      "existingPhase0": "Whole slots with plus/minus, tap, and presets.",
+      "experimentalEvidence": "Control comparison favors discrete accessible controls.",
+      "conflict": "No empirical usability study.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Lock discrete controls structurally; keep comprehension as a playtest gate."
+    },
+    {
+      "id": "R-005",
+      "decision": "Starting Attention capacity",
+      "foundation": "Six in the preliminary simulation; explicitly provisional.",
+      "audit": "Exactly six is unsupported; compare 3-8.",
+      "existingPhase0": "Start at 3.",
+      "experimentalEvidence": "Capacity/policy-count enumeration and mobile burden comparison.",
+      "conflict": "Foundation prototype used four lanes and projects; Phase 0 uses two production lanes and a dedicated project slot.",
+      "status": "PROVISIONAL",
+      "requiredRevision": "Keep 3 as configuration; opening audit must acknowledge guided actions."
+    },
+    {
+      "id": "R-006",
+      "decision": "Later Attention expansion",
+      "foundation": "Capacity persists and may expand; no validated count.",
+      "audit": "Expansion must be tested with automation and mobile clarity.",
+      "existingPhase0": "Fourth slot unlocks during Natural Numbers.",
+      "experimentalEvidence": "Four slots yield five legible two-lane allocations.",
+      "conflict": "Timing is not simulated end-to-end.",
+      "status": "PROVISIONAL",
+      "requiredRevision": "Keep 3→4 in content configuration and validate timing/policy impact."
+    },
+    {
+      "id": "R-007",
+      "decision": "Attention concavity exponent",
+      "foundation": "0.90 for activities and 0.85 for project Attention.",
+      "audit": "Both are arbitrary pending a 0.70-1.00 sweep and alternatives.",
+      "existingPhase0": "0.80 center.",
+      "experimentalEvidence": "0.70-1.00 sweep; 0.85-0.90 produce more all-in winners in tested weighted contexts.",
+      "conflict": "One exponent must not silently cover activities and projects.",
+      "status": "PROVISIONAL",
+      "requiredRevision": "Apply 0.80 only to production activities; projects use linear work plus typed effects; keep explicit-marginal alternative open."
+    },
+    {
+      "id": "R-008",
+      "decision": "Whether projects consume Attention",
+      "foundation": "Projects compete directly for Attention with production.",
+      "audit": "Competition is a blocking hypothesis requiring comparison.",
+      "existingPhase0": "One dedicated project slot; project execution does not consume Attention.",
+      "experimentalEvidence": "Core-loop workload comparison and two-lane capacity audit.",
+      "conflict": "Direct competition adds opportunity cost but can force production pauses/deadlocks with only 3-4 slots.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Retain dedicated slot; preserve opportunity cost through reserved inputs, project order, approach outputs, and queue/reserve policy; simulate contrary model in Phase 1."
+    },
+    {
+      "id": "R-009",
+      "decision": "Number of primary resources",
+      "foundation": "Precision, Intuition, and Technique.",
+      "audit": "One-to-four resource comparison required; distinct sinks are the burden of proof.",
+      "existingPhase0": "Precision and Intuition only.",
+      "experimentalEvidence": "Reconciled six-model comparison favors two stocks plus visible project-method state.",
+      "conflict": "Removing the Technique stock risks erasing exercises/practice.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Retain two primary stocks; require visible Technique method state and artifacts rather than a third currency."
+    },
+    {
+      "id": "R-010",
+      "decision": "Precision",
+      "foundation": "Definition/formal-work stock.",
+      "audit": "Viable only with exclusive sinks.",
+      "existingPhase0": "Formal obligations, definitions, and lemma sinks.",
+      "experimentalEvidence": "Source-sink and removal audit.",
+      "conflict": "Gate-currency risk remains.",
+      "status": "ACCEPTED",
+      "requiredRevision": "Keep removal/sink-share balance gates."
+    },
+    {
+      "id": "R-011",
+      "decision": "Intuition",
+      "foundation": "Examples/discovery/active-opportunity stock.",
+      "audit": "Viable only with exclusive sinks.",
+      "existingPhase0": "Examples, counterexamples, alternate requirements, and reveals.",
+      "experimentalEvidence": "Source-sink and removal audit.",
+      "conflict": "Must not become a reveal tax.",
+      "status": "ACCEPTED",
+      "requiredRevision": "Keep comprehension and sink-share gates."
+    },
+    {
+      "id": "R-012",
+      "decision": "Technique",
+      "foundation": "Exercise-produced primary stock used for methods and automation.",
+      "audit": "Thematically strong but functionally unproven; exclusive sinks required.",
+      "existingPhase0": "Rejected as a stock and represented through project behavior.",
+      "experimentalEvidence": "Reconciled model favors explicit project-method state over an invisible efficiency capability.",
+      "conflict": "Technique must remain visible without making universal automation a mandatory currency tax.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Use visible exercise projects, prepared-method state, and typed step/template artifacts; do not add a Natural Numbers Technique stock."
+    },
+    {
+      "id": "R-013",
+      "decision": "Understanding",
+      "foundation": "Cumulative chapter progress/unlock measure, not universal spendable currency.",
+      "audit": "One simulation-ready diagram spends it on routine upgrades, but labels that economy a draft.",
+      "existingPhase0": "Monotonic validated-content score; never spent.",
+      "experimentalEvidence": "Legacy one-resource failure and resource simplification audit.",
+      "conflict": "Audit draft conflicts with its own warning against collapsing decisions into currencies.",
+      "status": "ACCEPTED",
+      "requiredRevision": "Keep non-spendable; document the audit diagram as superseded draft evidence."
+    },
+    {
+      "id": "R-014",
+      "decision": "Insight",
+      "foundation": "Bounded strategic resource from active/return/discovery events.",
+      "audit": "Favor bounded 10-20% total advantage and accessibility.",
+      "existingPhase0": "Deterministic stored charges with optional work/reveal interventions.",
+      "experimentalEvidence": "5-100% active-band comparison.",
+      "conflict": "Exact cadence/effect untested.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Retain deterministic event generation; keep cap/effect numerical values provisional."
+    },
+    {
+      "id": "R-015",
+      "decision": "Mastery",
+      "foundation": "Durable chapter/publication progress.",
+      "audit": "Publication compression is supported.",
+      "existingPhase0": "Typed published method records, not arithmetic currency.",
+      "experimentalEvidence": "Publication/prestige purpose audit.",
+      "conflict": "None.",
+      "status": "ACCEPTED",
+      "requiredRevision": "None."
+    },
+    {
+      "id": "R-016",
+      "decision": "Axioms",
+      "foundation": "Major prestige currency.",
+      "audit": "Framing is plausible but reset purpose/timing are unproven.",
+      "existingPhase0": "No Axiom currency or formula.",
+      "experimentalEvidence": "Prestige overlap comparison.",
+      "conflict": "Publication may already serve compression/account growth.",
+      "status": "DEFERRED",
+      "requiredRevision": "Reserve no currency fields beyond a nullable versioned extension point."
+    },
+    {
+      "id": "R-017",
+      "decision": "Resource conversions",
+      "foundation": "Soft-capped conversion upgrades are proposed.",
+      "audit": "Currencies must retain exclusive sinks and avoid colored interchangeability.",
+      "existingPhase0": "No Precision↔Intuition conversion in Natural Numbers.",
+      "experimentalEvidence": "Conversion-loop risk audit.",
+      "conflict": "Conversions could erase the two-stock trade-off.",
+      "status": "REJECTED",
+      "requiredRevision": "Reject direct Natural Numbers conversion; later chapters require a new source-sink proof."
+    },
+    {
+      "id": "R-018",
+      "decision": "Universal automation",
+      "foundation": "Automation is a core pillar but also a proposed branch.",
+      "audit": "Basic anti-tedium automation must be universal.",
+      "existingPhase0": "Universal queue/completion/reserve ladder.",
+      "experimentalEvidence": "Branch comparison and interaction-count gates.",
+      "conflict": "None after revision.",
+      "status": "ACCEPTED",
+      "requiredRevision": "Explicitly keep every Natural Numbers automation entry global."
+    },
+    {
+      "id": "R-019",
+      "decision": "Automation as a branch",
+      "foundation": "Rigor/Intuition/Automation first-run branches.",
+      "audit": "Creates a quality-of-life trap unless baseline automation remains universal.",
+      "existingPhase0": "No automation branch.",
+      "experimentalEvidence": "Branch model penalizes branch-exclusive automation.",
+      "conflict": "Foundation identity conflicts with universal anti-tedium rule.",
+      "status": "SUPERSEDED",
+      "requiredRevision": "Constructive method identity replaces automation branch behavior; automation remains universal."
+    },
+    {
+      "id": "R-020",
+      "decision": "Permanent branches",
+      "foundation": "Three respecable first-run branches.",
+      "audit": "Behavioral identities plausible, but branch trees/dominance/recovery are missing.",
+      "existingPhase0": "No permanent Natural Numbers branch; later campaign identity deferred.",
+      "experimentalEvidence": "Temporary approaches score higher on reversibility/trap/scope criteria.",
+      "conflict": "Temporary identity may provide less replay/build attachment.",
+      "status": "DEFERRED",
+      "requiredRevision": "Revisit only after three mechanically distinct chapters and a multi-chapter policy simulation."
+    },
+    {
+      "id": "R-021",
+      "decision": "Temporary project approaches",
+      "foundation": "Not the primary branch model.",
+      "audit": "Calls for behavioral choices and poor-choice recovery.",
+      "existingPhase0": "Formal, Exploratory, Constructive per project.",
+      "experimentalEvidence": "Five-model branch comparison favors reversible approaches.",
+      "conflict": "Persistent build identity is weaker.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Require outputs/artifacts to alter downstream decisions and keep campaign frameworks deferred."
+    },
+    {
+      "id": "R-022",
+      "decision": "Rigor/Formal identity",
+      "foundation": "Permanent Rigor branch emphasizes Precision/proof efficiency.",
+      "audit": "Must change behavior, not multipliers.",
+      "existingPhase0": "Formal project approach exposes obligations and reusable lemmas.",
+      "experimentalEvidence": "Approach behavior comparison.",
+      "conflict": "Permanent identity removed.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Retain as per-project Formal behavior; do not add a rate-only Rigor branch."
+    },
+    {
+      "id": "R-023",
+      "decision": "Intuition/Exploratory identity",
+      "foundation": "Permanent Intuition branch emphasizes discovery/active rewards.",
+      "audit": "Must change behavior and not punish offline play.",
+      "existingPhase0": "Exploratory approach reveals examples, requirements, and alternate edges.",
+      "experimentalEvidence": "Approach behavior comparison.",
+      "conflict": "Permanent identity removed.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Retain as per-project Exploratory behavior; keep active accessibility equal."
+    },
+    {
+      "id": "R-024",
+      "decision": "Automation/Constructive or Practice identity",
+      "foundation": "Automation branch and Technique/Exercise lane.",
+      "audit": "Automation must be universal; Technique needs exclusive visible purpose.",
+      "existingPhase0": "Constructive approach emits reusable steps/templates.",
+      "experimentalEvidence": "Branch and resource reconciliation comparisons.",
+      "conflict": "Practice risked vanishing when the Technique stock was removed.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Make exercises/method preparation visible through Constructive project state; keep automation unlocks global."
+    },
+    {
+      "id": "R-025",
+      "decision": "Active-play advantage",
+      "foundation": "Roughly 15-35% and possibly below 40% long-horizon.",
+      "audit": "Safer target is 10-20% total advantage.",
+      "existingPhase0": "10-15% target and 20% hard ceiling.",
+      "experimentalEvidence": "5-100% heuristic reward-band comparison.",
+      "conflict": "No human usefulness/FOMO evidence.",
+      "status": "PROVISIONAL",
+      "requiredRevision": "Retain current target/ceiling as configuration and accessibility-inclusive playtest gate."
+    },
+    {
+      "id": "R-026",
+      "decision": "Stored Insight cap",
+      "foundation": "Bounded storage, exact cap not supported.",
+      "audit": "Bounded active play supported; exact cap needs tests.",
+      "existingPhase0": "Cap 3.",
+      "experimentalEvidence": "Only a heuristic active model.",
+      "conflict": "No cadence/hoarding playtest.",
+      "status": "PROVISIONAL",
+      "requiredRevision": "Keep 3 in validated configuration."
+    },
+    {
+      "id": "R-027",
+      "decision": "Deterministic versus random opportunities",
+      "foundation": "Periodic stored charges; random project failure rejected.",
+      "audit": "Bounded opportunities and accessibility are required.",
+      "existingPhase0": "Deterministic meaningful-event charges; no timed popup.",
+      "experimentalEvidence": "Active/idle model excludes random/timed clicks.",
+      "conflict": "Audit simulation mentions Monte Carlo event timing, but that is a comparator rather than a requirement.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Keep base game deterministic; any future stochastic challenge uses explicit serialized RNG."
+    },
+    {
+      "id": "R-028",
+      "decision": "Offline full-efficiency window",
+      "foundation": "8 hours.",
+      "audit": "4/8/12/24-hour comparison required; no value is proven.",
+      "existingPhase0": "12 hours.",
+      "experimentalEvidence": "Reconciled window table computes effective credit for four schedules.",
+      "conflict": "Retention/fairness is not measured.",
+      "status": "PROVISIONAL",
+      "requiredRevision": "Keep 12h as configurable center, not a locked product promise."
+    },
+    {
+      "id": "R-029",
+      "decision": "Offline reduced-efficiency window",
+      "foundation": "Decline through 48 hours.",
+      "audit": "Exact tail and unresolved semantics remain uncertain.",
+      "existingPhase0": "25% from 12 to 72 hours.",
+      "experimentalEvidence": "Four computed schedule comparators.",
+      "conflict": "No return-cohort evidence.",
+      "status": "PROVISIONAL",
+      "requiredRevision": "Keep 25%/72h center in validated configuration and compare in Phase 2."
+    },
+    {
+      "id": "R-030",
+      "decision": "Unresolved-decision stopping",
+      "foundation": "Stop when automation cannot choose.",
+      "audit": "Supported with revision; too-strict stops can punish idle play.",
+      "existingPhase0": "Typed event taxonomy and deterministic stop reason.",
+      "experimentalEvidence": "Offline model/event examples.",
+      "conflict": "Stop taxonomy must distinguish harmless unlocks from choices.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Continue existing allocations through informational unlocks; stop at project/approach/capstone/Publication or unresolved cap/policy failures."
+    },
+    {
+      "id": "R-031",
+      "decision": "Safe offline policies",
+      "foundation": "Saved allocation/automation executes the plan.",
+      "audit": "Explicit safe policy after unresolved events is recommended.",
+      "existingPhase0": "Queue, completion behavior, and reserves gate continuation.",
+      "experimentalEvidence": "Eight-model offline comparison favors decision-then-policy.",
+      "conflict": "No auto-buy/approach selection without explicit future rules.",
+      "status": "ACCEPTED",
+      "requiredRevision": "None beyond full Phase 1 equivalence tests."
+    },
+    {
+      "id": "R-032",
+      "decision": "Publication",
+      "foundation": "Chapter completion/compression before major prestige.",
+      "audit": "Strongly supported and distinct from frequent reset.",
+      "existingPhase0": "Typed chapter transformation after capstone.",
+      "experimentalEvidence": "Publication/prestige overlap audit.",
+      "conflict": "None.",
+      "status": "ACCEPTED",
+      "requiredRevision": "None."
+    },
+    {
+      "id": "R-033",
+      "decision": "Publication resets",
+      "foundation": "Local chapter completion; exact matrix requested.",
+      "audit": "Requires exact retention/compression interaction.",
+      "existingPhase0": "Stocks, allocation, active/queued projects, chapter reserves/modifiers reset.",
+      "experimentalEvidence": "State-transition specification audit.",
+      "conflict": "Foundation mentioned temporary allocations resetting on major prestige, not a complete Publication matrix.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Keep explicit field-level ledger and reducer tests."
+    },
+    {
+      "id": "R-034",
+      "decision": "Publication persistence",
+      "foundation": "Mastery, automation, and compressed methods persist.",
+      "audit": "Supported; avoid replaying tutorial labor.",
+      "existingPhase0": "Settings, records, capabilities/templates, Insight, Mastery, and method cards persist.",
+      "experimentalEvidence": "State/schema and anti-fatigue audit.",
+      "conflict": "None.",
+      "status": "ACCEPTED",
+      "requiredRevision": "None."
+    },
+    {
+      "id": "R-035",
+      "decision": "Global prestige necessity",
+      "foundation": "Reaxiomatization recommended after enough systems.",
+      "audit": "Melvor comparison shows prestige is optional; must have a unique job.",
+      "existingPhase0": "No prestige implementation until a multi-chapter proof.",
+      "experimentalEvidence": "Purpose/overlap comparison.",
+      "conflict": "Foundation recommends a system whose unique function is not yet established.",
+      "status": "DEFERRED",
+      "requiredRevision": "Keep nullable extension point only."
+    },
+    {
+      "id": "R-036",
+      "decision": "Global prestige timing",
+      "foundation": "Likely Real Numbers or first Foundations arc.",
+      "audit": "No evidence privileges Real Numbers; compare several breakpoints/no prestige.",
+      "existingPhase0": "No timing selected.",
+      "experimentalEvidence": "Eight timing/purpose options, no validated reset benefit.",
+      "conflict": "None after deferral.",
+      "status": "DEFERRED",
+      "requiredRevision": "Multi-chapter simulator/playtest required."
+    },
+    {
+      "id": "R-037",
+      "decision": "Axiom currency",
+      "foundation": "Candidate breadth/mastery/proof/efficiency formula.",
+      "audit": "Currency/name depend on actual reset purpose and retention.",
+      "existingPhase0": "No Axiom formula or arithmetic field.",
+      "experimentalEvidence": "Prestige overlap audit.",
+      "conflict": "Formula would falsely lock an unproven reset.",
+      "status": "DEFERRED",
+      "requiredRevision": "No Phase 1 formula/UI/content."
+    },
+    {
+      "id": "R-038",
+      "decision": "First Publication duration",
+      "foundation": "30-50m active, 45-75m hybrid, 2-4h mostly idle.",
+      "audit": "30-75m engaged is supported with revision; compare 15-120 and fatigue.",
+      "existingPhase0": "120-180 active-equivalent minutes.",
+      "experimentalEvidence": "Reconciled five-band design-density comparison favors 60-90, with 90-120 close.",
+      "conflict": "The previous Phase 0 range over-weighted content room and under-weighted first-chapter fatigue.",
+      "status": "PROVISIONAL",
+      "requiredRevision": "Use configurable 60-120 active-equivalent minutes over 1-3 sessions; Phase 2 simulator/playtest must narrow it."
+    },
+    {
+      "id": "R-039",
+      "decision": "Full campaign duration",
+      "foundation": "Finite staged curriculum; no validated hour target.",
+      "audit": "No campaign-duration evidence.",
+      "existingPhase0": "30-50 active-equivalent hours over 4-8 weeks.",
+      "experimentalEvidence": "Scope estimate only.",
+      "conflict": "Chapter count and production scope can move the estimate.",
+      "status": "PROVISIONAL",
+      "requiredRevision": "Keep 30-50h envelope as configuration/planning estimate, not retention promise."
+    },
+    {
+      "id": "R-040",
+      "decision": "Campaign structure",
+      "foundation": "Each chapter introduces a unique mechanic and transforms prior work.",
+      "audit": "Strongly favors phase changes and compression; later content remains unproven.",
+      "existingPhase0": "Finite initial campaign with chapter standard and optional mastery/postgame.",
+      "experimentalEvidence": "Scope/chapter-standard audit.",
+      "conflict": "Later chapter designs are hypotheses, not content locks.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Lock the chapter contract, not later chapter data or exact length."
+    },
+    {
+      "id": "R-041",
+      "decision": "Achievement reward policy",
+      "foundation": "60-70% cosmetic/records, 20-30% feature/challenge, at most 10-15% small mechanics.",
+      "audit": "Mostly non-power, with a minority of unlocks/limited utility; no mandatory multiplier ladder.",
+      "existingPhase0": "All 10 badge/history only.",
+      "experimentalEvidence": "Achievement-tax audit; no power model needed for non-power unlocks.",
+      "conflict": "All-badge policy leaves useful discovery/record/challenge rewards unexplored.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Use 7 badge/history achievements and 3 explicit non-power record/challenge/visual-information unlocks; zero production power."
+    },
+    {
+      "id": "R-042",
+      "decision": "Challenge timing",
+      "foundation": "Natural Numbers challenge examples are proposed.",
+      "audit": "Challenges are replay/mastery tools and need full rules/rewards.",
+      "existingPhase0": "No challenge UI before first Publication; schema extension only.",
+      "experimentalEvidence": "Onboarding/scope audit.",
+      "conflict": "Foundation does not require them during the first run.",
+      "status": "DEFERRED",
+      "requiredRevision": "Retain post-Publication prototype timing."
+    },
+    {
+      "id": "R-043",
+      "decision": "Preact",
+      "foundation": "Preact or React acceptable if engine is independent.",
+      "audit": "Framework choice unresolved by genre evidence; prototype/bundle/maintenance comparison required.",
+      "existingPhase0": "Preact + TypeScript + Vite.",
+      "experimentalEvidence": "Explicit seven-criterion comparison favors Preact.",
+      "conflict": "Scores are heuristic and bundle is unmeasured.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Retain Preact for Phase 1 with bundle, compat, accessibility, and testing exit gates."
+    },
+    {
+      "id": "R-044",
+      "decision": "React",
+      "foundation": "Acceptable alternative with broader tooling.",
+      "audit": "Not proven necessary.",
+      "existingPhase0": "Not selected.",
+      "experimentalEvidence": "Scores close on clarity/testing but lower on scope/bundle criterion.",
+      "conflict": "Could become justified by React-only dependencies, which are currently absent.",
+      "status": "SUPERSEDED",
+      "requiredRevision": "Remain documented fallback only if Preact exit gates fail."
+    },
+    {
+      "id": "R-045",
+      "decision": "Plain TypeScript DOM",
+      "foundation": "Not recommended for production but not prohibited.",
+      "audit": "Requires measured comparison.",
+      "existingPhase0": "Used only for disposable prototype; production selects Preact.",
+      "experimentalEvidence": "v1 monolithic UI audit and frontend criteria comparison.",
+      "conflict": "Small runtime does not offset bespoke update/composition cost at intended UI complexity.",
+      "status": "SUPERSEDED",
+      "requiredRevision": "Keep for prototypes only."
+    },
+    {
+      "id": "R-046",
+      "decision": "Native numbers",
+      "foundation": "Use a large-number library only if simulations prove it necessary.",
+      "audit": "Campaign magnitude/operation/serialization evidence required.",
+      "existingPhase0": "Native number behind an opaque adapter with finite/precision gates.",
+      "experimentalEvidence": "Range envelope through initial campaign remains below overflow.",
+      "conflict": "Integer precision can fail long before overflow.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Keep adapter/canonical strings and both magnitude and meaningful-increment migration gates."
+    },
+    {
+      "id": "R-047",
+      "decision": "Large-number adapter/backend",
+      "foundation": "Conditional dependency only.",
+      "audit": "Need campaign ceiling and backend comparison.",
+      "existingPhase0": "Adapter boundary exists; no large-number library.",
+      "experimentalEvidence": "Postgame-only envelope may exceed native finite range.",
+      "conflict": "No reachable Phase 1 content needs it.",
+      "status": "DEFERRED",
+      "requiredRevision": "Do not add dependency; preserve backend-independent fixtures/migration path."
+    },
+    {
+      "id": "R-048",
+      "decision": "localStorage",
+      "foundation": "Namespaced save envelope and rotating local backups.",
+      "audit": "A compact localStorage heartbeat/current record is suitable in a dual-layer design.",
+      "existingPhase0": "Canonical current/rotating backups in localStorage.",
+      "experimentalEvidence": "Small-envelope scope and browser storage audit.",
+      "conflict": "Synchronous writes and quota limit long histories.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Use localStorage for current canonical envelope, settings, writer lease, and fallback backups only."
+    },
+    {
+      "id": "R-049",
+      "decision": "IndexedDB",
+      "foundation": "Not required initially; structured storage is compatible.",
+      "audit": "Recommended for larger structured backups, replay logs, and future telemetry snapshots.",
+      "existingPhase0": "Reserved for logs/measured growth.",
+      "experimentalEvidence": "Storage characteristics/scope audit, not performance benchmark.",
+      "conflict": "Adding canonical IDB state now would increase transactional/failure complexity.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Phase 1 defines native IDB port and writes append-only backups/replay logs when available; localStorage current remains canonical and fallback-safe."
+    },
+    {
+      "id": "R-050",
+      "decision": "GitHub Pages",
+      "foundation": "Preserve direct static hosting.",
+      "audit": "Compatible with browser-first architecture.",
+      "existingPhase0": "Vite static build with /Analysis-Idle/ base; no deployment now.",
+      "experimentalEvidence": "Repository and official deployment audit.",
+      "conflict": "None.",
+      "status": "ACCEPTED",
+      "requiredRevision": "None."
+    },
+    {
+      "id": "R-051",
+      "decision": "PWA timing",
+      "foundation": "Future browser offline/installable option.",
+      "audit": "Service workers are relevant but lifecycle/data-integrity work comes first.",
+      "existingPhase0": "Deferred until save, update, cache, downgrade, and multi-tab tests.",
+      "experimentalEvidence": "Lifecycle risk audit.",
+      "conflict": "None.",
+      "status": "DEFERRED",
+      "requiredRevision": "No Phase 1 PWA/plugin."
+    },
+    {
+      "id": "R-052",
+      "decision": "Art direction",
+      "foundation": "Restrained academic tone and mechanic-exposing mathematical visuals.",
+      "audit": "UI should compress and avoid an overgrown dashboard.",
+      "existingPhase0": "Living mathematical notebook / academic instrument; procedural SVG/CSS/Canvas.",
+      "experimentalEvidence": "Art-direction/scope/prototype comparison.",
+      "conflict": "Visual originality and production contrast remain untested.",
+      "status": "ACCEPTED WITH REVISION",
+      "requiredRevision": "Retain direction provisionally; validate three production screens before final assets."
+    },
+    {
+      "id": "R-053",
+      "decision": "Accessibility baseline",
+      "foundation": "Keyboard/mobile/math alternatives and no raw LaTeX.",
+      "audit": "Active/offline/interface choices must respect access and background play.",
+      "existingPhase0": "WCAG 2.2 AA, 44px targets, reduced motion, color-independent state, accessible math.",
+      "experimentalEvidence": "Prototype accessible-tree and control audit plus official standards.",
+      "conflict": "None structural; assistive-technology variance remains.",
+      "status": "ACCEPTED",
+      "requiredRevision": "Keep automated and manual AT/mobile matrices as release gates."
+    }
+  ],
+  "provisionalValues": [
+    {
+      "id": "attention.start",
+      "value": 3,
+      "status": "PROVISIONAL",
+      "configurationPath": "balance.attention.startCapacity",
+      "validation": "opening comprehension and capacity policy sweep"
+    },
+    {
+      "id": "attention.naturalNumbersMaximum",
+      "value": 4,
+      "status": "PROVISIONAL",
+      "configurationPath": "balance.attention.chapterMaximum",
+      "validation": "timing, mobile clarity, and dominance"
+    },
+    {
+      "id": "attention.activityExponent",
+      "value": 0.8,
+      "status": "PROVISIONAL",
+      "configurationPath": "balance.activities.attentionExponent",
+      "validation": "0.70-1.00 sweep plus explicit-marginal comparator and playtest"
+    },
+    {
+      "id": "insight.cap",
+      "value": 3,
+      "status": "PROVISIONAL",
+      "configurationPath": "balance.insight.cap",
+      "validation": "hoarding/FOMO/cadence test"
+    },
+    {
+      "id": "active.targetPercent",
+      "value": "10-15",
+      "status": "PROVISIONAL",
+      "configurationPath": "balance.insight.sustainedAdvantageTarget",
+      "validation": "policy simulation and accessibility-inclusive playtest"
+    },
+    {
+      "id": "active.ceilingPercent",
+      "value": 20,
+      "status": "PROVISIONAL",
+      "configurationPath": "balance.insight.sustainedAdvantageCeiling",
+      "validation": "worst-case long-horizon policy test"
+    },
+    {
+      "id": "offline.fullHours",
+      "value": 12,
+      "status": "PROVISIONAL",
+      "configurationPath": "balance.offline.fullEfficiencyHours",
+      "validation": "4/8/12/24-hour schedule comparison and return playtest"
+    },
+    {
+      "id": "offline.tailEfficiency",
+      "value": 0.25,
+      "status": "PROVISIONAL",
+      "configurationPath": "balance.offline.tailEfficiency",
+      "validation": "long-absence fairness and cap interaction"
+    },
+    {
+      "id": "offline.tailEndHours",
+      "value": 72,
+      "status": "PROVISIONAL",
+      "configurationPath": "balance.offline.tailEndHours",
+      "validation": "24/48/72/168-hour absence comparison"
+    },
+    {
+      "id": "publication.firstActiveEquivalentMinutes",
+      "value": "60-120",
+      "status": "PROVISIONAL",
+      "configurationPath": "balance.pacing.firstPublicationMinutes",
+      "validation": "Phase 1 simulator and Phase 2 fatigue/comprehension playtest"
+    },
+    {
+      "id": "campaign.activeEquivalentHours",
+      "value": "30-50",
+      "status": "PROVISIONAL",
+      "configurationPath": "product.campaign.activeEquivalentHours",
+      "validation": "chapter production estimates and multi-chapter playtest"
+    },
+    {
+      "id": "approach.switchWorkPreservationPercent",
+      "value": 90,
+      "status": "PROVISIONAL",
+      "configurationPath": "balance.projects.approachSwitchWorkPreservationFloor",
+      "validation": "trap/recovery simulation"
+    }
+  ],
+  "summary": {
+    "retained": [
+      "clean rewrite in the existing repository",
+      "candidate F hybrid architecture",
+      "3→4 discrete Attention as a provisional configuration",
+      "Precision and Intuition as primary stocks",
+      "dedicated project slot",
+      "universal automation",
+      "reversible project approaches",
+      "10-15% active target with 20% ceiling",
+      "unresolved-decision offline stepping and safe policies",
+      "typed Publication",
+      "prestige deferral",
+      "Preact, native-number adapter, GitHub Pages, and WCAG 2.2 AA"
+    ],
+    "revised": [
+      "Technique is retained visibly as exercise/project-method state and typed artifacts, not rejected conceptually or added as a stock",
+      "the 0.80 exponent applies only to production activities, not projects",
+      "the opening explicitly labels its first action as guided rather than strategic",
+      "first Publication changes from 120-180 to a provisional 60-120 active-equivalent minute band",
+      "achievement rewards change from 10 badge-only to 7 badge/history plus 3 non-power unlocks",
+      "storage becomes explicit dual-layer: localStorage current/fallback plus IndexedDB backups/replay logs"
+    ],
+    "superseded": [
+      "automation as a branch",
+      "React or plain DOM as the selected Phase 1 UI stack",
+      "the audit's draft suggestion that Understanding pay for routine upgrades"
+    ],
+    "deferred": [
+      "global prestige, timing, and Axioms",
+      "permanent campaign branches",
+      "challenge UI before first Publication",
+      "large-number backend",
+      "PWA, audio, later chapters, localization, and postgame"
+    ]
+  }
+}

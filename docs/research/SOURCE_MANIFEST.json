@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "ingestionDate": "2026-07-16",
+  "integrityPolicy": "Repository source documents are immutable byte-for-byte copies. Amendments belong in synthesis and decision records, never in the sources.",
+  "sources": [
+    {
+      "id": "deep-research-foundation",
+      "originalFilename": "analysis_idle_v2_deep_research_foundation_v0_1(1).md",
+      "repositoryPath": "docs/research/DEEP_RESEARCH_FOUNDATION.md",
+      "sha256": "a4a5771965d0addfedc9f82655942ec0959078aab8285b8e507d2a44b6f1191c",
+      "bytes": 56730,
+      "role": "preliminary design hypothesis",
+      "immutable": true
+    },
+    {
+      "id": "deep-research-completion-audit",
+      "originalFilename": "deep-research-report analysis idle.md",
+      "repositoryPath": "docs/research/DEEP_RESEARCH_COMPLETION_AUDIT.md",
+      "sha256": "3b64ba6b78364dc5c1289228307e16e6584d6eb1dcda9eb713a1d4e6084a9ab6",
+      "bytes": 36565,
+      "role": "corrective research audit",
+      "immutable": true
+    }
+  ]
+}

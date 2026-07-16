@@ -1,16 +1,45 @@
 {
   "experimentId": "resources",
-  "hypothesis": "Two primary stocks outperform one, three, and four under the stated simplicity rule.",
-  "modelVersion": "phase0-design-lab/1.0.0",
+  "hypothesis": "Two primary stocks plus visible project-method Technique state are provisionally favored over one, three, and four stock models under the stated criteria.",
+  "modelVersion": "phase0-design-lab/1.1.0-reconciled",
   "seed": null,
   "playerPolicy": "deterministic heuristic policy enumeration",
   "horizon": "first chapter / first 30 minutes where applicable",
   "stoppingCondition": "all configured candidates evaluated",
-  "status": "supported",
+  "status": "selected-under-current-criteria",
   "deterministic": true,
   "result": {
     "models": [
       {
+        "id": "two-plus-method-state",
+        "count": 2,
+        "identity": "Precision + Intuition + project-method Technique state",
+        "risk": "Requires explicit exercises, typed steps/templates, and later reuse so Technique remains visible without becoming a currency.",
+        "scores": {
+          "distinctness": 10,
+          "decisionValue": 9,
+          "lowBurden": 8,
+          "lowLoopRisk": 9,
+          "extensibility": 10
+        },
+        "weightedScore": 9.2
+      },
+      {
+        "id": "two-plus-capability",
+        "count": 2,
+        "identity": "Precision + Intuition + visible Technique capability",
+        "risk": "A single capability could become invisible efficiency if it lacks artifacts and choices.",
+        "scores": {
+          "distinctness": 9,
+          "decisionValue": 9,
+          "lowBurden": 9,
+          "lowLoopRisk": 9,
+          "extensibility": 9
+        },
+        "weightedScore": 9
+      },
+      {
+        "id": "two-stock",
         "count": 2,
         "identity": "Precision + Intuition",
         "risk": "Projects must prevent a fixed optimal production ratio.",
@@ -24,6 +53,7 @@
         "weightedScore": 8.55
       },
       {
+        "id": "one-stock",
         "count": 1,
         "identity": "Understanding only",
         "risk": "No real allocation or project-input trade-off.",
@@ -37,9 +67,10 @@
         "weightedScore": 7.35
       },
       {
+        "id": "three-stock",
         "count": 3,
         "identity": "Precision + Intuition + Technique",
-        "risk": "Technique duplicates project efficiency unless given awkward sinks.",
+        "risk": "A mandatory Exercise lane makes universal automation a Technique tax unless exclusive sinks remain valuable after automation.",
         "scores": {
           "distinctness": 7,
           "decisionValue": 8,
@@ -50,6 +81,7 @@
         "weightedScore": 7.1
       },
       {
+        "id": "four-stock",
         "count": 4,
         "identity": "Precision + Intuition + Technique + Proof Components",
         "risk": "Conversion graph and explanation cost dominate the first chapter.",
@@ -64,6 +96,7 @@
       }
     ],
     "selection": {
+      "model": "two-plus-method-state",
       "primaryStocks": [
         "Precision",
         "Intuition"
@@ -74,16 +107,17 @@
         "Insight (stored active charges)",
         "Mastery (published chapter record)"
       ],
+      "techniqueRepresentation": "visible exercises and Constructive project-method state emit reusable typed steps/templates; automation unlocks universally through milestones rather than Technique spending",
       "rejectedPrimaryStocks": [
-        "Technique",
+        "Technique in Natural Numbers",
         "Proof Components",
         "Axioms"
       ]
     }
   },
-  "conclusion": "Two primary stocks outperform one, three, and four under the stated simplicity rule.",
+  "conclusion": "Two primary stocks plus visible project-method Technique state are provisionally favored over one, three, and four stock models under the stated criteria.",
   "limitations": [
-    "Source/sink behavior must be stress-tested in the Phase 1 simulator.",
+    "Source/sink and method-artifact behavior must be stress-tested in the Phase 1 simulator and comprehension playtests.",
     "This experiment cannot prove that a game is fun."
   ]
 }

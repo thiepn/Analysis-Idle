@@ -6,7 +6,7 @@ Deterministic stored Insight targets a 10–15% sustained advantage with a 20% c
 
 ## Method
 
-Deterministic model `phase0-design-lab/1.0.0`; no randomness or timestamp enters the output. Inputs, candidate metrics, criteria weights, rankings, and sensitivity results are preserved in [`active-idle-results.json`](./data/active-idle-results.json). Scores are explained heuristics, while numerical allocation and offline outputs are enumerated calculations.
+Deterministic model `phase0-design-lab/1.1.0-reconciled`; no randomness or timestamp enters the output. Inputs, candidate metrics, criteria weights, rankings, and sensitivity results are preserved in [`active-idle-results.json`](./data/active-idle-results.json). Scores are explained heuristics, while numerical allocation and offline outputs are enumerated calculations.
 
 ## Limitation
 

@@ -21,11 +21,11 @@ type Artifact = { id: string; file: string; report: string; result: unknown; con
 
 function artifacts(): Artifact[] {
   return [
-    { id: "core-loop", file: "core-loop-results.json", report: "CORE_LOOP_COMPARISON.md", result: coreLoopExperiment(), conclusion: "Candidate F wins all tested weight sets, provided disclosure is staged.", limitation: "Scores and first-30-minute actions are design estimates, not playtest observations." },
+    { id: "core-loop", file: "core-loop-results.json", report: "CORE_LOOP_COMPARISON.md", result: coreLoopExperiment(), conclusion: "Candidate F is provisionally favored across the tested weight sets, provided disclosure is staged.", limitation: "Scores and first-30-minute actions are design estimates, not playtest observations." },
     { id: "attention", file: "attention-model-results.json", report: "ATTENTION_MODEL_COMPARISON.md", result: attentionExperiment(), conclusion: "Use 3→4 discrete slots, tap/plus-minus controls, presets, and a provisional 0.80 exponent.", limitation: "Optimization does not establish comprehension or fun; exponent and capacity require playtests." },
-    { id: "resources", file: "resource-model-results.json", report: "RESOURCE_MODEL_COMPARISON.md", result: resourceExperiment(), conclusion: "Two primary stocks outperform one, three, and four under the stated simplicity rule.", limitation: "Source/sink behavior must be stress-tested in the Phase 1 simulator." },
+    { id: "resources", file: "resource-model-results.json", report: "RESOURCE_MODEL_COMPARISON.md", result: resourceExperiment(), conclusion: "Two primary stocks plus visible project-method Technique state are provisionally favored over one, three, and four stock models under the stated criteria.", limitation: "Source/sink and method-artifact behavior must be stress-tested in the Phase 1 simulator and comprehension playtests." },
     { id: "branches", file: "branch-model-results.json", report: "BRANCH_COMPARISON.md", result: branchExperiment(), conclusion: "Natural Numbers uses reversible per-project approaches; automation remains universal.", limitation: "Persistent campaign identities remain deferred until several chapters prove reusable behaviors." },
-    { id: "pacing", file: "pacing-results.json", report: "PACING_ANALYSIS.md", result: pacingExperiment(), conclusion: "The first Publication targets 120–180 active-equivalent minutes over 1–3 sessions.", limitation: "All timing bands are provisional until simulator and human playtests." },
+    { id: "pacing", file: "pacing-results.json", report: "PACING_ANALYSIS.md", result: pacingExperiment(), conclusion: "Configure the first Publication for a provisional 60–120 active-equivalent minute band over 1–3 sessions.", limitation: "Band scores are design-density heuristics; simulator timelines and human fatigue/comprehension playtests are required." },
     { id: "active-idle", file: "active-idle-results.json", report: "ACTIVE_IDLE_COMPARISON.md", result: activeIdleExperiment(), conclusion: "Deterministic stored Insight targets a 10–15% sustained advantage with a 20% ceiling.", limitation: "Perceived usefulness and missed-opportunity frustration need accessibility-inclusive playtests." },
     { id: "offline", file: "offline-model-results.json", report: "OFFLINE_MODEL_COMPARISON.md", result: offlineExperiment(), conclusion: "Simulate to unresolved decisions, then apply an explicit safe policy within bounded credit windows.", limitation: "12h/72h/25% windows are configurable hypotheses, not validated retention targets." },
     { id: "prestige", file: "prestige-purpose-results.json", report: "PRESTIGE_PURPOSE_ANALYSIS.md", result: prestigeExperiment(), conclusion: "Global prestige is deferred until a multi-chapter prototype proves a unique purpose.", limitation: "No reset formula or timing can be validated from one chapter." },
@@ -56,7 +56,7 @@ export async function generateArtifacts(): Promise<Record<string, string>> {
       playerPolicy: "deterministic heuristic policy enumeration",
       horizon: "first chapter / first 30 minutes where applicable",
       stoppingCondition: "all configured candidates evaluated",
-      status: "supported",
+      status: "selected-under-current-criteria",
       deterministic: true,
       result: artifact.result,
       conclusion: artifact.conclusion,

@@ -1,12 +1,12 @@
 {
   "experimentId": "offline",
   "hypothesis": "Simulate to unresolved decisions, then apply an explicit safe policy within bounded credit windows.",
-  "modelVersion": "phase0-design-lab/1.0.0",
+  "modelVersion": "phase0-design-lab/1.1.0-reconciled",
   "seed": null,
   "playerPolicy": "deterministic heuristic policy enumeration",
   "horizon": "first chapter / first 30 minutes where applicable",
   "stoppingCondition": "all configured candidates evaluated",
-  "status": "supported",
+  "status": "selected-under-current-criteria",
   "deterministic": true,
   "result": {
     "models": [
@@ -49,6 +49,124 @@
       "diminishingUntilHours": 72,
       "diminishingEfficiency": 0.25
     },
+    "windowComparisons": [
+      {
+        "id": "4h-full-24h-tail",
+        "fullHours": 4,
+        "endHours": 24,
+        "tailEfficiency": 0.25,
+        "creditedHours": [
+          {
+            "absenceHours": 8,
+            "credit": 5
+          },
+          {
+            "absenceHours": 24,
+            "credit": 9
+          },
+          {
+            "absenceHours": 48,
+            "credit": 9
+          },
+          {
+            "absenceHours": 72,
+            "credit": 9
+          },
+          {
+            "absenceHours": 168,
+            "credit": 9
+          }
+        ],
+        "status": "COMPARATOR"
+      },
+      {
+        "id": "8h-full-48h-tail",
+        "fullHours": 8,
+        "endHours": 48,
+        "tailEfficiency": 0.25,
+        "creditedHours": [
+          {
+            "absenceHours": 8,
+            "credit": 8
+          },
+          {
+            "absenceHours": 24,
+            "credit": 12
+          },
+          {
+            "absenceHours": 48,
+            "credit": 18
+          },
+          {
+            "absenceHours": 72,
+            "credit": 18
+          },
+          {
+            "absenceHours": 168,
+            "credit": 18
+          }
+        ],
+        "status": "COMPARATOR"
+      },
+      {
+        "id": "12h-full-72h-tail",
+        "fullHours": 12,
+        "endHours": 72,
+        "tailEfficiency": 0.25,
+        "creditedHours": [
+          {
+            "absenceHours": 8,
+            "credit": 8
+          },
+          {
+            "absenceHours": 24,
+            "credit": 15
+          },
+          {
+            "absenceHours": 48,
+            "credit": 21
+          },
+          {
+            "absenceHours": 72,
+            "credit": 27
+          },
+          {
+            "absenceHours": 168,
+            "credit": 27
+          }
+        ],
+        "status": "PROVISIONAL CENTER"
+      },
+      {
+        "id": "24h-full-168h-tail",
+        "fullHours": 24,
+        "endHours": 168,
+        "tailEfficiency": 0.2,
+        "creditedHours": [
+          {
+            "absenceHours": 8,
+            "credit": 8
+          },
+          {
+            "absenceHours": 24,
+            "credit": 24
+          },
+          {
+            "absenceHours": 48,
+            "credit": 28.8
+          },
+          {
+            "absenceHours": 72,
+            "credit": 33.6
+          },
+          {
+            "absenceHours": 168,
+            "credit": 52.8
+          }
+        ],
+        "status": "COMPARATOR"
+      }
+    ],
     "examples": [
       {
         "simulatedHours": 2,

@@ -21,7 +21,8 @@
     "phase0:prototype": "node tools/design-lab/validate-prototypes.mjs",
     "phase0:screenshots": "node tools/design-lab/validate-screenshots.mjs",
     "phase0:links": "node tools/design-lab/validate-links.mjs",
-    "phase0:report": "npm run phase0:audit && tsx experiments/run.ts --write",
+    "phase0:reconciliation": "node tools/design-lab/generate-reconciliation-report.mjs",
+    "phase0:report": "npm run phase0:audit && tsx experiments/run.ts --write && npm run phase0:reconciliation",
     "phase0:repeat": "tsx tools/design-lab/repeatability.ts",
     "phase0:validate": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run phase0:prototype && npm run phase0:screenshots && npm run phase0:links",
     "phase0:all": "npm run phase0:report && npm run phase0:repeat && npm run phase0:validate"

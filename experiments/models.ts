@@ -1,4 +1,4 @@
-export const MODEL_VERSION = "phase0-design-lab/1.0.0";
+export const MODEL_VERSION = "phase0-design-lab/1.1.0-reconciled";
 
 export function integerAllocations(total: number, lanes: number): number[][] {
   if (!Number.isInteger(total) || total < 0) throw new Error("total must be a non-negative integer");
@@ -73,8 +73,22 @@ export function attentionExperiment() {
       capacity: "start at 3; unlock a fourth in Natural Numbers; do not use 6 as a default",
       exponent: 0.8,
       exponentStatus: "PROVISIONAL",
-      reason: "Four slots preserve five legible two-lane policies; exponent 0.80 avoids all-in dominance in tested project contexts while retaining visible specialization gaps.",
+      appliesTo: "production activities only; the dedicated project slot uses linear work speed plus typed effects",
+      reason: "Four slots preserve five legible two-lane policies; exponent 0.80 is the current activity center because 0.85-0.90 more often make specialization dominant in the tested weighted contexts.",
     },
+    formulaCandidates: [
+      { id: "power-0.80", exponent: 0.8, status: "PROVISIONAL CENTER", risk: "May flatten the difference between adjacent allocations." },
+      { id: "power-0.85", exponent: 0.85, status: "COMPARATOR", risk: "Specialization wins more weighted contexts." },
+      { id: "power-0.90", exponent: 0.9, status: "FOUNDATION COMPARATOR", risk: "All-in production is more likely with only 3-4 slots." },
+      { id: "explicit-marginals", marginalYields: [1, 0.82, 0.68, 0.58], status: "DEFERRED COMPARATOR", risk: "More explainable per slot, but adds threshold semantics and tuning parameters." },
+    ],
+    openingAudit: [
+      { horizon: "10 seconds", state: "Formalize is guide-assigned; confirm/start feedback only.", strategicChoice: false },
+      { horizon: "60 seconds", state: "Precision funds the guided Zero and Successor project; stockpiling versus the required opener is not presented as strategy.", strategicChoice: false },
+      { horizon: "5 minutes", state: "Explore and Intuition are visible; 3/0 and 2/1 serve different visible requirements.", strategicChoice: true },
+      { horizon: "15 minutes", state: "A project, local upgrades, and two production lanes create preparation/order choices.", strategicChoice: true },
+      { horizon: "30 minutes", state: "Queue/completion automation and project approach output replace repeated execution.", strategicChoice: true },
+    ],
   };
 }
 
@@ -146,25 +160,29 @@ function rank(candidates: CoreCandidate[], weights: Record<string, number>) {
 export function resourceExperiment() {
   const weights = { distinctness: 0.3, decisionValue: 0.25, lowBurden: 0.2, lowLoopRisk: 0.15, extensibility: 0.1 };
   const models = [
-    resource(1, [9, 3, 10, 10, 4], "Understanding only", "No real allocation or project-input trade-off."),
-    resource(2, [9, 9, 8, 8, 8], "Precision + Intuition", "Projects must prevent a fixed optimal production ratio."),
-    resource(3, [7, 8, 6, 6, 9], "Precision + Intuition + Technique", "Technique duplicates project efficiency unless given awkward sinks."),
-    resource(4, [6, 8, 4, 4, 9], "Precision + Intuition + Technique + Proof Components", "Conversion graph and explanation cost dominate the first chapter."),
+    resource("one-stock", 1, [9, 3, 10, 10, 4], "Understanding only", "No real allocation or project-input trade-off."),
+    resource("two-stock", 2, [9, 9, 8, 8, 8], "Precision + Intuition", "Projects must prevent a fixed optimal production ratio."),
+    resource("three-stock", 3, [7, 8, 6, 6, 9], "Precision + Intuition + Technique", "A mandatory Exercise lane makes universal automation a Technique tax unless exclusive sinks remain valuable after automation."),
+    resource("four-stock", 4, [6, 8, 4, 4, 9], "Precision + Intuition + Technique + Proof Components", "Conversion graph and explanation cost dominate the first chapter."),
+    resource("two-plus-capability", 2, [9, 9, 9, 9, 9], "Precision + Intuition + visible Technique capability", "A single capability could become invisible efficiency if it lacks artifacts and choices."),
+    resource("two-plus-method-state", 2, [10, 9, 8, 9, 10], "Precision + Intuition + project-method Technique state", "Requires explicit exercises, typed steps/templates, and later reuse so Technique remains visible without becoming a currency."),
   ].map((model) => ({ ...model, weightedScore: round(score(model.scores, weights), 3) }))
-    .sort((a, b) => b.weightedScore - a.weightedScore || a.count - b.count);
+    .sort((a, b) => b.weightedScore - a.weightedScore || a.id.localeCompare(b.id));
   return {
     models,
     selection: {
+      model: "two-plus-method-state",
       primaryStocks: ["Precision", "Intuition"],
       nonPrimaryMeters: ["Attention (capacity)", "Understanding (non-spendable mastery)", "Insight (stored active charges)", "Mastery (published chapter record)"],
-      rejectedPrimaryStocks: ["Technique", "Proof Components", "Axioms"],
+      techniqueRepresentation: "visible exercises and Constructive project-method state emit reusable typed steps/templates; automation unlocks universally through milestones rather than Technique spending",
+      rejectedPrimaryStocks: ["Technique in Natural Numbers", "Proof Components", "Axioms"],
     },
   };
 }
 
-function resource(count: number, values: number[], identity: string, risk: string) {
+function resource(id: string, count: number, values: number[], identity: string, risk: string) {
   const keys = ["distinctness", "decisionValue", "lowBurden", "lowLoopRisk", "extensibility"];
-  return { count, identity, risk, scores: Object.fromEntries(keys.map((key, index) => [key, values[index]!])) };
+  return { id, count, identity, risk, scores: Object.fromEntries(keys.map((key, index) => [key, values[index]!])) };
 }
 
 export function branchExperiment() {
@@ -241,10 +259,31 @@ export function offlineExperiment() {
     models: models.sort((a, b) => b.score - a.score || a.id.localeCompare(b.id)),
     selected: "progress until unresolved decision, then configured safe policy; bounded event-driven stepping",
     provisionalWindows: { fullEfficiencyHours: 12, diminishingUntilHours: 72, diminishingEfficiency: 0.25 },
+    windowComparisons: [
+      offlineWindow("4h-full-24h-tail", 4, 24, 0.25),
+      offlineWindow("8h-full-48h-tail", 8, 48, 0.25),
+      offlineWindow("12h-full-72h-tail", 12, 72, 0.25),
+      offlineWindow("24h-full-168h-tail", 24, 168, 0.2),
+    ],
     examples: [
       simulateOffline(6, [{ at: 2, type: "projectComplete", configured: false }], false),
       simulateOffline(24, [{ at: 2, type: "projectComplete", configured: true }], true),
     ],
+  };
+}
+
+function offlineWindow(id: string, fullHours: number, endHours: number, tailEfficiency: number) {
+  const absences = [8, 24, 48, 72, 168];
+  return {
+    id,
+    fullHours,
+    endHours,
+    tailEfficiency,
+    creditedHours: absences.map((hours) => ({
+      absenceHours: hours,
+      credit: round(Math.min(hours, fullHours) + Math.max(0, Math.min(hours, endHours) - fullHours) * tailEfficiency, 3),
+    })),
+    status: id === "12h-full-72h-tail" ? "PROVISIONAL CENTER" : "COMPARATOR",
   };
 }
 
@@ -254,16 +293,34 @@ function offline(id: string, values: number[]) {
 
 export function pacingExperiment() {
   const events = [
-    ["first interaction", 5, 15], ["passive production", 15, 30], ["meaningful choice", 60, 180],
-    ["second resource", 180, 420], ["first project", 300, 600], ["first upgrade", 480, 900],
-    ["first milestone", 720, 1200], ["first automation", 1200, 2100], ["first Insight", 1500, 2400],
-    ["first approach choice", 2100, 3600], ["capstone", 5400, 8400], ["Publication", 7200, 10800],
+    ["guided confirmation", 5, 10], ["passive production", 15, 60], ["meaningful choice", 60, 180],
+    ["second resource", 60, 180], ["first project", 300, 600], ["first upgrade", 480, 900],
+    ["first milestone", 300, 600], ["first automation", 900, 1800], ["first Insight", 900, 1800],
+    ["first approach choice", 1800, 2700], ["fourth Attention", 2100, 3600], ["capstone", 3600, 6000], ["Publication", 3600, 7200],
   ].map(([event, earliestSeconds, latestSeconds]) => ({ event, earliestSeconds, latestSeconds }));
+  const bands = [
+    pacingBand("30-60 minutes", [4, 9, 4, 5, 9]),
+    pacingBand("60-90 minutes", [8, 8, 8, 8, 8]),
+    pacingBand("90-120 minutes", [9, 7, 9, 8, 7]),
+    pacingBand("120-180 minutes", [9, 5, 10, 8, 4]),
+    pacingBand("180-240 minutes", [8, 3, 10, 7, 2]),
+  ].sort((a, b) => b.score - a.score || a.id.localeCompare(b.id));
   return {
     events,
-    firstChapter: "120-180 minutes active-equivalent across 1-3 sessions (PROVISIONAL)",
+    bands,
+    firstChapter: "60-120 minutes active-equivalent across 1-3 sessions (PROVISIONAL configurable band)",
     campaign: "30-50 active-equivalent hours across 4-8 weeks (PROVISIONAL)",
     deadIntervalGates: { actionableDecisionMinutes: 12, visibleProgressSeconds: 30, systemRevealMinutes: 25 },
+  };
+}
+
+function pacingBand(id: string, values: number[]) {
+  const [disclosureRoom, firstSessionSatisfaction, systemCoverage, idleCompatibility, lowFatigue] = values;
+  return {
+    id,
+    scores: { disclosureRoom, firstSessionSatisfaction, systemCoverage, idleCompatibility, lowFatigue },
+    score: round(0.2 * disclosureRoom! + 0.2 * firstSessionSatisfaction! + 0.2 * systemCoverage! + 0.2 * idleCompatibility! + 0.2 * lowFatigue!, 3),
+    evidence: "heuristic design-density comparison; requires simulator and human playtest",
   };
 }
 

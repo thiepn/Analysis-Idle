@@ -1,12 +1,12 @@
 {
   "experimentId": "active-idle",
   "hypothesis": "Deterministic stored Insight targets a 10–15% sustained advantage with a 20% ceiling.",
-  "modelVersion": "phase0-design-lab/1.0.0",
+  "modelVersion": "phase0-design-lab/1.1.0-reconciled",
   "seed": null,
   "playerPolicy": "deterministic heuristic policy enumeration",
   "horizon": "first chapter / first 30 minutes where applicable",
   "stoppingCondition": "all configured candidates evaluated",
-  "status": "supported",
+  "status": "selected-under-current-criteria",
   "deterministic": true,
   "result": {
     "bands": [
