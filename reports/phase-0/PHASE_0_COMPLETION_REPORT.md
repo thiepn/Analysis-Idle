@@ -1,129 +1,90 @@
 # Phase 0 completion report
 
-`PHASE_0_STATUS: BLOCKED`
+`PHASE_0_STATUS: PASS`
 
 ## 1. Executive summary
 
-Codex preserved v1, audited the repository and runtime, compared the major v2 hypotheses, selected a coherent architecture, specified the Natural Numbers vertical slice, built deterministic design-lab tooling and a responsive prototype, and prepared the Phase 1 engine handoff. Phase 0 cannot truthfully pass because the two research documents named as authoritative inputs were not supplied. Their contents were not invented; affected decisions remain lower-confidence and Phase 1 is not authorized to begin.
+Phase 0 is complete. Codex preserved v1, reconciled both authoritative research inputs across all 53 required decisions, corrected inherited design conflicts, revalidated the Natural Numbers vertical slice, and prepared a deterministic Phase 1 handoff. All numeric balance centers remain visibly provisional configuration. No Phase 1 production implementation, deployment, push, PR, or `main` change occurred.
 
-## 2. Original repository SHA
+The earlier Phase 0 tip was correctly reported as `BLOCKED` because the research files were unavailable at that time. That historical decision is retained in Git history. The blocker is now resolved by exact source ingestion, checksum verification, source-by-source reconciliation, specification revision, and the complete validation gate.
 
-`239d75fd0e223e91703e261d2196953a896609cb`.
+## 2. Source ingestion and reconciliation
 
-## 3. Git preservation status
+- Foundation: `docs/research/DEEP_RESEARCH_FOUNDATION.md`, 56,730 bytes, SHA-256 `a4a5771965d0addfedc9f82655942ec0959078aab8285b8e507d2a44b6f1191c`.
+- Completion Audit: `docs/research/DEEP_RESEARCH_COMPLETION_AUDIT.md`, 36,565 bytes, SHA-256 `3b64ba6b78364dc5c1289228307e16e6584d6eb1dcda9eb713a1d4e6084a9ab6`.
+- `docs/research/SOURCE_MANIFEST.json` records filenames, byte counts, roles, immutable-copy policy, and checksums.
+- `reports/phase-0/data/research-reconciliation.json` contains exactly 53 uniquely numbered decisions and the complete provisional-value register.
+- `reports/phase-0/RESEARCH_RECONCILIATION_REPORT.md` is deterministically generated from that machine record.
 
+The allowed decision statuses are `ACCEPTED`, `ACCEPTED WITH REVISION`, `PROVISIONAL`, `DEFERRED`, `REJECTED`, and `SUPERSEDED`. No source proposition was silently promoted to fact. The Completion Audit's non-portable inline citation tokens are a provenance limitation, but the Foundation source registry, preserved originals, local experiments, and explicit validation requirements keep the implementation boundary auditable.
+
+## 3. Git and legacy preservation
+
+- Original repository SHA: `239d75fd0e223e91703e261d2196953a896609cb`.
 - Working branch: `phase/00-design-lock`.
-- `legacy/v1`: created at the original SHA.
-- Annotated `v1.0.0-legacy`: tag object `d0eec7c7df87534f99684f55339ad58fa6437030`, targeting the original SHA.
 - `main`: unchanged at the original SHA.
-- `v2/integration`: intentionally not created because this phase remains BLOCKED; the Git handoff documents the next ref operation after acceptance.
-- No ref was pushed, no PR was opened, and deployment configuration was not changed.
+- `legacy/v1`: unchanged at the original SHA.
+- Annotated `v1.0.0-legacy`: tag object `d0eec7c7df87534f99684f55339ad58fa6437030`, targeting the original SHA.
+- After the accepted reconciliation commit, local `v2/integration` and `phase/01-deterministic-engine` are required to point to that same accepted Phase 0 tip while `phase/00-design-lock` remains checked out.
+- No history was rewritten; no ref was force-updated or pushed; no PR was opened; deployment was unchanged.
 
-## 4. Files created
+No file tracked by the v1 baseline was modified. v1 runtime, Pages source, legacy save behavior, and production deployment were intentionally untouched.
 
-New work comprises repository governance and CI under `AGENTS.md`, nested `AGENTS.md`, and `.github/`; the Phase 0 Node/TypeScript toolchain; `docs/research`, `docs/design`, `docs/balance`, `docs/technical`, `docs/art`, `docs/qa`, and `docs/handoff`; deterministic `experiments`; the disposable `prototypes/phase-0`; design-lab tools; and all `reports/phase-0` data, comparisons, audits, screenshots, and completion records.
+## 4. Final design decisions
 
-## 5. Files modified
+The selected loop remains Candidate F: whole Attention allocation, two production activities, one dedicated project slot, simplified mathematical dependencies, reversible project approaches, and progressively disclosed universal automation. Flow remains validated content → commands → deterministic transitions → canonical state → selectors → UI.
 
-No file tracked by the v1 baseline was modified. Git refs were added for preservation and the Phase 0 branch.
+- **Attention:** start with 3 whole slots and unlock a fourth during Natural Numbers. The 0.80 concavity center applies only to production activities. Capacity, exponent, and timing are provisional.
+- **Projects:** advance linearly in a dedicated slot and do not consume Attention merely to run. Opportunity cost comes from reserved inputs, the one-slot schedule, ordering, approaches, artifacts, queues, and reserves. Phase 1 must simulate the contrary competing-Attention model.
+- **Resources:** Precision and Intuition are the only primary stocks. Understanding is non-spendable, Insight is bounded active capacity, Attention is capacity, and Mastery is a typed published record. No direct stock conversion exists.
+- **Technique:** retained visibly as named exercises, prepared proof steps, and Constructive typed templates. It is not a stock, hidden efficiency modifier, passive multiplier, or automation tax.
+- **Approaches/automation:** Formal, Exploratory, and Constructive are reversible project approaches; no permanent Natural Numbers branch exists. Queue, completion, and reserve automation unlock universally.
+- **Active play:** deterministic stored Insight provisionally targets 10–15% sustained advantage with a 20% ceiling and cap 3. No random popup, timed input, or repeatable production clicking exists.
+- **Offline:** deterministic event-driven catch-up follows a saved plan, stops at unresolved decisions unless an explicit safe policy applies, and reports results. The 12h-full/25%-tail/72h-maximum schedule remains provisional alongside four comparison schedules.
+- **Publication/prestige:** Publication is a typed semantic transformation, not a multiplier reset. Global prestige, Axioms, timing, and formula remain deferred until a multi-chapter prototype proves a distinct purpose.
+- **Achievements/challenges:** the slice has 10 achievements: seven badge/history records and three non-power records/visual/access unlocks. All have zero production power. Challenge play remains deferred until after first Publication.
+- **Pacing:** first Publication is provisionally 60–120 active-equivalent minutes over 1–3 sessions. Campaign scope remains 30–50 active-equivalent hours over 4–8 weeks as a production estimate.
 
-## 6. Files intentionally untouched
+## 5. Natural Numbers content audit
 
-All 22 v1 tracked files, `main`, the production Pages source, remote refs, public deployment, save key behavior, and legacy runtime behavior remain untouched. The full v2 game, production engine, final save implementation, final assets, PWA, audio, and later chapters are out of scope.
+The vertical slice remains complete at the specification level: 12 projects, 15 upgrades/capabilities, 11 milestones, 10 achievements, three approaches, explicit Technique-method artifacts, dependency node types, four capstone implication edges, a Publication mapping, player journeys, mathematical source requirements, accessibility requirements, configurable balance data, and tests/gates.
 
-## 7. Research conflicts resolved
+The opening is explicitly audited at 10 seconds, 60 seconds, 5 minutes, 15 minutes, and 30 minutes. Guided confirmation and passive-production observation are not counted as strategic choices. The first genuine allocation choice appears when Explore/Intuition is visible. All project costs, work, rates, caps, transforms, and timing bands remain provisional validated content data.
 
-Internal assumptions were challenged rather than inherited: three resources reduced to two; six Attention reduced to 3→4; Technique moved from currency to project behavior; generic reset prestige deferred; 90–180 timing normalized to 120–180 active-equivalent minutes; and a mistaken third Practice lane was removed from the prototype. The unavailable Foundation and Completion Audit cannot be compared, so their unknown conflicts remain the blocking item.
+## 6. Technical decisions
 
-## 8. Selected core architecture
+- Preact + TypeScript + Vite remains selected, with Phase 1 exit gates for excessive compatibility weight, accessibility/test failure, and measured bundle/interaction budget failure.
+- Engine and content remain framework-free; time, RNG, persistence, and lifecycle are injected ports.
+- Native `number` remains behind `GameNumber`, canonical string serialization, finite validation, and magnitude/meaningful-increment migration gates.
+- Persistence is dual-layer: rotating validated localStorage for current canonical state, settings, lease, and fallback backups; native IndexedDB for append-only backup history and replay/diagnostic logs when available. v1 `mathIdleSave` is detected read-only and never silently converted.
+- GitHub Pages remains the static target. PWA, large-number backend, audio implementation, and IndexedDB as sole canonical storage remain deferred.
 
-Candidate F: a staged hybrid of discrete Attention allocation, dedicated projects, and simplified mathematical dependencies. Priority automation is introduced only after the player understands the manual decisions. The production flow is validated content → commands → deterministic transitions → canonical state → selectors → UI.
+## 7. Accessibility, art, and scope
 
-## 9. Selected Attention model
+WCAG 2.2 AA, keyboard/touch parity, 44px project targets, reduced motion, color-independent meaning, semantic reading order, accessible math, mobile portrait support, and one decision-oriented return summary remain architectural gates. The living mathematical notebook/academic instrument direction, procedural CSS/SVG/Canvas strategy, source/license tracking, and asset budgets remain selected provisionally. Final assets, audio, localization, later chapters, postgame, and deployment are outside Phase 0.
 
-Three whole slots initially and a fourth during Natural Numbers; every allocation is available through 44px plus/minus controls and presets, with dragging optional. Slot production uses configurable concavity with exponent 0.80 marked `PROVISIONAL`.
+## 8. Experimental evidence
 
-## 10. Selected resource model
+Ten deterministic labs compare core loops, Attention/formulas, resource models, approaches, pacing, active/idle, offline policies/windows, prestige purpose, frontend choices, and numerical range. The reconciled model version is `phase0-design-lab/1.1.0-reconciled`. The resource lab now compares one through four stocks plus two non-stock Technique representations. The pacing lab compares five bands. The offline lab compares four schedules. These are reproducible calculations and scored heuristics, not claims that the game is fun.
 
-Precision and Intuition are the only chapter-local primary stocks. Attention is capacity, Understanding is non-spendable mastery progress, Insight is bounded active capacity, and Mastery is the durable Publication record. No direct Precision↔Intuition conversion exists.
+## 9. Validation
 
-## 11. Selected branch and automation architecture
+The required gate covers `npm run typecheck`, `npm run lint`, `npm run test`, and `npm run phase0:all`, including source checksums, reconciliation count/status/configuration checks, legacy baseline regeneration, experiment/report generation, deterministic repeatability, formatting, artifact/import lint, prototype checks, six committed screenshots, and local-link checks. Detailed results are in `VALIDATION_REPORT.md` and `validation-results.json`.
 
-Natural Numbers uses reversible per-project Formal, Exploratory, and Constructive approaches, not permanent player-type branches. Automation is universal, rule-based, inspectable, bounded by reserves/safe policies, and stops at unresolved decisions. No branch owns quality-of-life access.
+The reconciled deterministic digest is `ac202662c8fb5c6a2642acb686cf68d2fb3e205bbffe222e97201f633328a394`. The prior `5ae307f3...` digest is retained only as evidence of the pre-reconciliation model and is expected to differ.
 
-## 12. Active-play decision
+## 10. Remaining risks and deferred evidence
 
-Insight is the bounded active layer: deterministic, capped provisionally at three charges, earned from meaningful events rather than repeatable clicks. Target sustained advantage is 10–15% with a hard provisional ceiling of 20%; waiting remains viable.
+- Human comprehension, fun, fatigue, retention, Technique visibility, approach identity, Insight pressure, and offline fairness require accessibility-inclusive playtests.
+- Exact Attention, exponent, resource, project, Insight, offline, pacing, campaign, and work-preservation values require Phase 1 simulation and later playtests.
+- The dedicated project slot must be compared against project Attention competition; the power formula must be compared against explicit marginal yields.
+- Production bundle, performance, IndexedDB failure behavior, assistive-technology behavior, and storage recovery ordering require Phase 1 implementation evidence.
+- Public deployment was intentionally not changed or used as an acceptance shortcut.
 
-## 13. Offline decision
+## 11. Phase 1 readiness
 
-Offline reconciliation reuses the deterministic event engine. It stops at an unresolved decision unless a validated safe policy resolves it, returns an event/decision summary, and uses configurable provisional credit windows: 12h full, then 25% through 72h, then zero.
+`true`. Phase 1 has complete authoritative inputs, a reconciled decision register, exact provisional configuration inventory, deterministic architecture boundaries, save roles, content counts, tests, reports, acceptance gates, and prohibited shortcuts. It should implement only the deterministic engine, schemas, persistence ports, headless simulator, CI, and minimal accessible debug UI described in the implementation brief. It must not implement prestige, PWA, deployment, final art/audio, or later chapters.
 
-## 14. Publication decision
+## 12. Exact next action
 
-Publication is a typed chapter transformation: solved work is compressed into named Mastery artifacts and later capabilities. Chapter stocks, allocation, active/queued work, and local modifiers reset; settings, records, templates, discoveries, and Mastery persist. Publication grants no generic multiplier.
-
-## 15. Prestige decision
-
-Global prestige is `DEFERRED`. Phase 1 reserves a typed extension boundary but implements no command, currency, formula, reset, or UI. A multi-chapter prototype must prove a unique purpose distinct from Publication before adoption.
-
-## 16. Campaign scope
-
-The finite initial campaign target is 30–50 active-equivalent hours over 4–8 weeks (`PROVISIONAL`). First Publication targets 120–180 active-equivalent minutes over 1–3 sessions (`PROVISIONAL`). Later chapters and postgame are deferred.
-
-## 17. Natural Numbers readiness
-
-The chapter has a GDD, 12-project catalogue, 15 upgrade/capability entries, 11 milestones, 10 badge-only achievements, challenge decision, dependency graph, capstone, Publication mapping, UI journey, mathematical-source requirements, accessibility requirements, balance values, gates, and tests. Numeric centers remain configuration. Content implementation is gated on research reconciliation and Phase 1 schema/simulator work.
-
-## 18. Technical stack decision
-
-Preact 10 + TypeScript 5.9.3 + Vite, with no UI dependency in engine/content modules. Strict commands, state, effects, conditions, selectors, time/RNG ports, content validation, simulation, save envelopes, and migrations are specified. GitHub Pages remains the static target; PWA lifecycle work is deferred.
-
-## 19. Numerical decision
-
-Use native JavaScript `number` only behind an adapter; reject all non-finite inputs/results. Record magnitude telemetry and require a migration decision before approximately `1e280` or earlier precision-loss gates. No large-number dependency is justified in Phase 0.
-
-## 20. Storage decision
-
-Use namespaced rotating localStorage envelopes for canonical saves first, with checksums, backups, explicit import/export, strict future-version rejection, legacy-v1 detection, and atomic migrations. IndexedDB stores logs and future growth and may become canonical only after evidence. Multi-tab ownership uses Web Locks/BroadcastChannel with a lease fallback.
-
-## 21. Asset and art decision
-
-The provisional direction is a living mathematical notebook/academic instrument: restrained paper surfaces, precise diagrams, authored SVG primitives, semantic resource marks, and procedural proof/dependency visualization. The manifest, budgets, reduced-motion behavior, and licensing provenance are specified. Final logo, polished chapter art, sound, and music are deferred.
-
-## 22. Accessibility decision
-
-WCAG 2.2 AA is the release floor. Keyboard/touch parity, 44px targets, visible focus, reduced motion, color-independent state, semantic reading order, live-region restraint, accessible formula prose, KaTeX `htmlAndMathML` when introduced, zoom/reflow, save-recovery announcements, and automated/manual test matrices are architectural requirements.
-
-## 23. Experiment summaries
-
-Ten reproducible labs compare core loops, Attention, resources, project approaches, pacing, active/idle, offline policy, prestige purpose, frontend, and numerical range. Candidate F wins the tested heuristic weight sets; 3→4 Attention and two stocks minimize early burden; Preact wins the documented stack criteria; native numbers remain viable behind a gate; prestige has no proven distinct function. Reports preserve inputs, criteria, alternatives, sensitivity, and limitations. Heuristic scores are not claims of fun.
-
-## 24. Test results
-
-The TypeScript suite contains seven passing deterministic/model tests. Repeatability produces digest `5ae307f3ac0af962d3faf647130d1b39b306b17539c154a956c586bbc936a91f`. The local v1 runtime produced from 10 to 2.37K Understanding at 4.1/s over more than nine minutes with zero console errors. The prototype loaded at desktop/tablet/mobile overrides, exposed an accessible tree, changed Attention allocation and approach state correctly, and logged zero console errors. Full command results are recorded in `VALIDATION_REPORT.md` and `validation-results.json`.
-
-## 25. Unresolved risks
-
-- The two authoritative research documents are unavailable.
-- Numerical and pacing centers are not human-playtest evidence.
-- Two-stock differentiation, Insight pressure, approach comprehension, and offline fairness require playtests.
-- Bundle/performance budgets require production code measurements.
-- The public deployment was not accessible from the supplied local context.
-- Screenshot capture is browser-assisted; the npm check validates committed image paths/sizes rather than regenerating them headlessly.
-
-## 26. Deferred items
-
-Prestige, permanent campaign branches, early challenges, PWA/service worker, audio, localization, later chapters, postgame, polished assets, canonical IndexedDB, and any large-number library remain explicitly deferred. Their extension points and evidence gates are documented.
-
-## 27. Phase 1 readiness
-
-`false`. The implementation brief is precise enough for execution, but Phase 1 must not begin until the missing research inputs are supplied, reconciled into the decision register, and the BLOCKED status is revalidated. No major engine choice should then need invention.
-
-## 28. Exact next steps
-
-1. Supply `Analysis Idle v2 — Deep Research Foundation v0.1` and `Analysis Idle v2 Deep Research Completion Audit`/`deep-research-report.md`.
-2. Add them as immutable source inputs or source-presence records; reconcile every conflict and revise affected decisions, experiments, and handoff documents.
-3. Rerun `npm run phase0:all`, update both completion reports to PASS only if every gate is genuinely met, and commit the review.
-4. Create/update local `v2/integration` at the accepted Phase 0 tip without touching `main`.
-5. Branch `phase/01-deterministic-engine` from `v2/integration` and implement only the deterministic engine, content schemas, headless simulator, save envelope/migrations, and minimal accessible debug UI described in the Phase 1 brief.
+Start the next task on `phase/01-deterministic-engine`, which must be based exactly on local `v2/integration` at this accepted Phase 0 tip. Before editing, verify both refs match, read the Phase 1 input manifest in order, and run the current acceptance suite. Do not implement Phase 1 on `phase/00-design-lock` or `main`.

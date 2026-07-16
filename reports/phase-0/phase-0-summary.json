@@ -1,8 +1,9 @@
 {
   "phase": 0,
-  "version": "0.1.0-v2-design-lock",
-  "status": "BLOCKED",
-  "blockingReason": "The supplied Deep Research Foundation v0.1 and Deep Research Completion Audit/deep-research-report.md were not present, so their contents cannot be ingested, compared, or reconciled without fabrication.",
+  "version": "0.2.0-v2-reconciled-design-lock",
+  "status": "PASS",
+  "previousStatus": "BLOCKED",
+  "resolvedBlocker": "Both authoritative research inputs are now preserved byte-for-byte, checksum-verified, and reconciled across all 53 required decisions.",
   "originalHead": "239d75fd0e223e91703e261d2196953a896609cb",
   "workingBranch": "phase/00-design-lock",
   "legacyBranch": {
@@ -19,84 +20,109 @@
   },
   "integrationBranch": {
     "name": "v2/integration",
-    "created": false,
-    "sha": "",
-    "reason": "The prompt permits a Git handoff when a safe accepted integration target does not yet exist; BLOCKED work was not labeled accepted Phase 0."
+    "created": true,
+    "target": "accepted Phase 0 reconciliation tip"
+  },
+  "phase1Branch": {
+    "name": "phase/01-deterministic-engine",
+    "created": true,
+    "target": "same accepted Phase 0 reconciliation tip"
   },
   "mainUnchanged": true,
   "deploymentUnchanged": true,
   "refsPushed": false,
   "pullRequestOpened": false,
-  "selectedArchitecture": "Candidate F: staged hybrid of discrete Attention allocation, dedicated projects, and simplified mathematical dependencies; priority automation is layered on later.",
-  "selectedAttentionModel": "Three whole slots initially, a fourth unlocked in Natural Numbers, plus/minus and preset controls, provisional concavity exponent 0.80.",
-  "selectedResourceModel": "Two chapter-local primary stocks: Precision and Intuition. Attention is capacity; Understanding is non-spendable mastery; Insight is bounded active capacity; Mastery is a published record.",
-  "selectedFrontend": "Preact 10 + TypeScript 5.9.3 + Vite, with a framework-independent deterministic engine.",
-  "selectedStorageModel": "Namespaced rotating localStorage canonical saves first; IndexedDB for logs and future growth; explicit legacy detection and versioned migration envelopes.",
+  "researchSources": [
+    {
+      "id": "deep-research-foundation",
+      "path": "docs/research/DEEP_RESEARCH_FOUNDATION.md",
+      "bytes": 56730,
+      "sha256": "a4a5771965d0addfedc9f82655942ec0959078aab8285b8e507d2a44b6f1191c"
+    },
+    {
+      "id": "deep-research-completion-audit",
+      "path": "docs/research/DEEP_RESEARCH_COMPLETION_AUDIT.md",
+      "bytes": 36565,
+      "sha256": "3b64ba6b78364dc5c1289228307e16e6584d6eb1dcda9eb713a1d4e6084a9ab6"
+    }
+  ],
+  "researchReconciliation": {
+    "decisionCount": 53,
+    "status": "COMPLETE",
+    "machineRecord": "reports/phase-0/data/research-reconciliation.json",
+    "generatedReport": "reports/phase-0/RESEARCH_RECONCILIATION_REPORT.md"
+  },
+  "selectedArchitecture": "Candidate F: staged hybrid of discrete Attention allocation, dedicated linear projects, simplified mathematical dependencies, and progressive universal automation.",
+  "selectedAttentionModel": "Three whole production slots initially, a fourth unlocked in Natural Numbers, plus/minus and preset controls; provisional activity-only exponent 0.80.",
+  "selectedResourceModel": "Precision and Intuition primary stocks plus visible non-stock Technique exercise/project-method state; Attention, Understanding, Insight, and Mastery retain distinct non-currency roles.",
+  "selectedFrontend": "Preact + TypeScript + Vite with a framework-independent deterministic engine and explicit Phase 1 exit gates.",
+  "selectedStorageModel": "Dual local layer: rotating localStorage current/fallback envelopes plus IndexedDB append-only backups and replay/diagnostic logs when available.",
   "prestigeDecision": "DEFERRED until a multi-chapter prototype proves a unique purpose distinct from Publication.",
   "criticalDecisions": [
     "validated content -> commands -> deterministic transitions -> canonical state -> selectors -> UI",
-    "two-stock Natural Numbers economy with no direct conversion",
-    "one dedicated project slot that does not consume Attention to run",
+    "two primary Natural Numbers stocks plus visible typed Technique method state",
+    "one dedicated linear project slot that does not consume Attention merely to run",
     "universal rule-based automation with traces and safe stops",
     "reversible Formal, Exploratory, and Constructive project approaches",
     "event-driven offline reconciliation with unresolved-decision taxonomy",
     "typed Publication transformation without a generic multiplier",
-    "native number adapter with finite checks and a migration gate",
+    "native number adapter with finite, precision, and migration gates",
+    "dual localStorage/IndexedDB persistence roles with deterministic recovery",
     "WCAG 2.2 AA, keyboard/touch parity, reduced motion, and accessible mathematics"
   ],
   "provisionalDecisions": [
-    "Attention exponent 0.80 and exact fourth-slot timing",
+    "Attention start/max 3/4 and exact fourth-slot timing",
+    "activity-only exponent 0.80 and explicit-marginal alternative",
     "all project costs, durations, rates, caps, and approach modifiers",
-    "Insight cap 3 and 10-15% active advantage target with 20% ceiling",
+    "Insight cap 3 and 10-15% active target with 20% ceiling",
     "offline credit: 12h full, then 25% through 72h",
-    "first Publication: 120-180 active-equivalent minutes over 1-3 sessions",
+    "first Publication: 60-120 active-equivalent minutes over 1-3 sessions",
     "campaign: 30-50 active-equivalent hours over 4-8 weeks",
+    "approach-switch work preservation floor 90%",
     "performance and bundle budgets until Phase 1 measurements"
   ],
   "deferredDecisions": [
     "global prestige timing, currency, formula, and reset",
     "permanent campaign branches",
-    "pre-Publication challenges",
+    "challenge play before first Publication",
     "PWA/service worker and audio implementation",
-    "large-number library adoption",
-    "IndexedDB as canonical save store",
+    "large-number backend adoption",
+    "IndexedDB as sole canonical save store",
     "later-chapter content, localization, and postgame"
   ],
-  "rejectedDecisions": [
+  "rejectedOrSupersededDecisions": [
     "incrementally refactoring v1 into v2",
-    "three primary Natural Numbers resources",
+    "three primary Natural Numbers stocks or invisible Technique efficiency",
     "six starting Attention",
     "repeatable clicking as a resource source",
     "branch-exclusive automation",
+    "Attention concavity applied to project work",
     "unlimited offline progress",
-    "a generic Publication multiplier",
-    "an unproven Real Numbers/Axiom prestige formula"
+    "generic Publication multiplier",
+    "unproven Real Numbers/Axiom prestige formula"
   ],
+  "naturalNumbersCounts": {
+    "projects": 12,
+    "upgradesAndCapabilities": 15,
+    "milestones": 11,
+    "achievements": 10,
+    "badgeHistoryAchievements": 7,
+    "nonPowerUnlockAchievements": 3
+  },
   "tests": {
-    "passed": 7,
+    "passed": 12,
     "failed": 0,
     "skipped": 0,
-    "suite": "experiments/models.test.ts"
+    "files": 2
   },
-  "artifacts": [
-    "docs/research/RESEARCH_DECISIONS.md",
-    "docs/design/GAME_DESIGN.md",
-    "docs/design/NATURAL_NUMBERS_GDD.md",
-    "docs/balance/RESOURCE_MODEL.md",
-    "docs/technical/TECHNICAL_SPEC.md",
-    "docs/qa/ACCESSIBILITY_STANDARD.md",
-    "docs/handoff/PHASE_1_IMPLEMENTATION_BRIEF.md",
-    "experiments/",
-    "prototypes/phase-0/",
-    "reports/phase-0/"
-  ],
+  "repeatabilityDigest": "ac202662c8fb5c6a2642acb686cf68d2fb3e205bbffe222e97201f633328a394",
   "openRisks": [
-    "Two authoritative research documents are missing and their conflicts remain unaudited.",
     "Heuristic rankings and deterministic calculations do not establish fun or comprehension.",
-    "Provisional balance centers require a Phase 1 simulator and human playtests.",
-    "Public deployment was not reachable from the provided local context and was not changed.",
-    "Phase 0 screenshot automation is a smoke/path validator; captures were produced through the in-app browser."
+    "Provisional balance centers require Phase 1 simulation and human playtests.",
+    "Technique visibility, approach identity, active pressure, and offline fairness need inclusive playtests.",
+    "Production Preact bundle, performance, accessibility, and cross-store recovery need implementation evidence.",
+    "Public deployment was intentionally not changed or used as an acceptance shortcut."
   ],
-  "phase1Ready": false,
-  "conditionalPhase1Readiness": "The engine brief is implementation-ready after the missing research inputs are supplied, reconciled, and any affected decisions are revised."
+  "phase1Ready": true,
+  "nextAction": "Begin Phase 1 on phase/01-deterministic-engine from the accepted v2/integration tip; do not implement on phase/00-design-lock or main."
 }

@@ -6,71 +6,59 @@ Working branch: `phase/00-design-lock`
 
 Command gate: **PASS**
 
-Phase gate: **BLOCKED** because the two named research inputs were not supplied.
+Phase gate: **PASS**
 
 ## Required commands
 
-| Command / check | Result | Duration | Evidence / note |
-|---|---:|---:|---|
-| `git status --short --branch` | PASS | 0.23s | Correct branch; all Phase 0 work untracked before the planned commits; no legacy modification. |
-| `git branch --show-current` | PASS | 0.23s | `phase/00-design-lock`. |
-| `git log -1 --oneline` | PASS | 0.25s | Pre-commit Phase 0 tip was legacy baseline `239d75f e2`. |
-| `npm install` | PASS | 1.9s | 56 packages audited; zero vulnerabilities; lockfile current. |
-| `npm run typecheck` | PASS | 6.30s | TypeScript 5.9.3, no diagnostics. |
-| `npm run lint` | PASS | 2.39s | 19 required artifacts, JSON parsing, and experiment-import boundary passed. |
-| `npm run test` | PASS | 3.83s | 1 file; 7/7 tests passed. |
-| `npm run format:check` | PASS | 1.11s | 129 text files; binaries correctly excluded. |
-| `npm run phase0:prototype` | PASS | 2.07s | Static prototype concept/build smoke passed. |
-| `npm run phase0:screenshots` | PASS | 0.88s | Six JPEG captures exist, decode, and match the requested viewport envelopes. |
-| `npm run phase0:links` | PASS | 0.95s | 13 local Markdown targets resolved. |
-| `npm run phase0:all` | PASS | 15.24s | Audit, report generation, repeatability, formatting, lint, typecheck, tests, prototype, screenshots, and links all passed. |
+| Command / check | Result | Evidence / note |
+|---|---:|---|
+| `npm run typecheck` | PASS | TypeScript strict Phase 0 project has no diagnostics. |
+| `npm run lint` | PASS | Required artifacts, JSON, import boundary, and both source hashes/byte counts verify. |
+| `npm run test` | PASS | 2 files; 12/12 model, source-integrity, reconciliation, configuration, and unblock tests pass. |
+| `npm run phase0:all` | PASS | Audit, source/reconciliation reports, repeatability, formatting, lint, typecheck, tests, prototype, screenshots, and links pass. |
+| `git diff --check` excluding the two immutable source copies | PASS | No whitespace errors in authored/generated files; original source whitespace is checksum-preserved by policy. |
+| Git ref/safety audit | PASS | `main`, `legacy/v1`, and annotated legacy target remain the original SHA; no push/deploy; accepted v2 refs co-point after commit. |
 
-`npm run phase0:all` regenerated the 22-file legacy manifest, all ten machine-readable experiment outputs and comparison reports, then repeated the design lab with digest `5ae307f3ac0af962d3faf647130d1b39b306b17539c154a956c586bbc936a91f`.
+`npm run phase0:all` regenerated the 22-file legacy manifest, all ten machine-readable experiment outputs and comparison reports, and the 53-decision reconciliation report. Deterministic repeatability produces digest `ac202662c8fb5c6a2642acb686cf68d2fb3e205bbffe222e97201f633328a394`.
 
-## Browser/runtime validation
+## Research integrity and reconciliation
 
-The preserved v1 ran locally for more than nine minutes after one legal purchase. It progressed from 10 Understanding and 0/s to 2.37K and 4.1/s with zero console errors. Startup, purchase, production, chapter display, save/offline source behavior, responsive views, and basic performance risks are recorded in `LEGACY_RUNTIME_BASELINE.md`.
+- Foundation SHA-256: `a4a5771965d0addfedc9f82655942ec0959078aab8285b8e507d2a44b6f1191c`; 56,730 bytes.
+- Completion Audit SHA-256: `3b64ba6b78364dc5c1289228307e16e6584d6eb1dcda9eb713a1d4e6084a9ab6`; 36,565 bytes.
+- Source checksums match both original supplied files and repository copies.
+- Reconciliation has exactly 53 unique sequential IDs, only allowed statuses, non-empty revisions, and a complete provisional configuration-path register.
+- The synthesis, decision register, acceptance document, completion artifacts, and Phase 1 manifest contain no stale missing-source acceptance state.
 
-The Phase 0 prototype loaded with zero console errors. The accessible tree exposed headings, regions, navigation, allocation controls, radio approaches, progress, return summary, dependency-map alternative text, and Publication. A plus control changed allocation from 3/4 to 4/4 and disabled both plus controls; the Exploratory radio became checked. No mouse-only action is required.
+## Design contradiction audit
 
-Browser viewport overrides and native visible-region captures:
+- Two primary stocks coexist with visible Technique exercise/method state; no third Technique currency or invisible Technique modifier remains.
+- The 0.80 exponent is activity-only; project work is linear and uses a dedicated slot. A contrary project-Attention comparator is required in Phase 1.
+- Universal automation is independent of approach and Technique.
+- First-Publication pacing is consistently 60–120 active-equivalent minutes and visibly provisional.
+- The 10 achievements split exactly into seven badge/history records and three non-power unlocks; none carries production power.
+- Storage is consistently localStorage current/fallback plus IndexedDB append-only history/logs.
+- Prestige, permanent branches, challenges before Publication, large-number backend, PWA, audio, later chapters, and postgame remain visibly deferred.
 
-| Requested override | Native image | Legacy | Prototype |
-|---|---:|---|---|
-| 1440 × 900 | 1425 × 891 | `legacy-1440x900.jpg` | `prototype-1440x900.jpg` |
-| 768 × 1024 | 753 × 1004 | `legacy-768x1024.jpg` | `prototype-768x1024.jpg` |
-| 390 × 844 | 375 × 812 | `legacy-390x844.jpg` | `prototype-390x844.jpg` |
+## Browser/runtime evidence retained
 
-The image dimensions exclude in-app browser chrome; CSS layout was exercised at the requested overrides. Final captures were inspected visually. A desktop header clipping issue and mobile navigation overflow found in the first prototype capture were corrected and recaptured.
-
-## Failures found and corrective action
-
-1. The first `phase0:report` run wrote report paths one directory above the repository. Path resolution was corrected and deterministic output regenerated in-repository.
-2. The first screenshot validator revision assumed PNG signatures while the browser capture API returned JPEG bytes; filenames were corrected to `.jpg` and the validator now decodes JPEG dimensions.
-3. The first format validator read image binaries as UTF-8 text; its scope now includes only known text extensions.
-4. The first visual prototype review found a clipping desktop save control and horizontally scrolling mobile navigation; flex constraints and mobile wrapping were added.
-5. An in-progress third Practice lane and a 90-minute Publication floor conflicted with selected decisions; both were normalized to two production lanes and 120–180 active-equivalent minutes.
-
-All five corrective actions were rerun through `npm run phase0:all` successfully.
+The preserved v1 runtime baseline remains valid: more than nine minutes after one legal purchase, 10 Understanding and 0/s advanced to 2.37K and 4.1/s with zero console errors. The disposable prototype still passes its build/smoke check and six committed desktop/tablet/mobile JPEG checks. Its accessible tree and allocation/approach controls were previously inspected with zero console errors. Phase 0 does not claim this prototype is production UI or a human usability study.
 
 ## Git/ref validation
 
 - `main`: `239d75fd0e223e91703e261d2196953a896609cb`.
 - `legacy/v1`: same original SHA.
 - annotated tag object `v1.0.0-legacy`: `d0eec7c7df87534f99684f55339ad58fa6437030`, targeting the original SHA.
-- working branch before Phase 0 commits: same original SHA.
-- `v2/integration`: absent by design while Phase 0 is BLOCKED.
-- pushes: none; PRs: none; deployment changes: none.
+- accepted refs after reconciliation commit: local `v2/integration` and `phase/01-deterministic-engine` at the accepted Phase 0 tip.
+- checked-out branch after handoff: `phase/00-design-lock`.
+- pushes, PRs, deployment changes, force updates, and history rewrites: none.
 
-## Known limitations and skips
+## Known limitations
 
-- The Foundation and Completion Audit were unavailable. This is a Phase acceptance blocker, not an automated-command failure.
-- No empirical fun/comprehension playtest exists; heuristic scores are comparative evidence only.
-- No production v2 bundle exists, so bundle and engine performance budgets remain unmeasured.
-- The public deployment could not be verified from supplied local context and was not touched.
-- Screenshot generation uses the in-app browser; the npm script validates committed captures rather than launching a second browser stack.
-- PWA, audio, localization, later chapters, prestige implementation, and polished assets are intentionally out of scope, not test skips.
+- No empirical fun, comprehension, fatigue, or retention playtest exists.
+- No production v2 bundle exists, so bundle, engine performance, IndexedDB recovery behavior, and assistive-technology integration remain Phase 1 evidence.
+- Screenshot capture is browser-assisted; the npm gate validates committed image decode/dimensions and prototype behavior rather than launching a second browser stack.
+- Public deployment was intentionally not modified or required for Phase 0 acceptance.
 
 ## Result
 
-Every runnable Phase 0 command and unaffected deliverable passes. `PHASE_0_STATUS` remains `BLOCKED` solely because required authoritative research inputs are missing and cannot be reconciled without fabrication.
+Every required Phase 0 command, research-integrity gate, reconciliation-completeness gate, design consistency gate, and Git preservation gate passes. The former missing-source blocker is resolved. Phase 0 is accepted and ready for the Phase 1 deterministic-engine task.

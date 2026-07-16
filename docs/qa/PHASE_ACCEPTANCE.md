@@ -2,11 +2,10 @@
 
 ## Phase 0 result
 
-`PHASE_0_STATUS = BLOCKED`
+`PHASE_0_STATUS = PASS`
 
-All unaffected safety, audit, experiment, design, technical, art, accessibility, prototype, and handoff work is required to complete and validate. The sole critical external evidence blocker is that neither named research document was supplied; therefore the “both research documents ingested/conflicts identified” gate cannot pass and Phase 1 must not treat this as an unconditional design lock.
+Both named research documents are preserved byte-for-byte, their SHA-256 checksums and byte counts verify against `docs/research/SOURCE_MANIFEST.json`, and all 53 required reconciliation decisions have an allowed status with an explicit revision. The inherited missing-source `BLOCKED` result remains documented as historical context in the completion report; it is resolved, not erased.
 
-To unblock: supply exact original files; record filename/checksum; copy without edits; classify propositions; reconcile conflicts; update decision confidence/affected specs; rerun `npm run phase0:all`; re-audit contradictions; change status only if all critical gates pass.
+All safety, audit, experiment, design, technical, art, accessibility, prototype, handoff, source-integrity, reconciliation-completeness, contradiction, and Git-preservation gates must pass together. The required command suite is `npm run typecheck`, `npm run lint`, `npm run test`, and `npm run phase0:all`. A command failure or a changed `main`/legacy target blocks acceptance.
 
-Other acceptance areas use the master prompt §§32–35 and the machine summary. No skipped screenshot/runtime check may be misreported as passed.
-
+Phase 1 may begin only from `phase/01-deterministic-engine` after both it and `v2/integration` reference the accepted Phase 0 tip. No Phase 1 implementation belongs on `phase/00-design-lock`, and no v2 work belongs on `main`.
