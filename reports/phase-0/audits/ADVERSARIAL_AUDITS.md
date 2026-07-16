@@ -6,11 +6,11 @@ The loop remains planning-interesting without mathematical terminology: allocate
 
 Main risk: two resources collapse to a solved ratio. Mitigations are contextual project vectors, caps, downstream approach artifacts, five legible 4-slot policies, and simulator rejection if one allocation dominates all visible goals. Automation replaces queue/revisit chores with completion/reserve/priority decisions. Poor plans preserve inputs/≥90% work and target ≤5m opening recovery. Active play is stored/optional. Waiting always shows plan/ETA/stop rule.
 
-Publication is meaningful; prestige is not yet justified. Result: structural design passes available-evidence audit; human fun/comprehension and missing research remain unresolved.
+Publication is meaningful; prestige is not yet justified. Result: structural design passes the reconciled evidence audit; human fun/comprehension remain unresolved playtest questions.
 
 ## Economy audit
 
-Precision and Intuition have exclusive producers/sinks; no direct conversions, decay, achievement power, published passive farm, or circular exchange. Units/formulas are dimensionally coherent. Risks: binary ratio, caps causing thrash, routine upgrade order, method reuse bypass, prefarming. Gates measure removal, consumption shares, cap time, policy dominance, normalized approach results, recovery, finite margin, and effect decomposition. All numerical centers remain provisional.
+Precision and Intuition have exclusive producers/sinks; no direct conversions, decay, achievement production power, published passive farm, or circular exchange. Technique is visible through named exercises and typed artifacts, never a third stock or hidden efficiency value. Units/formulas are dimensionally coherent. Risks: binary ratio, caps causing thrash, routine upgrade order, method reuse bypass, prefarming, and Technique becoming invisible. Gates measure removal, consumption shares, cap time, policy dominance, normalized approach results, Technique visibility, recovery, finite margin, and effect decomposition. All numerical centers remain provisional.
 
 ## UX perspectives
 
@@ -25,7 +25,7 @@ Precision and Intuition have exclusive producers/sinks; no direct conversions, d
 
 ## Technical audit
 
-Experiments are separated by AGENTS/import validation. Engine/UI/content/persistence directions are explicit; time/RNG/effects/conditions/numbers/save boundaries specified. CI scripts cover type/lint/test/repeatability/prototype/screenshots/report stability. Pages base/storage lifecycle/extensions are defined. Risks: current Phase 0 custom lint is intentionally lightweight; actual Preact bundle/axe/AT/performance and localStorage failure modes require Phase 1 proof.
+Experiments are separated by AGENTS/import validation. Engine/UI/content/persistence directions are explicit; time/RNG/effects/conditions/numbers/save boundaries specified. CI scripts cover type/lint/test/repeatability/prototype/screenshots/report stability. Pages base and the dual localStorage/IndexedDB persistence roles are defined. Risks: current Phase 0 custom lint is intentionally lightweight; actual Preact bundle/axe/AT/performance and cross-store failure modes require Phase 1 proof.
 
 ## Scope classification
 
@@ -37,7 +37,6 @@ Experiments are separated by AGENTS/import validation. Engine/UI/content/persist
 
 ## Contradiction audit
 
-Audited names, counts, formulas, reset/offline/timing/frontend/numbers/save/art/roadmap. Found and corrected two in-progress inconsistencies: the prototype/Attention lab's third Practice lane contradicted the selected two-stock/dedicated-project model; first-Publication prose varied between 90 and 120 minutes. Canonical state now uses two production lanes and 120–180 active-equivalent minutes. Offline is consistently 12h full/25% through 72h (provisional); frontend Preact; native adapter; rotating localStorage; notebook/instrument art; prestige deferred.
+Audited names, counts, formulas, reset/offline/timing/frontend/numbers/save/art/roadmap against both checksum-verified research inputs. The inherited third Practice lane remains removed, while Technique is restored visibly as non-stock exercise/method state. The first-Publication target is now consistently 60–120 active-equivalent minutes. Activity concavity never applies to linear project work. Offline is consistently 12h full/25% through 72h as a provisional center with four window comparators; frontend Preact has exit gates; storage is dual-layer localStorage current/fallback plus IndexedDB append-only history/logs; prestige remains deferred.
 
-The missing research documents are an intentional unresolved evidence gap, not a hidden contradiction. Status remains BLOCKED.
-
+All 53 required research decisions have allowed statuses and documented revisions. No missing-source contradiction remains; Phase acceptance now depends on the complete automated and Git safety gates.

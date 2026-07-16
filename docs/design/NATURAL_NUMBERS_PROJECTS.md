@@ -2,6 +2,8 @@
 
 All numerical inputs and base work are `PROVISIONAL` tuning data (`P`). Work is measured in project-work seconds at base speed 1 work/s. Starting a project atomically reserves requirements; completion consumes them; cancel returns reserved inputs; approach changes preserve inputs and ≥90% completed work (`P`). Every project awards monotonic Understanding and an explicit artifact.
 
+Projects use their dedicated slot and advance linearly from explicit elapsed time; the activity Attention exponent never applies to project work. Technique is visible method preparation rather than a resource: Induction Walkthrough and Missing Base, Missing Step contain named exercises that prepare specific proof steps, while Constructive output records typed steps/templates for matching later nodes. Project previews and ledgers expose every prepared step and reuse match. No Technique value silently changes rates or unlocks universal automation.
+
 | Stable ID | Title | Dependencies | Base Precision / Intuition / work (P) | Core artifact / strategic purpose | Required tests |
 |---|---|---|---:|---|---|
 | `nn.project.zero_successor` | Zero and Successor | none | 12 / 0 / 45 | successor vocabulary; reveal Explore/Intuition | opening reachability, convention copy |
@@ -21,7 +23,8 @@ All numerical inputs and base work are `PROVISIONAL` tuning data (`P`). Work is 
 
 - **Formal:** requirement vector leans Precision (`+25% P`, `−10% I`); exposes obligations and emits a matching reusable lemma.
 - **Exploratory:** leans Intuition (`−10% P`, `+25% I`); reveals downstream requirements/alternate edge before commitment.
-- **Constructive:** balanced input (`+5%` each, `P`); decomposes work into reusable typed steps/templates.
+- **Constructive:** balanced input (`+5%` each, `P`); exposes Technique preparation by decomposing work into reusable typed steps/templates.
 
 Work is normalized by approach output value so no approach is simultaneously fastest and best downstream. Exact transforms live in data and are reported in marginal previews.
 
+Phase 1 must retain a simulator comparator where projects compete for Attention. The dedicated-slot model is selected for implementation because opportunity cost already exists through one-slot scheduling, reserved inputs, ordering, approach choice, and artifact value; it remains reversible until that comparison and playtests pass.

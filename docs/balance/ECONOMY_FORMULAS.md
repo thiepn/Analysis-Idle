@@ -16,14 +16,14 @@
 
 ## Production (`PROVISIONAL` center)
 
-For activity `i`:
+For production activity `i` only:
 
 ```text
 rate_i = β_i [stock/s] × a_i^α [1] × additiveGroup_i [1] × namedMultipliers_i [1]
 α = 0.80
 ```
 
-Zero slots produce zero. `Σa_i ≤ C`; unassigned slots are allowed. Stock advance over explicit `Δt` seconds:
+Zero slots produce zero. `Σa_i ≤ C`; unassigned slots are allowed. The exponent is a provisional activity-allocation model and never applies to project work. Stock advance over explicit `Δt` seconds:
 
 ```text
 stock' = min(cap, stock + rate × Δt)
@@ -33,13 +33,15 @@ No formula reads wall clock or animation frames. Switching has no fee initially;
 
 ## Project work
 
-Starting validates prerequisites and atomically reserves `K_P` Precision and `K_I` Intuition. With base speed `s` and typed method effects:
+Starting validates prerequisites and atomically reserves `K_P` Precision and `K_I` Intuition. Projects use their dedicated slot, consume no Attention merely to run, and advance linearly with elapsed time. With base speed `s` and typed method effects:
 
 ```text
 W' = max(0, W − s × namedMethodFactor × Δt)
 ```
 
 Completion consumes reserved inputs, validates artifacts, grants configured `U`, emits domain events, then runs explicit completion policy. Approach transforms requirement vector/artifact schema and may transform work, but is normalized against downstream value. Cancellation returns reserved inputs; a mid-project approach change preserves ≥90% work (`P`).
+
+Technique has no scalar formula. Named exercise completion and Constructive preparation emit typed `preparedStep`/`template` artifacts; only explicit matching rules can use them.
 
 ## Insight and offline
 
@@ -54,4 +56,3 @@ Events/safe-policy may stop earlier. The formula is configuration, not final ret
 ## Costs
 
 Projects use fixed contextual input vectors; milestones unlock controls; routine upgrades use one-time fixed costs. Repeatable geometric costs and dynamic player-relative costs are absent in Natural Numbers. Later geometric/polynomial costs require dimensional labels and simulator evidence.
-

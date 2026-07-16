@@ -22,7 +22,7 @@ Project vectors/work are specified in `NATURAL_NUMBERS_PROJECTS.md`; upgrade val
 
 ## Simulator scenarios
 
-Run at minimum: 3/0→2/1 opening, balanced, project-bottleneck, all-in each stock, no reallocations, queue earliest, downstream-aware, each approach output, no Insight, optimal legal Insight, 8h/24h/72h offline with/without safe policy, capped lane, approach change, and one deliberately poor project order.
+Run at minimum: 3/0→2/1 opening, balanced, project-bottleneck, all-in each stock, no reallocations, queue earliest, downstream-aware, each approach output, no Insight, optimal legal Insight, 8h/24h/72h offline with/without safe policy, capped lane, approach change, and one deliberately poor project order. Compare the selected dedicated project slot against projects competing for Attention, and exponent 0.80 against 0.85, 0.90, and an explicit marginal-rate table. Compare offline full/maximum windows 4h/24h, 8h/48h, 12h/72h, and 24h/168h.
 
 ## Acceptance targets
 
@@ -31,8 +31,8 @@ Run at minimum: 3/0→2/1 opening, balanced, project-bottleneck, all-in each sto
 - No required project waits solely on a capped/unused opposite stock for >12 minutes while open.
 - Routine upgrade order performance spread <20% to capstone unless the slower order yields a documented artifact advantage.
 - Formal/Exploratory/Constructive normalized capstone times within 15%, with distinguishable downstream artifacts.
-- First Publication between 120–180 active-equivalent minutes for target policies; plausible mistake ≤5m recovery in opening hour.
+- Technique preparation is visible in project previews/ledgers, changes matching artifact options, and never acts as a hidden rate or automation gate.
+- First Publication between 60–120 active-equivalent minutes for target policies; plausible mistake ≤5m recovery in opening hour.
 - Insight optimal sustained advantage 10–15%, never >20%.
 
 Human playtests remain required for comprehension, fun, frustration, and perceived distinctness.
-

@@ -11,6 +11,10 @@
 
 Attention is dimensionless capacity; Understanding is monotonic validated-content count/score and never spent; Insight is a bounded charge; Mastery is a qualitative published record. None participates in direct currency exchange.
 
+## Technique as visible method state
+
+Technique is accepted with revision from the research Foundation: it is mathematically important, but the Natural Numbers slice does not model it as a third stock. Named exercises prepare specific proof steps, and Constructive work emits typed templates. These artifacts have visible sources, matching sinks, ownership, reset/persistence, and completion-ledger entries. Technique has no balance scalar, passive production, decay, exchange, hidden rate, or automation-unlock role. Removing this method state must eliminate prepared-step/template choices without changing Precision or Intuition arithmetic.
+
 ## Source–sink matrix
 
 | Source / sink | Precision | Intuition | Understanding | Insight | Mastery |
@@ -20,6 +24,7 @@ Attention is dimensionless capacity; Understanding is monotonic validated-conten
 | Project requirements | − | − | + on validation | event may + | 0 |
 | Formal approach artifact | − biased | − | + | 0 | later method input |
 | Exploratory artifact | − | − biased | + | 0 | later method input |
+| Technique exercise / Constructive artifact | reserved inputs only | reserved inputs only | + on validation | 0 | typed prepared step/template |
 | Insight intervention | 0 | 0 | indirect only | − | 0 |
 | Publication | reset | reset | archive | retain | + method cards |
 
@@ -30,11 +35,12 @@ Attention → Formalize → Precision ┐
                                   ├→ reserved project → validated artifact → Understanding
 Attention → Explore   → Intuition ┘                                  │
 meaningful event → Insight → bounded intervention                    └→ Publication → Mastery
+Named project exercise → prepared step ┐
+Constructive approach → typed template ┴→ explicit matching dependency or later method card
 ```
 
 There is no Precision↔Intuition conversion, interest, decay, or passive production from published chapters. Project inputs reserve atomically and consume only on completion/cancel policy. Caps prevent unlimited prefarming; a capped lane pauses or follows an explicit reroute rule.
 
 ## Feedback/risk audit
 
-Positive loops are limited to visible named activity upgrades and method reuse. Negative feedback comes from contextual project requirement vectors, caps, and non-destructive approach switching. Risks: binary optimal ratio, hoarding before Publication, one stock serving as a gate, cap thrashing, and reusable artifacts bypassing too much work. Gates compare removal, all-in policies, stock idle share, sink shares, and approach-normalized completion.
-
+Positive loops are limited to visible named activity upgrades and method reuse. Negative feedback comes from contextual project requirement vectors, caps, and non-destructive approach switching. Risks: binary optimal ratio, hoarding before Publication, one stock serving as a gate, cap thrashing, invisible Technique, and reusable artifacts bypassing too much work. Gates compare stock/method-state removal, all-in policies, stock idle share, sink shares, Technique visibility, and approach-normalized completion.

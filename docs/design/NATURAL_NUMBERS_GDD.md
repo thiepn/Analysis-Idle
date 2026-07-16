@@ -22,13 +22,13 @@ Starts with 3 Attention, zero stocks, no Insight, Formalize visible, one guided 
 
 ## Exact progression stages
 
-1. **Opening:** all 3 Attention guide-assigned to Formalize; acknowledge the zero convention; Precision begins under 30 seconds.
-2. **Second activity:** `nn.project.zero_successor` reveals Explore/Intuition and the first 3/0 vs 2/1 trade-off.
+1. **Opening:** all 3 Attention guide-assigned to Formalize; acknowledge the zero convention by 10 seconds; Precision begins by 60 seconds. These are guided confirmations, not strategic decisions.
+2. **Second activity:** `nn.project.zero_successor` reveals Explore/Intuition and the first genuine 3/0 vs 2/1 trade-off within 1–3 minutes.
 3. **First project:** Peano Frame exposes the dedicated project slot and dependency-map list.
 4. **First milestone/control:** rate ledger shows marginal rates, caps, and visible-project ETA.
 5. **Recursion:** Primitive Recursion unlocks queue-one.
 6. **Operations:** Addition and multiplication create a fork; the player selects which requirement vector to prepare first.
-7. **Approach choice:** Induction Walkthrough introduces Formal/Exploratory/Constructive outputs.
+7. **Approach choice:** Induction Walkthrough introduces Formal/Exploratory/Constructive outputs and makes Technique preparation visible through named exercises and prepared proof steps.
 8. **First keystone:** Recursion Template or Lemma Reuse changes later project structure.
 9. **Automation:** completion behavior, then reserves; fourth Attention expands planning.
 10. **Proof-chain system:** strong induction, Well-Ordering, and least counterexample form parallel/linked nodes.
@@ -38,6 +38,8 @@ Starts with 3 Attention, zero stocks, no Insight, Formalize visible, one guided 
 ## Induction Chain mechanic
 
 Node types are `statement`, `baseCase`, `inductionHypothesis`, `inductionStep`, `counterexample`, `reusableLemma`, `equivalenceEdge`, and `closure`. Projects select a schema; strong induction can require multiple base cases. Dependencies validate before work starts. Player decisions are resource allocation, project/approach order, lemma/template reuse, queue/reserve policy, and optional Insight use.
+
+Technique is represented as method state, not currency: embedded exercises mark specific steps as prepared, and Constructive projects emit typed templates that can satisfy matching later nodes. Every prepared step and match is visible in project previews, the dependency-list alternative, and completion ledgers. Technique cannot silently modify rates or gate universal automation.
 
 There are no random/destructive failures. A missing assumption or invalid dependency pauses the affected node with a plain-language explanation and highlights the required prior result. Automation may start funded validated nodes only. The visual graph uses shape + label + state, SVG title/description, and a fully operable ordered-list alternative.
 
@@ -56,4 +58,3 @@ Overview: next decision, two stocks/rates, Understanding, Insight, Attention all
 ## Completion gates
 
 All required projects complete; all capstone implication edges have valid method artifacts; no unresolved core dependency; Publication ledger validates. Balance thresholds are in `NATURAL_NUMBERS_BALANCE.md`; exact catalogues are companion documents.
-

@@ -14,7 +14,6 @@ Use deterministic bounded event-driven catch-up: advance to the next event, reso
 | Capstone/Publication/prestige availability | Stop relevant progression |
 | Automation failure | Stop affected lane and record reason |
 
-Credit windows are configuration: first 12 hours at 100%, then 25% through 72 hours (`PROVISIONAL`); no credit afterward. Experiments must compare alternatives before release. Clock rollback yields zero negative time and a warning; extreme forward jumps use the same cap and record anomaly metadata.
+Credit windows are configuration: first 12 hours at 100%, then 25% through 72 hours (`PROVISIONAL`); no credit afterward. Phase 1 comparisons must include 4h/24h, 8h/48h, 12h/72h, and 24h/168h full/maximum windows under the same policies before release. Clock rollback yields zero negative time and a warning; extreme forward jumps use the same cap and record anomaly metadata.
 
 Return summary is one screen: elapsed time; credited/effective time; policy; gains; projects; milestones; decisions deferred; caps; failed rules; and next action. It restores focus to that action. No cascade of dialogs.
-

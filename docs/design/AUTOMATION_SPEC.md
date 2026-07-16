@@ -1,6 +1,6 @@
 # Automation specification
 
-Automation is universal and converts chores into higher-level choices.
+Automation is universal and converts chores into higher-level choices. No resource, Technique score, approach, or permanent branch owns basic automation access.
 
 | Stage | Capability | Natural Numbers | New decision | Persists through Publication |
 |---|---|---|---|---|
@@ -17,4 +17,3 @@ Automation is universal and converts chores into higher-level choices.
 Rules are deterministic, visible, ordered, and explain why they fired/failed. They cannot buy upgrades or select approaches without explicit configuration. Reserves are per stock. A project auto-starts only when prerequisites, reserved inputs, work slot, and policy all pass. Loops/cycles are rejected at validation.
 
 After Publication, chapter-specific targets archive; reusable templates retain stable semantics. Prestige, if ever added, must explicitly state which capabilities persist.
-

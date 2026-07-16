@@ -16,16 +16,16 @@
 | First interaction | 5–15 seconds |
 | Passive production | 15–30 seconds |
 | First meaningful choice | 1–3 minutes |
-| Intuition appears | 3–7 minutes |
+| Intuition appears | 1–3 minutes |
 | First project | 5–10 minutes |
 | First upgrade | 8–15 minutes |
-| First milestone | 12–20 minutes |
-| Queue-one automation | 20–35 minutes |
-| First Insight | 25–40 minutes |
-| First approach choice | 35–60 minutes |
-| Fourth Attention | 45–75 minutes |
-| Capstone | 90–140 minutes |
-| Publication | 120–180 minutes |
+| First milestone | 5–10 minutes |
+| Queue-one automation | 15–30 minutes |
+| First Insight | 15–30 minutes |
+| First approach choice | 30–45 minutes |
+| Fourth Attention | 35–60 minutes |
+| Capstone | 60–100 minutes |
+| Publication | 60–120 minutes |
 
 First offline return is tested after any absence ≥60 seconds; the summary appears only when something changed or a decision blocked.
 
@@ -36,4 +36,3 @@ While open: visible progress at least every 30 seconds, a useful optimization/de
 ## Campaign envelope
 
 First Publication spans 1–3 sessions. Later chapters grow from hours to days, with the finite initial campaign targeting 4–8 weeks. Each Publication compresses solved work so UI/state complexity does not grow monotonically.
-

@@ -11,8 +11,8 @@ Primary audiences are idle-game planners, curious mathematics learners, and mobi
 ## Locked loop architecture
 
 1. Allocate 3 whole Attention between **Formalize** (Precision) and **Explore** (Intuition); a fourth slot unlocks during Natural Numbers.
-2. Accumulate chapter-local Precision and Intuition with concave slot scaling.
-3. Inspect project requirements, downstream effects, and ETA; select Formal, Exploratory, or Constructive approach.
+2. Accumulate chapter-local Precision and Intuition with concave slot scaling. Activity work alone uses the provisional exponent; projects do not.
+3. Inspect project requirements, downstream effects, Technique preparation, and ETA; select Formal, Exploratory, or Constructive approach.
 4. Reserve inputs and run one project in its dedicated slot. Projects never consume Attention merely to exist.
 5. Complete dependency nodes, earn non-spendable Understanding, unlock controls, and record mathematical methods.
 6. Configure queue/reserve/completion automation so absence executes the player's stated plan.
@@ -27,6 +27,8 @@ The stable loop is allocation → preparation → project choice → validated r
 - **Understanding** (monotonic score): awarded by validated concepts/projects, never spent, used for progression summaries.
 - **Insight** (bounded charges): deterministic optional interventions; cap 3 is provisional.
 - **Mastery** (published record): qualitative chapter methods and compression state, not a multiplier currency.
+
+**Technique is visible but is not a stock.** Exercises inside projects prepare named proof steps; Constructive work emits typed step/template artifacts; the project preview and completion ledger show that preparation. Technique never becomes a hidden efficiency score, passive multiplier, or payment required to unlock universal automation.
 
 Precision ↔ Intuition conversion is forbidden in Natural Numbers. Caps, costs, and rates remain configuration.
 
@@ -52,7 +54,7 @@ Publication is a typed chapter transformation. It archives the dependency worksp
 
 ## Progression and scope
 
-Natural Numbers targets 120–180 active-equivalent minutes over 1–3 sessions (`PROVISIONAL`). The finite initial campaign targets 30–50 active-equivalent hours over 4–8 weeks (`PROVISIONAL`). Each chapter must introduce a behavior-changing mechanic and a mathematically justified capstone. Postgame mastery/replay is optional. Global prestige is deferred until several chapters prove a unique purpose.
+Natural Numbers targets 60–120 active-equivalent minutes over 1–3 sessions (`PROVISIONAL`). The finite initial campaign targets 30–50 active-equivalent hours over 4–8 weeks (`PROVISIONAL`). Each chapter must introduce a behavior-changing mechanic and a mathematically justified capstone. Postgame mastery/replay is optional. Global prestige is deferred until several chapters prove a unique purpose.
 
 ## Non-goals
 

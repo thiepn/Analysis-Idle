@@ -2,11 +2,11 @@
 
 ## First minute
 
-The player sees one goal, one visible activity, and three Attention already assigned. Within 10 seconds they confirm Formalize and see passive Precision. Explore/Intuition appears after the first definition, creating a visible 3/0 versus 2/1 decision. Projects, maps, automation, achievements, Publication, and future chapters remain hidden until relevant.
+The player sees one goal, one visible activity, and three Attention already assigned. Within 10 seconds they confirm Formalize and see passive Precision by 60 seconds. These are guided confirmations, not falsely counted as strategic choices. Explore/Intuition then appears, creating the first genuine 3/0 versus 2/1 decision within 1–3 minutes. Projects, maps, automation, achievements, Publication, and future chapters remain hidden until relevant.
 
 ## First session (15–25 minutes, provisional)
 
-The player completes the Peano Frame, sees the dependency map, chooses an approach for Primitive Recursion, earns the first Insight charge, and unlocks queue-one. Every wait shows ETA and the next planned event. The session ends with a funded project and explicit offline policy.
+The player completes the Peano Frame, sees the dependency map, chooses an approach, encounters visible exercise/step preparation, earns the first Insight charge, and unlocks queue-one. Every wait shows ETA and the next planned event. The session ends with a funded project and explicit offline policy.
 
 ## Returning player
 
@@ -31,4 +31,3 @@ Marginal rates, requirement vectors, ETA, and effect decomposition are visible. 
 ## Publication
 
 Before confirming, a ledger shows reset/retain/transform/archive state. After Publication, the player sees a compact method card and the next chapter's new mechanic—not merely a multiplier.
-

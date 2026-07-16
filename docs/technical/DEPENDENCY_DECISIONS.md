@@ -15,4 +15,4 @@ Exact resolved versions are committed in `package-lock.json`. Installation audit
 
 `preact`, a strict schema validator (prefer Zod unless hand-written validation remains demonstrably clearer), and KaTeX for reviewed accessible math. Proposed dev stack: Vite, `@preact/preset-vite`, TypeScript, Vitest, Testing Library for Preact, Playwright + axe integration, ESLint/typescript-eslint/jsx-a11y, and Prettier. Resolve current stable releases at scaffold time and record exact versions.
 
-Do not add a state manager, router, date library, animation library, component kit, IndexedDB wrapper, large-number library, analytics SDK, or PWA plugin until a measured requirement appears.
+Do not add a state manager, router, date library, animation library, component kit, IndexedDB wrapper, large-number library, analytics SDK, or PWA plugin until a measured requirement appears. Phase 1 uses the native IndexedDB API behind the persistence port for append-only backups/replay logs; a wrapper requires a separate maintenance/bundle justification.
