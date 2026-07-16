@@ -1,0 +1,25 @@
+name: Phase 0 validation
+
+on:
+  pull_request:
+  push:
+    branches:
+      - phase/00-design-lock
+      - v2/integration
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run phase0:all
+      - name: Generated artifacts are stable
+        run: git diff --exit-code

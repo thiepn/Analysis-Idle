@@ -1,0 +1,17 @@
+name: Balance issue
+description: Report dominance, dead content, pacing, or numerical instability
+title: "[Balance] "
+labels: [balance]
+body:
+  - type: textarea
+    id: state
+    attributes: { label: State, seed, policy, and content IDs }
+    validations: { required: true }
+  - type: textarea
+    id: result
+    attributes: { label: Measured result and expected gate }
+    validations: { required: true }
+  - type: textarea
+    id: artifact
+    attributes: { label: Simulator output or report path }
+
