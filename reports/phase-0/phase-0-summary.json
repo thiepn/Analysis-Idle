@@ -1,0 +1,102 @@
+{
+  "phase": 0,
+  "version": "0.1.0-v2-design-lock",
+  "status": "BLOCKED",
+  "blockingReason": "The supplied Deep Research Foundation v0.1 and Deep Research Completion Audit/deep-research-report.md were not present, so their contents cannot be ingested, compared, or reconciled without fabrication.",
+  "originalHead": "239d75fd0e223e91703e261d2196953a896609cb",
+  "workingBranch": "phase/00-design-lock",
+  "legacyBranch": {
+    "name": "legacy/v1",
+    "created": true,
+    "sha": "239d75fd0e223e91703e261d2196953a896609cb"
+  },
+  "legacyTag": {
+    "name": "v1.0.0-legacy",
+    "created": true,
+    "annotated": true,
+    "tagObjectSha": "d0eec7c7df87534f99684f55339ad58fa6437030",
+    "targetSha": "239d75fd0e223e91703e261d2196953a896609cb"
+  },
+  "integrationBranch": {
+    "name": "v2/integration",
+    "created": false,
+    "sha": "",
+    "reason": "The prompt permits a Git handoff when a safe accepted integration target does not yet exist; BLOCKED work was not labeled accepted Phase 0."
+  },
+  "mainUnchanged": true,
+  "deploymentUnchanged": true,
+  "refsPushed": false,
+  "pullRequestOpened": false,
+  "selectedArchitecture": "Candidate F: staged hybrid of discrete Attention allocation, dedicated projects, and simplified mathematical dependencies; priority automation is layered on later.",
+  "selectedAttentionModel": "Three whole slots initially, a fourth unlocked in Natural Numbers, plus/minus and preset controls, provisional concavity exponent 0.80.",
+  "selectedResourceModel": "Two chapter-local primary stocks: Precision and Intuition. Attention is capacity; Understanding is non-spendable mastery; Insight is bounded active capacity; Mastery is a published record.",
+  "selectedFrontend": "Preact 10 + TypeScript 5.9.3 + Vite, with a framework-independent deterministic engine.",
+  "selectedStorageModel": "Namespaced rotating localStorage canonical saves first; IndexedDB for logs and future growth; explicit legacy detection and versioned migration envelopes.",
+  "prestigeDecision": "DEFERRED until a multi-chapter prototype proves a unique purpose distinct from Publication.",
+  "criticalDecisions": [
+    "validated content -> commands -> deterministic transitions -> canonical state -> selectors -> UI",
+    "two-stock Natural Numbers economy with no direct conversion",
+    "one dedicated project slot that does not consume Attention to run",
+    "universal rule-based automation with traces and safe stops",
+    "reversible Formal, Exploratory, and Constructive project approaches",
+    "event-driven offline reconciliation with unresolved-decision taxonomy",
+    "typed Publication transformation without a generic multiplier",
+    "native number adapter with finite checks and a migration gate",
+    "WCAG 2.2 AA, keyboard/touch parity, reduced motion, and accessible mathematics"
+  ],
+  "provisionalDecisions": [
+    "Attention exponent 0.80 and exact fourth-slot timing",
+    "all project costs, durations, rates, caps, and approach modifiers",
+    "Insight cap 3 and 10-15% active advantage target with 20% ceiling",
+    "offline credit: 12h full, then 25% through 72h",
+    "first Publication: 120-180 active-equivalent minutes over 1-3 sessions",
+    "campaign: 30-50 active-equivalent hours over 4-8 weeks",
+    "performance and bundle budgets until Phase 1 measurements"
+  ],
+  "deferredDecisions": [
+    "global prestige timing, currency, formula, and reset",
+    "permanent campaign branches",
+    "pre-Publication challenges",
+    "PWA/service worker and audio implementation",
+    "large-number library adoption",
+    "IndexedDB as canonical save store",
+    "later-chapter content, localization, and postgame"
+  ],
+  "rejectedDecisions": [
+    "incrementally refactoring v1 into v2",
+    "three primary Natural Numbers resources",
+    "six starting Attention",
+    "repeatable clicking as a resource source",
+    "branch-exclusive automation",
+    "unlimited offline progress",
+    "a generic Publication multiplier",
+    "an unproven Real Numbers/Axiom prestige formula"
+  ],
+  "tests": {
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "suite": "experiments/models.test.ts"
+  },
+  "artifacts": [
+    "docs/research/RESEARCH_DECISIONS.md",
+    "docs/design/GAME_DESIGN.md",
+    "docs/design/NATURAL_NUMBERS_GDD.md",
+    "docs/balance/RESOURCE_MODEL.md",
+    "docs/technical/TECHNICAL_SPEC.md",
+    "docs/qa/ACCESSIBILITY_STANDARD.md",
+    "docs/handoff/PHASE_1_IMPLEMENTATION_BRIEF.md",
+    "experiments/",
+    "prototypes/phase-0/",
+    "reports/phase-0/"
+  ],
+  "openRisks": [
+    "Two authoritative research documents are missing and their conflicts remain unaudited.",
+    "Heuristic rankings and deterministic calculations do not establish fun or comprehension.",
+    "Provisional balance centers require a Phase 1 simulator and human playtests.",
+    "Public deployment was not reachable from the provided local context and was not changed.",
+    "Phase 0 screenshot automation is a smoke/path validator; captures were produced through the in-app browser."
+  ],
+  "phase1Ready": false,
+  "conditionalPhase1Readiness": "The engine brief is implementation-ready after the missing research inputs are supplied, reconciled, and any affected decisions are revised."
+}
