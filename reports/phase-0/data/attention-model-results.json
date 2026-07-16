@@ -1,0 +1,1512 @@
+{
+  "experimentId": "attention",
+  "hypothesis": "Use 3→4 discrete slots, tap/plus-minus controls, presets, and a provisional 0.80 exponent.",
+  "modelVersion": "phase0-design-lab/1.0.0",
+  "seed": null,
+  "playerPolicy": "deterministic heuristic policy enumeration",
+  "horizon": "first chapter / first 30 minutes where applicable",
+  "stoppingCondition": "all configured candidates evaluated",
+  "status": "supported",
+  "deterministic": true,
+  "result": {
+    "discrete": [
+      {
+        "capacity": 3,
+        "exponent": 0.7,
+        "policyCount": 4,
+        "allInWins": 0,
+        "meanActiveLanes": 2,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              1,
+              2
+            ],
+            "output": 2.6245047927124707
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              2,
+              1
+            ],
+            "output": 3.043081470161836
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              1,
+              2
+            ],
+            "output": 3.043081470161836
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              2,
+              1
+            ],
+            "output": 2.968180511619342
+          }
+        ]
+      },
+      {
+        "capacity": 3,
+        "exponent": 0.75,
+        "policyCount": 4,
+        "allInWins": 0,
+        "meanActiveLanes": 2,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              1,
+              2
+            ],
+            "output": 2.681792830507429
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              2,
+              1
+            ],
+            "output": 3.1204203211850294
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              1,
+              2
+            ],
+            "output": 3.1204203211850294
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              2,
+              1
+            ],
+            "output": 3.0340617550835436
+          }
+        ]
+      },
+      {
+        "capacity": 3,
+        "exponent": 0.8,
+        "policyCount": 4,
+        "allInWins": 2,
+        "meanActiveLanes": 1.5,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              1,
+              2
+            ],
+            "output": 2.7411011265922482
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              3,
+              0
+            ],
+            "output": 3.251103325128935
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              3
+            ],
+            "output": 3.251103325128935
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              2,
+              1
+            ],
+            "output": 3.1022662955810856
+          }
+        ]
+      },
+      {
+        "capacity": 3,
+        "exponent": 0.85,
+        "policyCount": 4,
+        "allInWins": 2,
+        "meanActiveLanes": 1.5,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              1,
+              2
+            ],
+            "output": 2.8025009252216604
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              3,
+              0
+            ],
+            "output": 3.4346843797154185
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              3
+            ],
+            "output": 3.4346843797154185
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              2,
+              1
+            ],
+            "output": 3.1728760640049094
+          }
+        ]
+      },
+      {
+        "capacity": 3,
+        "exponent": 0.9,
+        "policyCount": 4,
+        "allInWins": 2,
+        "meanActiveLanes": 1.5,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              1,
+              2
+            ],
+            "output": 2.866065983073615
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              3,
+              0
+            ],
+            "output": 3.628631762355087
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              3
+            ],
+            "output": 3.628631762355087
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              2,
+              1
+            ],
+            "output": 3.245975880534657
+          }
+        ]
+      },
+      {
+        "capacity": 3,
+        "exponent": 0.95,
+        "policyCount": 4,
+        "allInWins": 2,
+        "meanActiveLanes": 1.5,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              1,
+              2
+            ],
+            "output": 2.931872657849691
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              3,
+              0
+            ],
+            "output": 3.833530831692645
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              3
+            ],
+            "output": 3.833530831692645
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              2,
+              1
+            ],
+            "output": 3.3216535565271443
+          }
+        ]
+      },
+      {
+        "capacity": 3,
+        "exponent": 1,
+        "policyCount": 4,
+        "allInWins": 4,
+        "meanActiveLanes": 1,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              0,
+              3
+            ],
+            "output": 3
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              3,
+              0
+            ],
+            "output": 4.050000000000001
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              3
+            ],
+            "output": 4.050000000000001
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              3,
+              0
+            ],
+            "output": 3.4499999999999997
+          }
+        ]
+      },
+      {
+        "capacity": 4,
+        "exponent": 0.7,
+        "policyCount": 5,
+        "allInWins": 0,
+        "meanActiveLanes": 2,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              2,
+              2
+            ],
+            "output": 3.249009585424942
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              3,
+              1
+            ],
+            "output": 3.762853527965701
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              1,
+              3
+            ],
+            "output": 3.762853527965701
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              2,
+              2
+            ],
+            "output": 3.65513578360306
+          }
+        ]
+      },
+      {
+        "capacity": 4,
+        "exponent": 0.75,
+        "policyCount": 5,
+        "allInWins": 0,
+        "meanActiveLanes": 2,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              2,
+              2
+            ],
+            "output": 3.363585661014858
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              3,
+              1
+            ],
+            "output": 3.92733452688895
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              1,
+              3
+            ],
+            "output": 3.92733452688895
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              2,
+              2
+            ],
+            "output": 3.7840338686417154
+          }
+        ]
+      },
+      {
+        "capacity": 4,
+        "exponent": 0.8,
+        "policyCount": 5,
+        "allInWins": 0,
+        "meanActiveLanes": 2,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              2,
+              2
+            ],
+            "output": 3.4822022531844965
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              3,
+              1
+            ],
+            "output": 4.101103325128935
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              1,
+              3
+            ],
+            "output": 4.101103325128935
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              2,
+              2
+            ],
+            "output": 3.9174775348325586
+          }
+        ]
+      },
+      {
+        "capacity": 4,
+        "exponent": 0.85,
+        "policyCount": 5,
+        "allInWins": 2,
+        "meanActiveLanes": 1.5,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              2,
+              2
+            ],
+            "output": 3.6050018504433208
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              4,
+              0
+            ],
+            "output": 4.386162940323672
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              4
+            ],
+            "output": 4.386162940323672
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              2,
+              2
+            ],
+            "output": 4.055627081748736
+          }
+        ]
+      },
+      {
+        "capacity": 4,
+        "exponent": 0.9,
+        "policyCount": 5,
+        "allInWins": 2,
+        "meanActiveLanes": 1.5,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              2,
+              2
+            ],
+            "output": 3.7321319661472296
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              4,
+              0
+            ],
+            "output": 4.70097304179907
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              4
+            ],
+            "output": 4.70097304179907
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              2,
+              2
+            ],
+            "output": 4.198648461915633
+          }
+        ]
+      },
+      {
+        "capacity": 4,
+        "exponent": 0.95,
+        "policyCount": 5,
+        "allInWins": 2,
+        "meanActiveLanes": 1.5,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              2,
+              2
+            ],
+            "output": 3.863745315699382
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              4,
+              0
+            ],
+            "output": 5.03837815429876
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              4
+            ],
+            "output": 5.03837815429876
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              3,
+              1
+            ],
+            "output": 4.365600338108549
+          }
+        ]
+      },
+      {
+        "capacity": 4,
+        "exponent": 1,
+        "policyCount": 5,
+        "allInWins": 4,
+        "meanActiveLanes": 1,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              0,
+              4
+            ],
+            "output": 4
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              4,
+              0
+            ],
+            "output": 5.4
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              4
+            ],
+            "output": 5.4
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              4,
+              0
+            ],
+            "output": 4.6
+          }
+        ]
+      },
+      {
+        "capacity": 5,
+        "exponent": 0.7,
+        "policyCount": 6,
+        "allInWins": 0,
+        "meanActiveLanes": 2,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              2,
+              3
+            ],
+            "output": 3.782174072687064
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              4,
+              1
+            ],
+            "output": 4.412671359086814
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              1,
+              4
+            ],
+            "output": 4.412671359086814
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              3,
+              2
+            ],
+            "output": 4.2682749439545
+          }
+        ]
+      },
+      {
+        "capacity": 5,
+        "exponent": 0.75,
+        "policyCount": 6,
+        "allInWins": 0,
+        "meanActiveLanes": 2,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              2,
+              3
+            ],
+            "output": 3.9612998874622063
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              4,
+              1
+            ],
+            "output": 4.668376618407357
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              1,
+              4
+            ],
+            "output": 4.668376618407357
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              3,
+              2
+            ],
+            "output": 4.471405229056166
+          }
+        ]
+      },
+      {
+        "capacity": 5,
+        "exponent": 0.8,
+        "policyCount": 6,
+        "allInWins": 0,
+        "meanActiveLanes": 2,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              2,
+              3
+            ],
+            "output": 4.149325811872941
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              4,
+              1
+            ],
+            "output": 4.942434729578075
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              1,
+              4
+            ],
+            "output": 4.942434729578075
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              3,
+              2
+            ],
+            "output": 4.684669627324269
+          }
+        ]
+      },
+      {
+        "capacity": 5,
+        "exponent": 0.85,
+        "policyCount": 6,
+        "allInWins": 2,
+        "meanActiveLanes": 1.5,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              2,
+              3
+            ],
+            "output": 4.346711576862711
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              5,
+              0
+            ],
+            "output": 5.302226454064409
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              5
+            ],
+            "output": 5.302226454064409
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              3,
+              2
+            ],
+            "output": 4.908593267131034
+          }
+        ]
+      },
+      {
+        "capacity": 5,
+        "exponent": 0.9,
+        "policyCount": 6,
+        "allInWins": 2,
+        "meanActiveLanes": 1.5,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              2,
+              3
+            ],
+            "output": 4.553941362595902
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              5,
+              0
+            ],
+            "output": 5.746544477015297
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              5
+            ],
+            "output": 5.746544477015297
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              3,
+              2
+            ],
+            "output": 5.143729267831606
+          }
+        ]
+      },
+      {
+        "capacity": 5,
+        "exponent": 0.95,
+        "policyCount": 6,
+        "allInWins": 2,
+        "meanActiveLanes": 1.5,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              2,
+              3
+            ],
+            "output": 4.771525125770168
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              5,
+              0
+            ],
+            "output": 6.228095633486471
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              5
+            ],
+            "output": 6.228095633486471
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              4,
+              1
+            ],
+            "output": 5.391951761069313
+          }
+        ]
+      },
+      {
+        "capacity": 5,
+        "exponent": 1,
+        "policyCount": 6,
+        "allInWins": 4,
+        "meanActiveLanes": 1,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              0,
+              5
+            ],
+            "output": 5
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              5,
+              0
+            ],
+            "output": 6.75
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              5
+            ],
+            "output": 6.75
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              5,
+              0
+            ],
+            "output": 5.75
+          }
+        ]
+      },
+      {
+        "capacity": 6,
+        "exponent": 0.7,
+        "policyCount": 7,
+        "allInWins": 0,
+        "meanActiveLanes": 2,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              3,
+              3
+            ],
+            "output": 4.315338559949186
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              5,
+              1
+            ],
+            "output": 5.0149785733600645
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              1,
+              5
+            ],
+            "output": 5.0149785733600645
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              3,
+              3
+            ],
+            "output": 4.854755879942834
+          }
+        ]
+      },
+      {
+        "capacity": 6,
+        "exponent": 0.75,
+        "policyCount": 7,
+        "allInWins": 0,
+        "meanActiveLanes": 2,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              3,
+              3
+            ],
+            "output": 4.559014113909555
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              5,
+              1
+            ],
+            "output": 5.363997058590848
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              1,
+              5
+            ],
+            "output": 5.363997058590848
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              3,
+              3
+            ],
+            "output": 5.128890878148249
+          }
+        ]
+      },
+      {
+        "capacity": 6,
+        "exponent": 0.8,
+        "policyCount": 7,
+        "allInWins": 0,
+        "meanActiveLanes": 2,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              3,
+              3
+            ],
+            "output": 4.816449370561385
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              5,
+              1
+            ],
+            "output": 5.7422627298244455
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              1,
+              5
+            ],
+            "output": 5.7422627298244455
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              3,
+              3
+            ],
+            "output": 5.418505541881558
+          }
+        ]
+      },
+      {
+        "capacity": 6,
+        "exponent": 0.85,
+        "policyCount": 7,
+        "allInWins": 2,
+        "meanActiveLanes": 1.5,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              3,
+              3
+            ],
+            "output": 5.088421303282101
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              6,
+              0
+            ],
+            "output": 6.1910217722814265
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              6
+            ],
+            "output": 6.1910217722814265
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              3,
+              3
+            ],
+            "output": 5.724473966192364
+          }
+        ]
+      },
+      {
+        "capacity": 6,
+        "exponent": 0.9,
+        "policyCount": 7,
+        "allInWins": 2,
+        "meanActiveLanes": 1.5,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              3,
+              3
+            ],
+            "output": 5.375750759044573
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              6,
+              0
+            ],
+            "output": 6.771266296831289
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              6
+            ],
+            "output": 6.771266296831289
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              4,
+              2
+            ],
+            "output": 6.0572051725431475
+          }
+        ]
+      },
+      {
+        "capacity": 6,
+        "exponent": 0.95,
+        "policyCount": 7,
+        "allInWins": 2,
+        "meanActiveLanes": 1.5,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              3,
+              3
+            ],
+            "output": 5.679304935840955
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              6,
+              0
+            ],
+            "output": 7.405893396770806
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              6
+            ],
+            "output": 7.405893396770806
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              4,
+              2
+            ],
+            "output": 6.417011684703974
+          }
+        ]
+      },
+      {
+        "capacity": 6,
+        "exponent": 1,
+        "policyCount": 7,
+        "allInWins": 4,
+        "meanActiveLanes": 1,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              0,
+              6
+            ],
+            "output": 6
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              6,
+              0
+            ],
+            "output": 8.100000000000001
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              6
+            ],
+            "output": 8.100000000000001
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              6,
+              0
+            ],
+            "output": 6.8999999999999995
+          }
+        ]
+      },
+      {
+        "capacity": 8,
+        "exponent": 0.7,
+        "policyCount": 9,
+        "allInWins": 0,
+        "meanActiveLanes": 2,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              4,
+              4
+            ],
+            "output": 5.278031643091577
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              7,
+              1
+            ],
+            "output": 6.121113849115674
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              1,
+              7
+            ],
+            "output": 6.121113849115674
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              4,
+              4
+            ],
+            "output": 5.937785598478024
+          }
+        ]
+      },
+      {
+        "capacity": 8,
+        "exponent": 0.75,
+        "policyCount": 9,
+        "allInWins": 0,
+        "meanActiveLanes": 2,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              4,
+              4
+            ],
+            "output": 5.656854249492381
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              7,
+              1
+            ],
+            "output": 6.659748045389448
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              1,
+              7
+            ],
+            "output": 6.659748045389448
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              4,
+              4
+            ],
+            "output": 6.363961030678928
+          }
+        ]
+      },
+      {
+        "capacity": 8,
+        "exponent": 0.8,
+        "policyCount": 9,
+        "allInWins": 0,
+        "meanActiveLanes": 2,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              4,
+              4
+            ],
+            "output": 6.062866266041593
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              7,
+              1
+            ],
+            "output": 7.253423131634545
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              1,
+              7
+            ],
+            "output": 7.253423131634545
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              4,
+              4
+            ],
+            "output": 6.820724549296791
+          }
+        ]
+      },
+      {
+        "capacity": 8,
+        "exponent": 0.85,
+        "policyCount": 9,
+        "allInWins": 0,
+        "meanActiveLanes": 2,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              4,
+              4
+            ],
+            "output": 6.498019170849884
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              7,
+              1
+            ],
+            "output": 7.90776351786762
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              1,
+              7
+            ],
+            "output": 7.90776351786762
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              5,
+              3
+            ],
+            "output": 7.3153431406378004
+          }
+        ]
+      },
+      {
+        "capacity": 8,
+        "exponent": 0.9,
+        "policyCount": 9,
+        "allInWins": 2,
+        "meanActiveLanes": 1.5,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              4,
+              4
+            ],
+            "output": 6.964404506368993
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              8,
+              0
+            ],
+            "output": 8.772325880647346
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              8
+            ],
+            "output": 8.772325880647346
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              5,
+              3
+            ],
+            "output": 7.851867471969027
+          }
+        ]
+      },
+      {
+        "capacity": 8,
+        "exponent": 0.95,
+        "policyCount": 9,
+        "allInWins": 2,
+        "meanActiveLanes": 1.5,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              4,
+              4
+            ],
+            "output": 7.464263932294459
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              8,
+              0
+            ],
+            "output": 9.733504996196967
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              8
+            ],
+            "output": 9.733504996196967
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              6,
+              2
+            ],
+            "output": 8.433783928291271
+          }
+        ]
+      },
+      {
+        "capacity": 8,
+        "exponent": 1,
+        "policyCount": 9,
+        "allInWins": 4,
+        "meanActiveLanes": 1,
+        "winners": [
+          {
+            "scenario": "balanced",
+            "allocation": [
+              0,
+              8
+            ],
+            "output": 8
+          },
+          {
+            "scenario": "precision-goal",
+            "allocation": [
+              8,
+              0
+            ],
+            "output": 10.8
+          },
+          {
+            "scenario": "intuition-goal",
+            "allocation": [
+              0,
+              8
+            ],
+            "output": 10.8
+          },
+          {
+            "scenario": "project-prep",
+            "allocation": [
+              8,
+              0
+            ],
+            "output": 9.2
+          }
+        ]
+      }
+    ],
+    "controlComparison": [
+      {
+        "id": "slider",
+        "actions": 3,
+        "precisionBurden": 8,
+        "touchBurden": 7,
+        "keyboardFeasibility": 5,
+        "screenReaderFeasibility": 4
+      },
+      {
+        "id": "plus-minus",
+        "actions": 5,
+        "precisionBurden": 2,
+        "touchBurden": 2,
+        "keyboardFeasibility": 9,
+        "screenReaderFeasibility": 8
+      },
+      {
+        "id": "drag-tokens",
+        "actions": 4,
+        "precisionBurden": 5,
+        "touchBurden": 8,
+        "keyboardFeasibility": 4,
+        "screenReaderFeasibility": 6
+      },
+      {
+        "id": "presets",
+        "actions": 2,
+        "precisionBurden": 1,
+        "touchBurden": 1,
+        "keyboardFeasibility": 8,
+        "screenReaderFeasibility": 9
+      },
+      {
+        "id": "priority-cards",
+        "actions": 3,
+        "precisionBurden": 2,
+        "touchBurden": 2,
+        "keyboardFeasibility": 8,
+        "screenReaderFeasibility": 8
+      },
+      {
+        "id": "tap-to-assign",
+        "actions": 4,
+        "precisionBurden": 1,
+        "touchBurden": 2,
+        "keyboardFeasibility": 8,
+        "screenReaderFeasibility": 9
+      }
+    ],
+    "selection": {
+      "representation": "discrete whole Attention with tap/plus-minus and presets",
+      "capacity": "start at 3; unlock a fourth in Natural Numbers; do not use 6 as a default",
+      "exponent": 0.8,
+      "exponentStatus": "PROVISIONAL",
+      "reason": "Four slots preserve five legible two-lane policies; exponent 0.80 avoids all-in dominance in tested project contexts while retaining visible specialization gaps."
+    }
+  },
+  "conclusion": "Use 3→4 discrete slots, tap/plus-minus controls, presets, and a provisional 0.80 exponent.",
+  "limitations": [
+    "Optimization does not establish comprehension or fun; exponent and capacity require playtests.",
+    "This experiment cannot prove that a game is fun."
+  ]
+}

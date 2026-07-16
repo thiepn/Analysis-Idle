@@ -1,0 +1,63 @@
+{
+  "experimentId": "prestige",
+  "hypothesis": "Global prestige is deferred until a multi-chapter prototype proves a unique purpose.",
+  "modelVersion": "phase0-design-lab/1.0.0",
+  "seed": null,
+  "playerPolicy": "deterministic heuristic policy enumeration",
+  "horizon": "first chapter / first 30 minutes where applicable",
+  "stoppingCondition": "all configured candidates evaluated",
+  "status": "supported",
+  "deterministic": true,
+  "result": {
+    "options": [
+      {
+        "option": "after Natural Numbers",
+        "evidenceScore": 2,
+        "publicationOverlapRisk": 9
+      },
+      {
+        "option": "after Integers",
+        "evidenceScore": 2,
+        "publicationOverlapRisk": 8
+      },
+      {
+        "option": "after Rational Numbers",
+        "evidenceScore": 2,
+        "publicationOverlapRisk": 7
+      },
+      {
+        "option": "after Real Numbers",
+        "evidenceScore": 2,
+        "publicationOverlapRisk": 6
+      },
+      {
+        "option": "after Sequences",
+        "evidenceScore": 2,
+        "publicationOverlapRisk": 5
+      },
+      {
+        "option": "after campaign",
+        "evidenceScore": 5,
+        "publicationOverlapRisk": 4
+      },
+      {
+        "option": "no global prestige",
+        "evidenceScore": 5,
+        "publicationOverlapRisk": 2
+      },
+      {
+        "option": "framework shift without full reset",
+        "evidenceScore": 6,
+        "publicationOverlapRisk": 4
+      }
+    ],
+    "decision": "DEFERRED UNTIL MULTI-CHAPTER PROTOTYPE",
+    "reason": "No reset purpose is proven that Publication, Mastery, challenges, or a non-reset framework shift cannot serve.",
+    "extensionPoint": "Canonical state reserves nullable prestige metadata; Phase 1 implements no prestige command or formula."
+  },
+  "conclusion": "Global prestige is deferred until a multi-chapter prototype proves a unique purpose.",
+  "limitations": [
+    "No reset formula or timing can be validated from one chapter.",
+    "This experiment cannot prove that a game is fun."
+  ]
+}

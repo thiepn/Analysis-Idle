@@ -1,0 +1,375 @@
+{
+  "experimentId": "core-loop",
+  "hypothesis": "Candidate F wins all tested weight sets, provided disclosure is staged.",
+  "modelVersion": "phase0-design-lab/1.0.0",
+  "seed": null,
+  "playerPolicy": "deterministic heuristic policy enumeration",
+  "horizon": "first chapter / first 30 minutes where applicable",
+  "stoppingCondition": "all configured candidates evaluated",
+  "status": "supported",
+  "deterministic": true,
+  "result": {
+    "candidates": [
+      {
+        "id": "A",
+        "name": "Discrete Attention Allocation",
+        "metrics": {
+          "meaningfulDecisions": 7,
+          "actions": 10,
+          "reallocations": 6,
+          "relevantVariables": 5,
+          "maxIdleMinutes": 12,
+          "automaticPercent": 72,
+          "repeatedPercent": 24,
+          "viablePolicies": 4,
+          "policySpreadPercent": 18,
+          "stateSpaceBand": 4,
+          "mobileBurden": 3,
+          "explanationBurden": 4
+        },
+        "scores": {
+          "decisionQuality": 8,
+          "lowMicromanagement": 7,
+          "automation": 7,
+          "mobile": 8,
+          "mathematicalIntegration": 7,
+          "scopeControl": 7
+        },
+        "failureMode": "allocation becomes a solved split"
+      },
+      {
+        "id": "B",
+        "name": "Continuous Percentage Allocation",
+        "metrics": {
+          "meaningfulDecisions": 8,
+          "actions": 18,
+          "reallocations": 15,
+          "relevantVariables": 7,
+          "maxIdleMinutes": 8,
+          "automaticPercent": 66,
+          "repeatedPercent": 38,
+          "viablePolicies": 7,
+          "policySpreadPercent": 9,
+          "stateSpaceBand": 7,
+          "mobileBurden": 8,
+          "explanationBurden": 7
+        },
+        "scores": {
+          "decisionQuality": 6,
+          "lowMicromanagement": 4,
+          "automation": 7,
+          "mobile": 6,
+          "mathematicalIntegration": 5,
+          "scopeControl": 6
+        },
+        "failureMode": "slider maintenance overwhelms project choice"
+      },
+      {
+        "id": "C",
+        "name": "Priority and Reserve System",
+        "metrics": {
+          "meaningfulDecisions": 6,
+          "actions": 7,
+          "reallocations": 3,
+          "relevantVariables": 6,
+          "maxIdleMinutes": 16,
+          "automaticPercent": 84,
+          "repeatedPercent": 12,
+          "viablePolicies": 5,
+          "policySpreadPercent": 15,
+          "stateSpaceBand": 6,
+          "mobileBurden": 4,
+          "explanationBurden": 7
+        },
+        "scores": {
+          "decisionQuality": 7,
+          "lowMicromanagement": 8,
+          "automation": 8,
+          "mobile": 7,
+          "mathematicalIntegration": 8,
+          "scopeControl": 5
+        },
+        "failureMode": "rules hide causality from new players"
+      },
+      {
+        "id": "D",
+        "name": "Proof Dependency Network",
+        "metrics": {
+          "meaningfulDecisions": 9,
+          "actions": 12,
+          "reallocations": 2,
+          "relevantVariables": 9,
+          "maxIdleMinutes": 20,
+          "automaticPercent": 76,
+          "repeatedPercent": 8,
+          "viablePolicies": 6,
+          "policySpreadPercent": 24,
+          "stateSpaceBand": 8,
+          "mobileBurden": 6,
+          "explanationBurden": 8
+        },
+        "scores": {
+          "decisionQuality": 8,
+          "lowMicromanagement": 7,
+          "automation": 6,
+          "mobile": 8,
+          "mathematicalIntegration": 10,
+          "scopeControl": 5
+        },
+        "failureMode": "dependency graph becomes homework"
+      },
+      {
+        "id": "E",
+        "name": "Research Project Management",
+        "metrics": {
+          "meaningfulDecisions": 8,
+          "actions": 8,
+          "reallocations": 2,
+          "relevantVariables": 6,
+          "maxIdleMinutes": 18,
+          "automaticPercent": 82,
+          "repeatedPercent": 10,
+          "viablePolicies": 6,
+          "policySpreadPercent": 20,
+          "stateSpaceBand": 6,
+          "mobileBurden": 3,
+          "explanationBurden": 5
+        },
+        "scores": {
+          "decisionQuality": 8,
+          "lowMicromanagement": 8,
+          "automation": 9,
+          "mobile": 8,
+          "mathematicalIntegration": 8,
+          "scopeControl": 8
+        },
+        "failureMode": "long queues reduce moment-to-moment agency"
+      },
+      {
+        "id": "F",
+        "name": "Attention + Projects + Dependency Hybrid",
+        "metrics": {
+          "meaningfulDecisions": 10,
+          "actions": 11,
+          "reallocations": 4,
+          "relevantVariables": 7,
+          "maxIdleMinutes": 12,
+          "automaticPercent": 80,
+          "repeatedPercent": 9,
+          "viablePolicies": 7,
+          "policySpreadPercent": 21,
+          "stateSpaceBand": 7,
+          "mobileBurden": 4,
+          "explanationBurden": 6
+        },
+        "scores": {
+          "decisionQuality": 9,
+          "lowMicromanagement": 8,
+          "automation": 9,
+          "mobile": 9,
+          "mathematicalIntegration": 10,
+          "scopeControl": 8
+        },
+        "failureMode": "too many layers appear before context exists"
+      }
+    ],
+    "criteria": "Scores are 0-10 heuristic judgments anchored to the raw first-30-minute workload estimates; they are not fun measurements.",
+    "rankings": [
+      {
+        "variant": 0,
+        "weights": {
+          "decisionQuality": 0.25,
+          "lowMicromanagement": 0.2,
+          "automation": 0.15,
+          "mobile": 0.15,
+          "mathematicalIntegration": 0.15,
+          "scopeControl": 0.1
+        },
+        "ranking": [
+          {
+            "id": "F",
+            "weightedScore": 8.85
+          },
+          {
+            "id": "E",
+            "weightedScore": 8.15
+          },
+          {
+            "id": "D",
+            "weightedScore": 7.5
+          },
+          {
+            "id": "A",
+            "weightedScore": 7.4
+          },
+          {
+            "id": "C",
+            "weightedScore": 7.3
+          },
+          {
+            "id": "B",
+            "weightedScore": 5.6
+          }
+        ]
+      },
+      {
+        "variant": 1,
+        "weights": {
+          "decisionQuality": 0.15,
+          "lowMicromanagement": 0.2,
+          "automation": 0.15,
+          "mobile": 0.25,
+          "mathematicalIntegration": 0.15,
+          "scopeControl": 0.1
+        },
+        "ranking": [
+          {
+            "id": "F",
+            "weightedScore": 8.85
+          },
+          {
+            "id": "E",
+            "weightedScore": 8.15
+          },
+          {
+            "id": "D",
+            "weightedScore": 7.5
+          },
+          {
+            "id": "A",
+            "weightedScore": 7.4
+          },
+          {
+            "id": "C",
+            "weightedScore": 7.3
+          },
+          {
+            "id": "B",
+            "weightedScore": 5.6
+          }
+        ]
+      },
+      {
+        "variant": 2,
+        "weights": {
+          "decisionQuality": 0.25,
+          "lowMicromanagement": 0.2,
+          "automation": 0.15,
+          "mobile": 0.15,
+          "mathematicalIntegration": 0.05,
+          "scopeControl": 0.2
+        },
+        "ranking": [
+          {
+            "id": "F",
+            "weightedScore": 8.65
+          },
+          {
+            "id": "E",
+            "weightedScore": 8.15
+          },
+          {
+            "id": "A",
+            "weightedScore": 7.4
+          },
+          {
+            "id": "C",
+            "weightedScore": 7
+          },
+          {
+            "id": "D",
+            "weightedScore": 7
+          },
+          {
+            "id": "B",
+            "weightedScore": 5.7
+          }
+        ]
+      },
+      {
+        "variant": 3,
+        "weights": {
+          "decisionQuality": 0.25,
+          "lowMicromanagement": 0.1,
+          "automation": 0.15,
+          "mobile": 0.15,
+          "mathematicalIntegration": 0.25,
+          "scopeControl": 0.1
+        },
+        "ranking": [
+          {
+            "id": "F",
+            "weightedScore": 9.05
+          },
+          {
+            "id": "E",
+            "weightedScore": 8.15
+          },
+          {
+            "id": "D",
+            "weightedScore": 7.8
+          },
+          {
+            "id": "A",
+            "weightedScore": 7.4
+          },
+          {
+            "id": "C",
+            "weightedScore": 7.3
+          },
+          {
+            "id": "B",
+            "weightedScore": 5.7
+          }
+        ]
+      },
+      {
+        "variant": 4,
+        "weights": {
+          "decisionQuality": 0.25,
+          "lowMicromanagement": 0.3,
+          "automation": 0.05,
+          "mobile": 0.15,
+          "mathematicalIntegration": 0.15,
+          "scopeControl": 0.1
+        },
+        "ranking": [
+          {
+            "id": "F",
+            "weightedScore": 8.75
+          },
+          {
+            "id": "E",
+            "weightedScore": 8.05
+          },
+          {
+            "id": "D",
+            "weightedScore": 7.6
+          },
+          {
+            "id": "A",
+            "weightedScore": 7.4
+          },
+          {
+            "id": "C",
+            "weightedScore": 7.3
+          },
+          {
+            "id": "B",
+            "weightedScore": 5.3
+          }
+        ]
+      }
+    ],
+    "selected": "F",
+    "sensitivity": {
+      "winnerChanges": 0,
+      "testedWeightSets": 5
+    }
+  },
+  "conclusion": "Candidate F wins all tested weight sets, provided disclosure is staged.",
+  "limitations": [
+    "Scores and first-30-minute actions are design estimates, not playtest observations.",
+    "This experiment cannot prove that a game is fun."
+  ]
+}

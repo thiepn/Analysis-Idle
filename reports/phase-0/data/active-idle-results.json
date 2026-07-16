@@ -1,0 +1,55 @@
+{
+  "experimentId": "active-idle",
+  "hypothesis": "Deterministic stored Insight targets a 10–15% sustained advantage with a 20% ceiling.",
+  "modelVersion": "phase0-design-lab/1.0.0",
+  "seed": null,
+  "playerPolicy": "deterministic heuristic policy enumeration",
+  "horizon": "first chapter / first 30 minutes where applicable",
+  "stoppingCondition": "all configured candidates evaluated",
+  "status": "supported",
+  "deterministic": true,
+  "result": {
+    "bands": [
+      {
+        "percent": 5,
+        "score": 8.617
+      },
+      {
+        "percent": 10,
+        "score": 9.033
+      },
+      {
+        "percent": 15,
+        "score": 9.307
+      },
+      {
+        "percent": 20,
+        "score": 9.081
+      },
+      {
+        "percent": 25,
+        "score": 8.555
+      },
+      {
+        "percent": 35,
+        "score": 7.502
+      },
+      {
+        "percent": 50,
+        "score": 5.924
+      },
+      {
+        "percent": 100,
+        "score": 3.333
+      }
+    ],
+    "selectedBand": "10-15% sustained advantage (PROVISIONAL; hard ceiling 20%)",
+    "mechanic": "Deterministic stored Insight charges, cap 3; no random or timed clicks.",
+    "offline": "Accrue at most one charge from completed offline events, never above cap."
+  },
+  "conclusion": "Deterministic stored Insight targets a 10–15% sustained advantage with a 20% ceiling.",
+  "limitations": [
+    "Perceived usefulness and missed-opportunity frustration need accessibility-inclusive playtests.",
+    "This experiment cannot prove that a game is fun."
+  ]
+}

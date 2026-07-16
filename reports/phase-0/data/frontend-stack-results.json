@@ -1,0 +1,61 @@
+{
+  "experimentId": "frontend",
+  "hypothesis": "Select Preact + TypeScript + Vite with a framework-independent engine.",
+  "modelVersion": "phase0-design-lab/1.0.0",
+  "seed": null,
+  "playerPolicy": "deterministic heuristic policy enumeration",
+  "horizon": "first chapter / first 30 minutes where applicable",
+  "stoppingCondition": "all configured candidates evaluated",
+  "status": "supported",
+  "deterministic": true,
+  "result": {
+    "candidates": [
+      {
+        "id": "TypeScript + Preact",
+        "scores": {
+          "clarity": 9,
+          "updateModel": 9,
+          "bundle": 8,
+          "testability": 9,
+          "accessibility": 9,
+          "composition": 9,
+          "maintainability": 9
+        },
+        "weightedScore": 8.9
+      },
+      {
+        "id": "TypeScript + React",
+        "scores": {
+          "clarity": 9,
+          "updateModel": 9,
+          "bundle": 6,
+          "testability": 9,
+          "accessibility": 9,
+          "composition": 10,
+          "maintainability": 9
+        },
+        "weightedScore": 8.85
+      },
+      {
+        "id": "plain TypeScript DOM",
+        "scores": {
+          "clarity": 6,
+          "updateModel": 5,
+          "bundle": 10,
+          "testability": 6,
+          "accessibility": 8,
+          "composition": 5,
+          "maintainability": 5
+        },
+        "weightedScore": 6.15
+      }
+    ],
+    "selected": "TypeScript + Preact + Vite",
+    "engineBoundary": "framework-free engine and validated content; UI subscribes through selectors"
+  },
+  "conclusion": "Select Preact + TypeScript + Vite with a framework-independent engine.",
+  "limitations": [
+    "Bundle figures must be measured once the Phase 1 scaffold exists.",
+    "This experiment cannot prove that a game is fun."
+  ]
+}

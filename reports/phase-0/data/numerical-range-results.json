@@ -1,0 +1,46 @@
+{
+  "experimentId": "numerical",
+  "hypothesis": "Use native numbers only behind an adapter; enforce a migration gate before the finite range is threatened.",
+  "modelVersion": "phase0-design-lab/1.0.0",
+  "seed": null,
+  "playerPolicy": "deterministic heuristic policy enumeration",
+  "horizon": "first chapter / first 30 minutes where applicable",
+  "stoppingCondition": "all configured candidates evaluated",
+  "status": "supported",
+  "deterministic": true,
+  "result": {
+    "ranges": [
+      {
+        "scope": "Natural Numbers",
+        "exponent": 12,
+        "nativeFinite": true,
+        "integerPrecisionExact": true
+      },
+      {
+        "scope": "first four chapters",
+        "exponent": 90,
+        "nativeFinite": true,
+        "integerPrecisionExact": false
+      },
+      {
+        "scope": "initial campaign",
+        "exponent": 220,
+        "nativeFinite": true,
+        "integerPrecisionExact": false
+      },
+      {
+        "scope": "postgame envelope",
+        "exponent": 400,
+        "nativeFinite": false,
+        "integerPrecisionExact": false
+      }
+    ],
+    "selected": "native number behind a Numerical adapter for Phase 1; prohibit direct UI/content arithmetic",
+    "migrationGate": "Adopt a large-number implementation before any reachable value exceeds 1e280 or precision-sensitive integer logic exceeds 2^53-1."
+  },
+  "conclusion": "Use native numbers only behind an adapter; enforce a migration gate before the finite range is threatened.",
+  "limitations": [
+    "Later campaign magnitude is an envelope, not a balanced economy forecast.",
+    "This experiment cannot prove that a game is fun."
+  ]
+}

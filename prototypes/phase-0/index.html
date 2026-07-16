@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analysis Idle v2 — Phase 0 prototype</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#workspace">Skip to study workspace</a>
+    <header class="masthead">
+      <div>
+        <p class="eyebrow">Analysis Idle · design lab</p>
+        <h1>Build a proof, one decision at a time.</h1>
+        <p>This low-fidelity prototype tests progressive disclosure, allocation, projects, return summaries, and Publication.</p>
+      </div>
+      <button type="button" class="quiet">Save prototype state</button>
+    </header>
+
+    <main id="workspace">
+      <section class="status" aria-label="Current study status">
+        <div><span>Chapter</span><strong>Natural Numbers</strong></div>
+        <div><span>Precision</span><strong>34 <small>+2.6/min</small></strong></div>
+        <div><span>Intuition</span><strong>21 <small>+1.8/min</small></strong></div>
+        <div><span>Understanding</span><strong>3 / 12</strong></div>
+        <div><span>Insight</span><strong>1 / 3</strong></div>
+      </section>
+
+      <nav class="tabs" aria-label="Prototype views">
+        <a href="#overview">Overview</a>
+        <a href="#study">Study allocation</a>
+        <a href="#projects">Projects</a>
+        <a href="#map">Dependency map</a>
+        <a href="#publication">Publication</a>
+      </nav>
+
+      <section id="overview" class="panel hero-panel">
+        <div>
+          <p class="eyebrow">First-minute progressive disclosure</p>
+          <h2>Next decision: prepare the Successor project</h2>
+          <p>Precision is short by 6. Move one Attention from Examples to Definitions, or continue the current balanced plan.</p>
+          <div class="actions">
+            <a class="primary" href="#study">Adjust study</a>
+            <a class="secondary" href="#projects">Inspect project</a>
+          </div>
+        </div>
+        <ol class="reveal-list" aria-label="First-minute reveal sequence">
+          <li><strong>0–10s</strong> One resource and one assign button.</li>
+          <li><strong>15–30s</strong> Passive production and the second lane.</li>
+          <li><strong>1–3m</strong> Intuition creates the first real trade-off.</li>
+          <li><strong>5–10m</strong> Projects and their dedicated slot appear.</li>
+        </ol>
+      </section>
+
+      <div class="two-column">
+        <section id="study" class="panel">
+          <p class="eyebrow">Study allocation</p>
+          <h2>Assign four whole Attention</h2>
+          <p id="allocation-help">Use minus and plus buttons; dragging is optional and never required.</p>
+          <div class="allocation" data-lane="definitions">
+            <div><strong>Definitions</strong><span>Precision · 2.6/min</span></div>
+            <button type="button" data-change="-1" aria-label="Remove Attention from Definitions">−</button>
+            <output aria-live="polite">2</output>
+            <button type="button" data-change="1" aria-label="Add Attention to Definitions">+</button>
+          </div>
+          <div class="allocation" data-lane="examples">
+            <div><strong>Examples</strong><span>Intuition · 1.8/min</span></div>
+            <button type="button" data-change="-1" aria-label="Remove Attention from Examples">−</button>
+            <output aria-live="polite">1</output>
+            <button type="button" data-change="1" aria-label="Add Attention to Examples">+</button>
+          </div>
+          <p class="allocation-total" aria-live="polite">Assigned <strong id="assigned-total">3</strong> / 4</p>
+          <div class="presets" aria-label="Allocation presets">
+            <button type="button" data-preset="balanced">Balanced</button>
+            <button type="button" data-preset="precision">Precision first</button>
+            <button type="button" data-preset="intuition">Intuition first</button>
+          </div>
+        </section>
+
+        <section id="projects" class="panel">
+          <p class="eyebrow">Projects · dedicated slot</p>
+          <h2>Define the Successor</h2>
+          <p>Requires 40 Precision and 20 Intuition. Inputs reserve when started; the project progresses without taking Attention.</p>
+          <progress value="62" max="100" aria-label="Define the Successor project progress">62%</progress>
+          <dl class="compact-list"><div><dt>Progress</dt><dd>62%</dd></div><div><dt>Next event</dt><dd>Requirement review</dd></div><div><dt>ETA</dt><dd>8–11 min</dd></div></dl>
+          <h3>Choose a reversible approach</h3>
+          <label class="approach"><input type="radio" name="approach" checked /><span><strong>Formal</strong> Expose proof obligations and preserve them as a lemma.</span></label>
+          <label class="approach"><input type="radio" name="approach" /><span><strong>Exploratory</strong> Reveal examples and counterexamples before work commits.</span></label>
+          <label class="approach"><input type="radio" name="approach" /><span><strong>Constructive</strong> Turn prepared examples into explicit project steps.</span></label>
+          <button type="button" class="primary">Queue project</button>
+        </section>
+      </div>
+
+      <section id="map" class="panel">
+        <div class="section-heading"><div><p class="eyebrow">Simplified dependency map</p><h2>Induction Chain</h2></div><p>Shape and text both communicate state.</p></div>
+        <svg class="proof-map" viewBox="0 0 800 220" role="img" aria-labelledby="map-title map-desc">
+          <title id="map-title">Natural Numbers dependency map</title>
+          <desc id="map-desc">Counting unlocks Successor. Successor unlocks Recursion and Addition. Base Case and Induction Step combine into the Induction capstone.</desc>
+          <path d="M110 110 H220 M350 110 H430 M560 110 H650 M285 140 V185 H650" />
+          <g class="done"><rect x="20" y="75" width="90" height="70" rx="10" /><text x="65" y="115">Counting</text></g>
+          <g class="current"><rect x="220" y="75" width="130" height="70" rx="10" /><text x="285" y="115">Successor</text></g>
+          <g><rect x="430" y="75" width="130" height="70" rx="10" /><text x="495" y="105">Base +</text><text x="495" y="125">Step</text></g>
+          <g><rect x="650" y="75" width="130" height="70" rx="10" /><text x="715" y="115">Induction</text></g>
+          <g><rect x="220" y="170" width="130" height="45" rx="10" /><text x="285" y="198">Addition</text></g>
+        </svg>
+        <details><summary>Text alternative</summary><ol><li>Counting — complete.</li><li>Successor — current project.</li><li>Recursion and addition — available after Successor.</li><li>Base case plus induction step — required for the Induction capstone.</li></ol></details>
+      </section>
+
+      <div class="two-column">
+        <section class="panel">
+          <p class="eyebrow">Upgrade comparison</p>
+          <h2>Choose a new control, not a tax</h2>
+          <div class="upgrade"><div><strong>Completion behavior</strong><p>When a project finishes, hold resources and pause at the next decision.</p></div><span>Milestone</span></div>
+          <div class="upgrade"><div><strong>Resource reserve</strong><p>Keep 20 Precision before automation can start queued work.</p></div><span>Automation</span></div>
+          <p class="note">Marginal effects, source, stacking group, and reset layer appear before confirmation.</p>
+        </section>
+
+        <section class="panel return-card" aria-labelledby="return-title">
+          <p class="eyebrow">Offline return</p>
+          <h2 id="return-title">Your plan ran for 6h 24m</h2>
+          <p>Policy used: finish current project, then hold resources.</p>
+          <dl class="compact-list"><div><dt>Gained</dt><dd>+138 Precision · +91 Intuition</dd></div><div><dt>Completed</dt><dd>Successor</dd></div><div><dt>Deferred</dt><dd>Choose recursion approach</dd></div><div><dt>Cap</dt><dd>Not reached</dd></div></dl>
+          <button type="button" class="primary">Review next decision</button>
+        </section>
+      </div>
+
+      <section id="publication" class="panel publication">
+        <div><p class="eyebrow">Publication summary</p><h2>Foundations of the Natural Numbers</h2><p>Compress solved projects into a reusable theorem card. Chapter stocks and temporary assignments reset; discoveries, accessibility settings, records, automation templates, and Mastery persist.</p></div>
+        <div class="paper"><span>Published result</span><strong>Induction Framework</strong><p>Later chapters may invoke the established base-case and successor structure instead of replaying it.</p><button type="button" class="primary">Publish chapter</button></div>
+      </section>
+    </main>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

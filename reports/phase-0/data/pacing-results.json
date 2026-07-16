@@ -1,0 +1,87 @@
+{
+  "experimentId": "pacing",
+  "hypothesis": "The first Publication targets 120–180 active-equivalent minutes over 1–3 sessions.",
+  "modelVersion": "phase0-design-lab/1.0.0",
+  "seed": null,
+  "playerPolicy": "deterministic heuristic policy enumeration",
+  "horizon": "first chapter / first 30 minutes where applicable",
+  "stoppingCondition": "all configured candidates evaluated",
+  "status": "supported",
+  "deterministic": true,
+  "result": {
+    "events": [
+      {
+        "event": "first interaction",
+        "earliestSeconds": 5,
+        "latestSeconds": 15
+      },
+      {
+        "event": "passive production",
+        "earliestSeconds": 15,
+        "latestSeconds": 30
+      },
+      {
+        "event": "meaningful choice",
+        "earliestSeconds": 60,
+        "latestSeconds": 180
+      },
+      {
+        "event": "second resource",
+        "earliestSeconds": 180,
+        "latestSeconds": 420
+      },
+      {
+        "event": "first project",
+        "earliestSeconds": 300,
+        "latestSeconds": 600
+      },
+      {
+        "event": "first upgrade",
+        "earliestSeconds": 480,
+        "latestSeconds": 900
+      },
+      {
+        "event": "first milestone",
+        "earliestSeconds": 720,
+        "latestSeconds": 1200
+      },
+      {
+        "event": "first automation",
+        "earliestSeconds": 1200,
+        "latestSeconds": 2100
+      },
+      {
+        "event": "first Insight",
+        "earliestSeconds": 1500,
+        "latestSeconds": 2400
+      },
+      {
+        "event": "first approach choice",
+        "earliestSeconds": 2100,
+        "latestSeconds": 3600
+      },
+      {
+        "event": "capstone",
+        "earliestSeconds": 5400,
+        "latestSeconds": 8400
+      },
+      {
+        "event": "Publication",
+        "earliestSeconds": 7200,
+        "latestSeconds": 10800
+      }
+    ],
+    "firstChapter": "120-180 minutes active-equivalent across 1-3 sessions (PROVISIONAL)",
+    "campaign": "30-50 active-equivalent hours across 4-8 weeks (PROVISIONAL)",
+    "deadIntervalGates": {
+      "actionableDecisionMinutes": 12,
+      "visibleProgressSeconds": 30,
+      "systemRevealMinutes": 25
+    }
+  },
+  "conclusion": "The first Publication targets 120–180 active-equivalent minutes over 1–3 sessions.",
+  "limitations": [
+    "All timing bands are provisional until simulator and human playtests.",
+    "This experiment cannot prove that a game is fun."
+  ]
+}

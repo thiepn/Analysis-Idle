@@ -1,0 +1,89 @@
+{
+  "experimentId": "resources",
+  "hypothesis": "Two primary stocks outperform one, three, and four under the stated simplicity rule.",
+  "modelVersion": "phase0-design-lab/1.0.0",
+  "seed": null,
+  "playerPolicy": "deterministic heuristic policy enumeration",
+  "horizon": "first chapter / first 30 minutes where applicable",
+  "stoppingCondition": "all configured candidates evaluated",
+  "status": "supported",
+  "deterministic": true,
+  "result": {
+    "models": [
+      {
+        "count": 2,
+        "identity": "Precision + Intuition",
+        "risk": "Projects must prevent a fixed optimal production ratio.",
+        "scores": {
+          "distinctness": 9,
+          "decisionValue": 9,
+          "lowBurden": 8,
+          "lowLoopRisk": 8,
+          "extensibility": 8
+        },
+        "weightedScore": 8.55
+      },
+      {
+        "count": 1,
+        "identity": "Understanding only",
+        "risk": "No real allocation or project-input trade-off.",
+        "scores": {
+          "distinctness": 9,
+          "decisionValue": 3,
+          "lowBurden": 10,
+          "lowLoopRisk": 10,
+          "extensibility": 4
+        },
+        "weightedScore": 7.35
+      },
+      {
+        "count": 3,
+        "identity": "Precision + Intuition + Technique",
+        "risk": "Technique duplicates project efficiency unless given awkward sinks.",
+        "scores": {
+          "distinctness": 7,
+          "decisionValue": 8,
+          "lowBurden": 6,
+          "lowLoopRisk": 6,
+          "extensibility": 9
+        },
+        "weightedScore": 7.1
+      },
+      {
+        "count": 4,
+        "identity": "Precision + Intuition + Technique + Proof Components",
+        "risk": "Conversion graph and explanation cost dominate the first chapter.",
+        "scores": {
+          "distinctness": 6,
+          "decisionValue": 8,
+          "lowBurden": 4,
+          "lowLoopRisk": 4,
+          "extensibility": 9
+        },
+        "weightedScore": 6.1
+      }
+    ],
+    "selection": {
+      "primaryStocks": [
+        "Precision",
+        "Intuition"
+      ],
+      "nonPrimaryMeters": [
+        "Attention (capacity)",
+        "Understanding (non-spendable mastery)",
+        "Insight (stored active charges)",
+        "Mastery (published chapter record)"
+      ],
+      "rejectedPrimaryStocks": [
+        "Technique",
+        "Proof Components",
+        "Axioms"
+      ]
+    }
+  },
+  "conclusion": "Two primary stocks outperform one, three, and four under the stated simplicity rule.",
+  "limitations": [
+    "Source/sink behavior must be stress-tested in the Phase 1 simulator.",
+    "This experiment cannot prove that a game is fun."
+  ]
+}

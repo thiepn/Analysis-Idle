@@ -1,0 +1,72 @@
+{
+  "experimentId": "offline",
+  "hypothesis": "Simulate to unresolved decisions, then apply an explicit safe policy within bounded credit windows.",
+  "modelVersion": "phase0-design-lab/1.0.0",
+  "seed": null,
+  "playerPolicy": "deterministic heuristic policy enumeration",
+  "horizon": "first chapter / first 30 minutes where applicable",
+  "stoppingCondition": "all configured candidates evaluated",
+  "status": "supported",
+  "deterministic": true,
+  "result": {
+    "models": [
+      {
+        "id": "until-decision-then-safe-policy",
+        "score": 9.05
+      },
+      {
+        "id": "bounded-event-driven",
+        "score": 8.45
+      },
+      {
+        "id": "until-decision",
+        "score": 8.05
+      },
+      {
+        "id": "safe-policy",
+        "score": 7.85
+      },
+      {
+        "id": "full-then-diminishing",
+        "score": 7.6
+      },
+      {
+        "id": "full-hard-cap",
+        "score": 7.1
+      },
+      {
+        "id": "project-only",
+        "score": 6.85
+      },
+      {
+        "id": "stored-time",
+        "score": 6.4
+      }
+    ],
+    "selected": "progress until unresolved decision, then configured safe policy; bounded event-driven stepping",
+    "provisionalWindows": {
+      "fullEfficiencyHours": 12,
+      "diminishingUntilHours": 72,
+      "diminishingEfficiency": 0.25
+    },
+    "examples": [
+      {
+        "simulatedHours": 2,
+        "effectiveProductionHours": 2,
+        "stoppedAt": "projectComplete",
+        "policy": "stop-at-unresolved-decision"
+      },
+      {
+        "simulatedHours": 24,
+        "effectiveProductionHours": 15,
+        "stoppedAt": null,
+        "policy": "configured-safe-policy"
+      }
+    ]
+  },
+  "conclusion": "Simulate to unresolved decisions, then apply an explicit safe policy within bounded credit windows.",
+  "limitations": [
+    "12h/72h/25% windows are configurable hypotheses, not validated retention targets.",
+    "This experiment cannot prove that a game is fun."
+  ]
+}

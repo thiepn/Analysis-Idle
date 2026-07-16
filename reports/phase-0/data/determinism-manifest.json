@@ -1,0 +1,15 @@
+{
+  "modelVersion": "phase0-design-lab/1.0.0",
+  "hashes": {
+    "core-loop-results.json": "8365ecf95a2e7315821c2f5f95ea3602b130483d4c46bdf7662cf9420b17f1dc",
+    "attention-model-results.json": "69257662c62444c6012283f3ebbc5a961b4f2a87c2326b53cb6613f61d2a45d6",
+    "resource-model-results.json": "b5640054d88d56ed1dd7261201295536185a082116bd2ab48775edc5751d3ae0",
+    "branch-model-results.json": "341c52945d8805deeed1f9b97b53c250f3b8824d0335532090daed51695eb59f",
+    "pacing-results.json": "de9f5c2e9e44a4ca09b330a5895c9867288f478f682e91d0e2ea94e03dbc2b7c",
+    "active-idle-results.json": "5439ad5478ce3b4c240e5002b23b0dff4ba174fe92e2e6fbbae0bc352b342001",
+    "offline-model-results.json": "5378d5f6f902e82cea93a7c7c8b4c4a1698833788ee087cb5292ba005f565b45",
+    "prestige-purpose-results.json": "5f89be25a55afaa49ca8a530e529a239b7470a8d392074e936f6e5dc22db4026",
+    "frontend-stack-results.json": "6550bfd51dce1672de23e953028023858a83a28c85ba7857f1e019ac3e96dd93",
+    "numerical-range-results.json": "353149d6c51401e1a182461a68b1cdf909f4b4e14093393dd94b3e4fdd110d64"
+  }
+}

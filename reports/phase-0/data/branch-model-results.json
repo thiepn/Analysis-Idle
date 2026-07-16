@@ -1,0 +1,101 @@
+{
+  "experimentId": "branches",
+  "hypothesis": "Natural Numbers uses reversible per-project approaches; automation remains universal.",
+  "modelVersion": "phase0-design-lab/1.0.0",
+  "seed": null,
+  "playerPolicy": "deterministic heuristic policy enumeration",
+  "horizon": "first chapter / first 30 minutes where applicable",
+  "stoppingCondition": "all configured candidates evaluated",
+  "status": "supported",
+  "deterministic": true,
+  "result": {
+    "models": [
+      {
+        "id": "E",
+        "name": "Temporary project approaches",
+        "risk": "Approach identity may feel less persistent.",
+        "scores": {
+          "behavioralDifference": 9,
+          "reversibility": 10,
+          "universalAutomation": 10,
+          "lowTrapRisk": 10,
+          "scopeControl": 9
+        },
+        "weightedScore": 9.55
+      },
+      {
+        "id": "C",
+        "name": "Formal / Experimental / Computational",
+        "risk": "Computational content may not fit every chapter.",
+        "scores": {
+          "behavioralDifference": 9,
+          "reversibility": 6,
+          "universalAutomation": 10,
+          "lowTrapRisk": 7,
+          "scopeControl": 5
+        },
+        "weightedScore": 7.9
+      },
+      {
+        "id": "B",
+        "name": "Rigor / Intuition / Practice",
+        "risk": "Risk of player-type sorting rather than situational choice.",
+        "scores": {
+          "behavioralDifference": 7,
+          "reversibility": 6,
+          "universalAutomation": 10,
+          "lowTrapRisk": 6,
+          "scopeControl": 6
+        },
+        "weightedScore": 7.15
+      },
+      {
+        "id": "D",
+        "name": "Depth / Breadth / Efficiency",
+        "risk": "Tends to collapse into multipliers.",
+        "scores": {
+          "behavioralDifference": 5,
+          "reversibility": 7,
+          "universalAutomation": 10,
+          "lowTrapRisk": 7,
+          "scopeControl": 7
+        },
+        "weightedScore": 6.9
+      },
+      {
+        "id": "A",
+        "name": "Rigor / Intuition / Automation",
+        "risk": "Automation branch withholds quality of life.",
+        "scores": {
+          "behavioralDifference": 6,
+          "reversibility": 5,
+          "universalAutomation": 2,
+          "lowTrapRisk": 4,
+          "scopeControl": 6
+        },
+        "weightedScore": 4.7
+      }
+    ],
+    "selected": "E",
+    "approaches": [
+      {
+        "id": "formal",
+        "behavior": "Expose proof obligations; completed obligations become reusable lemmas."
+      },
+      {
+        "id": "exploratory",
+        "behavior": "Reveal examples/counterexamples early; revise requirements before committing work."
+      },
+      {
+        "id": "constructive",
+        "behavior": "Convert prepared examples into deterministic project steps and explicit artifacts."
+      }
+    ],
+    "respec": "Free before start; mid-project switch preserves inputs and at least 90% completed work (PROVISIONAL loss ceiling)."
+  },
+  "conclusion": "Natural Numbers uses reversible per-project approaches; automation remains universal.",
+  "limitations": [
+    "Persistent campaign identities remain deferred until several chapters prove reusable behaviors.",
+    "This experiment cannot prove that a game is fun."
+  ]
+}

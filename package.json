@@ -1,0 +1,35 @@
+{
+  "name": "analysis-idle-phase-0",
+  "private": true,
+  "version": "0.1.0-v2-design-lock",
+  "type": "module",
+  "scripts": {
+    "dev": "node tools/design-lab/static-server.mjs",
+    "format:check": "node tools/design-lab/validate-format.mjs",
+    "lint": "node tools/design-lab/validate-artifacts.mjs --lint",
+    "typecheck": "tsc -p tsconfig.phase0.json --noEmit",
+    "test": "vitest run",
+    "phase0:audit": "node tools/design-lab/generate-legacy-baseline.mjs",
+    "phase0:simulate": "tsx experiments/run.ts --only core-loop,attention,resources",
+    "phase0:attention": "tsx experiments/run.ts --only attention",
+    "phase0:resources": "tsx experiments/run.ts --only resources",
+    "phase0:branches": "tsx experiments/run.ts --only branches",
+    "phase0:pacing": "tsx experiments/run.ts --only pacing,active-idle",
+    "phase0:offline": "tsx experiments/run.ts --only offline",
+    "phase0:prestige": "tsx experiments/run.ts --only prestige",
+    "phase0:benchmark": "tsx experiments/run.ts --only frontend,numerical",
+    "phase0:prototype": "node tools/design-lab/validate-prototypes.mjs",
+    "phase0:screenshots": "node tools/design-lab/validate-screenshots.mjs",
+    "phase0:links": "node tools/design-lab/validate-links.mjs",
+    "phase0:report": "npm run phase0:audit && tsx experiments/run.ts --write",
+    "phase0:repeat": "tsx tools/design-lab/repeatability.ts",
+    "phase0:validate": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run phase0:prototype && npm run phase0:screenshots && npm run phase0:links",
+    "phase0:all": "npm run phase0:report && npm run phase0:repeat && npm run phase0:validate"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.1",
+    "tsx": "4.23.1",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7"
+  }
+}
