@@ -1,0 +1,220 @@
+{
+  "generatedBy": "npm run balance:report",
+  "heuristicDisclaimer": "These deterministic heuristics test reachability and dominance risks; they do not prove fun.",
+  "policies": [
+    {
+      "name": "cheapestAvailable",
+      "commands": 198,
+      "accepted": 198,
+      "rejected": 0,
+      "completedProjects": 12,
+      "publications": 1,
+      "publicationTimingMs": 4461481.292517006,
+      "hash": "87055d59a8f70029ca5bf9e7e6f737d49ad667bd67ffec257eb4bc63248aeb49"
+    },
+    {
+      "name": "immediatePayback",
+      "commands": 250,
+      "accepted": 250,
+      "rejected": 0,
+      "completedProjects": 12,
+      "publications": 1,
+      "publicationTimingMs": 4210535.714285714,
+      "hash": "10a17d251ab86f1b9067c09bee52df7b629ad6d9cc563b79260c61fd50b78f56"
+    },
+    {
+      "name": "futureValue",
+      "commands": 208,
+      "accepted": 208,
+      "rejected": 0,
+      "completedProjects": 12,
+      "publications": 1,
+      "publicationTimingMs": 4653750,
+      "hash": "f12b1a36fabbc940a6d745bd38cffbfcbf3ce05fe171c8794db5b9e8eee1abfc"
+    },
+    {
+      "name": "nearestMilestone",
+      "commands": 355,
+      "accepted": 355,
+      "rejected": 0,
+      "completedProjects": 12,
+      "publications": 1,
+      "publicationTimingMs": 4847250,
+      "hash": "519c9b3c30388d42cae18d357cbe913c8893582f46a3e1c88b0bf2ac3f566536"
+    },
+    {
+      "name": "balanced",
+      "commands": 198,
+      "accepted": 198,
+      "rejected": 0,
+      "completedProjects": 12,
+      "publications": 1,
+      "publicationTimingMs": 4461481.292517006,
+      "hash": "d7d458fd736b8f25587bf77e8b9ec80799cfeff990bdd39718bd193b39b0caea"
+    },
+    {
+      "name": "formalSpecialist",
+      "commands": 180,
+      "accepted": 180,
+      "rejected": 0,
+      "completedProjects": 12,
+      "publications": 1,
+      "publicationTimingMs": 4210535.714285714,
+      "hash": "379cecfd25ddf5ecc5532068d9fa3f82ae046271d95f6e507a41af47028d6e31"
+    },
+    {
+      "name": "exploratorySpecialist",
+      "commands": 200,
+      "accepted": 200,
+      "rejected": 0,
+      "completedProjects": 12,
+      "publications": 1,
+      "publicationTimingMs": 4432142.857142857,
+      "hash": "e6390d0b939b895b944c932485c81d411faf3a76ae08521c0a3be8eab361a9ff"
+    },
+    {
+      "name": "constructiveSpecialist",
+      "commands": 208,
+      "accepted": 208,
+      "rejected": 0,
+      "completedProjects": 12,
+      "publications": 1,
+      "publicationTimingMs": 4653750,
+      "hash": "3e6b24e09c054f798eecc1896300ed7b7b4f91eeb73acec4caf11b3a30c16b15"
+    },
+    {
+      "name": "hybrid",
+      "commands": 147,
+      "accepted": 147,
+      "rejected": 0,
+      "completedProjects": 12,
+      "publications": 1,
+      "publicationTimingMs": 4461481.292517007,
+      "hash": "9cc7afea53e94fdf294084b8e6847387fb99bca11f9d736e55e09724b200cb36"
+    },
+    {
+      "name": "activeOptimizer",
+      "commands": 883,
+      "accepted": 883,
+      "rejected": 0,
+      "completedProjects": 12,
+      "publications": 1,
+      "publicationTimingMs": 4210535.714285713,
+      "hash": "0a152ed7750a80aac1e0794b5f1f2aa1fc2a9ca2de2c228c4b5a3a12d47abc5b"
+    },
+    {
+      "name": "mostlyIdle",
+      "commands": 58,
+      "accepted": 58,
+      "rejected": 0,
+      "completedProjects": 12,
+      "publications": 1,
+      "publicationTimingMs": 5055750,
+      "hash": "b86e593e8ab5c2864844ae845c722649a79ac77559e9dd54bd0372eb9aa2246d"
+    },
+    {
+      "name": "weakButPlausible",
+      "commands": 114,
+      "accepted": 114,
+      "rejected": 0,
+      "completedProjects": 12,
+      "publications": 1,
+      "publicationTimingMs": 4847250,
+      "hash": "8b827d795c4662ebdadc128fe798a72687182c3b6f21719d535a13f7b3ef5be6"
+    },
+    {
+      "name": "randomReasonable",
+      "commands": 173,
+      "accepted": 173,
+      "rejected": 0,
+      "completedProjects": 12,
+      "publications": 1,
+      "publicationTimingMs": 4608964.285714285,
+      "hash": "697fd955acf08bc54a26836801627404b892683d2c97d24237d2296b653b19c2"
+    },
+    {
+      "name": "longOffline",
+      "commands": 55,
+      "accepted": 55,
+      "rejected": 0,
+      "completedProjects": 12,
+      "publications": 1,
+      "publicationTimingMs": 4461481.292517006,
+      "hash": "2342f76ad3ecb510f000c30706f0df13d9b9add16e69c1243588824b8ea109ea"
+    },
+    {
+      "name": "ignoreOneSystem",
+      "commands": 115,
+      "accepted": 115,
+      "rejected": 0,
+      "completedProjects": 12,
+      "publications": 1,
+      "publicationTimingMs": 4815000,
+      "hash": "9761b76dfc988d4eb8a21d40b56e937d8b2b6624eacdfaa0afa91bdf525b5839"
+    }
+  ],
+  "attentionExponents": [
+    {
+      "exponent": 0.65,
+      "one": 1,
+      "two": 1.5691681957935015,
+      "three": 2.0423436319453514,
+      "marginalSecond": 0.5691681957935015,
+      "marginalThird": 0.47317543615184987
+    },
+    {
+      "exponent": 0.7,
+      "one": 1,
+      "two": 1.624504792712471,
+      "three": 2.157669279974593,
+      "marginalSecond": 0.624504792712471,
+      "marginalThird": 0.5331644872621222
+    },
+    {
+      "exponent": 0.75,
+      "one": 1,
+      "two": 1.681792830507429,
+      "three": 2.2795070569547775,
+      "marginalSecond": 0.681792830507429,
+      "marginalThird": 0.5977142264473485
+    },
+    {
+      "exponent": 0.8,
+      "one": 1,
+      "two": 1.7411011265922482,
+      "three": 2.4082246852806923,
+      "marginalSecond": 0.7411011265922482,
+      "marginalThird": 0.6671235586884441
+    },
+    {
+      "exponent": 0.85,
+      "one": 1,
+      "two": 1.8025009252216604,
+      "three": 2.5442106516410505,
+      "marginalSecond": 0.8025009252216604,
+      "marginalThird": 0.7417097264193901
+    },
+    {
+      "exponent": 0.9,
+      "one": 1,
+      "two": 1.8660659830736148,
+      "three": 2.6878753795222865,
+      "marginalSecond": 0.8660659830736148,
+      "marginalThird": 0.8218093964486717
+    }
+  ],
+  "dedicatedProjectSlot": {
+    "selected": true,
+    "linear": true,
+    "competingComparator": {
+      "modeled": "Phase 0 evidence retained",
+      "productionEnabled": false
+    }
+  },
+  "criticalGates": {
+    "balancedPublication": true,
+    "requiredResourcesLive": true,
+    "allPoliciesDeterministic": true,
+    "noInvariantViolations": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "wallDurationMs": 60000,
+  "creditedMs": 60000,
+  "equivalent": true,
+  "onlineHash": "8c162ae0ecee3544a8843f8fea30153584db3099051fe72be3d1a8bc9f881bec",
+  "offlineHash": "8c162ae0ecee3544a8843f8fea30153584db3099051fe72be3d1a8bc9f881bec",
+  "policyTrace": [
+    "Validated safe policy authorized routine continuation.",
+    "Credited 60000 ms."
+  ],
+  "windows": {
+    "fullEfficiencyHours": 8,
+    "tailEfficiency": 0.25,
+    "maximumCreditedHours": 72
+  }
+}

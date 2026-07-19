@@ -1,0 +1,7126 @@
+{
+  "options": {
+    "policy": "balanced",
+    "horizonSeconds": 7200,
+    "seed": 12345,
+    "chunkSeconds": null,
+    "traceLevel": "summary",
+    "stopCondition": "publication",
+    "contentVersion": "phase1-nn-fixture-1"
+  },
+  "finalState": {
+    "schemaVersion": 1,
+    "contentVersion": "phase1-nn-fixture-1",
+    "sequence": 198,
+    "logicalTimeMs": 4461481.292517006,
+    "resources": {
+      "PRECISION": 0,
+      "INTUITION": 0
+    },
+    "attention": {
+      "capacity": 4,
+      "allocations": {}
+    },
+    "activityEnabled": {
+      "FORMALIZE": true,
+      "EXPLORE": false
+    },
+    "activityProduction": {
+      "FORMALIZE": {
+        "segmentElapsedMs": 4298731.292517006,
+        "segmentProduced": 13472.1466133737,
+        "ratePerSecond": 3.13398202786605
+      },
+      "EXPLORE": {
+        "segmentElapsedMs": 4298731.292517006,
+        "segmentProduced": 6190.17306122449,
+        "ratePerSecond": 1.44
+      }
+    },
+    "projects": {
+      "nn.project.zero_successor": {
+        "id": "nn.project.zero_successor",
+        "status": "completed",
+        "approachId": "FORMAL",
+        "progress": 42.75,
+        "reservedPrecision": 0,
+        "reservedIntuition": 0,
+        "starts": 1
+      },
+      "nn.project.peano_frame": {
+        "id": "nn.project.peano_frame",
+        "status": "completed",
+        "approachId": "EXPLORATORY",
+        "progress": 120,
+        "reservedPrecision": 0,
+        "reservedIntuition": 0,
+        "starts": 1
+      },
+      "nn.project.primitive_recursion": {
+        "id": "nn.project.primitive_recursion",
+        "status": "completed",
+        "approachId": "CONSTRUCTIVE",
+        "progress": 220.5,
+        "reservedPrecision": 0,
+        "reservedIntuition": 0,
+        "starts": 1
+      },
+      "nn.project.addition": {
+        "id": "nn.project.addition",
+        "status": "completed",
+        "approachId": "FORMAL",
+        "progress": 285,
+        "reservedPrecision": 0,
+        "reservedIntuition": 0,
+        "starts": 1
+      },
+      "nn.project.addition_lemmas": {
+        "id": "nn.project.addition_lemmas",
+        "status": "completed",
+        "approachId": "EXPLORATORY",
+        "progress": 360,
+        "reservedPrecision": 0,
+        "reservedIntuition": 0,
+        "starts": 1
+      },
+      "nn.project.multiplication": {
+        "id": "nn.project.multiplication",
+        "status": "completed",
+        "approachId": "CONSTRUCTIVE",
+        "progress": 441,
+        "reservedPrecision": 0,
+        "reservedIntuition": 0,
+        "starts": 1
+      },
+      "nn.project.induction_walkthrough": {
+        "id": "nn.project.induction_walkthrough",
+        "status": "completed",
+        "approachId": "FORMAL",
+        "progress": 456,
+        "reservedPrecision": 0,
+        "reservedIntuition": 0,
+        "starts": 1
+      },
+      "nn.project.counterexample_lab": {
+        "id": "nn.project.counterexample_lab",
+        "status": "completed",
+        "approachId": "EXPLORATORY",
+        "progress": 300,
+        "reservedPrecision": 0,
+        "reservedIntuition": 0,
+        "starts": 1
+      },
+      "nn.project.strong_induction": {
+        "id": "nn.project.strong_induction",
+        "status": "completed",
+        "approachId": "CONSTRUCTIVE",
+        "progress": 567,
+        "reservedPrecision": 0,
+        "reservedIntuition": 0,
+        "starts": 1
+      },
+      "nn.project.well_ordering": {
+        "id": "nn.project.well_ordering",
+        "status": "completed",
+        "approachId": "FORMAL",
+        "progress": 570,
+        "reservedPrecision": 0,
+        "reservedIntuition": 0,
+        "starts": 1
+      },
+      "nn.project.least_counterexample": {
+        "id": "nn.project.least_counterexample",
+        "status": "completed",
+        "approachId": "EXPLORATORY",
+        "progress": 540,
+        "reservedPrecision": 0,
+        "reservedIntuition": 0,
+        "starts": 1
+      },
+      "nn.project.equivalence_capstone": {
+        "id": "nn.project.equivalence_capstone",
+        "status": "completed",
+        "approachId": "CONSTRUCTIVE",
+        "progress": 945,
+        "reservedPrecision": 0,
+        "reservedIntuition": 0,
+        "starts": 1
+      }
+    },
+    "projectQueue": [],
+    "completionBehavior": "pause",
+    "resourceReserves": {
+      "PRECISION": 0,
+      "INTUITION": 0
+    },
+    "automationPriority": [
+      "queue",
+      "completionBehavior",
+      "resourceReserve",
+      "orderedPriority",
+      "safeOfflinePolicy"
+    ],
+    "automationRules": [],
+    "automationTrace": [],
+    "ownedUpgrades": [
+      "nn.info.rate_ledger",
+      "nn.activity.explore",
+      "nn.routine.notation_discipline",
+      "nn.routine.variant_library",
+      "nn.automation.queue_one",
+      "nn.keystone.recursion_template",
+      "nn.info.dependency_trace",
+      "nn.keystone.lemma_reuse",
+      "nn.automation.completion_rule",
+      "nn.capacity.fourth_attention",
+      "nn.active.insight_notebook",
+      "nn.info.effect_decomposition",
+      "nn.automation.resource_reserve",
+      "nn.capstone.equivalence_map",
+      "nn.compression.publication_index"
+    ],
+    "ownedArtifacts": [
+      "nn.artifact.addition_lemmas",
+      "nn.artifact.strong_induction",
+      "nn.artifact.well_ordering",
+      "nn.artifact.least_counterexample"
+    ],
+    "reachedMilestones": [
+      "nn.milestone.zero_named",
+      "nn.milestone.successor_closed",
+      "nn.milestone.peano_framed",
+      "nn.milestone.recursion_available",
+      "nn.milestone.operations_built",
+      "nn.milestone.approach_selected",
+      "nn.milestone.induction_template",
+      "nn.milestone.stronger_hypothesis",
+      "nn.milestone.least_element",
+      "nn.milestone.equivalent_foundations",
+      "nn.milestone.published"
+    ],
+    "recordedAchievements": [
+      "nn.achievement.first_successor",
+      "nn.achievement.peano_frame",
+      "nn.achievement.without_shortcut",
+      "nn.achievement.patient_plan",
+      "nn.achievement.two_ways_forward",
+      "nn.achievement.counterexample_found",
+      "nn.achievement.exact_hypothesis",
+      "nn.achievement.least_of_all",
+      "nn.achievement.full_circle",
+      "nn.achievement.published_foundations"
+    ],
+    "understanding": 12,
+    "insight": 3,
+    "insightSpent": 0,
+    "assembledCapstoneEdges": [
+      "nn.capstone.edge.1",
+      "nn.capstone.edge.2",
+      "nn.capstone.edge.3",
+      "nn.capstone.edge.4"
+    ],
+    "chapters": {
+      "nn.chapter.natural_numbers": "published"
+    },
+    "masteryArtifacts": ["mastery.induction_framework"],
+    "settings": {
+      "reducedMotion": false,
+      "highContrast": false,
+      "notation": "plain"
+    },
+    "rng": {
+      "algorithm": "xoshiro128ss",
+      "words": [2258480790, 3283241497, 613117429, 2940958500],
+      "draws": 0
+    },
+    "records": {
+      "totalActiveMs": 4461481.292517006,
+      "totalOfflineCreditedMs": 0,
+      "publications": 1,
+      "completedProjects": 12,
+      "clockAnomalies": 0
+    },
+    "diagnostics": {
+      "lastRejectionCode": null,
+      "invariantViolations": [],
+      "unresolvedDecision": null
+    }
+  },
+  "eventLog": [
+    {
+      "type": "attentionChanged",
+      "activityId": "FORMALIZE",
+      "allocation": 2
+    },
+    {
+      "type": "attentionChanged",
+      "activityId": "EXPLORE",
+      "allocation": 1
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.info.rate_ledger"
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.zero_successor"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 78.3495506966511,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 33.29855904607692,
+      "reason": "activity production"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.zero_successor",
+      "artifactIds": ["nn.artifact.zero_successor"]
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 12750,
+      "offline": false
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.zero_named"
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.successor_closed"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.first_successor"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.activity.explore"
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.peano_frame",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.peano_frame"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 78.34955069665101,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 36,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 78.34955069665102,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 36,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 78.34955069665097,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 36,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 78.34955069665102,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 36,
+      "reason": "activity production"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.peano_frame",
+      "artifactIds": ["nn.artifact.peano_frame"]
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.peano_framed"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.peano_frame"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.routine.notation_discipline"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.routine.variant_library"
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.primitive_recursion",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.primitive_recursion"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598153,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.2,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598148,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000002,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598102,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999999,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598204,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999999,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598102,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999999,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598204,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999999,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598102,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999999,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 32.90681129259417,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 15.120000000000005,
+      "reason": "activity production"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.primitive_recursion",
+      "artifactIds": ["nn.artifact.primitive_recursion"]
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 10500,
+      "offline": false
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.recursion_available"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.automation.queue_one"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.keystone.recursion_template"
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.addition"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598193,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598102,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999999,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598114,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999999,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598182,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999999,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999999,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999993,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083599,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 4.477117182660095,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 2.057142857142935,
+      "reason": "activity production"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.addition",
+      "artifactIds": ["nn.artifact.addition"]
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 1428.5714285714287,
+      "offline": false
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.without_shortcut"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.info.dependency_trace"
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.addition_lemmas",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.addition_lemmas"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083599,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999993,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999993,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598023,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.199999999996976,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083599023,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999993,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598023,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 40.294054643989966,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 18.514285714290054,
+      "reason": "activity production"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.addition_lemmas",
+      "artifactIds": ["nn.artifact.addition_lemmas"]
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 12857.142857142855,
+      "offline": false
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.keystone.lemma_reuse"
+    },
+    {
+      "type": "capstoneEdgeAssembled",
+      "edgeId": "nn.capstone.edge.1"
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.multiplication",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.multiplication"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000016,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598023,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598978,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598023,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598023,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598023,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083599023,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598023,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598023,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 31.339820278659772,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 14.400000000000091,
+      "reason": "activity production"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.multiplication",
+      "artifactIds": ["nn.artifact.multiplication"]
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 9999.999999999978,
+      "offline": false
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.operations_built"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.patient_plan"
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.induction_walkthrough"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598023,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083599023,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598023,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.200000000000045,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083599069,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 73.97903154214055,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 33.99183673468997,
+      "reason": "activity production"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.induction_walkthrough",
+      "artifactIds": ["nn.artifact.induction_walkthrough"]
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 23605.44217687073,
+      "offline": false
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.approach_selected"
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.induction_template"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.two_ways_forward"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.automation.completion_rule"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.capacity.fourth_attention"
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.counterexample_lab",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.counterexample_lab"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598978,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 4.367045715660424,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999959,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 3.0367346938801347,
+      "reason": "activity production"
+    },
+    {
+      "type": "insightGained",
+      "amount": 1,
+      "overflow": 0
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.counterexample_lab",
+      "artifactIds": ["nn.artifact.counterexample_lab"]
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 2108.8435374149553,
+      "offline": false
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.counterexample_found"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.active.insight_notebook"
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.strong_induction",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.strong_induction"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 87.73053916402023,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6.171428571429715,
+      "reason": "activity production"
+    },
+    {
+      "type": "insightGained",
+      "amount": 1,
+      "overflow": 0
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.strong_induction",
+      "artifactIds": ["nn.artifact.strong_induction"]
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 4285.714285714306,
+      "offline": false
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.stronger_hypothesis"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.exact_hypothesis"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.info.effect_decomposition"
+    },
+    {
+      "type": "capstoneEdgeAssembled",
+      "edgeId": "nn.capstone.edge.2"
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.well_ordering"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083598068,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 69.46107832803955,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000027,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000073,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 10.089795918369418,
+      "reason": "activity production"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.well_ordering",
+      "artifactIds": ["nn.artifact.well_ordering"]
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 7006.802721088456,
+      "offline": false
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.least_element"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.least_of_all"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.automation.resource_reserve"
+    },
+    {
+      "type": "capstoneEdgeAssembled",
+      "edgeId": "nn.capstone.edge.3"
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.least_counterexample",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.least_counterexample"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083597977,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 93.98053916402023,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000073,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000073,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000073,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 14.106122448970382,
+      "reason": "activity production"
+    },
+    {
+      "type": "insightGained",
+      "amount": 1,
+      "overflow": 0
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.least_counterexample",
+      "artifactIds": ["nn.artifact.least_counterexample"]
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 9795.918367346896,
+      "offline": false
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.capstone.equivalence_map"
+    },
+    {
+      "type": "capstoneEdgeAssembled",
+      "edgeId": "nn.capstone.edge.4"
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.equivalence_capstone",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.equivalence_capstone"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.0194608360016,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083599978,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083599978,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000073,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 94.01946083589974,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 5.9221566561000145,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000073,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000073,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999936,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000073,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999072,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.20000000000982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999982,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 43.19999999999072,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 24.68571428571977,
+      "reason": "activity production"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.equivalence_capstone",
+      "artifactIds": ["nn.artifact.equivalence_capstone"]
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 17142.85714285712,
+      "offline": false
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.equivalent_foundations"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.full_circle"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.compression.publication_index"
+    },
+    {
+      "type": "chapterPublished",
+      "chapterId": "nn.chapter.natural_numbers",
+      "masteryArtifactId": "mastery.induction_framework"
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.published"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.published_foundations"
+    }
+  ],
+  "commandLog": [
+    {
+      "envelope": {
+        "id": "simulator-1-setAttention",
+        "sequence": 1,
+        "logicalTimestampMs": 1,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "setAttention",
+          "payload": {
+            "activityId": "FORMALIZE",
+            "allocation": 2
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-2-setAttention",
+        "sequence": 2,
+        "logicalTimestampMs": 2,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "setAttention",
+          "payload": {
+            "activityId": "EXPLORE",
+            "allocation": 1
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-3-purchaseUpgrade",
+        "sequence": 3,
+        "logicalTimestampMs": 3,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "purchaseUpgrade",
+          "payload": {
+            "upgradeId": "nn.info.rate_ledger"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-4-startProject",
+        "sequence": 4,
+        "logicalTimestampMs": 4,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "startProject",
+          "payload": {
+            "projectId": "nn.project.zero_successor"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-5-advanceTime",
+        "sequence": 5,
+        "logicalTimestampMs": 5,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-6-advanceTime",
+        "sequence": 6,
+        "logicalTimestampMs": 6,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 12750,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-7-purchaseUpgrade",
+        "sequence": 7,
+        "logicalTimestampMs": 7,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "purchaseUpgrade",
+          "payload": {
+            "upgradeId": "nn.activity.explore"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-8-switchProjectApproach",
+        "sequence": 8,
+        "logicalTimestampMs": 8,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "switchProjectApproach",
+          "payload": {
+            "projectId": "nn.project.peano_frame",
+            "approachId": "EXPLORATORY"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-9-startProject",
+        "sequence": 9,
+        "logicalTimestampMs": 9,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "startProject",
+          "payload": {
+            "projectId": "nn.project.peano_frame"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-10-advanceTime",
+        "sequence": 10,
+        "logicalTimestampMs": 10,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-11-advanceTime",
+        "sequence": 11,
+        "logicalTimestampMs": 11,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-12-advanceTime",
+        "sequence": 12,
+        "logicalTimestampMs": 12,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-13-advanceTime",
+        "sequence": 13,
+        "logicalTimestampMs": 13,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-14-purchaseUpgrade",
+        "sequence": 14,
+        "logicalTimestampMs": 14,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "purchaseUpgrade",
+          "payload": {
+            "upgradeId": "nn.routine.notation_discipline"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-15-purchaseUpgrade",
+        "sequence": 15,
+        "logicalTimestampMs": 15,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "purchaseUpgrade",
+          "payload": {
+            "upgradeId": "nn.routine.variant_library"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-16-switchProjectApproach",
+        "sequence": 16,
+        "logicalTimestampMs": 16,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "switchProjectApproach",
+          "payload": {
+            "projectId": "nn.project.primitive_recursion",
+            "approachId": "CONSTRUCTIVE"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-17-startProject",
+        "sequence": 17,
+        "logicalTimestampMs": 17,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "startProject",
+          "payload": {
+            "projectId": "nn.project.primitive_recursion"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-18-advanceTime",
+        "sequence": 18,
+        "logicalTimestampMs": 18,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-19-advanceTime",
+        "sequence": 19,
+        "logicalTimestampMs": 19,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-20-advanceTime",
+        "sequence": 20,
+        "logicalTimestampMs": 20,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-21-advanceTime",
+        "sequence": 21,
+        "logicalTimestampMs": 21,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-22-advanceTime",
+        "sequence": 22,
+        "logicalTimestampMs": 22,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-23-advanceTime",
+        "sequence": 23,
+        "logicalTimestampMs": 23,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-24-advanceTime",
+        "sequence": 24,
+        "logicalTimestampMs": 24,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-25-advanceTime",
+        "sequence": 25,
+        "logicalTimestampMs": 25,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 10500,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-26-purchaseUpgrade",
+        "sequence": 26,
+        "logicalTimestampMs": 26,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "purchaseUpgrade",
+          "payload": {
+            "upgradeId": "nn.automation.queue_one"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-27-purchaseUpgrade",
+        "sequence": 27,
+        "logicalTimestampMs": 27,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "purchaseUpgrade",
+          "payload": {
+            "upgradeId": "nn.keystone.recursion_template"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-28-startProject",
+        "sequence": 28,
+        "logicalTimestampMs": 28,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "startProject",
+          "payload": {
+            "projectId": "nn.project.addition"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-29-advanceTime",
+        "sequence": 29,
+        "logicalTimestampMs": 29,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-30-advanceTime",
+        "sequence": 30,
+        "logicalTimestampMs": 30,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-31-advanceTime",
+        "sequence": 31,
+        "logicalTimestampMs": 31,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-32-advanceTime",
+        "sequence": 32,
+        "logicalTimestampMs": 32,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-33-advanceTime",
+        "sequence": 33,
+        "logicalTimestampMs": 33,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-34-advanceTime",
+        "sequence": 34,
+        "logicalTimestampMs": 34,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-35-advanceTime",
+        "sequence": 35,
+        "logicalTimestampMs": 35,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-36-advanceTime",
+        "sequence": 36,
+        "logicalTimestampMs": 36,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-37-advanceTime",
+        "sequence": 37,
+        "logicalTimestampMs": 37,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-38-advanceTime",
+        "sequence": 38,
+        "logicalTimestampMs": 38,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 1428.5714285714287,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-39-purchaseUpgrade",
+        "sequence": 39,
+        "logicalTimestampMs": 39,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "purchaseUpgrade",
+          "payload": {
+            "upgradeId": "nn.info.dependency_trace"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-40-switchProjectApproach",
+        "sequence": 40,
+        "logicalTimestampMs": 40,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "switchProjectApproach",
+          "payload": {
+            "projectId": "nn.project.addition_lemmas",
+            "approachId": "EXPLORATORY"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-41-startProject",
+        "sequence": 41,
+        "logicalTimestampMs": 41,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "startProject",
+          "payload": {
+            "projectId": "nn.project.addition_lemmas"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-42-advanceTime",
+        "sequence": 42,
+        "logicalTimestampMs": 42,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-43-advanceTime",
+        "sequence": 43,
+        "logicalTimestampMs": 43,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-44-advanceTime",
+        "sequence": 44,
+        "logicalTimestampMs": 44,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-45-advanceTime",
+        "sequence": 45,
+        "logicalTimestampMs": 45,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-46-advanceTime",
+        "sequence": 46,
+        "logicalTimestampMs": 46,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-47-advanceTime",
+        "sequence": 47,
+        "logicalTimestampMs": 47,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-48-advanceTime",
+        "sequence": 48,
+        "logicalTimestampMs": 48,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-49-advanceTime",
+        "sequence": 49,
+        "logicalTimestampMs": 49,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-50-advanceTime",
+        "sequence": 50,
+        "logicalTimestampMs": 50,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-51-advanceTime",
+        "sequence": 51,
+        "logicalTimestampMs": 51,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-52-advanceTime",
+        "sequence": 52,
+        "logicalTimestampMs": 52,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-53-advanceTime",
+        "sequence": 53,
+        "logicalTimestampMs": 53,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 12857.142857142855,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-54-purchaseUpgrade",
+        "sequence": 54,
+        "logicalTimestampMs": 54,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "purchaseUpgrade",
+          "payload": {
+            "upgradeId": "nn.keystone.lemma_reuse"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-55-assembleCapstoneEdge",
+        "sequence": 55,
+        "logicalTimestampMs": 55,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "assembleCapstoneEdge",
+          "payload": {
+            "chapterId": "nn.chapter.natural_numbers",
+            "edgeId": "nn.capstone.edge.1"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-56-switchProjectApproach",
+        "sequence": 56,
+        "logicalTimestampMs": 56,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "switchProjectApproach",
+          "payload": {
+            "projectId": "nn.project.multiplication",
+            "approachId": "CONSTRUCTIVE"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-57-startProject",
+        "sequence": 57,
+        "logicalTimestampMs": 57,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "startProject",
+          "payload": {
+            "projectId": "nn.project.multiplication"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-58-advanceTime",
+        "sequence": 58,
+        "logicalTimestampMs": 58,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-59-advanceTime",
+        "sequence": 59,
+        "logicalTimestampMs": 59,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-60-advanceTime",
+        "sequence": 60,
+        "logicalTimestampMs": 60,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-61-advanceTime",
+        "sequence": 61,
+        "logicalTimestampMs": 61,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-62-advanceTime",
+        "sequence": 62,
+        "logicalTimestampMs": 62,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-63-advanceTime",
+        "sequence": 63,
+        "logicalTimestampMs": 63,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-64-advanceTime",
+        "sequence": 64,
+        "logicalTimestampMs": 64,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-65-advanceTime",
+        "sequence": 65,
+        "logicalTimestampMs": 65,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-66-advanceTime",
+        "sequence": 66,
+        "logicalTimestampMs": 66,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-67-advanceTime",
+        "sequence": 67,
+        "logicalTimestampMs": 67,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-68-advanceTime",
+        "sequence": 68,
+        "logicalTimestampMs": 68,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-69-advanceTime",
+        "sequence": 69,
+        "logicalTimestampMs": 69,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-70-advanceTime",
+        "sequence": 70,
+        "logicalTimestampMs": 70,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-71-advanceTime",
+        "sequence": 71,
+        "logicalTimestampMs": 71,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 9999.999999999978,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-72-startProject",
+        "sequence": 72,
+        "logicalTimestampMs": 72,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "startProject",
+          "payload": {
+            "projectId": "nn.project.induction_walkthrough"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-73-advanceTime",
+        "sequence": 73,
+        "logicalTimestampMs": 73,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-74-advanceTime",
+        "sequence": 74,
+        "logicalTimestampMs": 74,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-75-advanceTime",
+        "sequence": 75,
+        "logicalTimestampMs": 75,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-76-advanceTime",
+        "sequence": 76,
+        "logicalTimestampMs": 76,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-77-advanceTime",
+        "sequence": 77,
+        "logicalTimestampMs": 77,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-78-advanceTime",
+        "sequence": 78,
+        "logicalTimestampMs": 78,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-79-advanceTime",
+        "sequence": 79,
+        "logicalTimestampMs": 79,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-80-advanceTime",
+        "sequence": 80,
+        "logicalTimestampMs": 80,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-81-advanceTime",
+        "sequence": 81,
+        "logicalTimestampMs": 81,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-82-advanceTime",
+        "sequence": 82,
+        "logicalTimestampMs": 82,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-83-advanceTime",
+        "sequence": 83,
+        "logicalTimestampMs": 83,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-84-advanceTime",
+        "sequence": 84,
+        "logicalTimestampMs": 84,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-85-advanceTime",
+        "sequence": 85,
+        "logicalTimestampMs": 85,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-86-advanceTime",
+        "sequence": 86,
+        "logicalTimestampMs": 86,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 23605.44217687073,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-87-purchaseUpgrade",
+        "sequence": 87,
+        "logicalTimestampMs": 87,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "purchaseUpgrade",
+          "payload": {
+            "upgradeId": "nn.automation.completion_rule"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-88-purchaseUpgrade",
+        "sequence": 88,
+        "logicalTimestampMs": 88,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "purchaseUpgrade",
+          "payload": {
+            "upgradeId": "nn.capacity.fourth_attention"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-89-switchProjectApproach",
+        "sequence": 89,
+        "logicalTimestampMs": 89,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "switchProjectApproach",
+          "payload": {
+            "projectId": "nn.project.counterexample_lab",
+            "approachId": "EXPLORATORY"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-90-startProject",
+        "sequence": 90,
+        "logicalTimestampMs": 90,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "startProject",
+          "payload": {
+            "projectId": "nn.project.counterexample_lab"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-91-advanceTime",
+        "sequence": 91,
+        "logicalTimestampMs": 91,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-92-advanceTime",
+        "sequence": 92,
+        "logicalTimestampMs": 92,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-93-advanceTime",
+        "sequence": 93,
+        "logicalTimestampMs": 93,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-94-advanceTime",
+        "sequence": 94,
+        "logicalTimestampMs": 94,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-95-advanceTime",
+        "sequence": 95,
+        "logicalTimestampMs": 95,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-96-advanceTime",
+        "sequence": 96,
+        "logicalTimestampMs": 96,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-97-advanceTime",
+        "sequence": 97,
+        "logicalTimestampMs": 97,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-98-advanceTime",
+        "sequence": 98,
+        "logicalTimestampMs": 98,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-99-advanceTime",
+        "sequence": 99,
+        "logicalTimestampMs": 99,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-100-advanceTime",
+        "sequence": 100,
+        "logicalTimestampMs": 100,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 2108.8435374149553,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-101-purchaseUpgrade",
+        "sequence": 101,
+        "logicalTimestampMs": 101,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "purchaseUpgrade",
+          "payload": {
+            "upgradeId": "nn.active.insight_notebook"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-102-switchProjectApproach",
+        "sequence": 102,
+        "logicalTimestampMs": 102,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "switchProjectApproach",
+          "payload": {
+            "projectId": "nn.project.strong_induction",
+            "approachId": "CONSTRUCTIVE"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-103-startProject",
+        "sequence": 103,
+        "logicalTimestampMs": 103,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "startProject",
+          "payload": {
+            "projectId": "nn.project.strong_induction"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-104-advanceTime",
+        "sequence": 104,
+        "logicalTimestampMs": 104,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-105-advanceTime",
+        "sequence": 105,
+        "logicalTimestampMs": 105,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-106-advanceTime",
+        "sequence": 106,
+        "logicalTimestampMs": 106,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-107-advanceTime",
+        "sequence": 107,
+        "logicalTimestampMs": 107,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-108-advanceTime",
+        "sequence": 108,
+        "logicalTimestampMs": 108,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-109-advanceTime",
+        "sequence": 109,
+        "logicalTimestampMs": 109,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-110-advanceTime",
+        "sequence": 110,
+        "logicalTimestampMs": 110,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-111-advanceTime",
+        "sequence": 111,
+        "logicalTimestampMs": 111,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-112-advanceTime",
+        "sequence": 112,
+        "logicalTimestampMs": 112,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-113-advanceTime",
+        "sequence": 113,
+        "logicalTimestampMs": 113,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-114-advanceTime",
+        "sequence": 114,
+        "logicalTimestampMs": 114,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-115-advanceTime",
+        "sequence": 115,
+        "logicalTimestampMs": 115,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-116-advanceTime",
+        "sequence": 116,
+        "logicalTimestampMs": 116,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-117-advanceTime",
+        "sequence": 117,
+        "logicalTimestampMs": 117,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-118-advanceTime",
+        "sequence": 118,
+        "logicalTimestampMs": 118,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-119-advanceTime",
+        "sequence": 119,
+        "logicalTimestampMs": 119,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-120-advanceTime",
+        "sequence": 120,
+        "logicalTimestampMs": 120,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-121-advanceTime",
+        "sequence": 121,
+        "logicalTimestampMs": 121,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 4285.714285714306,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-122-purchaseUpgrade",
+        "sequence": 122,
+        "logicalTimestampMs": 122,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "purchaseUpgrade",
+          "payload": {
+            "upgradeId": "nn.info.effect_decomposition"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-123-assembleCapstoneEdge",
+        "sequence": 123,
+        "logicalTimestampMs": 123,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "assembleCapstoneEdge",
+          "payload": {
+            "chapterId": "nn.chapter.natural_numbers",
+            "edgeId": "nn.capstone.edge.2"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-124-startProject",
+        "sequence": 124,
+        "logicalTimestampMs": 124,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "startProject",
+          "payload": {
+            "projectId": "nn.project.well_ordering"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-125-advanceTime",
+        "sequence": 125,
+        "logicalTimestampMs": 125,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-126-advanceTime",
+        "sequence": 126,
+        "logicalTimestampMs": 126,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-127-advanceTime",
+        "sequence": 127,
+        "logicalTimestampMs": 127,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-128-advanceTime",
+        "sequence": 128,
+        "logicalTimestampMs": 128,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-129-advanceTime",
+        "sequence": 129,
+        "logicalTimestampMs": 129,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-130-advanceTime",
+        "sequence": 130,
+        "logicalTimestampMs": 130,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-131-advanceTime",
+        "sequence": 131,
+        "logicalTimestampMs": 131,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-132-advanceTime",
+        "sequence": 132,
+        "logicalTimestampMs": 132,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-133-advanceTime",
+        "sequence": 133,
+        "logicalTimestampMs": 133,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-134-advanceTime",
+        "sequence": 134,
+        "logicalTimestampMs": 134,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-135-advanceTime",
+        "sequence": 135,
+        "logicalTimestampMs": 135,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-136-advanceTime",
+        "sequence": 136,
+        "logicalTimestampMs": 136,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-137-advanceTime",
+        "sequence": 137,
+        "logicalTimestampMs": 137,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-138-advanceTime",
+        "sequence": 138,
+        "logicalTimestampMs": 138,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-139-advanceTime",
+        "sequence": 139,
+        "logicalTimestampMs": 139,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-140-advanceTime",
+        "sequence": 140,
+        "logicalTimestampMs": 140,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-141-advanceTime",
+        "sequence": 141,
+        "logicalTimestampMs": 141,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-142-advanceTime",
+        "sequence": 142,
+        "logicalTimestampMs": 142,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 7006.802721088456,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-143-purchaseUpgrade",
+        "sequence": 143,
+        "logicalTimestampMs": 143,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "purchaseUpgrade",
+          "payload": {
+            "upgradeId": "nn.automation.resource_reserve"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-144-assembleCapstoneEdge",
+        "sequence": 144,
+        "logicalTimestampMs": 144,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "assembleCapstoneEdge",
+          "payload": {
+            "chapterId": "nn.chapter.natural_numbers",
+            "edgeId": "nn.capstone.edge.3"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-145-switchProjectApproach",
+        "sequence": 145,
+        "logicalTimestampMs": 145,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "switchProjectApproach",
+          "payload": {
+            "projectId": "nn.project.least_counterexample",
+            "approachId": "EXPLORATORY"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-146-startProject",
+        "sequence": 146,
+        "logicalTimestampMs": 146,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "startProject",
+          "payload": {
+            "projectId": "nn.project.least_counterexample"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-147-advanceTime",
+        "sequence": 147,
+        "logicalTimestampMs": 147,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-148-advanceTime",
+        "sequence": 148,
+        "logicalTimestampMs": 148,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-149-advanceTime",
+        "sequence": 149,
+        "logicalTimestampMs": 149,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-150-advanceTime",
+        "sequence": 150,
+        "logicalTimestampMs": 150,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-151-advanceTime",
+        "sequence": 151,
+        "logicalTimestampMs": 151,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-152-advanceTime",
+        "sequence": 152,
+        "logicalTimestampMs": 152,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-153-advanceTime",
+        "sequence": 153,
+        "logicalTimestampMs": 153,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-154-advanceTime",
+        "sequence": 154,
+        "logicalTimestampMs": 154,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-155-advanceTime",
+        "sequence": 155,
+        "logicalTimestampMs": 155,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-156-advanceTime",
+        "sequence": 156,
+        "logicalTimestampMs": 156,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-157-advanceTime",
+        "sequence": 157,
+        "logicalTimestampMs": 157,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-158-advanceTime",
+        "sequence": 158,
+        "logicalTimestampMs": 158,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-159-advanceTime",
+        "sequence": 159,
+        "logicalTimestampMs": 159,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-160-advanceTime",
+        "sequence": 160,
+        "logicalTimestampMs": 160,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-161-advanceTime",
+        "sequence": 161,
+        "logicalTimestampMs": 161,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-162-advanceTime",
+        "sequence": 162,
+        "logicalTimestampMs": 162,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-163-advanceTime",
+        "sequence": 163,
+        "logicalTimestampMs": 163,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 9795.918367346896,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-164-purchaseUpgrade",
+        "sequence": 164,
+        "logicalTimestampMs": 164,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "purchaseUpgrade",
+          "payload": {
+            "upgradeId": "nn.capstone.equivalence_map"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-165-assembleCapstoneEdge",
+        "sequence": 165,
+        "logicalTimestampMs": 165,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "assembleCapstoneEdge",
+          "payload": {
+            "chapterId": "nn.chapter.natural_numbers",
+            "edgeId": "nn.capstone.edge.4"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-166-switchProjectApproach",
+        "sequence": 166,
+        "logicalTimestampMs": 166,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "switchProjectApproach",
+          "payload": {
+            "projectId": "nn.project.equivalence_capstone",
+            "approachId": "CONSTRUCTIVE"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-167-startProject",
+        "sequence": 167,
+        "logicalTimestampMs": 167,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "startProject",
+          "payload": {
+            "projectId": "nn.project.equivalence_capstone"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-168-advanceTime",
+        "sequence": 168,
+        "logicalTimestampMs": 168,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-169-advanceTime",
+        "sequence": 169,
+        "logicalTimestampMs": 169,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-170-advanceTime",
+        "sequence": 170,
+        "logicalTimestampMs": 170,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-171-advanceTime",
+        "sequence": 171,
+        "logicalTimestampMs": 171,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-172-advanceTime",
+        "sequence": 172,
+        "logicalTimestampMs": 172,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-173-advanceTime",
+        "sequence": 173,
+        "logicalTimestampMs": 173,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-174-advanceTime",
+        "sequence": 174,
+        "logicalTimestampMs": 174,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-175-advanceTime",
+        "sequence": 175,
+        "logicalTimestampMs": 175,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-176-advanceTime",
+        "sequence": 176,
+        "logicalTimestampMs": 176,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-177-advanceTime",
+        "sequence": 177,
+        "logicalTimestampMs": 177,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-178-advanceTime",
+        "sequence": 178,
+        "logicalTimestampMs": 178,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-179-advanceTime",
+        "sequence": 179,
+        "logicalTimestampMs": 179,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-180-advanceTime",
+        "sequence": 180,
+        "logicalTimestampMs": 180,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-181-advanceTime",
+        "sequence": 181,
+        "logicalTimestampMs": 181,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-182-advanceTime",
+        "sequence": 182,
+        "logicalTimestampMs": 182,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-183-advanceTime",
+        "sequence": 183,
+        "logicalTimestampMs": 183,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-184-advanceTime",
+        "sequence": 184,
+        "logicalTimestampMs": 184,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-185-advanceTime",
+        "sequence": 185,
+        "logicalTimestampMs": 185,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-186-advanceTime",
+        "sequence": 186,
+        "logicalTimestampMs": 186,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-187-advanceTime",
+        "sequence": 187,
+        "logicalTimestampMs": 187,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-188-advanceTime",
+        "sequence": 188,
+        "logicalTimestampMs": 188,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-189-advanceTime",
+        "sequence": 189,
+        "logicalTimestampMs": 189,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-190-advanceTime",
+        "sequence": 190,
+        "logicalTimestampMs": 190,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-191-advanceTime",
+        "sequence": 191,
+        "logicalTimestampMs": 191,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-192-advanceTime",
+        "sequence": 192,
+        "logicalTimestampMs": 192,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-193-advanceTime",
+        "sequence": 193,
+        "logicalTimestampMs": 193,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-194-advanceTime",
+        "sequence": 194,
+        "logicalTimestampMs": 194,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-195-advanceTime",
+        "sequence": 195,
+        "logicalTimestampMs": 195,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-196-advanceTime",
+        "sequence": 196,
+        "logicalTimestampMs": 196,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 17142.85714285712,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-197-purchaseUpgrade",
+        "sequence": 197,
+        "logicalTimestampMs": 197,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "purchaseUpgrade",
+          "payload": {
+            "upgradeId": "nn.compression.publication_index"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-198-publishChapter",
+        "sequence": 198,
+        "logicalTimestampMs": 198,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "publishChapter",
+          "payload": {
+            "chapterId": "nn.chapter.natural_numbers"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    }
+  ],
+  "resourceTimeline": [
+    {
+      "timeMs": 0,
+      "precision": 50,
+      "intuition": 20,
+      "activeProject": null,
+      "completedProjects": 0,
+      "upgrades": 0
+    },
+    {
+      "timeMs": 0,
+      "precision": 50,
+      "intuition": 20,
+      "activeProject": null,
+      "completedProjects": 0,
+      "upgrades": 0
+    },
+    {
+      "timeMs": 0,
+      "precision": 50,
+      "intuition": 20,
+      "activeProject": null,
+      "completedProjects": 0,
+      "upgrades": 0
+    },
+    {
+      "timeMs": 0,
+      "precision": 50,
+      "intuition": 20,
+      "activeProject": null,
+      "completedProjects": 0,
+      "upgrades": 1
+    },
+    {
+      "timeMs": 0,
+      "precision": 35,
+      "intuition": 20,
+      "activeProject": "nn.project.zero_successor",
+      "completedProjects": 0,
+      "upgrades": 1
+    },
+    {
+      "timeMs": 42750,
+      "precision": 146.648109742728,
+      "intuition": 20,
+      "activeProject": null,
+      "completedProjects": 1,
+      "upgrades": 2
+    },
+    {
+      "timeMs": 42750,
+      "precision": 146.648109742728,
+      "intuition": 20,
+      "activeProject": null,
+      "completedProjects": 1,
+      "upgrades": 2
+    },
+    {
+      "timeMs": 42750,
+      "precision": 121.448109742728,
+      "intuition": 5,
+      "activeProject": "nn.project.peano_frame",
+      "completedProjects": 1,
+      "upgrades": 2
+    },
+    {
+      "timeMs": 162750,
+      "precision": 410.846312529332,
+      "intuition": 141,
+      "activeProject": null,
+      "completedProjects": 2,
+      "upgrades": 3
+    },
+    {
+      "timeMs": 162750,
+      "precision": 398.846312529332,
+      "intuition": 117,
+      "activeProject": null,
+      "completedProjects": 2,
+      "upgrades": 4
+    },
+    {
+      "timeMs": 162750,
+      "precision": 398.846312529332,
+      "intuition": 117,
+      "activeProject": null,
+      "completedProjects": 2,
+      "upgrades": 4
+    },
+    {
+      "timeMs": 162750,
+      "precision": 351.596312529332,
+      "intuition": 89.7,
+      "activeProject": "nn.project.primitive_recursion",
+      "completedProjects": 2,
+      "upgrades": 4
+    },
+    {
+      "timeMs": 383250,
+      "precision": 1007.63934967379,
+      "intuition": 387.22,
+      "activeProject": null,
+      "completedProjects": 3,
+      "upgrades": 5
+    },
+    {
+      "timeMs": 383250,
+      "precision": 947.63934967379,
+      "intuition": 342.22,
+      "activeProject": null,
+      "completedProjects": 3,
+      "upgrades": 6
+    },
+    {
+      "timeMs": 383250,
+      "precision": 862.63934967379,
+      "intuition": 308.02,
+      "activeProject": "nn.project.addition",
+      "completedProjects": 3,
+      "upgrades": 6
+    },
+    {
+      "timeMs": 654678.5714285715,
+      "precision": 1668.29161438028,
+      "intuition": 663.877142857143,
+      "activeProject": null,
+      "completedProjects": 4,
+      "upgrades": 7
+    },
+    {
+      "timeMs": 654678.5714285715,
+      "precision": 1668.29161438028,
+      "intuition": 663.877142857143,
+      "activeProject": null,
+      "completedProjects": 4,
+      "upgrades": 7
+    },
+    {
+      "timeMs": 654678.5714285715,
+      "precision": 1585.49161438028,
+      "intuition": 608.877142857143,
+      "activeProject": "nn.project.addition_lemmas",
+      "completedProjects": 4,
+      "upgrades": 7
+    },
+    {
+      "timeMs": 997535.7142857143,
+      "precision": 2584.99973822007,
+      "intuition": 1052.59142857143,
+      "activeProject": null,
+      "completedProjects": 5,
+      "upgrades": 8
+    },
+    {
+      "timeMs": 997535.7142857143,
+      "precision": 2584.99973822007,
+      "intuition": 1052.59142857143,
+      "activeProject": null,
+      "completedProjects": 5,
+      "upgrades": 8
+    },
+    {
+      "timeMs": 997535.7142857143,
+      "precision": 2584.99973822007,
+      "intuition": 1052.59142857143,
+      "activeProject": null,
+      "completedProjects": 5,
+      "upgrades": 8
+    },
+    {
+      "timeMs": 997535.7142857143,
+      "precision": 2495.74973822007,
+      "intuition": 987.49142857143,
+      "activeProject": "nn.project.multiplication",
+      "completedProjects": 5,
+      "upgrades": 8
+    },
+    {
+      "timeMs": 1397535.7142857143,
+      "precision": 3611.84254936649,
+      "intuition": 1495.99142857143,
+      "activeProject": "nn.project.induction_walkthrough",
+      "completedProjects": 6,
+      "upgrades": 8
+    },
+    {
+      "timeMs": 1811141.156462585,
+      "precision": 4853.07457177639,
+      "intuition": 2036.58326530612,
+      "activeProject": null,
+      "completedProjects": 7,
+      "upgrades": 9
+    },
+    {
+      "timeMs": 1811141.156462585,
+      "precision": 4763.07457177639,
+      "intuition": 1946.58326530612,
+      "activeProject": null,
+      "completedProjects": 7,
+      "upgrades": 10
+    },
+    {
+      "timeMs": 1811141.156462585,
+      "precision": 4763.07457177639,
+      "intuition": 1946.58326530612,
+      "activeProject": null,
+      "completedProjects": 7,
+      "upgrades": 10
+    },
+    {
+      "timeMs": 1811141.156462585,
+      "precision": 4713.57457177639,
+      "intuition": 1790.33326530612,
+      "activeProject": "nn.project.counterexample_lab",
+      "completedProjects": 7,
+      "upgrades": 10
+    },
+    {
+      "timeMs": 2083250,
+      "precision": 4960,
+      "intuition": 2112.17,
+      "activeProject": null,
+      "completedProjects": 8,
+      "upgrades": 11
+    },
+    {
+      "timeMs": 2083250,
+      "precision": 4960,
+      "intuition": 2112.17,
+      "activeProject": null,
+      "completedProjects": 8,
+      "upgrades": 11
+    },
+    {
+      "timeMs": 2083250,
+      "precision": 4818.25,
+      "intuition": 2012.42,
+      "activeProject": "nn.project.strong_induction",
+      "completedProjects": 8,
+      "upgrades": 11
+    },
+    {
+      "timeMs": 2597535.714285714,
+      "precision": 4930,
+      "intuition": 2667.99142857143,
+      "activeProject": null,
+      "completedProjects": 9,
+      "upgrades": 12
+    },
+    {
+      "timeMs": 2597535.714285714,
+      "precision": 4930,
+      "intuition": 2667.99142857143,
+      "activeProject": null,
+      "completedProjects": 9,
+      "upgrades": 12
+    },
+    {
+      "timeMs": 2597535.714285714,
+      "precision": 4742.5,
+      "intuition": 2573.49142857143,
+      "activeProject": "nn.project.well_ordering",
+      "completedProjects": 9,
+      "upgrades": 12
+    },
+    {
+      "timeMs": 3114542.5170068024,
+      "precision": 4920,
+      "intuition": 3252.9812244898,
+      "activeProject": null,
+      "completedProjects": 10,
+      "upgrades": 13
+    },
+    {
+      "timeMs": 3114542.5170068024,
+      "precision": 4920,
+      "intuition": 3252.9812244898,
+      "activeProject": null,
+      "completedProjects": 10,
+      "upgrades": 13
+    },
+    {
+      "timeMs": 3114542.5170068024,
+      "precision": 4920,
+      "intuition": 3252.9812244898,
+      "activeProject": null,
+      "completedProjects": 10,
+      "upgrades": 13
+    },
+    {
+      "timeMs": 3114542.5170068024,
+      "precision": 4812,
+      "intuition": 3065.4812244898,
+      "activeProject": "nn.project.least_counterexample",
+      "completedProjects": 10,
+      "upgrades": 13
+    },
+    {
+      "timeMs": 3604338.435374149,
+      "precision": 4870,
+      "intuition": 3640.78734693877,
+      "activeProject": null,
+      "completedProjects": 11,
+      "upgrades": 14
+    },
+    {
+      "timeMs": 3604338.435374149,
+      "precision": 4870,
+      "intuition": 3640.78734693877,
+      "activeProject": null,
+      "completedProjects": 11,
+      "upgrades": 14
+    },
+    {
+      "timeMs": 3604338.435374149,
+      "precision": 4870,
+      "intuition": 3640.78734693877,
+      "activeProject": null,
+      "completedProjects": 11,
+      "upgrades": 14
+    },
+    {
+      "timeMs": 3604338.435374149,
+      "precision": 4618,
+      "intuition": 3420.28734693877,
+      "activeProject": "nn.project.equivalence_capstone",
+      "completedProjects": 11,
+      "upgrades": 14
+    },
+    {
+      "timeMs": 4461481.292517006,
+      "precision": 5000,
+      "intuition": 4654.57306122449,
+      "activeProject": null,
+      "completedProjects": 12,
+      "upgrades": 15
+    },
+    {
+      "timeMs": 4461481.292517006,
+      "precision": 0,
+      "intuition": 0,
+      "activeProject": null,
+      "completedProjects": 12,
+      "upgrades": 15
+    }
+  ],
+  "projectTimeline": [
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.zero_successor"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.zero_successor",
+      "artifactIds": ["nn.artifact.zero_successor"]
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.peano_frame",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.peano_frame"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.peano_frame",
+      "artifactIds": ["nn.artifact.peano_frame"]
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.primitive_recursion",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.primitive_recursion"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.primitive_recursion",
+      "artifactIds": ["nn.artifact.primitive_recursion"]
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.addition"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.addition",
+      "artifactIds": ["nn.artifact.addition"]
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.addition_lemmas",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.addition_lemmas"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.addition_lemmas",
+      "artifactIds": ["nn.artifact.addition_lemmas"]
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.multiplication",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.multiplication"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.multiplication",
+      "artifactIds": ["nn.artifact.multiplication"]
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.induction_walkthrough"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.induction_walkthrough",
+      "artifactIds": ["nn.artifact.induction_walkthrough"]
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.counterexample_lab",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.counterexample_lab"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.counterexample_lab",
+      "artifactIds": ["nn.artifact.counterexample_lab"]
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.strong_induction",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.strong_induction"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.strong_induction",
+      "artifactIds": ["nn.artifact.strong_induction"]
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.well_ordering"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.well_ordering",
+      "artifactIds": ["nn.artifact.well_ordering"]
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.least_counterexample",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.least_counterexample"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.least_counterexample",
+      "artifactIds": ["nn.artifact.least_counterexample"]
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.equivalence_capstone",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.equivalence_capstone"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.equivalence_capstone",
+      "artifactIds": ["nn.artifact.equivalence_capstone"]
+    }
+  ],
+  "upgradeTimeline": [
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.info.rate_ledger"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.activity.explore"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.routine.notation_discipline"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.routine.variant_library"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.automation.queue_one"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.keystone.recursion_template"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.info.dependency_trace"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.keystone.lemma_reuse"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.automation.completion_rule"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.capacity.fourth_attention"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.active.insight_notebook"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.info.effect_decomposition"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.automation.resource_reserve"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.capstone.equivalence_map"
+    },
+    {
+      "type": "upgradePurchased",
+      "upgradeId": "nn.compression.publication_index"
+    }
+  ],
+  "milestoneTimeline": [
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.zero_named"
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.successor_closed"
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.peano_framed"
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.recursion_available"
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.operations_built"
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.approach_selected"
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.induction_template"
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.stronger_hypothesis"
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.least_element"
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.equivalent_foundations"
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.published"
+    }
+  ],
+  "achievementTimeline": [
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.first_successor"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.peano_frame"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.without_shortcut"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.patient_plan"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.two_ways_forward"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.counterexample_found"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.exact_hypothesis"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.least_of_all"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.full_circle"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.published_foundations"
+    }
+  ],
+  "automationTrace": [],
+  "publicationTimingMs": 4461481.292517006,
+  "rejectedActions": [],
+  "invariantViolations": [],
+  "policySummary": {
+    "name": "balanced",
+    "commands": 198,
+    "accepted": 198,
+    "rejected": 0,
+    "completedProjects": 12,
+    "publications": 1
+  },
+  "deterministicHash": "cd58730969fc18386bc650b845e7b6f1498b276c36cdd470fc61f129c6fda079"
+}

@@ -1,0 +1,43 @@
+{
+  "bundleFiles": [
+    {
+      "path": "assets/index-C1eks5oH.js",
+      "bytes": 141303,
+      "type": ".js"
+    },
+    {
+      "path": "assets/index-C1eks5oH.js.map",
+      "bytes": 638533,
+      "type": ".map"
+    },
+    {
+      "path": "assets/index-C6fvMsTj.css",
+      "bytes": 2614,
+      "type": ".css"
+    },
+    {
+      "path": "index.html",
+      "bytes": 565,
+      "type": ".html"
+    }
+  ],
+  "totalBytes": 783015,
+  "initialJsBytes": 141303,
+  "initialCssBytes": 2614,
+  "budgets": {
+    "initialJsBytes": 150000,
+    "initialCssBytes": 30000,
+    "simulatorRunMs": 5000,
+    "offlineCatchupMs": 5000
+  },
+  "gates": {
+    "buildOutputPresent": true,
+    "initialJs": true,
+    "initialCss": true,
+    "simulatorThroughput": true,
+    "offlineCatchup": true,
+    "debugUiRender": "PASS via UI smoke suite"
+  },
+  "canonicalStateJsonBytes": 4939,
+  "reportStability": "Tracked output records deterministic byte sizes and boolean budget gates, not machine-dependent raw timings."
+}

@@ -1,0 +1,64 @@
+{
+  "phase": 1,
+  "status": "PASS",
+  "branch": "phase/01-deterministic-engine",
+  "base": "v2/integration",
+  "contentVersion": "phase1-nn-fixture-1",
+  "counts": {
+    "resources": 2,
+    "activities": 2,
+    "approaches": 3,
+    "techniqueArtifacts": 12,
+    "projects": 12,
+    "upgrades": 15,
+    "milestones": 11,
+    "achievements": 10,
+    "chapters": 1,
+    "effects": 15
+  },
+  "tests": {
+    "unit": 13,
+    "integration": 4,
+    "determinismAndSimulator": 18,
+    "persistence": 8,
+    "content": 3,
+    "ui": 3,
+    "total": 49
+  },
+  "determinismDigest": "cd58730969fc18386bc650b845e7b6f1498b276c36cdd470fc61f129c6fda079",
+  "onlineOfflineEquivalent": true,
+  "saveFixtureCount": 21,
+  "bundle": {
+    "initialJsBytes": 141303,
+    "initialCssBytes": 2614
+  },
+  "provisionalConfiguration": {
+    "attention": {
+      "startingCapacity": 3,
+      "maximumCapacity": 4,
+      "activityExponent": 0.8
+    },
+    "insight": {
+      "cap": 3,
+      "sustainedTargetMin": 0.1,
+      "sustainedTargetMax": 0.2,
+      "ceiling": 0.2
+    },
+    "offline": {
+      "fullEfficiencyHours": 8,
+      "tailEfficiency": 0.25,
+      "maximumCreditedHours": 72
+    },
+    "pacing": {
+      "firstPublicationMinMinutes": 60,
+      "firstPublicationMaxMinutes": 120,
+      "campaignMinHours": 10,
+      "campaignMaxHours": 20
+    },
+    "projects": {
+      "approachSwitchPreservation": 0.9,
+      "baseSpeedPerSecond": 1
+    }
+  },
+  "phase2Ready": true
+}

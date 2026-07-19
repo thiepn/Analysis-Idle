@@ -1,0 +1,27 @@
+{
+  "command": "npm run content:validate",
+  "contentVersion": "phase1-nn-fixture-1",
+  "valid": true,
+  "issues": [],
+  "counts": {
+    "resources": 2,
+    "activities": 2,
+    "approaches": 3,
+    "techniqueArtifacts": 12,
+    "projects": 12,
+    "upgrades": 15,
+    "milestones": 11,
+    "achievements": 10,
+    "chapters": 1,
+    "effects": 15
+  },
+  "requiredCounts": {
+    "projects": 12,
+    "upgrades": 15,
+    "milestones": 11,
+    "achievements": 10,
+    "approaches": 3
+  },
+  "primaryStocks": ["PRECISION", "INTUITION"],
+  "techniqueRepresentation": "typed-artifacts-not-stock"
+}

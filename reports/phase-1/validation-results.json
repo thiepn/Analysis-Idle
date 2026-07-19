@@ -1,0 +1,98 @@
+{
+  "status": "PASS",
+  "suiteCounts": {
+    "unit": 13,
+    "integration": 4,
+    "determinismAndSimulator": 18,
+    "persistence": 8,
+    "content": 3,
+    "ui": 3,
+    "total": 49
+  },
+  "commands": [
+    {
+      "command": "npm ci",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "npm run format:check",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "npm run lint",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "npm run typecheck",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "npm run test:unit",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "npm run test:integration",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "npm run test:determinism",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "npm run test:persistence",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "npm run test:content",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "npm run test:ui",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "npm run content:validate",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "npm run simulate",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "npm run balance:report",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "npm run save:fixtures",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "npm run build",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "npm run report:phase1",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "npm run ci",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "git diff --check",
+      "expectedInFinalValidation": "PASS"
+    },
+    {
+      "command": "git status --short --branch",
+      "expectedInFinalValidation": "PASS"
+    }
+  ],
+  "critical": {
+    "content": true,
+    "determinism": true,
+    "offlineEquivalence": true,
+    "publicationReachable": true,
+    "stateInvariants": true,
+    "bundleBudgets": true
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "order": [
+    "priority ascending",
+    "stacking group lexical",
+    "effect ID lexical"
+  ],
+  "activeAtInitialState": [],
+  "effects": [
+    {
+      "id": "nn.effect.rate_ledger",
+      "source": {
+        "kind": "upgrade",
+        "id": "nn.info.rate_ledger"
+      },
+      "target": {
+        "kind": "information",
+        "capability": "rateLedger"
+      },
+      "operation": "informationUnlock",
+      "group": "information.rate",
+      "priority": 100,
+      "ownedRequired": true
+    },
+    {
+      "id": "nn.effect.explore_unlock",
+      "source": {
+        "kind": "upgrade",
+        "id": "nn.activity.explore"
+      },
+      "target": {
+        "kind": "information",
+        "capability": "activity:EXPLORE"
+      },
+      "operation": "informationUnlock",
+      "group": "activity.unlock",
+      "priority": 100,
+      "ownedRequired": true
+    },
+    {
+      "id": "nn.effect.notation_discipline",
+      "source": {
+        "kind": "upgrade",
+        "id": "nn.routine.notation_discipline"
+      },
+      "target": {
+        "kind": "activityRate",
+        "id": "FORMALIZE"
+      },
+      "operation": "namedMultiply",
+      "group": "activity.base.precision",
+      "priority": 100,
+      "ownedRequired": true
+    },
+    {
+      "id": "nn.effect.variant_library",
+      "source": {
+        "kind": "upgrade",
+        "id": "nn.routine.variant_library"
+      },
+      "target": {
+        "kind": "activityRate",
+        "id": "EXPLORE"
+      },
+      "operation": "namedMultiply",
+      "group": "activity.base.intuition",
+      "priority": 100,
+      "ownedRequired": true
+    },
+    {
+      "id": "nn.effect.queue_one",
+      "source": {
+        "kind": "upgrade",
+        "id": "nn.automation.queue_one"
+      },
+      "target": {
+        "kind": "automation",
+        "capability": "queue"
+      },
+      "operation": "automationUnlock",
+      "group": "automation.queue",
+      "priority": 100,
+      "ownedRequired": true
+    },
+    {
+      "id": "nn.effect.dependency_trace",
+      "source": {
+        "kind": "upgrade",
+        "id": "nn.info.dependency_trace"
+      },
+      "target": {
+        "kind": "information",
+        "capability": "dependencyTrace"
+      },
+      "operation": "informationUnlock",
+      "group": "information.dependencies",
+      "priority": 100,
+      "ownedRequired": true
+    },
+    {
+      "id": "nn.effect.recursion_template",
+      "source": {
+        "kind": "upgrade",
+        "id": "nn.keystone.recursion_template"
+      },
+      "target": {
+        "kind": "project",
+        "id": "*"
+      },
+      "operation": "projectSpeed",
+      "group": "project.method.recursion",
+      "priority": 100,
+      "ownedRequired": true
+    },
+    {
+      "id": "nn.effect.lemma_reuse",
+      "source": {
+        "kind": "upgrade",
+        "id": "nn.keystone.lemma_reuse"
+      },
+      "target": {
+        "kind": "project",
+        "id": "*"
+      },
+      "operation": "projectSpeed",
+      "group": "project.method.lemma",
+      "priority": 100,
+      "ownedRequired": true
+    },
+    {
+      "id": "nn.effect.completion_rule",
+      "source": {
+        "kind": "upgrade",
+        "id": "nn.automation.completion_rule"
+      },
+      "target": {
+        "kind": "automation",
+        "capability": "completionBehavior"
+      },
+      "operation": "automationUnlock",
+      "group": "automation.completion",
+      "priority": 100,
+      "ownedRequired": true
+    },
+    {
+      "id": "nn.effect.insight_notebook",
+      "source": {
+        "kind": "upgrade",
+        "id": "nn.active.insight_notebook"
+      },
+      "target": {
+        "kind": "information",
+        "capability": "insightActions"
+      },
+      "operation": "informationUnlock",
+      "group": "active.insight",
+      "priority": 100,
+      "ownedRequired": true
+    },
+    {
+      "id": "nn.effect.fourth_attention",
+      "source": {
+        "kind": "upgrade",
+        "id": "nn.capacity.fourth_attention"
+      },
+      "target": {
+        "kind": "attentionCapacity"
+      },
+      "operation": "capacityAdd",
+      "group": "attention.capacity",
+      "priority": 100,
+      "ownedRequired": true
+    },
+    {
+      "id": "nn.effect.resource_reserve",
+      "source": {
+        "kind": "upgrade",
+        "id": "nn.automation.resource_reserve"
+      },
+      "target": {
+        "kind": "automation",
+        "capability": "resourceReserve"
+      },
+      "operation": "automationUnlock",
+      "group": "automation.reserve",
+      "priority": 100,
+      "ownedRequired": true
+    },
+    {
+      "id": "nn.effect.effect_decomposition",
+      "source": {
+        "kind": "upgrade",
+        "id": "nn.info.effect_decomposition"
+      },
+      "target": {
+        "kind": "information",
+        "capability": "effectDecomposition"
+      },
+      "operation": "informationUnlock",
+      "group": "information.effects",
+      "priority": 100,
+      "ownedRequired": true
+    },
+    {
+      "id": "nn.effect.equivalence_map",
+      "source": {
+        "kind": "upgrade",
+        "id": "nn.capstone.equivalence_map"
+      },
+      "target": {
+        "kind": "information",
+        "capability": "capstoneEdges"
+      },
+      "operation": "informationUnlock",
+      "group": "capstone.map",
+      "priority": 100,
+      "ownedRequired": true
+    },
+    {
+      "id": "nn.effect.publication_index",
+      "source": {
+        "kind": "upgrade",
+        "id": "nn.compression.publication_index"
+      },
+      "target": {
+        "kind": "publication",
+        "chapterId": "nn.chapter.natural_numbers"
+      },
+      "operation": "publicationTransform",
+      "group": "publication.ledger",
+      "priority": 100,
+      "ownedRequired": true
+    }
+  ]
+}
