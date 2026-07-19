@@ -17,19 +17,19 @@
     "effects": 15
   },
   "tests": {
-    "unit": 13,
+    "unit": 16,
     "integration": 4,
     "determinismAndSimulator": 18,
-    "persistence": 8,
+    "persistence": 10,
     "content": 3,
     "ui": 3,
-    "total": 49
+    "total": 54
   },
-  "determinismDigest": "cd58730969fc18386bc650b845e7b6f1498b276c36cdd470fc61f129c6fda079",
+  "determinismDigest": "e240e2ef5980c2e5778f2fb995aae60a6dc678d89c00f4cdc80d28d8c639a695",
   "onlineOfflineEquivalent": true,
   "saveFixtureCount": 21,
   "bundle": {
-    "initialJsBytes": 141303,
+    "initialJsBytes": 145476,
     "initialCssBytes": 2614
   },
   "provisionalConfiguration": {
@@ -42,7 +42,12 @@
       "cap": 3,
       "sustainedTargetMin": 0.1,
       "sustainedTargetMax": 0.2,
-      "ceiling": 0.2
+      "ceiling": 0.2,
+      "modifierPerInsight": 0.1,
+      "modifierDurationSeconds": 60
+    },
+    "automation": {
+      "queueCapacity": 1
     },
     "offline": {
       "fullEfficiencyHours": 8,

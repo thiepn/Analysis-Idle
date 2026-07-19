@@ -4,7 +4,7 @@ Status: **PASS**.
 
 The strict TypeScript/Preact/Vite scaffold, deterministic engine, validated Natural Numbers fixture, headless simulator, persistence boundary, accessible debug UI, test suites, and validation-only CI workflow are complete. All 22 v1 baseline files remain unchanged.
 
-Critical evidence: 12 projects completed, 1 Publication, 0 content issues, 49 Phase 1 tests, and deterministic digest `cd58730969fc18386bc650b845e7b6f1498b276c36cdd470fc61f129c6fda079`.
+Critical evidence: 12 projects completed, 1 Publication, 0 content issues, 54 Phase 1 tests, and deterministic digest `e240e2ef5980c2e5778f2fb995aae60a6dc678d89c00f4cdc80d28d8c639a695`.
 
 ## Adversarial audit
 

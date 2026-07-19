@@ -1,13 +1,13 @@
 {
   "status": "PASS",
   "suiteCounts": {
-    "unit": 13,
+    "unit": 16,
     "integration": 4,
     "determinismAndSimulator": 18,
-    "persistence": 8,
+    "persistence": 10,
     "content": 3,
     "ui": 3,
-    "total": 49
+    "total": 54
   },
   "commands": [
     {

@@ -167,6 +167,7 @@
     "understanding": "0",
     "insight": "0",
     "insightSpent": "0",
+    "insightModifiers": [],
     "assembledCapstoneEdges": [],
     "chapters": {
       "nn.chapter.natural_numbers": "active"
@@ -204,5 +205,5 @@
     "lastCommandSequence": 0,
     "eventDigest": null
   },
-  "checksum": "fnv1a32:9bbefaa5"
+  "checksum": "fnv1a32:98902579"
 }

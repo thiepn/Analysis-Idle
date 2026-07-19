@@ -1,11 +1,14 @@
 import type { GameContent } from "../../shared/contracts";
-import type { GameState } from "./game-state";
+import { validateRngState } from "../rng/xoshiro";
+import { ENGINE_SCHEMA_VERSION, type GameState } from "./game-state";
 
 export function collectInvariantViolations(
   state: GameState,
   content: GameContent,
 ): string[] {
   const violations: string[] = [];
+  if (state.schemaVersion !== ENGINE_SCHEMA_VERSION)
+    violations.push("save schema version is unsupported");
   if (!Number.isSafeInteger(state.sequence) || state.sequence < 0)
     violations.push("sequence must be a non-negative safe integer");
   if (!Number.isFinite(state.logicalTimeMs) || state.logicalTimeMs < 0)
@@ -50,6 +53,12 @@ export function collectInvariantViolations(
   )
     violations.push("dedicated project slot has multiple active projects");
   for (const project of Object.values(state.projects)) {
+    const definition = content.projects.find(
+      (candidate) => candidate.id === project.id,
+    );
+    if (!definition) violations.push(`project ${project.id} is not defined`);
+    else if (!definition.allowedApproachIds.includes(project.approachId))
+      violations.push(`project ${project.id} selected an undefined approach`);
     if (!Number.isFinite(project.progress) || project.progress < 0)
       violations.push(`project ${project.id} has invalid progress`);
     if (
@@ -71,6 +80,57 @@ export function collectInvariantViolations(
     );
   if (new Set(state.projectQueue).size !== state.projectQueue.length)
     violations.push("project queue contains duplicates");
+  for (const projectId of state.projectQueue) {
+    if (!state.projects[projectId])
+      violations.push(`queue references unknown project ${projectId}`);
+    else if (state.projects[projectId].status !== "queued")
+      violations.push(`queued project ${projectId} has inconsistent status`);
+  }
+  for (const upgradeId of state.ownedUpgrades)
+    if (!content.upgrades.some((upgrade) => upgrade.id === upgradeId))
+      violations.push(`owned upgrade ${upgradeId} is undefined`);
+  for (const milestoneId of state.reachedMilestones)
+    if (!content.milestones.some((milestone) => milestone.id === milestoneId))
+      violations.push(`milestone ${milestoneId} is undefined`);
+  for (const achievementId of state.recordedAchievements)
+    if (
+      !content.achievements.some(
+        (achievement) => achievement.id === achievementId,
+      )
+    )
+      violations.push(`achievement ${achievementId} is undefined`);
+  for (const artifactId of state.ownedArtifacts)
+    if (
+      !content.techniqueArtifacts.some((artifact) => artifact.id === artifactId)
+    )
+      violations.push(`Technique artifact ${artifactId} is undefined`);
+  for (const [chapterId, status] of Object.entries(state.chapters)) {
+    const chapter = content.chapters.find(
+      (candidate) => candidate.id === chapterId,
+    );
+    if (!chapter) violations.push(`chapter ${chapterId} is undefined`);
+    else if (
+      status === "published" &&
+      !state.masteryArtifacts.includes(chapter.publication.masteryArtifactId)
+    )
+      violations.push(
+        `published chapter ${chapterId} lacks its Mastery artifact`,
+      );
+  }
+  for (const modifier of state.insightModifiers)
+    if (
+      !Number.isFinite(modifier.magnitude) ||
+      modifier.magnitude <= 0 ||
+      modifier.magnitude > content.configuration.insight.ceiling ||
+      !Number.isFinite(modifier.expiresAtLogicalTimeMs) ||
+      modifier.expiresAtLogicalTimeMs <= state.logicalTimeMs
+    )
+      violations.push(`Insight modifier ${modifier.id} is invalid or expired`);
+  try {
+    validateRngState(state.rng);
+  } catch {
+    violations.push("RNG state is invalid");
+  }
   return violations;
 }
 

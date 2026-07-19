@@ -15,7 +15,12 @@ Still configurable values:
     "cap": 3,
     "sustainedTargetMin": 0.1,
     "sustainedTargetMax": 0.2,
-    "ceiling": 0.2
+    "ceiling": 0.2,
+    "modifierPerInsight": 0.1,
+    "modifierDurationSeconds": 60
+  },
+  "automation": {
+    "queueCapacity": 1
   },
   "offline": {
     "fullEfficiencyHours": 8,

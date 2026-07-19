@@ -37,6 +37,7 @@ export type GameEvent =
   | { type: "milestoneReached"; milestoneId: MilestoneId }
   | { type: "achievementRecorded"; achievementId: AchievementId }
   | { type: "insightSpent"; amount: number; purpose: string }
+  | { type: "insightModifierExpired"; modifierId: string }
   | { type: "insightGained"; amount: number; overflow: number }
   | { type: "capstoneEdgeAssembled"; edgeId: CapstoneEdgeId }
   | {

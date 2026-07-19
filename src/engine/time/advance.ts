@@ -89,10 +89,9 @@ function completeProject(
   const room = Math.max(0, content.configuration.insight.cap - state.insight);
   const amount = Math.min(room, definition.insightReward);
   const overflow = definition.insightReward - amount;
-  if (amount > 0) {
-    state.insight = gnAdd(state.insight, gameNumber(amount));
+  if (amount > 0) state.insight = gnAdd(state.insight, gameNumber(amount));
+  if (definition.insightReward > 0)
     events.push({ type: "insightGained", amount, overflow });
-  }
   events.push({ type: "projectCompleted", projectId, artifactIds: gained });
   unlockProjects(state, content);
 }
@@ -234,6 +233,17 @@ export function advanceDeterministicTime(
       throw new Error("Time advancement boundary safeguard exceeded");
     const project = activeProject(next);
     let step = remainingSeconds;
+    const nextModifierExpiry = next.insightModifiers
+      .filter(
+        (modifier) => modifier.expiresAtLogicalTimeMs > next.logicalTimeMs,
+      )
+      .map(
+        (modifier) =>
+          (modifier.expiresAtLogicalTimeMs - next.logicalTimeMs) / 1000,
+      )
+      .sort((left, right) => left - right)[0];
+    if (nextModifierExpiry !== undefined)
+      step = Math.min(step, nextModifierExpiry);
     if (project) {
       const definition = content.projects.find(
         (candidate) => candidate.id === project.id,
@@ -268,6 +278,14 @@ export function advanceDeterministicTime(
     }
     remainingSeconds = Math.max(0, remainingSeconds - step);
     next.logicalTimeMs += step * 1000;
+    const expired = next.insightModifiers.filter(
+      (modifier) => modifier.expiresAtLogicalTimeMs <= next.logicalTimeMs,
+    );
+    next.insightModifiers = next.insightModifiers.filter(
+      (modifier) => modifier.expiresAtLogicalTimeMs > next.logicalTimeMs,
+    );
+    for (const modifier of expired)
+      events.push({ type: "insightModifierExpired", modifierId: modifier.id });
     boundaries += 1;
     const completed = activeProject(next);
     if (completed) {

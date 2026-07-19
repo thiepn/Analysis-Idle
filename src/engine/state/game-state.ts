@@ -54,6 +54,13 @@ export interface AutomationRuleState {
   publicationBehavior: "reset" | "archive" | "retain" | "transform";
 }
 
+export interface InsightModifierState {
+  id: string;
+  purpose: string;
+  magnitude: number;
+  expiresAtLogicalTimeMs: number;
+}
+
 export interface GameState {
   schemaVersion: number;
   contentVersion: string;
@@ -87,6 +94,7 @@ export interface GameState {
   understanding: GameNumber;
   insight: GameNumber;
   insightSpent: GameNumber;
+  insightModifiers: InsightModifierState[];
   assembledCapstoneEdges: CapstoneEdgeId[];
   chapters: Record<string, ChapterRuntimeStatus>;
   masteryArtifacts: string[];
@@ -195,6 +203,7 @@ export function createInitialState(
     understanding: gameNumber(0),
     insight: gameNumber(0),
     insightSpent: gameNumber(0),
+    insightModifiers: [],
     assembledCapstoneEdges: [],
     chapters,
     masteryArtifacts: [],

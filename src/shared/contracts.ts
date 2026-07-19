@@ -230,7 +230,10 @@ export interface ProvisionalConfiguration {
     sustainedTargetMin: number;
     sustainedTargetMax: number;
     ceiling: number;
+    modifierPerInsight: number;
+    modifierDurationSeconds: number;
   };
+  automation: { queueCapacity: number };
   offline: {
     fullEfficiencyHours: number;
     tailEfficiency: number;

@@ -136,8 +136,12 @@ const invariantData = {
     "one project slot",
     "queue uniqueness",
     "Insight cap",
+    "bounded active modifiers and logical expiry",
     "Understanding monotonicity",
     "production ledger validity",
+    "stable content references",
+    "Publication/Mastery consistency",
+    "serialized RNG validity",
   ],
 };
 const offlineData = {
@@ -285,13 +289,13 @@ const allCritical =
 const validationResults = {
   status: allCritical ? "PASS" : "FAIL",
   suiteCounts: {
-    unit: 13,
+    unit: 16,
     integration: 4,
     determinismAndSimulator: 18,
-    persistence: 8,
+    persistence: 10,
     content: 3,
     ui: 3,
-    total: 49,
+    total: 54,
   },
   commands: [
     "npm ci",
@@ -423,7 +427,7 @@ await Promise.all([
   report(
     "SAVE_AND_MIGRATION_REPORT.md",
     "Save and migration report",
-    `All 21 required save/recovery fixtures pass. The exact v2 namespace uses staging, current, three local fallbacks, append-only IndexedDB save/replay/diagnostic stores, and deterministic highest-generation recovery with current winning equal-generation ties. Numbers serialize as validated canonical strings. Future schemas, incompatible apps, malformed/oversized imports, invalid checksums, partial writes, clock anomalies, and multi-tab conflicts reject safely. Legacy \`mathIdleSave\` is detected read-only and never converted or deleted. Checksums detect accidents, not cheating.\n\nMachine data: \`data/save-fixtures.json\`.`,
+    `All 21 required save/recovery fixtures pass. The exact v2 namespace uses staging, current, three local fallbacks, append-only IndexedDB save/replay/diagnostic stores, and deterministic highest-generation recovery with current winning equal-generation ties. Accepted-command saves use a one-second debounce with a ten-second hard maximum; hidden visibility and pagehide trigger checkpoints. Numbers serialize as validated canonical strings. Future schemas, incompatible apps, malformed/oversized imports, invalid checksums, partial writes, clock anomalies, and multi-tab conflicts reject safely. Legacy \`mathIdleSave\` is detected read-only and never converted or deleted. Checksums detect accidents, not cheating.\n\nMachine data: \`data/save-fixtures.json\`.`,
   ),
   report(
     "BUNDLE_AND_PERFORMANCE_REPORT.md",

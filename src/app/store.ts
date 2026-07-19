@@ -13,6 +13,7 @@ import {
   loadBestSave,
   previewImport,
   saveWithRotation,
+  SaveScheduler,
   SAVE_KEYS,
   type SaveValidationResult,
 } from "../platform/persistence";
@@ -51,6 +52,36 @@ export function createAppStore(seed = 12_345): AppStore {
     notify();
   };
 
+  const persist = async (): Promise<void> => {
+    const saveEnvelope = createSaveEnvelope(snapshot.state, {
+      generation: generation + 1,
+      savedAtMs: Date.now(),
+      sessionId: "debug-ui",
+      buildId: "phase-1",
+    });
+    try {
+      const result = await saveWithRotation(
+        localStorage,
+        saveEnvelope,
+        naturalNumbersContent,
+      );
+      generation = result.generation;
+      update({ statusMessage: result.message });
+    } catch (error) {
+      update({
+        statusMessage: `SAVE_FAILED: ${error instanceof Error ? error.message : "Unknown save error"}`,
+      });
+    }
+  };
+  const saveScheduler = new SaveScheduler(
+    {
+      now: () => Date.now(),
+      setTimer: (callback, delayMs) => window.setTimeout(callback, delayMs),
+      clearTimer: (handle) => window.clearTimeout(handle as number),
+    },
+    persist,
+  );
+
   const dispatch = (command: GameCommand): CommandResult => {
     const result = reduceCommand(
       snapshot.state,
@@ -64,6 +95,8 @@ export function createAppStore(seed = 12_345): AppStore {
         lastResult: result,
         statusMessage: `${command.type} accepted.`,
       });
+      saveScheduler.markAcceptedCommand();
+      if (command.type === "publishChapter") void saveScheduler.flush();
     } else {
       update({
         lastResult: result,
@@ -81,25 +114,8 @@ export function createAppStore(seed = 12_345): AppStore {
     },
     dispatch,
     async save() {
-      const saveEnvelope = createSaveEnvelope(snapshot.state, {
-        generation: generation + 1,
-        savedAtMs: Date.now(),
-        sessionId: "debug-ui",
-        buildId: "phase-1",
-      });
-      try {
-        const result = await saveWithRotation(
-          localStorage,
-          saveEnvelope,
-          naturalNumbersContent,
-        );
-        generation = result.generation;
-        update({ statusMessage: result.message });
-      } catch (error) {
-        update({
-          statusMessage: `SAVE_FAILED: ${error instanceof Error ? error.message : "Unknown save error"}`,
-        });
-      }
+      if (saveScheduler.isDirty()) await saveScheduler.flush();
+      else await persist();
     },
     load() {
       const result = loadBestSave(localStorage, naturalNumbersContent);

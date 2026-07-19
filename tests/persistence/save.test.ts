@@ -18,6 +18,11 @@ import {
   saveWithRotation,
   SAVE_KEYS,
 } from "../../src/platform/persistence/local-storage";
+import {
+  registerPersistenceCheckpoints,
+  SaveScheduler,
+  type LifecycleTarget,
+} from "../../src/platform/persistence/scheduler";
 import { sanitizeElapsed } from "../../src/platform/time/clock";
 import { WriterCoordinator } from "../../src/platform/ownership/coordinator";
 import { MemoryStorage } from "../helpers";
@@ -169,5 +174,56 @@ describe("clock and multi-tab integrity", () => {
       writer: false,
       method: "passive",
     });
+  });
+
+  it("debounces accepted-command saves with a hard maximum delay", async () => {
+    let now = 0;
+    let callback: (() => void) | null = null;
+    let delay = -1;
+    let saves = 0;
+    const scheduler = new SaveScheduler(
+      {
+        now: () => now,
+        setTimer: (next, nextDelay) => {
+          callback = next;
+          delay = nextDelay;
+          return next;
+        },
+        clearTimer: () => undefined,
+      },
+      () => {
+        saves += 1;
+      },
+    );
+    scheduler.markAcceptedCommand();
+    expect(delay).toBe(1_000);
+    now = 9_500;
+    scheduler.markAcceptedCommand();
+    expect(delay).toBe(500);
+    expect(callback).not.toBeNull();
+    callback!();
+    await Promise.resolve();
+    expect(saves).toBe(1);
+    expect(scheduler.isDirty()).toBe(false);
+  });
+
+  it("checkpoints on hidden visibility and pagehide", () => {
+    const listeners = new Map<string, () => void>();
+    const target: LifecycleTarget = {
+      visibilityState: "visible",
+      addEventListener: (type, listener) => listeners.set(type, listener),
+      removeEventListener: (type) => listeners.delete(type),
+    };
+    let checkpoints = 0;
+    const unregister = registerPersistenceCheckpoints(target, () => {
+      checkpoints += 1;
+    });
+    listeners.get("visibilitychange")!();
+    target.visibilityState = "hidden";
+    listeners.get("visibilitychange")!();
+    listeners.get("pagehide")!();
+    expect(checkpoints).toBe(2);
+    unregister();
+    expect(listeners.size).toBe(0);
   });
 });

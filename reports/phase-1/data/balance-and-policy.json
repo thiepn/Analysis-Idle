@@ -10,7 +10,7 @@
       "completedProjects": 12,
       "publications": 1,
       "publicationTimingMs": 4461481.292517006,
-      "hash": "87055d59a8f70029ca5bf9e7e6f737d49ad667bd67ffec257eb4bc63248aeb49"
+      "hash": "200a6029fd2f270999cb60a034d6166baea1637f006499f3f3c8033f12716423"
     },
     {
       "name": "immediatePayback",
@@ -20,7 +20,7 @@
       "completedProjects": 12,
       "publications": 1,
       "publicationTimingMs": 4210535.714285714,
-      "hash": "10a17d251ab86f1b9067c09bee52df7b629ad6d9cc563b79260c61fd50b78f56"
+      "hash": "e1111ef5dac4a2d819199862c4d658e4e451496aa269b424c6a6f1e1a1200fad"
     },
     {
       "name": "futureValue",
@@ -30,7 +30,7 @@
       "completedProjects": 12,
       "publications": 1,
       "publicationTimingMs": 4653750,
-      "hash": "f12b1a36fabbc940a6d745bd38cffbfcbf3ce05fe171c8794db5b9e8eee1abfc"
+      "hash": "56baf846f7acf9281b98d36cbfbe23803ba5b210a1b9e4b3a8505d1bf62de2eb"
     },
     {
       "name": "nearestMilestone",
@@ -40,7 +40,7 @@
       "completedProjects": 12,
       "publications": 1,
       "publicationTimingMs": 4847250,
-      "hash": "519c9b3c30388d42cae18d357cbe913c8893582f46a3e1c88b0bf2ac3f566536"
+      "hash": "11e1fe42723df446660a1d239cb0e2d679fa2b78f3c22c127b49f96409ae9405"
     },
     {
       "name": "balanced",
@@ -50,7 +50,7 @@
       "completedProjects": 12,
       "publications": 1,
       "publicationTimingMs": 4461481.292517006,
-      "hash": "d7d458fd736b8f25587bf77e8b9ec80799cfeff990bdd39718bd193b39b0caea"
+      "hash": "32a644fec1664ed070e368db0bc2e8ffa7807314ad892cc15b674a3752fd7f99"
     },
     {
       "name": "formalSpecialist",
@@ -60,7 +60,7 @@
       "completedProjects": 12,
       "publications": 1,
       "publicationTimingMs": 4210535.714285714,
-      "hash": "379cecfd25ddf5ecc5532068d9fa3f82ae046271d95f6e507a41af47028d6e31"
+      "hash": "f925531ea5f03939c533d3203fa41087056aad14c69bc928769b77f6ed6c4fff"
     },
     {
       "name": "exploratorySpecialist",
@@ -70,7 +70,7 @@
       "completedProjects": 12,
       "publications": 1,
       "publicationTimingMs": 4432142.857142857,
-      "hash": "e6390d0b939b895b944c932485c81d411faf3a76ae08521c0a3be8eab361a9ff"
+      "hash": "d8f9e49b573949a119e5ef595b8fdad9e1bc12394bfcf03fdb12d4d13f7d1848"
     },
     {
       "name": "constructiveSpecialist",
@@ -80,7 +80,7 @@
       "completedProjects": 12,
       "publications": 1,
       "publicationTimingMs": 4653750,
-      "hash": "3e6b24e09c054f798eecc1896300ed7b7b4f91eeb73acec4caf11b3a30c16b15"
+      "hash": "b05c813bf8cfa8af31ee657ea65c05c0aa2ef84e957b0ec93223584ba95a720f"
     },
     {
       "name": "hybrid",
@@ -90,7 +90,7 @@
       "completedProjects": 12,
       "publications": 1,
       "publicationTimingMs": 4461481.292517007,
-      "hash": "9cc7afea53e94fdf294084b8e6847387fb99bca11f9d736e55e09724b200cb36"
+      "hash": "16400f37c61a028fc9ed37f4b0d7f1c0d2683bc8b180ad7f6fd2c6b68026083a"
     },
     {
       "name": "activeOptimizer",
@@ -100,7 +100,7 @@
       "completedProjects": 12,
       "publications": 1,
       "publicationTimingMs": 4210535.714285713,
-      "hash": "0a152ed7750a80aac1e0794b5f1f2aa1fc2a9ca2de2c228c4b5a3a12d47abc5b"
+      "hash": "56affca155d51f00eaa9eb64143623f56826f9aa03bcaad2193486006dc285c2"
     },
     {
       "name": "mostlyIdle",
@@ -110,7 +110,7 @@
       "completedProjects": 12,
       "publications": 1,
       "publicationTimingMs": 5055750,
-      "hash": "b86e593e8ab5c2864844ae845c722649a79ac77559e9dd54bd0372eb9aa2246d"
+      "hash": "c487a320743ed59b615e6317e86ab01856a2ce6d9b19979513ba5ac16a1a00af"
     },
     {
       "name": "weakButPlausible",
@@ -120,7 +120,7 @@
       "completedProjects": 12,
       "publications": 1,
       "publicationTimingMs": 4847250,
-      "hash": "8b827d795c4662ebdadc128fe798a72687182c3b6f21719d535a13f7b3ef5be6"
+      "hash": "4a2303789b84a1a7547edbfcd4fc33cb7da4c4e8244dd71e55aca7ff29a5e086"
     },
     {
       "name": "randomReasonable",
@@ -130,7 +130,7 @@
       "completedProjects": 12,
       "publications": 1,
       "publicationTimingMs": 4608964.285714285,
-      "hash": "697fd955acf08bc54a26836801627404b892683d2c97d24237d2296b653b19c2"
+      "hash": "7f2f0cf8c5fd191c124fd5e9e17aa3d3b40aa9a732ff0cbe3d30e05d755aa116"
     },
     {
       "name": "longOffline",
@@ -140,7 +140,7 @@
       "completedProjects": 12,
       "publications": 1,
       "publicationTimingMs": 4461481.292517006,
-      "hash": "2342f76ad3ecb510f000c30706f0df13d9b9add16e69c1243588824b8ea109ea"
+      "hash": "c71ca5098725f63f9d5aaea84755f45a7996e16e5b079cf88894bcd78de932f7"
     },
     {
       "name": "ignoreOneSystem",
@@ -150,7 +150,7 @@
       "completedProjects": 12,
       "publications": 1,
       "publicationTimingMs": 4815000,
-      "hash": "9761b76dfc988d4eb8a21d40b56e937d8b2b6624eacdfaa0afa91bdf525b5839"
+      "hash": "2d10da391aa68f400f66251dd48c7d59683742671aaf3661aa3c2465c6138e32"
     }
   ],
   "attentionExponents": [

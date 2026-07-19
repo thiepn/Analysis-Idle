@@ -18,6 +18,11 @@ describe("integrated lifecycle", () => {
     expect(
       result.eventLog.some((event) => event.type === "chapterPublished"),
     ).toBe(true);
+    expect(
+      result.eventLog.some(
+        (event) => event.type === "insightGained" && event.overflow > 0,
+      ),
+    ).toBe(true);
   });
 
   it("rejects an unavailable Publication idempotently", () => {

@@ -213,6 +213,7 @@
     "understanding": 12,
     "insight": 3,
     "insightSpent": 0,
+    "insightModifiers": [],
     "assembledCapstoneEdges": [
       "nn.capstone.edge.1",
       "nn.capstone.edge.2",
@@ -2733,6 +2734,11 @@
       "resourceId": "INTUITION",
       "amount": 24.68571428571977,
       "reason": "activity production"
+    },
+    {
+      "type": "insightGained",
+      "amount": 0,
+      "overflow": 1
     },
     {
       "type": "projectCompleted",
@@ -7122,5 +7128,5 @@
     "completedProjects": 12,
     "publications": 1
   },
-  "deterministicHash": "cd58730969fc18386bc650b845e7b6f1498b276c36cdd470fc61f129c6fda079"
+  "deterministicHash": "e240e2ef5980c2e5778f2fb995aae60a6dc678d89c00f4cdc80d28d8c639a695"
 }

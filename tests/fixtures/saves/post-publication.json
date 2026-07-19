@@ -211,6 +211,7 @@
     "understanding": "12",
     "insight": "3",
     "insightSpent": "0",
+    "insightModifiers": [],
     "assembledCapstoneEdges": [
       "nn.capstone.edge.1",
       "nn.capstone.edge.2",
@@ -253,5 +254,5 @@
     "lastCommandSequence": 198,
     "eventDigest": null
   },
-  "checksum": "fnv1a32:4512db2d"
+  "checksum": "fnv1a32:b444b155"
 }

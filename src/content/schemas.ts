@@ -109,7 +109,10 @@ export const gameContentSchema = z
         sustainedTargetMin: finiteNonnegative,
         sustainedTargetMax: finiteNonnegative,
         ceiling: finiteNonnegative,
+        modifierPerInsight: finiteNonnegative,
+        modifierDurationSeconds: z.number().positive(),
       }),
+      automation: z.object({ queueCapacity: z.number().int().positive() }),
       offline: z.object({
         fullEfficiencyHours: finiteNonnegative,
         tailEfficiency: z.number().min(0).max(1),

@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { naturalNumbersContent, naturalNumbersIds } from "../../src/content";
 import { envelope, reduceCommand } from "../../src/engine";
+import { resolveActivityRate } from "../../src/engine/effects/resolve";
+import { gameNumber } from "../../src/engine/numbers/game-number";
 import { createInitialState } from "../../src/engine/state/game-state";
 import { dispatch } from "../helpers";
 
@@ -123,5 +125,48 @@ describe("typed reducer", () => {
     expect(result.accepted).toBe(false);
     if (!result.accepted)
       expect(result.reason.code).toBe("INSIGHT_INSUFFICIENT");
+  });
+
+  it("applies a bounded Insight modifier and expires it at a logical-time boundary", () => {
+    const initial = createInitialState(naturalNumbersContent);
+    initial.insight = gameNumber(3);
+    initial.attention.allocations[naturalNumbersIds.FORMALIZE] = 1;
+    const spent = reduceCommand(
+      initial,
+      envelope(
+        {
+          type: "spendInsight",
+          payload: { amount: 3, purpose: "bounded test modifier" },
+        },
+        1,
+      ),
+      naturalNumbersContent,
+    );
+    expect(spent.accepted).toBe(true);
+    if (!spent.accepted) return;
+    expect(
+      resolveActivityRate(
+        naturalNumbersIds.FORMALIZE,
+        spent.state,
+        naturalNumbersContent,
+      ).rate,
+    ).toBeCloseTo(1.8, 12);
+    const advanced = reduceCommand(
+      spent.state,
+      envelope(
+        {
+          type: "advanceTime",
+          payload: { durationMs: 60_000, offline: false, safePolicy: false },
+        },
+        2,
+      ),
+      naturalNumbersContent,
+    );
+    expect(advanced.accepted).toBe(true);
+    if (!advanced.accepted) return;
+    expect(advanced.state.insightModifiers).toEqual([]);
+    expect(
+      advanced.events.some((event) => event.type === "insightModifierExpired"),
+    ).toBe(true);
   });
 });

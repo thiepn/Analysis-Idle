@@ -8,7 +8,11 @@
     "one project slot",
     "queue uniqueness",
     "Insight cap",
+    "bounded active modifiers and logical expiry",
     "Understanding monotonicity",
-    "production ledger validity"
+    "production ledger validity",
+    "stable content references",
+    "Publication/Mastery consistency",
+    "serialized RNG validity"
   ]
 }

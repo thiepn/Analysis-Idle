@@ -338,7 +338,10 @@ export function reduceCommand(
     case "queueProject": {
       const runtime = next.projects[command.payload.projectId];
       if (!runtime) return reject(state, "UNKNOWN_ID", "Unknown project");
-      if (next.projectQueue.length >= 10)
+      if (
+        next.projectQueue.length >=
+        content.configuration.automation.queueCapacity
+      )
         return reject(state, "QUEUE_FULL", "Project queue capacity reached");
       if (!(
         runtime.status === "available" ||
@@ -440,6 +443,17 @@ export function reduceCommand(
         return reject(state, "INSIGHT_INSUFFICIENT", "Insufficient Insight");
       next.insight = gnSubtract(next.insight, gameNumber(amount));
       next.insightSpent = gnAdd(next.insightSpent, gameNumber(amount));
+      next.insightModifiers.push({
+        id: envelope.id,
+        purpose,
+        magnitude: Math.min(
+          content.configuration.insight.ceiling,
+          amount * content.configuration.insight.modifierPerInsight,
+        ),
+        expiresAtLogicalTimeMs:
+          next.logicalTimeMs +
+          content.configuration.insight.modifierDurationSeconds * 1000,
+      });
       events.push({ type: "insightSpent", amount, purpose });
       break;
     }
@@ -484,6 +498,7 @@ export function reduceCommand(
       for (const resourceId of chapter.publication.resetResourceIds)
         next.resources[resourceId] = gameNumber(0);
       next.attention.allocations = {};
+      next.insightModifiers = [];
       next.projectQueue = [];
       for (const projectId of chapter.projectIds) {
         const project = next.projects[projectId];

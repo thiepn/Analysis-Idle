@@ -88,6 +88,25 @@ export function resolveActivityRate(
       reason: "owned and active",
     });
   }
+  const insightMagnitude = Math.min(
+    content.configuration.insight.ceiling,
+    state.insightModifiers
+      .filter(
+        (modifier) => modifier.expiresAtLogicalTimeMs > state.logicalTimeMs,
+      )
+      .reduce((sum, modifier) => sum + modifier.magnitude, 0),
+  );
+  if (insightMagnitude > 0) {
+    rate *= 1 + insightMagnitude;
+    contributions.push({
+      effectId: "insight.active",
+      sourceId: "Insight",
+      operation: "groupAddPercent",
+      magnitude: insightMagnitude,
+      applied: true,
+      reason: "bounded active modifier",
+    });
+  }
   return { rate, contributions };
 }
 
