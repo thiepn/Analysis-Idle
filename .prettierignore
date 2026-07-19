@@ -1,0 +1,13 @@
+docs/research/DEEP_RESEARCH_FOUNDATION.md
+docs/research/DEEP_RESEARCH_COMPLETION_AUDIT.md
+reports/phase-0/**
+prototypes/**
+data/**
+systems/**
+ui/**
+node_modules/**
+dist/**
+package-lock.json
+**/AGENTS.md
+tests/fixtures/saves/corrupt-json.json
+tests/fixtures/saves/partial-write.json
