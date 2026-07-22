@@ -2,14 +2,14 @@
   "wallDurationMs": 60000,
   "creditedMs": 60000,
   "equivalent": true,
-  "onlineHash": "8c162ae0ecee3544a8843f8fea30153584db3099051fe72be3d1a8bc9f881bec",
-  "offlineHash": "8c162ae0ecee3544a8843f8fea30153584db3099051fe72be3d1a8bc9f881bec",
+  "onlineHash": "06100ad616769dd64d55129841177fdb07f19c1274ae44576cb8862f8184d646",
+  "offlineHash": "06100ad616769dd64d55129841177fdb07f19c1274ae44576cb8862f8184d646",
   "policyTrace": [
     "Validated safe policy authorized routine continuation.",
-    "Credited 60000 ms."
+    "Credited 60000 of 60000 available ms."
   ],
   "windows": {
-    "fullEfficiencyHours": 8,
+    "fullEfficiencyHours": 12,
     "tailEfficiency": 0.25,
     "maximumCreditedHours": 72
   }

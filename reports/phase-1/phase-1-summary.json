@@ -14,23 +14,27 @@
     "milestones": 11,
     "achievements": 10,
     "chapters": 1,
-    "effects": 15
+    "effects": 17
   },
   "tests": {
-    "unit": 16,
-    "integration": 4,
-    "determinismAndSimulator": 18,
-    "persistence": 10,
-    "content": 3,
-    "ui": 3,
-    "total": 54
+    "unit": 24,
+    "integration": 7,
+    "determinismAndSimulator": 20,
+    "persistence": 18,
+    "content": 6,
+    "ui": 5,
+    "total": 80
   },
-  "determinismDigest": "e240e2ef5980c2e5778f2fb995aae60a6dc678d89c00f4cdc80d28d8c639a695",
+  "determinismDigest": "529c97fcc770ff77c1fb099fb23501a312e406efbdc1ec2d52f2e99e04dddbba",
   "onlineOfflineEquivalent": true,
   "saveFixtureCount": 21,
   "bundle": {
-    "initialJsBytes": 145476,
-    "initialCssBytes": 2614
+    "initialJsBytes": 173551,
+    "initialCssBytes": 2614,
+    "initialJsGzipBytes": 49880,
+    "largestEntryJsGzipBytes": 49880,
+    "initialCssGzipBytes": 1075,
+    "initialShellGzipBytes": 51302
   },
   "provisionalConfiguration": {
     "attention": {
@@ -41,7 +45,7 @@
     "insight": {
       "cap": 3,
       "sustainedTargetMin": 0.1,
-      "sustainedTargetMax": 0.2,
+      "sustainedTargetMax": 0.15,
       "ceiling": 0.2,
       "modifierPerInsight": 0.1,
       "modifierDurationSeconds": 60
@@ -50,15 +54,15 @@
       "queueCapacity": 1
     },
     "offline": {
-      "fullEfficiencyHours": 8,
+      "fullEfficiencyHours": 12,
       "tailEfficiency": 0.25,
       "maximumCreditedHours": 72
     },
     "pacing": {
       "firstPublicationMinMinutes": 60,
       "firstPublicationMaxMinutes": 120,
-      "campaignMinHours": 10,
-      "campaignMaxHours": 20
+      "campaignMinHours": 30,
+      "campaignMaxHours": 50
     },
     "projects": {
       "approachSwitchPreservation": 0.9,

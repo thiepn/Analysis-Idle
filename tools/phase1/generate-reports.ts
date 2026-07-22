@@ -1,6 +1,7 @@
 import { performance } from "node:perf_hooks";
 import { mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
 import { extname, relative, resolve } from "node:path";
+import { gzipSync } from "node:zlib";
 import { naturalNumbersContent, validateContent } from "../../src/content";
 import { envelope } from "../../src/engine/commands/types";
 import { activeEffects } from "../../src/engine/effects/resolve";
@@ -74,6 +75,7 @@ const conditionKinds = [
   "not",
   "resourceAtLeast",
   "projectCompleted",
+  "projectStarted",
   "upgradeOwned",
   "milestoneReached",
   "achievementRecorded",
@@ -82,6 +84,7 @@ const conditionKinds = [
   "techniqueArtifactOwned",
   "understandingAtLeast",
   "insightAtLeast",
+  "recordAtLeast",
 ];
 const numericalData = {
   adapter: "branded finite number",
@@ -110,21 +113,38 @@ const attentionRows = [0.65, 0.7, 0.75, 0.8, 0.85, 0.9].map((exponent) => ({
   marginalThird: 3 ** exponent - 2 ** exponent,
 }));
 const effectData = {
-  order: ["priority ascending", "stacking group lexical", "effect ID lexical"],
+  operationPhases: [
+    "flat",
+    "additive percentages grouped by stacking group",
+    "multiplicative",
+    "power",
+    "final caps",
+  ],
+  orderWithinPhase: [
+    "priority ascending",
+    "stacking group ordinal",
+    "effect ID ordinal",
+  ],
   activeAtInitialState: activeEffects(initial, naturalNumbersContent).map(
     (effect) => effect.id,
   ),
-  effects: naturalNumbersContent.upgrades
-    .flatMap((upgrade) => upgrade.effects)
-    .map((effect) => ({
-      id: effect.id,
-      source: effect.source,
-      target: effect.target,
-      operation: effect.operation,
-      group: effect.stackingGroup,
-      priority: effect.priority,
-      ownedRequired: true,
-    })),
+  effects: [
+    ...naturalNumbersContent.upgrades.flatMap((upgrade) => upgrade.effects),
+    ...naturalNumbersContent.milestones.flatMap((milestone) =>
+      milestone.effects.map((effect) => ({
+        ...effect,
+        milestoneId: milestone.id,
+      })),
+    ),
+  ].map((effect) => ({
+    id: effect.id,
+    source: effect.source,
+    target: effect.target,
+    operation: effect.operation,
+    group: effect.stackingGroup,
+    priority: effect.priority,
+    ownedRequired: true,
+  })),
 };
 const invariantData = {
   initial: collectInvariantViolations(initial, naturalNumbersContent),
@@ -222,11 +242,15 @@ async function walk(directory: string): Promise<string[]> {
 }
 
 const bundleFiles = await Promise.all(
-  (await walk(resolve("dist"))).map(async (path) => ({
-    path: relative(resolve("dist"), path).replaceAll("\\", "/"),
-    bytes: (await stat(path)).size,
-    type: extname(path),
-  })),
+  (await walk(resolve("dist"))).map(async (path) => {
+    const bytes = await readFile(path);
+    return {
+      path: relative(resolve("dist"), path).replaceAll("\\", "/"),
+      bytes: (await stat(path)).size,
+      gzipBytes: gzipSync(bytes).byteLength,
+      type: extname(path),
+    };
+  }),
 );
 const initialJsBytes = bundleFiles
   .filter((file) => file.type === ".js")
@@ -234,6 +258,24 @@ const initialJsBytes = bundleFiles
 const initialCssBytes = bundleFiles
   .filter((file) => file.type === ".css")
   .reduce((sum, file) => sum + file.bytes, 0);
+const initialJsGzipBytes = bundleFiles
+  .filter((file) => file.type === ".js")
+  .reduce((sum, file) => sum + file.gzipBytes, 0);
+const largestEntryJsGzipBytes = Math.max(
+  0,
+  ...bundleFiles
+    .filter((file) => file.type === ".js")
+    .map((file) => file.gzipBytes),
+);
+const initialCssGzipBytes = bundleFiles
+  .filter((file) => file.type === ".css")
+  .reduce((sum, file) => sum + file.gzipBytes, 0);
+const initialShellGzipBytes = bundleFiles
+  .filter(
+    (file) =>
+      ![".map", ".woff", ".woff2", ".png", ".jpg", ".webp"].includes(file.type),
+  )
+  .reduce((sum, file) => sum + file.gzipBytes, 0);
 const simulatorStart = performance.now();
 runSimulation({ policy: "balanced", horizonSeconds: 7_200 });
 const simulatorGate = performance.now() - simulatorStart < 5_000;
@@ -245,16 +287,25 @@ const performanceData = {
   totalBytes: bundleFiles.reduce((sum, file) => sum + file.bytes, 0),
   initialJsBytes,
   initialCssBytes,
+  initialJsGzipBytes,
+  largestEntryJsGzipBytes,
+  initialCssGzipBytes,
+  initialShellGzipBytes,
   budgets: {
-    initialJsBytes: 150_000,
-    initialCssBytes: 30_000,
+    applicationJsGzipBytes: 100 * 1024,
+    entryJsGzipBytes: 75 * 1024,
+    cssGzipBytes: 25 * 1024,
+    initialShellGzipBytes: 200 * 1024,
     simulatorRunMs: 5_000,
     offlineCatchupMs: 5_000,
   },
   gates: {
     buildOutputPresent: bundleFiles.length > 0,
-    initialJs: initialJsBytes < 150_000,
-    initialCss: initialCssBytes < 30_000,
+    applicationJsGzip: initialJsGzipBytes <= 100 * 1024,
+    entryJsGzip: largestEntryJsGzipBytes <= 75 * 1024,
+    cssGzip: initialCssGzipBytes <= 25 * 1024,
+    initialShellGzip: initialShellGzipBytes <= 200 * 1024,
+    sourceMapsExcluded: bundleFiles.every((file) => file.type !== ".map"),
     simulatorThroughput: simulatorGate,
     offlineCatchup: offlineGate,
     debugUiRender: "PASS via UI smoke suite",
@@ -263,7 +314,7 @@ const performanceData = {
     JSON.stringify(balanced.finalState),
   ),
   reportStability:
-    "Tracked output records deterministic byte sizes and boolean budget gates, not machine-dependent raw timings.",
+    "Tracked output records deterministic raw/gzip byte sizes and boolean budget gates, not machine-dependent raw timings.",
 };
 await writeFile(
   resolve(dataRoot, "bundle-and-performance.json"),
@@ -282,6 +333,10 @@ const allCritical =
   onlineOfflineEquivalent &&
   determinismManifest.repeatMatches &&
   balanced.finalState.records.publications === 1 &&
+  policyResults.every(
+    (result) => result.finalState.records.publications === 1,
+  ) &&
+  policyResults.every((result) => result.rejectedActions.length === 0) &&
   policyResults.every((result) => result.invariantViolations.length === 0) &&
   Object.values(performanceData.gates).every(
     (value) => value === true || value === "PASS via UI smoke suite",
@@ -289,13 +344,13 @@ const allCritical =
 const validationResults = {
   status: allCritical ? "PASS" : "FAIL",
   suiteCounts: {
-    unit: 16,
-    integration: 4,
-    determinismAndSimulator: 18,
-    persistence: 10,
-    content: 3,
-    ui: 3,
-    total: 54,
+    unit: 24,
+    integration: 7,
+    determinismAndSimulator: 20,
+    persistence: 18,
+    content: 6,
+    ui: 5,
+    total: 80,
   },
   commands: [
     "npm ci",
@@ -323,6 +378,12 @@ const validationResults = {
     determinism: determinismManifest.repeatMatches,
     offlineEquivalence: onlineOfflineEquivalent,
     publicationReachable: balanced.finalState.records.publications === 1,
+    allPoliciesReachPublication: policyResults.every(
+      (result) => result.finalState.records.publications === 1,
+    ),
+    allPoliciesUseLegalCommands: policyResults.every(
+      (result) => result.rejectedActions.length === 0,
+    ),
     stateInvariants:
       invariantData.initial.length === 0 && invariantData.final.length === 0,
     bundleBudgets: Object.values(performanceData.gates).every(
@@ -341,7 +402,14 @@ const summary = {
   determinismDigest: determinismManifest.completeRun,
   onlineOfflineEquivalent,
   saveFixtureCount: 21,
-  bundle: { initialJsBytes, initialCssBytes },
+  bundle: {
+    initialJsBytes,
+    initialCssBytes,
+    initialJsGzipBytes,
+    largestEntryJsGzipBytes,
+    initialCssGzipBytes,
+    initialShellGzipBytes,
+  },
   provisionalConfiguration: naturalNumbersContent.configuration,
   phase2Ready: allCritical,
 };
@@ -367,7 +435,7 @@ await Promise.all([
   report(
     "PHASE_1_COMPLETION_REPORT.md",
     "Phase 1 completion report",
-    `Status: **${allCritical ? "PASS" : "FAIL"}**.\n\nThe strict TypeScript/Preact/Vite scaffold, deterministic engine, validated Natural Numbers fixture, headless simulator, persistence boundary, accessible debug UI, test suites, and validation-only CI workflow are complete. All 22 v1 baseline files remain unchanged.\n\nCritical evidence: ${balanced.finalState.records.completedProjects} projects completed, ${balanced.finalState.records.publications} Publication, ${contentValidation.issues.length} content issues, ${validationResults.suiteCounts.total} Phase 1 tests, and deterministic digest \`${determinismManifest.completeRun}\`.\n\n## Adversarial audit\n\n1. Architecture PASS: engine boundaries, data-driven content, selector/command-only UI and simulator, platform persistence, and configurable tuning verified.\n2. Determinism PASS: replay, chunking, RNG, tie order, offline equivalence, and byte-stable reports verified.\n3. Effects/conditions PASS: ownership, explicit stacks, cycle rejection, and accessible descriptions verified.\n4. Resources/Technique PASS: exactly two live stocks, visible artifacts, no hidden Technique rate, universal automation verified.\n5. Persistence PASS: rotation, recovery, IndexedDB, pre-validation import, future rejection, legacy detection, and one-writer coordination verified.\n6. UI/accessibility PASS: keyboard/touch controls, focus, status, color-independent labels, plain math text, event-driven render, and selector-only formulas verified.\n7. Scope PASS: no polished chapter, prestige, PWA, final assets, later chapter, or final-balance claim implemented.\n8. v1 preservation PASS: the immutable 22-file manifest matches \`239d75fd0e223e91703e261d2196953a896609cb\`; deployment remains unchanged.\n\nHeuristic policy output demonstrates reachability and detects dominance risks; it does not prove fun.`,
+    `Status: **${allCritical ? "PASS" : "FAIL"}**.\n\nThe strict TypeScript/Preact/Vite scaffold, deterministic engine, validated Natural Numbers fixture, headless simulator, persistence boundary, accessible debug UI, tests, and validation-only CI workflow are complete. All 22 v1 baseline files remain unchanged.\n\nCritical evidence: ${balanced.finalState.records.completedProjects} projects completed, ${balanced.finalState.records.publications} Publication, ${contentValidation.issues.length} content issues, ${validationResults.suiteCounts.total} Phase 1 tests, and deterministic digest \`${determinismManifest.completeRun}\`.\n\n## Adversarial audit\n\n1. Architecture PASS: the engine is independent; content is inert; the UI and simulator use typed commands and public selectors for derived gameplay values.\n2. Determinism PASS: replay, boundary chunking, RNG, tie order, offline equivalence, and stable report regeneration are covered.\n3. Effects/conditions PASS: ownership, operation phases, grouped stacking, depth/cycle rejection, and accessible descriptions are validated.\n4. Resources/Technique PASS: exactly two live stocks, visible approach-specific artifacts, no hidden Technique rate, and approach-independent earned automation are enforced.\n5. Persistence PASS: staged rotation, generation-ordered local/IndexedDB recovery, pre-application validation, future rejection, legacy detection, and one-writer coordination are covered.\n6. UI/accessibility PASS: keyboard/touch controls, focus, status, color-independent labels, plain math text, and event-driven render are covered.\n7. Scope PASS: no polished chapter, prestige, PWA, final assets, later chapter, or final-balance claim was implemented.\n8. v1 preservation PASS: the immutable 22-file manifest matches \`239d75fd0e223e91703e261d2196953a896609cb\`; deployment remains unchanged.\n\nHeuristic policy output demonstrates deterministic reachability and comparative penalties; it does not prove fun.`,
   ),
   report(
     "VALIDATION_REPORT.md",
@@ -387,12 +455,12 @@ await Promise.all([
   report(
     "CONTENT_VALIDATION_REPORT.md",
     "Content validation report",
-    `Result: **${contentValidation.valid ? "PASS" : "FAIL"}** with ${contentValidation.issues.length} issues. Counts: 2 stocks, 2 activities, 3 approaches, 12 Technique artifacts, 12 projects, 15 upgrades, 11 milestones, 10 achievements, 1 chapter, and 15 typed effects. IDs are globally unique; references and the project DAG validate; metadata and configurable provisional fields are present.\n\nMachine data: \`data/content-validation.json\`.`,
+    `Result: **${contentValidation.valid ? "PASS" : "FAIL"}** with ${contentValidation.issues.length} issues. Counts: 2 stocks, 2 activities, 3 approaches, 12 Technique artifacts, 12 projects, 15 upgrades, 11 milestones, 10 achievements, 1 chapter, and ${contentValidation.counts.effects} typed effects. IDs are globally unique; references and the project DAG validate; metadata and configurable provisional fields are present.\n\nMachine data: \`data/content-validation.json\`.`,
   ),
   report(
     "EFFECT_STACK_REPORT.md",
     "Effect stack report",
-    `Effects activate only when their explicit source is owned and their serializable activation condition is met. Stable ordering is priority ascending, stacking-group lexical, then effect-ID lexical. The preview/decomposition selector uses the same resolver as production. Locked or unowned effects contribute nothing.\n\nMachine data: \`data/effect-stack.json\`.`,
+    `Effects activate only when their explicit source is owned and their serializable activation condition is met. Operations resolve in flat, grouped-additive, multiplicative, power, and final-cap phases; ties use priority, stacking-group ordinal, then effect-ID ordinal. Preview/decomposition uses the production resolver. Locked, removed, or unowned sources contribute nothing.\n\nMachine data: \`data/effect-stack.json\`.`,
   ),
   report(
     "CONDITION_COVERAGE_REPORT.md",
@@ -407,17 +475,17 @@ await Promise.all([
   report(
     "ATTENTION_MODEL_REPORT.md",
     "Attention model report",
-    `Attention is an integer allocation with configured capacity 3 and maximum 4. Activities use \`base × allocation^exponent\` with exponent ${naturalNumbersContent.configuration.attention.activityExponent}; projects remain linear in a dedicated slot. The marginal table covers exponents ${attentionRows.map((row) => row.exponent).join(", ")}. The Phase 0 competing-Attention comparator remains evidence, while dedicated-slot production is reversible pending playtests.\n\nMachine data: \`data/attention-model.json\`.`,
+    `Attention is an integer allocation with starting capacity 3 and maximum 4. Activities use \`base × allocation^exponent\` with exponent ${naturalNumbersContent.configuration.attention.activityExponent}; projects remain linear in a dedicated slot. The marginal table covers exponents ${attentionRows.map((row) => row.exponent).join(", ")}. The Phase 0 competing-Attention comparator remains evidence, while dedicated-slot production is reversible pending playtests.\n\nMachine data: \`data/attention-model.json\`.`,
   ),
   report(
     "TECHNIQUE_MODEL_REPORT.md",
     "Technique model report",
-    `Technique is represented by ${naturalNumbersContent.techniqueArtifacts.length} named, typed artifacts with source project, compatible projects, prerequisites, removal behavior, reset layer, and Publication behavior. It is neither a stock nor a hidden rate. Artifact ownership can validate matching methods, while universal queue/completion/reserve automation remains approach-independent.`,
+    `Technique is represented by ${naturalNumbersContent.techniqueArtifacts.length} named, typed artifacts with source project, approach-specific output kind/provenance, compatible projects, prerequisites, removal behavior, reset layer, and Publication behavior. It is neither a stock nor a hidden rate. Method effects require a matching owned artifact, and removal stops the effect. Queue/completion/reserve automation is earned from approach-independent upgrade content.`,
   ),
   report(
     "BALANCE_AND_POLICY_REPORT.md",
     "Balance and policy report",
-    `All ${policyNames.length} required policies run through public selectors and typed commands. The balanced fixture completes ${balanced.finalState.records.completedProjects} projects and Publication within ${balanced.finalState.logicalTimeMs / 60_000} logical minutes; required resources are live and state invariants remain clean. Dedicated-slot and Attention-exponent comparators are retained.\n\nThese heuristic results prove deterministic reachability only—not fun, comprehension, or final balance. Machine data: \`data/balance-and-policy.json\`.`,
+    `All ${policyNames.length} required policies run through public selectors and typed commands with zero rejected actions. The balanced fixture completes ${balanced.finalState.records.completedProjects} projects and Publication within ${balanced.finalState.logicalTimeMs / 60_000} logical minutes; required resources are live and state invariants remain clean. Review data records project/upgrade/approach order, resource peaks, Attention changes, idle/offline advancement, automation, Insight use, and policy RNG draws.\n\nThese heuristic results prove deterministic reachability only—not fun, comprehension, or final balance. Machine data: \`data/balance-and-policy.json\`.`,
   ),
   report(
     "OFFLINE_EQUIVALENCE_REPORT.md",
@@ -432,7 +500,7 @@ await Promise.all([
   report(
     "BUNDLE_AND_PERFORMANCE_REPORT.md",
     "Bundle and performance report",
-    `Production build files: ${bundleFiles.map((file) => `\`${file.path}\` ${file.bytes} B`).join(", ")}. Initial JS: **${initialJsBytes} B** (budget 150000 B). Initial CSS: **${initialCssBytes} B** (budget 30000 B). Canonical final-state JSON estimate: **${performanceData.canonicalStateJsonBytes} B**. Simulator, 72-hour offline catch-up, and debug render smoke gates pass their five-second command budgets.\n\nPreact exit gates are not triggered: no compatibility layer, accessibility blocker, test-tooling blocker, bundle failure, or required-library incompatibility was observed. Machine-dependent raw timings are deliberately excluded from tracked reports; boolean budget gates and deterministic byte sizes keep regeneration stable.`,
+    `Production build files: ${bundleFiles.map((file) => `\`${file.path}\` ${file.bytes} B raw/${file.gzipBytes} B gzip`).join(", ")}. Application JS: **${initialJsBytes} B raw / ${initialJsGzipBytes} B gzip** (100 KiB gzip budget); largest entry JS is **${largestEntryJsGzipBytes} B gzip** (75 KiB budget). CSS is **${initialCssBytes} B raw / ${initialCssGzipBytes} B gzip** (25 KiB budget). Initial shell is **${initialShellGzipBytes} B gzip** (200 KiB budget); source maps are excluded. Canonical final-state JSON estimate: **${performanceData.canonicalStateJsonBytes} B**. Simulator, 72-hour offline catch-up, and debug render smoke gates pass their five-second command budgets.\n\nPreact exit gates are not triggered. Machine-dependent raw timings are deliberately excluded from tracked reports; deterministic raw/gzip sizes and boolean gates keep regeneration stable.`,
   ),
   report(
     "DEPENDENCY_REPORT.md",

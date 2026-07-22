@@ -14,7 +14,7 @@ Still configurable values:
   "insight": {
     "cap": 3,
     "sustainedTargetMin": 0.1,
-    "sustainedTargetMax": 0.2,
+    "sustainedTargetMax": 0.15,
     "ceiling": 0.2,
     "modifierPerInsight": 0.1,
     "modifierDurationSeconds": 60
@@ -23,15 +23,15 @@ Still configurable values:
     "queueCapacity": 1
   },
   "offline": {
-    "fullEfficiencyHours": 8,
+    "fullEfficiencyHours": 12,
     "tailEfficiency": 0.25,
     "maximumCreditedHours": 72
   },
   "pacing": {
     "firstPublicationMinMinutes": 60,
     "firstPublicationMaxMinutes": 120,
-    "campaignMinHours": 10,
-    "campaignMaxHours": 20
+    "campaignMinHours": 30,
+    "campaignMaxHours": 50
   },
   "projects": {
     "approachSwitchPreservation": 0.9,

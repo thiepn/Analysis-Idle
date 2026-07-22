@@ -3,41 +3,48 @@
     {
       "path": "assets/index-C6fvMsTj.css",
       "bytes": 2614,
+      "gzipBytes": 1075,
       "type": ".css"
     },
     {
-      "path": "assets/index-CAjZ3gL9.js",
-      "bytes": 145476,
+      "path": "assets/index-DijtEKUo.js",
+      "bytes": 173551,
+      "gzipBytes": 49880,
       "type": ".js"
-    },
-    {
-      "path": "assets/index-CAjZ3gL9.js.map",
-      "bytes": 651056,
-      "type": ".map"
     },
     {
       "path": "index.html",
       "bytes": 565,
+      "gzipBytes": 347,
       "type": ".html"
     }
   ],
-  "totalBytes": 799711,
-  "initialJsBytes": 145476,
+  "totalBytes": 176730,
+  "initialJsBytes": 173551,
   "initialCssBytes": 2614,
+  "initialJsGzipBytes": 49880,
+  "largestEntryJsGzipBytes": 49880,
+  "initialCssGzipBytes": 1075,
+  "initialShellGzipBytes": 51302,
   "budgets": {
-    "initialJsBytes": 150000,
-    "initialCssBytes": 30000,
+    "applicationJsGzipBytes": 102400,
+    "entryJsGzipBytes": 76800,
+    "cssGzipBytes": 25600,
+    "initialShellGzipBytes": 204800,
     "simulatorRunMs": 5000,
     "offlineCatchupMs": 5000
   },
   "gates": {
     "buildOutputPresent": true,
-    "initialJs": true,
-    "initialCss": true,
+    "applicationJsGzip": true,
+    "entryJsGzip": true,
+    "cssGzip": true,
+    "initialShellGzip": true,
+    "sourceMapsExcluded": true,
     "simulatorThroughput": true,
     "offlineCatchup": true,
     "debugUiRender": "PASS via UI smoke suite"
   },
-  "canonicalStateJsonBytes": 4961,
-  "reportStability": "Tracked output records deterministic byte sizes and boolean budget gates, not machine-dependent raw timings."
+  "canonicalStateJsonBytes": 6917,
+  "reportStability": "Tracked output records deterministic raw/gzip byte sizes and boolean budget gates, not machine-dependent raw timings."
 }

@@ -1,5 +1,5 @@
 # Effect stack report
 
-Effects activate only when their explicit source is owned and their serializable activation condition is met. Stable ordering is priority ascending, stacking-group lexical, then effect-ID lexical. The preview/decomposition selector uses the same resolver as production. Locked or unowned effects contribute nothing.
+Effects activate only when their explicit source is owned and their serializable activation condition is met. Operations resolve in flat, grouped-additive, multiplicative, power, and final-cap phases; ties use priority, stacking-group ordinal, then effect-ID ordinal. Preview/decomposition uses the production resolver. Locked, removed, or unowned sources contribute nothing.
 
 Machine data: `data/effect-stack.json`.

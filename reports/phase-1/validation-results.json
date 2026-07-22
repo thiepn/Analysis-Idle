@@ -1,13 +1,13 @@
 {
   "status": "PASS",
   "suiteCounts": {
-    "unit": 16,
-    "integration": 4,
-    "determinismAndSimulator": 18,
-    "persistence": 10,
-    "content": 3,
-    "ui": 3,
-    "total": 54
+    "unit": 24,
+    "integration": 7,
+    "determinismAndSimulator": 20,
+    "persistence": 18,
+    "content": 6,
+    "ui": 5,
+    "total": 80
   },
   "commands": [
     {
@@ -92,6 +92,8 @@
     "determinism": true,
     "offlineEquivalence": true,
     "publicationReachable": true,
+    "allPoliciesReachPublication": true,
+    "allPoliciesUseLegalCommands": true,
     "stateInvariants": true,
     "bundleBudgets": true
   }

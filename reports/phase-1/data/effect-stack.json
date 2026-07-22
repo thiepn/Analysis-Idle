@@ -1,8 +1,15 @@
 {
-  "order": [
+  "operationPhases": [
+    "flat",
+    "additive percentages grouped by stacking group",
+    "multiplicative",
+    "power",
+    "final caps"
+  ],
+  "orderWithinPhase": [
     "priority ascending",
-    "stacking group lexical",
-    "effect ID lexical"
+    "stacking group ordinal",
+    "effect ID ordinal"
   ],
   "activeAtInitialState": [],
   "effects": [
@@ -103,10 +110,10 @@
         "id": "nn.keystone.recursion_template"
       },
       "target": {
-        "kind": "project",
-        "id": "*"
+        "kind": "information",
+        "capability": "technique:recursionTemplate"
       },
-      "operation": "projectSpeed",
+      "operation": "informationUnlock",
       "group": "project.method.recursion",
       "priority": 100,
       "ownedRequired": true
@@ -118,10 +125,10 @@
         "id": "nn.keystone.lemma_reuse"
       },
       "target": {
-        "kind": "project",
-        "id": "*"
+        "kind": "information",
+        "capability": "technique:lemmaReuse"
       },
-      "operation": "projectSpeed",
+      "operation": "informationUnlock",
       "group": "project.method.lemma",
       "priority": 100,
       "ownedRequired": true
@@ -227,6 +234,36 @@
       },
       "operation": "publicationTransform",
       "group": "publication.ledger",
+      "priority": 100,
+      "ownedRequired": true
+    },
+    {
+      "id": "nn.effect.operations_cap.precision",
+      "source": {
+        "kind": "milestone",
+        "id": "nn.milestone.operations_built"
+      },
+      "target": {
+        "kind": "resourceCap",
+        "id": "PRECISION"
+      },
+      "operation": "cap",
+      "group": "resource.cap.precision",
+      "priority": 100,
+      "ownedRequired": true
+    },
+    {
+      "id": "nn.effect.operations_cap.intuition",
+      "source": {
+        "kind": "milestone",
+        "id": "nn.milestone.operations_built"
+      },
+      "target": {
+        "kind": "resourceCap",
+        "id": "INTUITION"
+      },
+      "operation": "cap",
+      "group": "resource.cap.intuition",
       "priority": 100,
       "ownedRequired": true
     }

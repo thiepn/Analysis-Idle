@@ -1,0 +1,25 @@
+{
+  "reviewStart": {
+    "phase0RunId": 29668727057,
+    "phase1PullRequestRunId": 29668727067,
+    "phase1PushRunId": 29668013069
+  },
+  "rootCause": "actions/checkout used the depth-1 default",
+  "missingObject": "239d75fd0e223e91703e261d2196953a896609cb",
+  "evidence": [
+    "fatal: not a tree object",
+    "Error: Command failed: git ls-tree -r --long 239d75fd0e223e91703e261d2196953a896609cb",
+    "one or more of the 22 v1 baseline files differ from the immutable legacy commit"
+  ],
+  "correction": {
+    "files": [".github/workflows/phase-0.yml", ".github/workflows/phase-1.yml"],
+    "change": "actions/checkout fetch-depth: 0",
+    "checksBypassed": false
+  },
+  "finalVerification": {
+    "status": "PENDING",
+    "phase0": null,
+    "phase1": null,
+    "note": "Populate with successful run evidence after the first correction push."
+  }
+}

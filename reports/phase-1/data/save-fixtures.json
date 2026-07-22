@@ -4,106 +4,127 @@
     {
       "name": "new empty v2 save",
       "result": "VALID",
+      "expected": "VALID",
       "passed": true
     },
     {
       "name": "current valid save",
       "result": "VALID",
+      "expected": "VALID",
       "passed": true
     },
     {
       "name": "older supported v2 schema",
       "result": "VALID",
+      "expected": "VALID",
       "passed": true
     },
     {
       "name": "future unsupported schema",
       "result": "FUTURE_SCHEMA",
+      "expected": "FUTURE_SCHEMA",
       "passed": true
     },
     {
       "name": "corrupt JSON",
       "result": "CORRUPT_JSON",
+      "expected": "CORRUPT_JSON",
       "passed": true
     },
     {
       "name": "valid JSON invalid schema",
       "result": "INVALID_SCHEMA",
+      "expected": "INVALID_SCHEMA",
       "passed": true
     },
     {
       "name": "invalid checksum",
       "result": "INVALID_CHECKSUM",
+      "expected": "INVALID_CHECKSUM",
       "passed": true
     },
     {
       "name": "partial write",
       "result": "CORRUPT_JSON",
+      "expected": "CORRUPT_JSON",
       "passed": true
     },
     {
       "name": "current invalid fallback valid",
       "result": "LOADED",
+      "expected": "LOADED",
       "passed": true
     },
     {
       "name": "current valid fallback older",
       "result": "LOADED",
+      "expected": "LOADED",
       "passed": true
     },
     {
       "name": "quota failure",
       "result": "QUOTA_FAILURE_HANDLED",
+      "expected": "QUOTA_FAILURE_HANDLED",
       "passed": true
     },
     {
       "name": "IndexedDB unavailable",
       "result": "LOCAL_CONFIRMED_IDB_FAILED",
+      "expected": "LOCAL_CONFIRMED_IDB_FAILED",
       "passed": true
     },
     {
       "name": "IndexedDB append failure",
       "result": "LOCAL_CONFIRMED_IDB_FAILED",
+      "expected": "LOCAL_CONFIRMED_IDB_FAILED",
       "passed": true
     },
     {
       "name": "legacy v1 mathIdleSave",
       "result": "LEGACY_V1_FOUND",
+      "expected": "LEGACY_V1_FOUND",
       "passed": true
     },
     {
       "name": "imported valid save",
       "result": "VALID",
+      "expected": "VALID",
       "passed": true
     },
     {
       "name": "imported invalid save",
       "result": "CORRUPT_JSON",
+      "expected": "CORRUPT_JSON",
       "passed": true
     },
     {
       "name": "clock rollback",
       "result": "ROLLBACK",
+      "expected": "ROLLBACK",
       "passed": true
     },
     {
       "name": "large forward clock jump",
       "result": "FORWARD_JUMP",
+      "expected": "FORWARD_JUMP",
       "passed": true
     },
     {
       "name": "multi-tab conflict",
       "result": "ONE_WRITER",
+      "expected": "ONE_WRITER",
       "passed": true
     },
     {
       "name": "post-Publication save",
       "result": "VALID",
+      "expected": "VALID",
       "passed": true
     },
     {
       "name": "RNG replay save",
       "result": "VALID",
+      "expected": "VALID",
       "passed": true
     }
   ],

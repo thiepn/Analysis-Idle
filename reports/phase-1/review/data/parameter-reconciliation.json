@@ -1,0 +1,52 @@
+{
+  "authority": "docs/research/RESEARCH_DECISIONS.md",
+  "values": {
+    "offlineFullEfficiencyHours": {
+      "previousDrift": 8,
+      "current": 12,
+      "provisional": true
+    },
+    "offlineTailEfficiency": {
+      "current": 0.25,
+      "provisional": true
+    },
+    "offlineMaximumCreditedHours": {
+      "current": 72,
+      "provisional": true
+    },
+    "campaignActiveEquivalentHours": {
+      "previousDrift": "10-20",
+      "current": "30-50",
+      "provisional": true
+    },
+    "activePlayFraction": {
+      "sustainedTarget": "10-15%",
+      "hardCeiling": "20%",
+      "provisional": true
+    },
+    "attention": {
+      "startingCapacity": 3,
+      "maximumCapacity": 4,
+      "recovery": null
+    },
+    "firstPublicationActiveEquivalentMinutes": {
+      "target": "60-120",
+      "balancedSimulation": 93.7875,
+      "provisional": true
+    },
+    "production": {
+      "formalizePerSecond": 0.25,
+      "explorePerSecond": 0.2,
+      "reason": "Phase 1 reproducible simulator calibration",
+      "provisional": true
+    },
+    "save": {
+      "debounceMs": 1000,
+      "maximumDelayMs": 10000,
+      "passiveCheckpointMs": 30000,
+      "writerLeaseMs": 15000,
+      "importLimitBytes": 256000,
+      "provisional": true
+    }
+  }
+}

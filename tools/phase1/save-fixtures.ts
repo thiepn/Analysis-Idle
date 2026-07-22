@@ -125,83 +125,113 @@ const records = [
   [
     "new empty v2 save",
     validateSaveText(exportSave(empty), naturalNumbersContent).code,
+    "VALID",
   ],
   [
     "current valid save",
     validateSaveText(exportSave(current), naturalNumbersContent).code,
+    "VALID",
   ],
   [
     "older supported v2 schema",
     validateSaveText(exportSave(older), naturalNumbersContent).code,
+    "VALID",
   ],
   [
     "future unsupported schema",
     validateSaveText(exportSave(future), naturalNumbersContent).code,
+    "FUTURE_SCHEMA",
   ],
-  ["corrupt JSON", validateSaveText("{", naturalNumbersContent).code],
+  [
+    "corrupt JSON",
+    validateSaveText("{", naturalNumbersContent).code,
+    "CORRUPT_JSON",
+  ],
   [
     "valid JSON invalid schema",
     validateSaveText("{}", naturalNumbersContent).code,
+    "INVALID_SCHEMA",
   ],
   [
     "invalid checksum",
     validateSaveText(exportSave(invalidChecksum), naturalNumbersContent).code,
+    "INVALID_CHECKSUM",
   ],
   [
     "partial write",
     validateSaveText(fixtureFiles["partial-write.json"]!, naturalNumbersContent)
       .code,
+    "CORRUPT_JSON",
   ],
   [
     "current invalid fallback valid",
     loadBestSave(recoveryStorage, naturalNumbersContent).status,
+    "LOADED",
   ],
   [
     "current valid fallback older",
     loadBestSave(rotationStorage, naturalNumbersContent).status,
+    "LOADED",
   ],
-  ["quota failure", quotaFailure ? "QUOTA_FAILURE_HANDLED" : "FAIL"],
+  [
+    "quota failure",
+    quotaFailure ? "QUOTA_FAILURE_HANDLED" : "FAIL",
+    "QUOTA_FAILURE_HANDLED",
+  ],
   [
     "IndexedDB unavailable",
     idbFailure.backupAppendFailed ? "LOCAL_CONFIRMED_IDB_FAILED" : "FAIL",
+    "LOCAL_CONFIRMED_IDB_FAILED",
   ],
   [
     "IndexedDB append failure",
     idbFailure.backupAppendFailed ? "LOCAL_CONFIRMED_IDB_FAILED" : "FAIL",
+    "LOCAL_CONFIRMED_IDB_FAILED",
   ],
   [
     "legacy v1 mathIdleSave",
     loadBestSave(legacyStorage, naturalNumbersContent).status,
+    "LEGACY_V1_FOUND",
   ],
   [
     "imported valid save",
     validateSaveText(exportSave(current), naturalNumbersContent).code,
+    "VALID",
   ],
   [
     "imported invalid save",
     validateSaveText("not-json", naturalNumbersContent).code,
+    "CORRUPT_JSON",
   ],
-  ["clock rollback", sanitizeElapsed(200, 100, 1_000).anomaly],
-  ["large forward clock jump", sanitizeElapsed(0, 2_000, 1_000).anomaly],
+  ["clock rollback", sanitizeElapsed(200, 100, 1_000).anomaly, "ROLLBACK"],
+  [
+    "large forward clock jump",
+    sanitizeElapsed(0, 2_000, 1_000).anomaly,
+    "FORWARD_JUMP",
+  ],
   [
     "multi-tab conflict",
     firstWriter.writer && !secondWriter.writer ? "ONE_WRITER" : "FAIL",
+    "ONE_WRITER",
   ],
   [
     "post-Publication save",
     validateSaveText(exportSave(postPublication), naturalNumbersContent).code,
+    "VALID",
   ],
   [
     "RNG replay save",
     validateSaveText(exportSave(current), naturalNumbersContent).code,
+    "VALID",
   ],
 ] as const;
 const report = {
   command: "npm run save:fixtures",
-  fixtures: records.map(([name, result]) => ({
+  fixtures: records.map(([name, result, expected]) => ({
     name,
     result,
-    passed: result !== "FAIL",
+    expected,
+    passed: result === expected,
   })),
   recoveryPriority: [
     "highest valid generation",

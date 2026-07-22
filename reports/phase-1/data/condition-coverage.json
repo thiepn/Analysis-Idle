@@ -6,6 +6,7 @@
     "not",
     "resourceAtLeast",
     "projectCompleted",
+    "projectStarted",
     "upgradeOwned",
     "milestoneReached",
     "achievementRecorded",
@@ -13,7 +14,8 @@
     "attentionCapacityAtLeast",
     "techniqueArtifactOwned",
     "understandingAtLeast",
-    "insightAtLeast"
+    "insightAtLeast",
+    "recordAtLeast"
   ],
   "arbitraryCallbacks": false
 }
