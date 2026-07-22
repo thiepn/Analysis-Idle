@@ -25,6 +25,7 @@ import {
 } from "../../src/platform/persistence/scheduler";
 import { sanitizeElapsed } from "../../src/platform/time/clock";
 import { WriterCoordinator } from "../../src/platform/ownership/coordinator";
+import { createBrowserOwnershipAdapter } from "../../src/platform/ownership/browser-services";
 import { MemoryStorage } from "../helpers";
 
 const makeEnvelope = (generation = 1) =>
@@ -82,6 +83,47 @@ describe("save envelope and recovery", () => {
     ).toBe("OVERSIZED");
   });
 
+  it("rejects incomplete or content-incompatible canonical state", () => {
+    const missing = makeEnvelope();
+    delete (missing.state.resources as Record<string, unknown>).PRECISION;
+    const missingUnsigned: Partial<typeof missing> = { ...missing };
+    delete missingUnsigned.checksum;
+    missing.checksum = corruptionChecksum(missingUnsigned);
+    expect(
+      validateSaveText(exportSave(missing), naturalNumbersContent).code,
+    ).toBe("INVALID_STATE");
+
+    const incompatible = makeEnvelope();
+    incompatible.contentVersion = "other-content";
+    incompatible.state.contentVersion = "other-content";
+    const incompatibleUnsigned: Partial<typeof incompatible> = {
+      ...incompatible,
+    };
+    delete incompatibleUnsigned.checksum;
+    incompatible.checksum = corruptionChecksum(incompatibleUnsigned);
+    expect(
+      validateSaveText(exportSave(incompatible), naturalNumbersContent).code,
+    ).toBe("INVALID_STATE");
+  });
+
+  it("migrates a schema-zero envelope that predates replay metadata", () => {
+    const legacy = makeEnvelope() as unknown as Record<string, unknown>;
+    legacy.schemaVersion = 0;
+    delete legacy.migration;
+    delete legacy.replayMetadata;
+    delete legacy.checksum;
+    legacy.checksum = corruptionChecksum(legacy);
+    const result = validateSaveText(
+      JSON.stringify(legacy),
+      naturalNumbersContent,
+    );
+    expect(result.valid).toBe(true);
+    if (result.valid)
+      expect(result.envelope.migration.applied).toContain(
+        "v0-to-v1-envelope-metadata",
+      );
+  });
+
   it("stages, validates, rotates and selects the highest valid generation", async () => {
     const storage = new MemoryStorage();
     await saveWithRotation(storage, makeEnvelope(1), naturalNumbersContent);
@@ -109,6 +151,44 @@ describe("save envelope and recovery", () => {
     expect(legacyOnly.getItem(SAVE_KEYS.legacy)).toBe("legacy-data");
   });
 
+  it("recovers a newer validated staging write before older current data", () => {
+    const storage = new MemoryStorage();
+    storage.setItem(SAVE_KEYS.current, exportSave(makeEnvelope(1)));
+    storage.setItem(SAVE_KEYS.staging, exportSave(makeEnvelope(2)));
+    const recovered = loadBestSave(storage, naturalNumbersContent);
+    expect(recovered.status).toBe("LOADED");
+    if (recovered.status === "LOADED") {
+      expect(recovered.source).toBe("staging");
+      expect(recovered.envelope.generation).toBe(2);
+    }
+  });
+
+  it("selects a newer fallback or IndexedDB candidate and ignores corrupt candidates", () => {
+    const storage = new MemoryStorage();
+    storage.setItem(SAVE_KEYS.current, exportSave(makeEnvelope(2)));
+    storage.setItem(SAVE_KEYS.backups[1], exportSave(makeEnvelope(5)));
+    let recovered = loadBestSave(storage, naturalNumbersContent);
+    expect(recovered.status).toBe("LOADED");
+    if (recovered.status === "LOADED") {
+      expect(recovered.source).toBe("fallback-1");
+      expect(recovered.envelope.generation).toBe(5);
+    }
+
+    recovered = loadBestSave(storage, naturalNumbersContent, [
+      "{corrupt",
+      exportSave(makeEnvelope(8)),
+    ]);
+    expect(recovered.status).toBe("LOADED");
+    if (recovered.status === "LOADED") {
+      expect(recovered.source).toBe("indexeddb-1");
+      expect(recovered.envelope.generation).toBe(8);
+      expect(recovered.rejected).toContainEqual({
+        source: "indexeddb-0",
+        code: "CORRUPT_JSON",
+      });
+    }
+  });
+
   it("keeps a confirmed local save valid when IndexedDB append fails", async () => {
     const storage = new MemoryStorage();
     const result = await saveWithRotation(
@@ -126,6 +206,8 @@ describe("save envelope and recovery", () => {
     const database = await openPersistenceDatabase(indexedDB);
     const history = new IndexedDbHistory(database);
     await expect(history.appendSave(makeEnvelope(22))).resolves.toBeUndefined();
+    await expect(history.appendSave(makeEnvelope(22))).resolves.toBeUndefined();
+    await expect(history.listSaveTexts()).resolves.toHaveLength(1);
     await expect(
       history.appendReplay({
         sessionId: "test",
@@ -176,6 +258,120 @@ describe("clock and multi-tab integrity", () => {
     });
   });
 
+  it("releases a held Web Lock, honors broadcast conflict, and recovers an expired lease", async () => {
+    const storage = new MemoryStorage();
+    let released = false;
+    const web = new WriterCoordinator("web", {
+      storage,
+      now: () => 100,
+      requestWebLock: () => Promise.resolve(true),
+      releaseWebLock: () => {
+        released = true;
+      },
+    });
+    await expect(web.acquire()).resolves.toMatchObject({
+      writer: true,
+      method: "web-lock",
+    });
+    web.release();
+    expect(released).toBe(true);
+
+    const conflict = new WriterCoordinator("broadcast", {
+      storage,
+      now: () => 200,
+      requestWebLock: () => Promise.resolve(false),
+      broadcast: () => Promise.resolve(true),
+    });
+    await expect(conflict.acquire()).resolves.toMatchObject({
+      writer: false,
+      method: "passive",
+    });
+
+    storage.setItem(
+      SAVE_KEYS.lease,
+      JSON.stringify({ tabId: "stale", expiresAtMs: 300 }),
+    );
+    const recovered = new WriterCoordinator("recovery", {
+      storage,
+      now: () => 301,
+    });
+    await expect(recovered.acquire()).resolves.toMatchObject({
+      writer: true,
+      method: "lease",
+      diagnostic: "Expired lease recovered",
+    });
+  });
+
+  it("resolves simultaneous BroadcastChannel claims to one deterministic writer", async () => {
+    type OwnershipMessage = {
+      type: "claim" | "release" | "conflict";
+      tabId: string;
+      expiresAtMs: number;
+      targetTabId?: string;
+    };
+    const listeners = new Set<
+      (event: MessageEvent<OwnershipMessage>) => void
+    >();
+    const createChannel = () => ({
+      postMessage(message: OwnershipMessage) {
+        for (const listener of listeners)
+          listener({ data: message } as MessageEvent<OwnershipMessage>);
+      },
+      addEventListener(
+        _type: "message",
+        listener: (event: MessageEvent<OwnershipMessage>) => void,
+      ) {
+        listeners.add(listener);
+      },
+      removeEventListener(
+        _type: "message",
+        listener: (event: MessageEvent<OwnershipMessage>) => void,
+      ) {
+        listeners.delete(listener);
+      },
+      close() {},
+    });
+    const storage = new MemoryStorage();
+    const environment = {
+      createChannel,
+      setTimer: (callback: () => void) => setTimeout(callback, 0),
+      clearTimer: (handle: unknown) => clearTimeout(handle as number),
+    };
+    const firstAdapter = createBrowserOwnershipAdapter(
+      "tab-a",
+      storage,
+      () => 100,
+      environment,
+    );
+    const secondAdapter = createBrowserOwnershipAdapter(
+      "tab-b",
+      storage,
+      () => 100,
+      environment,
+    );
+    const [first, second] = await Promise.all([
+      new WriterCoordinator("tab-a", firstAdapter.services).acquire(),
+      new WriterCoordinator("tab-b", secondAdapter.services).acquire(),
+    ]);
+    expect(first).toMatchObject({ writer: true, method: "broadcast-lease" });
+    expect(second).toMatchObject({ writer: false, method: "passive" });
+    firstAdapter.close();
+    secondAdapter.close();
+  });
+
+  it("recovers safely from malformed lease data", async () => {
+    const storage = new MemoryStorage();
+    storage.setItem(SAVE_KEYS.lease, "{broken");
+    const coordinator = new WriterCoordinator("a", { storage, now: () => 100 });
+    await expect(coordinator.acquire()).resolves.toMatchObject({
+      writer: true,
+      method: "lease",
+    });
+    expect(coordinator.renew()).toBe(true);
+    coordinator.release();
+    expect(storage.getItem(SAVE_KEYS.lease)).toBeNull();
+  });
+
   it("debounces accepted-command saves with a hard maximum delay", async () => {
     let now = 0;
     let callback: (() => void) | null = null;
@@ -204,6 +400,41 @@ describe("clock and multi-tab integrity", () => {
     callback!();
     await Promise.resolve();
     expect(saves).toBe(1);
+    expect(scheduler.isDirty()).toBe(false);
+  });
+
+  it("keeps commands dirty when they arrive during an in-flight save", async () => {
+    let release: (() => void) | null = null;
+    let callback: (() => void) | null = null;
+    let saves = 0;
+    const scheduler = new SaveScheduler(
+      {
+        now: () => 0,
+        setTimer: (next) => {
+          callback = next;
+          return next;
+        },
+        clearTimer: () => undefined,
+      },
+      async () => {
+        saves += 1;
+        if (saves === 1)
+          await new Promise<void>((resolve) => {
+            release = resolve;
+          });
+      },
+    );
+    scheduler.markAcceptedCommand();
+    const first = scheduler.flush();
+    await Promise.resolve();
+    scheduler.markAcceptedCommand();
+    release!();
+    await first;
+    expect(scheduler.isDirty()).toBe(true);
+    callback!();
+    await Promise.resolve();
+    await Promise.resolve();
+    expect(saves).toBe(2);
     expect(scheduler.isDirty()).toBe(false);
   });
 

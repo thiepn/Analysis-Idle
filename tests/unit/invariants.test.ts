@@ -13,6 +13,27 @@ describe("canonical state invariants", () => {
     ).toEqual([]);
   });
 
+  it("rejects missing and extra state graph members and invalid runtime enums", () => {
+    const state = createInitialState(naturalNumbersContent);
+    delete state.resources.PRECISION;
+    state.resources.GHOST = 1 as never;
+    state.resourceReserves.INTUITION = Number.NaN as never;
+    state.completionBehavior = "bogus" as never;
+    state.assembledCapstoneEdges.push("missing.edge" as never);
+    delete state.projects["nn.project.zero_successor"];
+    const violations = collectInvariantViolations(state, naturalNumbersContent);
+    expect(violations).toEqual(
+      expect.arrayContaining([
+        "required resource PRECISION is missing",
+        "resource GHOST is not defined",
+        "resource reserve INTUITION must be finite and non-negative",
+        "completion behavior is invalid",
+        "capstone edge missing.edge is undefined",
+        "required project nn.project.zero_successor is missing",
+      ]),
+    );
+  });
+
   it("rejects invalid IDs, approach, queue, Publication, schema, and RNG state", () => {
     const state = createInitialState(naturalNumbersContent);
     state.schemaVersion = 999;

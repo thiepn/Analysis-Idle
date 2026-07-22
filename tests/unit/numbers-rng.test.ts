@@ -3,7 +3,11 @@ import {
   deserializeGameNumber,
   gameNumber,
   gnAdd,
+  gnClamp,
+  gnCompare,
   gnDivide,
+  gnMultiply,
+  gnPow,
   gnSubtract,
   serializeGameNumber,
 } from "../../src/engine/numbers/game-number";
@@ -28,6 +32,24 @@ describe("GameNumber", () => {
     const value = gameNumber(1234.56789);
     expect(deserializeGameNumber(serializeGameNumber(value))).toBe(value);
     expect(() => deserializeGameNumber("1;alert(1)")).toThrow();
+    expect(() => deserializeGameNumber("01")).toThrow();
+    expect(() => deserializeGameNumber("1.0")).toThrow();
+  });
+
+  it("covers precision, arithmetic, comparison, and clamp boundaries", () => {
+    expect(gameNumber(9.999e279)).toBe(9.999e279);
+    expect(gameNumber(1e-300)).toBe(1e-300);
+    let repeated = gameNumber(0);
+    for (let index = 0; index < 10; index += 1)
+      repeated = gnAdd(repeated, gameNumber(0.1));
+    expect(repeated).toBe(1);
+    expect(gnMultiply(gameNumber(3), gameNumber(4))).toBe(12);
+    expect(gnPow(gameNumber(3), 3)).toBe(27);
+    expect(gnCompare(gameNumber(2), gameNumber(3))).toBe(-1);
+    expect(gnClamp(gameNumber(5), gameNumber(1), gameNumber(4))).toBe(4);
+    expect(() =>
+      gnClamp(gameNumber(2), gameNumber(3), gameNumber(1)),
+    ).toThrow();
   });
 });
 

@@ -47,7 +47,7 @@ describe("typed reducer", () => {
       envelope(
         {
           type: "setAttention",
-          payload: { activityId: naturalNumbersIds.EXPLORE, allocation: 1 },
+          payload: { activityId: naturalNumbersIds.FORMALIZE, allocation: 4 },
         },
         2,
       ),
@@ -60,6 +60,8 @@ describe("typed reducer", () => {
 
   it("reserves project inputs atomically and refunds them on cancellation", () => {
     let state = createInitialState(naturalNumbersContent);
+    state.resources.PRECISION = gameNumber(100);
+    state.resources.INTUITION = gameNumber(100);
     const before = structuredClone(state.resources);
     state = dispatch(state, {
       type: "startProject",
@@ -79,6 +81,8 @@ describe("typed reducer", () => {
 
   it("preserves at least the configured floor without a switching exploit", () => {
     let state = createInitialState(naturalNumbersContent);
+    state.resources.PRECISION = gameNumber(100);
+    state.resources.INTUITION = gameNumber(100);
     state = dispatch(state, {
       type: "startProject",
       payload: { projectId: "nn.project.zero_successor" as never },
@@ -112,12 +116,88 @@ describe("typed reducer", () => {
     ).toBeGreaterThanOrEqual(0);
   });
 
+  it("resumes an exactly funded paused project without charging twice", () => {
+    let state = createInitialState(naturalNumbersContent);
+    state.resources.PRECISION = gameNumber(15);
+    state.resources.INTUITION = gameNumber(0);
+    state = dispatch(state, {
+      type: "startProject",
+      payload: { projectId: "nn.project.zero_successor" as never },
+    });
+    state = dispatch(state, {
+      type: "pauseProject",
+      payload: { projectId: "nn.project.zero_successor" as never },
+    });
+    const before = structuredClone(state.resources);
+    state = dispatch(state, {
+      type: "startProject",
+      payload: { projectId: "nn.project.zero_successor" as never },
+    });
+    expect(state.resources).toEqual(before);
+    expect(state.projects["nn.project.zero_successor"]!.status).toBe("active");
+  });
+
+  it("gates earned automation and validates runtime command enums", () => {
+    const initial = createInitialState(naturalNumbersContent);
+    const queue = reduceCommand(
+      initial,
+      envelope(
+        {
+          type: "queueProject",
+          payload: { projectId: "nn.project.zero_successor" as never },
+        },
+        1,
+      ),
+      naturalNumbersContent,
+    );
+    expect(queue.accepted).toBe(false);
+    if (!queue.accepted) expect(queue.reason.code).toBe("PREREQUISITE_MISSING");
+
+    const unlocked = structuredClone(initial);
+    unlocked.ownedUpgrades.push("nn.automation.completion_rule" as never);
+    const invalid = reduceCommand(
+      unlocked,
+      envelope(
+        {
+          type: "setCompletionBehavior",
+          payload: { behavior: "bogus" as never },
+        },
+        1,
+      ),
+      naturalNumbersContent,
+    );
+    expect(invalid.accepted).toBe(false);
+    if (!invalid.accepted) expect(invalid.reason.code).toBe("INVALID_AMOUNT");
+    expect(invalid.state).toBe(unlocked);
+  });
+
+  it("rejects fractional Insight charges", () => {
+    const state = createInitialState(naturalNumbersContent);
+    state.insight = gameNumber(1);
+    const result = reduceCommand(
+      state,
+      envelope(
+        {
+          type: "spendInsight",
+          payload: { amount: 0.5, purpose: "traceStep" },
+        },
+        1,
+      ),
+      naturalNumbersContent,
+    );
+    expect(result.accepted).toBe(false);
+    if (!result.accepted) expect(result.reason.code).toBe("INVALID_AMOUNT");
+  });
+
   it("rejects Insight underflow", () => {
     const state = createInitialState(naturalNumbersContent);
     const result = reduceCommand(
       state,
       envelope(
-        { type: "spendInsight", payload: { amount: 1, purpose: "test" } },
+        {
+          type: "spendInsight",
+          payload: { amount: 1, purpose: "traceStep" },
+        },
         1,
       ),
       naturalNumbersContent,
@@ -127,16 +207,17 @@ describe("typed reducer", () => {
       expect(result.reason.code).toBe("INSIGHT_INSUFFICIENT");
   });
 
-  it("applies a bounded Insight modifier and expires it at a logical-time boundary", () => {
+  it("applies a bounded typed Insight intervention to remaining project work", () => {
     const initial = createInitialState(naturalNumbersContent);
     initial.insight = gameNumber(3);
     initial.attention.allocations[naturalNumbersIds.FORMALIZE] = 1;
+    initial.projects["nn.project.zero_successor"]!.status = "active";
     const spent = reduceCommand(
       initial,
       envelope(
         {
           type: "spendInsight",
-          payload: { amount: 3, purpose: "bounded test modifier" },
+          payload: { amount: 3, purpose: "strengthenBaseCase" },
         },
         1,
       ),
@@ -145,12 +226,15 @@ describe("typed reducer", () => {
     expect(spent.accepted).toBe(true);
     if (!spent.accepted) return;
     expect(
+      spent.state.projects["nn.project.zero_successor"]!.progress,
+    ).toBeCloseTo(8.55, 12);
+    expect(
       resolveActivityRate(
         naturalNumbersIds.FORMALIZE,
         spent.state,
         naturalNumbersContent,
       ).rate,
-    ).toBeCloseTo(1.8, 12);
+    ).toBeCloseTo(0.25, 12);
     const advanced = reduceCommand(
       spent.state,
       envelope(
@@ -165,8 +249,6 @@ describe("typed reducer", () => {
     expect(advanced.accepted).toBe(true);
     if (!advanced.accepted) return;
     expect(advanced.state.insightModifiers).toEqual([]);
-    expect(
-      advanced.events.some((event) => event.type === "insightModifierExpired"),
-    ).toBe(true);
+    expect(advanced.state.insight).toBe(0);
   });
 });

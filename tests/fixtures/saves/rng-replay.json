@@ -12,12 +12,14 @@
     "sequence": 0,
     "logicalTimeMs": 0,
     "resources": {
-      "PRECISION": "50",
-      "INTUITION": "20"
+      "PRECISION": "0",
+      "INTUITION": "0"
     },
     "attention": {
       "capacity": 3,
-      "allocations": {}
+      "allocations": {
+        "FORMALIZE": 3
+      }
     },
     "activityEnabled": {
       "FORMALIZE": true,
@@ -41,108 +43,168 @@
         "status": "available",
         "approachId": "FORMAL",
         "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
-        "starts": 0
+        "starts": 0,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
       },
       "nn.project.peano_frame": {
         "id": "nn.project.peano_frame",
         "status": "locked",
         "approachId": "FORMAL",
         "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
-        "starts": 0
+        "starts": 0,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
       },
       "nn.project.primitive_recursion": {
         "id": "nn.project.primitive_recursion",
         "status": "locked",
         "approachId": "FORMAL",
         "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
-        "starts": 0
+        "starts": 0,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
       },
       "nn.project.addition": {
         "id": "nn.project.addition",
         "status": "locked",
         "approachId": "FORMAL",
         "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
-        "starts": 0
+        "starts": 0,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
       },
       "nn.project.addition_lemmas": {
         "id": "nn.project.addition_lemmas",
         "status": "locked",
         "approachId": "FORMAL",
         "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
-        "starts": 0
+        "starts": 0,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
       },
       "nn.project.multiplication": {
         "id": "nn.project.multiplication",
         "status": "locked",
         "approachId": "FORMAL",
         "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
-        "starts": 0
+        "starts": 0,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
       },
       "nn.project.induction_walkthrough": {
         "id": "nn.project.induction_walkthrough",
         "status": "locked",
         "approachId": "FORMAL",
         "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
-        "starts": 0
+        "starts": 0,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
       },
       "nn.project.counterexample_lab": {
         "id": "nn.project.counterexample_lab",
         "status": "locked",
         "approachId": "FORMAL",
         "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
-        "starts": 0
+        "starts": 0,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
       },
       "nn.project.strong_induction": {
         "id": "nn.project.strong_induction",
         "status": "locked",
         "approachId": "FORMAL",
         "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
-        "starts": 0
+        "starts": 0,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
       },
       "nn.project.well_ordering": {
         "id": "nn.project.well_ordering",
         "status": "locked",
         "approachId": "FORMAL",
         "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
-        "starts": 0
+        "starts": 0,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
       },
       "nn.project.least_counterexample": {
         "id": "nn.project.least_counterexample",
         "status": "locked",
         "approachId": "FORMAL",
         "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
-        "starts": 0
+        "starts": 0,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
       },
       "nn.project.equivalence_capstone": {
         "id": "nn.project.equivalence_capstone",
         "status": "locked",
         "approachId": "FORMAL",
         "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
-        "starts": 0
+        "starts": 0,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
       }
     },
     "projectQueue": [],
@@ -162,6 +224,7 @@
     "automationTrace": [],
     "ownedUpgrades": [],
     "ownedArtifacts": [],
+    "techniqueRecords": {},
     "reachedMilestones": [],
     "recordedAchievements": [],
     "understanding": "0",
@@ -188,6 +251,11 @@
       "totalOfflineCreditedMs": 0,
       "publications": 0,
       "completedProjects": 0,
+      "approachComparisons": 0,
+      "exactDependencyCompletions": 0,
+      "projectsCompletedWithoutInsight": 0,
+      "offlineQueuedCompletions": 0,
+      "validCapstones": 0,
       "clockAnomalies": 0
     },
     "diagnostics": {
@@ -205,5 +273,5 @@
     "lastCommandSequence": 0,
     "eventDigest": null
   },
-  "checksum": "fnv1a32:f1e7230b"
+  "checksum": "fnv1a32:335ef23d"
 }
