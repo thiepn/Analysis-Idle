@@ -39,6 +39,16 @@
     },
     {
       "status": "M",
+      "path": "experiments/models.test.ts",
+      "category": "DOCUMENTATION"
+    },
+    {
+      "status": "M",
+      "path": "experiments/models.ts",
+      "category": "DOCUMENTATION"
+    },
+    {
+      "status": "M",
       "path": "package-lock.json",
       "category": "PRODUCTION"
     },
@@ -46,6 +56,16 @@
       "status": "M",
       "path": "package.json",
       "category": "PRODUCTION"
+    },
+    {
+      "status": "M",
+      "path": "reports/phase-0/data/attention-model-results.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "M",
+      "path": "reports/phase-0/data/determinism-manifest.json",
+      "category": "REPORT"
     },
     {
       "status": "A",
@@ -636,15 +656,15 @@
   "categoryCounts": {
     "CI": 2,
     "CONTENT": 4,
-    "DOCUMENTATION": 5,
+    "DOCUMENTATION": 7,
     "GENERATED": 12,
     "PERSISTENCE": 10,
     "PRODUCTION": 24,
-    "REPORT": 49,
+    "REPORT": 51,
     "SIMULATOR": 4,
     "TEST": 12,
     "UI": 4
   },
-  "reviewedCount": 126,
+  "reviewedCount": 130,
   "unclassifiedCount": 0
 }

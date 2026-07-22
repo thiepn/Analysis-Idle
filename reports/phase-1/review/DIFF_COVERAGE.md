@@ -1,6 +1,6 @@
 # Complete diff coverage
 
-Base: `933ba5d67b22362c3f5d45e6b35eb481701793ab`. Review-start head: `3cd4ee7a5376dd3330f4cff065b1bef4bcc36843`. Files classified: **126**. Unclassified: **0**.
+Base: `933ba5d67b22362c3f5d45e6b35eb481701793ab`. Review-start head: `3cd4ee7a5376dd3330f4cff065b1bef4bcc36843`. Files classified: **130**. Unclassified: **0**.
 
 Every production, test, content, simulator, persistence, UI, CI, report, documentation, and generated file in the base-to-worktree diff was inspected. Generated outputs were traced to their generator and regenerated; they were not accepted as independent proof.
 
@@ -13,8 +13,12 @@ Every production, test, content, simulator, persistence, UI, CI, report, documen
 | M      | DOCUMENTATION  | `docs/balance/NATURAL_NUMBERS_BALANCE.md`                   | reviewed                     |
 | M      | DOCUMENTATION  | `docs/technical/DEPENDENCY_DECISIONS.md`                    | reviewed                     |
 | A      | PRODUCTION     | `eslint.config.js`                                          | reviewed                     |
+| M      | DOCUMENTATION  | `experiments/models.test.ts`                                | reviewed                     |
+| M      | DOCUMENTATION  | `experiments/models.ts`                                     | reviewed                     |
 | M      | PRODUCTION     | `package-lock.json`                                         | reviewed                     |
 | M      | PRODUCTION     | `package.json`                                              | reviewed                     |
+| M      | REPORT         | `reports/phase-0/data/attention-model-results.json`         | reviewed                     |
+| M      | REPORT         | `reports/phase-0/data/determinism-manifest.json`            | reviewed                     |
 | A      | REPORT         | `reports/phase-1/ACCESSIBILITY_SMOKE_REPORT.md`             | reviewed                     |
 | A      | REPORT         | `reports/phase-1/ATTENTION_MODEL_REPORT.md`                 | reviewed                     |
 | A      | REPORT         | `reports/phase-1/BALANCE_AND_POLICY_REPORT.md`              | reviewed                     |

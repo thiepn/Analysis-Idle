@@ -40,6 +40,10 @@ Both checkout steps now use `fetch-depth: 0`. The actual manifest generator and 
 
 The gameplay state and deterministic digest matched. Both comparator generators now canonicalize report-only results to 12 decimal places before JSON serialization. This preserves meaningful precision while making byte output portable; the stability gate remains unchanged.
 
+## Second correction-push result
+
+Phase 1 passed for both [push run 29957792669](https://github.com/thiepn/Analysis-Idle/actions/runs/29957792669) and [pull-request run 29957794810](https://github.com/thiepn/Analysis-Idle/actions/runs/29957794810). [Phase 0 run 29957795160](https://github.com/thiepn/Analysis-Idle/actions/runs/29957795160) passed its full validation command, then exposed the same final-digit portability issue in `attention-model-results.json` during its unchanged artifact-stability gate. Phase 0 allocation outputs now use the same 12-decimal canonical form, with a regression assertion covering the values from the Ubuntu diff.
+
 ## Final verification
 
 Final remote verification is pending the correction push; acceptance remains REQUEST_CHANGES until both required workflows succeed.

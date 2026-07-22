@@ -189,10 +189,13 @@ const ciFailureData = {
     phase1PullRequestRunId: 29668727067,
     phase1PushRunId: 29668013069,
     firstCorrectionPushRunId: 29955301982,
+    secondCorrectionPhase0RunId: 29957795160,
+    secondCorrectionPhase1PullRequestRunId: 29957794810,
+    secondCorrectionPhase1PushRunId: 29957792669,
   },
   rootCauses: [
     "actions/checkout used the depth-1 default",
-    "report-only exponent comparators retained platform-specific floating-point tail digits",
+    "Phase 0 and Phase 1 report-only exponent calculations retained platform-specific floating-point tail digits",
   ],
   missingObject: LEGACY_SHA,
   evidence: [
@@ -201,17 +204,20 @@ const ciFailureData = {
     "one or more of the 22 v1 baseline files differ from the immutable legacy commit",
     '"two": 1.681792830507429 -> 1.6817928305074292',
     '"marginalThird": 0.5977142264473485 -> 0.5977142264473483',
+    'Phase 0 "output": 2.681792830507429 -> 2.6817928305074292',
   ],
   correction: {
     files: [
       ".github/workflows/phase-0.yml",
       ".github/workflows/phase-1.yml",
+      "experiments/models.ts",
+      "experiments/models.test.ts",
       "tools/simulator/reports/generate.ts",
       "tools/phase1/generate-reports.ts",
     ],
     changes: [
       "actions/checkout fetch-depth: 0",
-      "round report-only comparator floats to 12 decimal places",
+      "round Phase 0 allocation outputs and Phase 1 comparator floats to 12 decimal places",
     ],
     checksBypassed: false,
   },
@@ -350,6 +356,10 @@ Both checkout steps now use \`fetch-depth: 0\`. The actual manifest generator an
 \`\`\`
 
 The gameplay state and deterministic digest matched. Both comparator generators now canonicalize report-only results to 12 decimal places before JSON serialization. This preserves meaningful precision while making byte output portable; the stability gate remains unchanged.
+
+## Second correction-push result
+
+Phase 1 passed for both [push run 29957792669](https://github.com/thiepn/Analysis-Idle/actions/runs/29957792669) and [pull-request run 29957794810](https://github.com/thiepn/Analysis-Idle/actions/runs/29957794810). [Phase 0 run 29957795160](https://github.com/thiepn/Analysis-Idle/actions/runs/29957795160) passed its full validation command, then exposed the same final-digit portability issue in \`attention-model-results.json\` during its unchanged artifact-stability gate. Phase 0 allocation outputs now use the same 12-decimal canonical form, with a regression assertion covering the values from the Ubuntu diff.
 
 ## Final verification
 

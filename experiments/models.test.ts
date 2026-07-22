@@ -22,6 +22,11 @@ describe("Attention model", () => {
       expect(Number.isFinite(allocationOutput(allocation, 0.7, [1.35, 0.85]))).toBe(true);
     }
   });
+
+  it("canonicalizes report-only floating-point tails", () => {
+    expect(allocationOutput([1, 2], 0.75, [1, 1])).toBe(2.681792830507);
+    expect(allocationOutput([2, 1], 0.75, [1.35, 0.85])).toBe(3.120420321185);
+  });
 });
 
 describe("Offline model", () => {
