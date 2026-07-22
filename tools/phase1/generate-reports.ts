@@ -104,13 +104,14 @@ const numericalData = {
   conclusion:
     "The native-number adapter remains adequate for Phase 1; migration is explicit before unsafe range use.",
 };
+const stableReportNumber = (value: number): number => Number(value.toFixed(12));
 const attentionRows = [0.65, 0.7, 0.75, 0.8, 0.85, 0.9].map((exponent) => ({
   exponent,
-  one: 1 ** exponent,
-  two: 2 ** exponent,
-  three: 3 ** exponent,
-  marginalSecond: 2 ** exponent - 1,
-  marginalThird: 3 ** exponent - 2 ** exponent,
+  one: stableReportNumber(1 ** exponent),
+  two: stableReportNumber(2 ** exponent),
+  three: stableReportNumber(3 ** exponent),
+  marginalSecond: stableReportNumber(2 ** exponent - 1),
+  marginalThird: stableReportNumber(3 ** exponent - 2 ** exponent),
 }));
 const effectData = {
   operationPhases: [

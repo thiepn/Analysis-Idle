@@ -957,50 +957,50 @@
     {
       "exponent": 0.65,
       "one": 1,
-      "two": 1.5691681957935015,
-      "three": 2.0423436319453514,
-      "marginalSecond": 0.5691681957935015,
-      "marginalThird": 0.47317543615184987
+      "two": 1.569168195794,
+      "three": 2.042343631945,
+      "marginalSecond": 0.569168195794,
+      "marginalThird": 0.473175436152
     },
     {
       "exponent": 0.7,
       "one": 1,
-      "two": 1.624504792712471,
-      "three": 2.157669279974593,
-      "marginalSecond": 0.624504792712471,
-      "marginalThird": 0.5331644872621222
+      "two": 1.624504792712,
+      "three": 2.157669279975,
+      "marginalSecond": 0.624504792712,
+      "marginalThird": 0.533164487262
     },
     {
       "exponent": 0.75,
       "one": 1,
-      "two": 1.681792830507429,
-      "three": 2.2795070569547775,
-      "marginalSecond": 0.681792830507429,
-      "marginalThird": 0.5977142264473485
+      "two": 1.681792830507,
+      "three": 2.279507056955,
+      "marginalSecond": 0.681792830507,
+      "marginalThird": 0.597714226447
     },
     {
       "exponent": 0.8,
       "one": 1,
-      "two": 1.7411011265922482,
-      "three": 2.4082246852806923,
-      "marginalSecond": 0.7411011265922482,
-      "marginalThird": 0.6671235586884441
+      "two": 1.741101126592,
+      "three": 2.408224685281,
+      "marginalSecond": 0.741101126592,
+      "marginalThird": 0.667123558688
     },
     {
       "exponent": 0.85,
       "one": 1,
-      "two": 1.8025009252216604,
-      "three": 2.5442106516410505,
-      "marginalSecond": 0.8025009252216604,
-      "marginalThird": 0.7417097264193901
+      "two": 1.802500925222,
+      "three": 2.544210651641,
+      "marginalSecond": 0.802500925222,
+      "marginalThird": 0.741709726419
     },
     {
       "exponent": 0.9,
       "one": 1,
-      "two": 1.8660659830736148,
-      "three": 2.6878753795222865,
-      "marginalSecond": 0.8660659830736148,
-      "marginalThird": 0.8218093964486717
+      "two": 1.866065983074,
+      "three": 2.687875379522,
+      "marginalSecond": 0.866065983074,
+      "marginalThird": 0.821809396449
     }
   ],
   "dedicatedProjectSlot": {

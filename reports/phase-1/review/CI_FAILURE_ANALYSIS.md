@@ -27,6 +27,19 @@ Both workflows used the depth-1 default of `actions/checkout`. The checked-out P
 
 Both checkout steps now use `fetch-depth: 0`. The actual manifest generator and 22-file boundary validator remain unchanged and fail hard. This supplies their required Git object instead of bypassing validation.
 
+## First correction-push failure
+
+[Phase 1 run 29955301982](https://github.com/thiepn/Analysis-Idle/actions/runs/29955301982) passed `npm run ci` and the import-boundary step, then correctly failed `git diff --exit-code -- reports/phase-1`. Ubuntu and Windows produced different final binary digits for the report-only exponent-0.75 comparator:
+
+```diff
+- "two": 1.681792830507429
++ "two": 1.6817928305074292
+- "marginalThird": 0.5977142264473485
++ "marginalThird": 0.5977142264473483
+```
+
+The gameplay state and deterministic digest matched. Both comparator generators now canonicalize report-only results to 12 decimal places before JSON serialization. This preserves meaningful precision while making byte output portable; the stability gate remains unchanged.
+
 ## Final verification
 
 Final remote verification is pending the correction push; acceptance remains REQUEST_CHANGES until both required workflows succeed.

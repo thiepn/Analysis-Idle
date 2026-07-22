@@ -2,18 +2,32 @@
   "reviewStart": {
     "phase0RunId": 29668727057,
     "phase1PullRequestRunId": 29668727067,
-    "phase1PushRunId": 29668013069
+    "phase1PushRunId": 29668013069,
+    "firstCorrectionPushRunId": 29955301982
   },
-  "rootCause": "actions/checkout used the depth-1 default",
+  "rootCauses": [
+    "actions/checkout used the depth-1 default",
+    "report-only exponent comparators retained platform-specific floating-point tail digits"
+  ],
   "missingObject": "239d75fd0e223e91703e261d2196953a896609cb",
   "evidence": [
     "fatal: not a tree object",
     "Error: Command failed: git ls-tree -r --long 239d75fd0e223e91703e261d2196953a896609cb",
-    "one or more of the 22 v1 baseline files differ from the immutable legacy commit"
+    "one or more of the 22 v1 baseline files differ from the immutable legacy commit",
+    "\"two\": 1.681792830507429 -> 1.6817928305074292",
+    "\"marginalThird\": 0.5977142264473485 -> 0.5977142264473483"
   ],
   "correction": {
-    "files": [".github/workflows/phase-0.yml", ".github/workflows/phase-1.yml"],
-    "change": "actions/checkout fetch-depth: 0",
+    "files": [
+      ".github/workflows/phase-0.yml",
+      ".github/workflows/phase-1.yml",
+      "tools/simulator/reports/generate.ts",
+      "tools/phase1/generate-reports.ts"
+    ],
+    "changes": [
+      "actions/checkout fetch-depth: 0",
+      "round report-only comparator floats to 12 decimal places"
+    ],
     "checksBypassed": false
   },
   "finalVerification": {

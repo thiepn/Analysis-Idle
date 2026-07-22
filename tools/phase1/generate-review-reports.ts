@@ -188,17 +188,31 @@ const ciFailureData = {
     phase0RunId: 29668727057,
     phase1PullRequestRunId: 29668727067,
     phase1PushRunId: 29668013069,
+    firstCorrectionPushRunId: 29955301982,
   },
-  rootCause: "actions/checkout used the depth-1 default",
+  rootCauses: [
+    "actions/checkout used the depth-1 default",
+    "report-only exponent comparators retained platform-specific floating-point tail digits",
+  ],
   missingObject: LEGACY_SHA,
   evidence: [
     "fatal: not a tree object",
     `Error: Command failed: git ls-tree -r --long ${LEGACY_SHA}`,
     "one or more of the 22 v1 baseline files differ from the immutable legacy commit",
+    '"two": 1.681792830507429 -> 1.6817928305074292',
+    '"marginalThird": 0.5977142264473485 -> 0.5977142264473483',
   ],
   correction: {
-    files: [".github/workflows/phase-0.yml", ".github/workflows/phase-1.yml"],
-    change: "actions/checkout fetch-depth: 0",
+    files: [
+      ".github/workflows/phase-0.yml",
+      ".github/workflows/phase-1.yml",
+      "tools/simulator/reports/generate.ts",
+      "tools/phase1/generate-reports.ts",
+    ],
+    changes: [
+      "actions/checkout fetch-depth: 0",
+      "round report-only comparator floats to 12 decimal places",
+    ],
     checksBypassed: false,
   },
   finalVerification: remote,
@@ -323,6 +337,19 @@ Process completed with exit code 1.
 Both workflows used the depth-1 default of \`actions/checkout\`. The checked-out PR/push commit existed, but immutable legacy commit \`${LEGACY_SHA}\` did not. Phase 0's \`git ls-tree\` therefore failed, while Phase 1's comparison treated the unavailable baseline as a mismatch. This was not an OS, path-case, Node, or report-digest defect.
 
 Both checkout steps now use \`fetch-depth: 0\`. The actual manifest generator and 22-file boundary validator remain unchanged and fail hard. This supplies their required Git object instead of bypassing validation.
+
+## First correction-push failure
+
+[Phase 1 run 29955301982](https://github.com/thiepn/Analysis-Idle/actions/runs/29955301982) passed \`npm run ci\` and the import-boundary step, then correctly failed \`git diff --exit-code -- reports/phase-1\`. Ubuntu and Windows produced different final binary digits for the report-only exponent-0.75 comparator:
+
+\`\`\`diff
+- "two": 1.681792830507429
++ "two": 1.6817928305074292
+- "marginalThird": 0.5977142264473485
++ "marginalThird": 0.5977142264473483
+\`\`\`
+
+The gameplay state and deterministic digest matched. Both comparator generators now canonicalize report-only results to 12 decimal places before JSON serialization. This preserves meaningful precision while making byte output portable; the stability gate remains unchanged.
 
 ## Final verification
 
