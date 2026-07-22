@@ -32,12 +32,11 @@ export interface BackupAppender {
   appendSave(envelope: SaveEnvelope): Promise<void>;
 }
 
-export async function saveWithRotation(
+export function promoteLocalSave(
   storage: StorageLike,
   envelope: SaveEnvelope,
   content: GameContent,
-  appender?: BackupAppender,
-): Promise<RotationResult> {
+): void {
   const serialized = exportSave(envelope);
   storage.setItem(SAVE_KEYS.staging, serialized);
   const staged = storage.getItem(SAVE_KEYS.staging);
@@ -54,6 +53,15 @@ export async function saveWithRotation(
   if (!promoted || !validateSaveText(promoted, content).valid)
     throw new Error("Promoted save failed validation");
   storage.removeItem(SAVE_KEYS.staging);
+}
+
+export async function saveWithRotation(
+  storage: StorageLike,
+  envelope: SaveEnvelope,
+  content: GameContent,
+  appender?: BackupAppender,
+): Promise<RotationResult> {
+  promoteLocalSave(storage, envelope, content);
   let backupAppendFailed = false;
   if (appender) {
     try {
@@ -96,11 +104,12 @@ export function loadBestSave(
   indexedDbCandidates: string[] = [],
 ): LoadResult {
   const candidates = [
-    { source: "current", text: storage.getItem(SAVE_KEYS.current), rank: 0 },
+    { source: "staging", text: storage.getItem(SAVE_KEYS.staging), rank: 0 },
+    { source: "current", text: storage.getItem(SAVE_KEYS.current), rank: 1 },
     ...SAVE_KEYS.backups.map((key, index) => ({
       source: `fallback-${index}`,
       text: storage.getItem(key),
-      rank: index + 1,
+      rank: index + 2,
     })),
     ...indexedDbCandidates.map((text, index) => ({
       source: `indexeddb-${index}`,

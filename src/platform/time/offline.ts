@@ -19,22 +19,6 @@ export function advanceOffline(
   safePolicy: boolean,
 ): OfflineAdvanceResult {
   const credit = calculateOfflineCredit(wallDurationMs, content);
-  const unresolved =
-    Object.values(state.projects).some(
-      (project) => project.status === "active",
-    ) &&
-    state.completionBehavior === "pause" &&
-    !safePolicy;
-  if (unresolved)
-    return {
-      state,
-      creditedMs: 0,
-      discardedMs: credit.discardedMs,
-      stoppedForDecision: true,
-      policyTrace: [
-        "Stopped before a project-completion choice; no policy was authorized.",
-      ],
-    };
   const result = reduceCommand(
     state,
     envelope(
@@ -48,16 +32,20 @@ export function advanceOffline(
     content,
   );
   if (!result.accepted) throw new Error(result.reason.message);
+  const creditedMs = result.state.logicalTimeMs - state.logicalTimeMs;
+  const stopReason = result.state.diagnostics.unresolvedDecision;
   return {
     state: result.state,
-    creditedMs: credit.creditedMs,
+    creditedMs,
     discardedMs: credit.discardedMs,
-    stoppedForDecision: false,
+    stoppedForDecision: stopReason !== null,
     policyTrace: [
-      safePolicy
-        ? "Validated safe policy authorized routine continuation."
-        : "No unresolved decision occurred.",
-      `Credited ${credit.creditedMs} ms.`,
+      stopReason
+        ? `Stopped at deterministic boundary: ${stopReason}.`
+        : safePolicy
+          ? "Validated safe policy authorized routine continuation."
+          : "No unresolved decision occurred.",
+      `Credited ${creditedMs} of ${credit.creditedMs} available ms.`,
     ],
   };
 }

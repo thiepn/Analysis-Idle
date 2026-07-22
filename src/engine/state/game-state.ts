@@ -26,9 +26,14 @@ export interface ProjectState {
   status: ProjectRuntimeStatus;
   approachId: ApproachId;
   progress: GameNumber;
+  progressSegmentElapsedMs: number;
+  progressSegmentStart: GameNumber;
+  progressRatePerSecond: GameNumber;
   reservedPrecision: GameNumber;
   reservedIntuition: GameNumber;
   starts: number;
+  approachesSeen: ApproachId[];
+  insightSpentThisRun: boolean;
 }
 
 export interface AutomationTraceEntry {
@@ -61,6 +66,14 @@ export interface InsightModifierState {
   expiresAtLogicalTimeMs: number;
 }
 
+export interface TechniqueAcquisitionRecord {
+  artifactId: TechniqueArtifactId;
+  sourceProjectId: ProjectId;
+  approachId: ApproachId;
+  outputKind: "lemma" | "reveal" | "template";
+  acquiredAtLogicalTimeMs: number;
+}
+
 export interface GameState {
   schemaVersion: number;
   contentVersion: string;
@@ -89,6 +102,7 @@ export interface GameState {
   automationTrace: AutomationTraceEntry[];
   ownedUpgrades: UpgradeId[];
   ownedArtifacts: TechniqueArtifactId[];
+  techniqueRecords: Record<string, TechniqueAcquisitionRecord>;
   reachedMilestones: MilestoneId[];
   recordedAchievements: AchievementId[];
   understanding: GameNumber;
@@ -109,6 +123,11 @@ export interface GameState {
     totalOfflineCreditedMs: number;
     publications: number;
     completedProjects: number;
+    approachComparisons: number;
+    exactDependencyCompletions: number;
+    projectsCompletedWithoutInsight: number;
+    offlineQueuedCompletions: number;
+    validCapstones: number;
     clockAnomalies: number;
   };
   diagnostics: {
@@ -146,9 +165,14 @@ export function createInitialState(
       status: initiallyAvailable(content, project.id),
       approachId: project.allowedApproachIds[0]!,
       progress: gameNumber(0),
+      progressSegmentElapsedMs: 0,
+      progressSegmentStart: gameNumber(0),
+      progressRatePerSecond: gameNumber(0),
       reservedPrecision: gameNumber(0),
       reservedIntuition: gameNumber(0),
       starts: 0,
+      approachesSeen: [],
+      insightSpentThisRun: false,
     };
   }
 
@@ -165,7 +189,15 @@ export function createInitialState(
     resources,
     attention: {
       capacity: content.configuration.attention.startingCapacity,
-      allocations: {},
+      allocations: Object.fromEntries(
+        content.activities
+          .filter((activity) => activity.initiallyUnlocked)
+          .slice(0, 1)
+          .map((activity) => [
+            activity.id,
+            content.configuration.attention.startingCapacity,
+          ]),
+      ),
     },
     activityEnabled: Object.fromEntries(
       content.activities.map((activity) => [
@@ -198,6 +230,7 @@ export function createInitialState(
     automationTrace: [],
     ownedUpgrades: [],
     ownedArtifacts: [],
+    techniqueRecords: {},
     reachedMilestones: [],
     recordedAchievements: [],
     understanding: gameNumber(0),
@@ -214,6 +247,11 @@ export function createInitialState(
       totalOfflineCreditedMs: 0,
       publications: 0,
       completedProjects: 0,
+      approachComparisons: 0,
+      exactDependencyCompletions: 0,
+      projectsCompletedWithoutInsight: 0,
+      offlineQueuedCompletions: 0,
+      validCapstones: 0,
       clockAnomalies: 0,
     },
     diagnostics: {

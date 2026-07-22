@@ -27,11 +27,54 @@ const data = {
   generatedBy: "npm run balance:report",
   heuristicDisclaimer:
     "These deterministic heuristics test reachability and dominance risks; they do not prove fun.",
-  policies: results.map((result) => ({
-    ...result.policySummary,
-    publicationTimingMs: result.publicationTimingMs,
-    hash: result.deterministicHash,
-  })),
+  policies: results.map((result) => {
+    const projectCompletions = result.eventLog.filter(
+      (event) => event.type === "projectCompleted",
+    );
+    const upgradePurchases = result.eventLog.filter(
+      (event) => event.type === "upgradePurchased",
+    );
+    const attentionChanges = result.eventLog.filter(
+      (event) => event.type === "attentionChanged",
+    );
+    const automationActions = result.commandLog.filter((entry) =>
+      [
+        "queueProject",
+        "setCompletionBehavior",
+        "setResourceReserve",
+        "setAutomationPriority",
+      ].includes(entry.envelope.command.type),
+    );
+    return {
+      ...result.policySummary,
+      publicationTimingMs: result.publicationTimingMs,
+      publicationTimingMinutes:
+        result.publicationTimingMs === null
+          ? null
+          : result.publicationTimingMs / 60_000,
+      projectOrder: projectCompletions.map((event) => event.projectId),
+      approachOrder: projectCompletions.map((event) => event.approachId),
+      upgradeOrder: upgradePurchases.map((event) => event.upgradeId),
+      peakResources: {
+        precision: Math.max(
+          ...result.resourceTimeline.map((entry) => entry.precision),
+        ),
+        intuition: Math.max(
+          ...result.resourceTimeline.map((entry) => entry.intuition),
+        ),
+      },
+      attentionChanges: attentionChanges.length,
+      idleAdvanceMs: result.idleAdvanceMs,
+      offlineAdvanceMs: result.offlineAdvanceMs,
+      automationActions: automationActions.length,
+      automationTraceEntries: result.automationTrace.length,
+      insightSpent: result.eventLog
+        .filter((event) => event.type === "insightSpent")
+        .reduce((sum, event) => sum + event.amount, 0),
+      policyRngDraws: result.policyRng.draws,
+      hash: result.deterministicHash,
+    };
+  }),
   attentionExponents,
   dedicatedProjectSlot: {
     selected: true,

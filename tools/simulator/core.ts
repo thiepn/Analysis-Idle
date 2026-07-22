@@ -2,20 +2,23 @@ import { createHash } from "node:crypto";
 import type { GameContent } from "../../src/shared/contracts";
 import {
   envelope,
+  hasInformationCapability,
+  hasAutomationCapability,
   reduceCommand,
+  selectProjectDeficits,
+  selectProjectProgress,
+  selectPublicationReadiness,
+  resolveResourceCap,
+  createInitialState,
+  collectInvariantViolations,
+  createRng,
+  drawUint32,
+  type RngState,
+  type GameState,
   type CommandEnvelope,
   type GameCommand,
   type GameEvent,
 } from "../../src/engine";
-import {
-  selectProjectProgress,
-  selectPublicationReadiness,
-} from "../../src/engine/selectors";
-import {
-  createInitialState,
-  type GameState,
-} from "../../src/engine/state/game-state";
-import { collectInvariantViolations } from "../../src/engine/state/invariants";
 import { naturalNumbersContent, naturalNumbersIds } from "../../src/content";
 import {
   chooseAffordableUpgrade,
@@ -62,7 +65,10 @@ export interface SimulationResult {
   milestoneTimeline: GameEvent[];
   achievementTimeline: GameEvent[];
   automationTrace: GameState["automationTrace"];
+  policyRng: RngState;
   publicationTimingMs: number | null;
+  idleAdvanceMs: number;
+  offlineAdvanceMs: number;
   rejectedActions: CommandLogEntry[];
   invariantViolations: string[];
   policySummary: {
@@ -80,7 +86,7 @@ export function stableStringify(value: unknown): string {
   if (Array.isArray(value)) return `[${value.map(stableStringify).join(",")}]`;
   if (value && typeof value === "object")
     return `{${Object.entries(value as Record<string, unknown>)
-      .sort(([left], [right]) => left.localeCompare(right))
+      .sort(([left], [right]) => (left < right ? -1 : left > right ? 1 : 0))
       .map(([key, entry]) => `${JSON.stringify(key)}:${stableStringify(entry)}`)
       .join(",")}}`;
   return JSON.stringify(value);
@@ -118,12 +124,24 @@ export function runSimulation(
   };
   const profile = getPolicy(options.policy);
   let state = createInitialState(content, options.seed);
+  let policyRng = createRng(options.seed ^ 0x9e3779b9);
+  const policyWord = (): number => {
+    if (profile.name !== "randomReasonable") return 0;
+    const draw = drawUint32(policyRng);
+    policyRng = draw.state;
+    return draw.value;
+  };
   const eventLog: GameEvent[] = [];
   const commandLog: CommandLogEntry[] = [];
   const resourceTimeline: TimelineEntry[] = [timeline(state)];
+  let idleAdvanceMs = 0;
+  let offlineAdvanceMs = 0;
   let actionGuard = 0;
 
   const dispatch = (command: GameCommand): boolean => {
+    const wasIdle = !Object.values(state.projects).some(
+      (project) => project.status === "active",
+    );
     const wrapped = envelope(command, state.sequence + 1, "simulator");
     const result = reduceCommand(state, wrapped, content);
     commandLog.push({
@@ -132,6 +150,11 @@ export function runSimulation(
       rejectionCode: result.accepted ? null : result.reason.code,
     });
     if (result.accepted) {
+      if (command.type === "advanceTime") {
+        if (wasIdle) idleAdvanceMs += command.payload.durationMs;
+        if (command.payload.offline)
+          offlineAdvanceMs += command.payload.durationMs;
+      }
       state = result.state;
       eventLog.push(...result.events);
       if (options.traceLevel === "full" || command.type !== "advanceTime")
@@ -140,21 +163,6 @@ export function runSimulation(
     }
     return false;
   };
-
-  dispatch({
-    type: "setAttention",
-    payload: {
-      activityId: naturalNumbersIds.FORMALIZE,
-      allocation: profile.precisionAttention,
-    },
-  });
-  dispatch({
-    type: "setAttention",
-    payload: {
-      activityId: naturalNumbersIds.EXPLORE,
-      allocation: profile.intuitionAttention,
-    },
-  });
 
   while (
     state.logicalTimeMs < options.horizonSeconds * 1000 &&
@@ -166,10 +174,118 @@ export function runSimulation(
       options.stopCondition === "publication"
     )
       break;
+    const exploreUnlocked =
+      state.activityEnabled[naturalNumbersIds.EXPLORE] ||
+      hasInformationCapability(
+        state,
+        content,
+        `activity:${naturalNumbersIds.EXPLORE}`,
+      );
+    const precisionCapped =
+      (state.resources.PRECISION ?? 0) >=
+      resolveResourceCap(naturalNumbersIds.PRECISION, state, content);
+    const intuitionCapped =
+      (state.resources.INTUITION ?? 0) >=
+      resolveResourceCap(naturalNumbersIds.INTUITION, state, content);
+    const desiredPrecision = precisionCapped
+      ? 0
+      : exploreUnlocked && intuitionCapped
+        ? state.attention.capacity
+        : exploreUnlocked
+          ? profile.precisionAttention
+          : content.configuration.attention.startingCapacity;
+    const desiredIntuition = intuitionCapped
+      ? 0
+      : exploreUnlocked && precisionCapped
+        ? state.attention.capacity
+        : exploreUnlocked
+          ? profile.intuitionAttention
+          : 0;
+    const currentPrecision =
+      state.attention.allocations[naturalNumbersIds.FORMALIZE] ?? 0;
+    const currentIntuition =
+      state.attention.allocations[naturalNumbersIds.EXPLORE] ?? 0;
+    if (currentPrecision > desiredPrecision) {
+      dispatch({
+        type: "setAttention",
+        payload: {
+          activityId: naturalNumbersIds.FORMALIZE,
+          allocation: desiredPrecision,
+        },
+      });
+      continue;
+    }
+    if (exploreUnlocked && currentIntuition > desiredIntuition) {
+      dispatch({
+        type: "setAttention",
+        payload: {
+          activityId: naturalNumbersIds.EXPLORE,
+          allocation: desiredIntuition,
+        },
+      });
+      continue;
+    }
+    if (currentPrecision < desiredPrecision) {
+      dispatch({
+        type: "setAttention",
+        payload: {
+          activityId: naturalNumbersIds.FORMALIZE,
+          allocation: desiredPrecision,
+        },
+      });
+      continue;
+    }
+    if (exploreUnlocked && currentIntuition < desiredIntuition) {
+      dispatch({
+        type: "setAttention",
+        payload: {
+          activityId: naturalNumbersIds.EXPLORE,
+          allocation: desiredIntuition,
+        },
+      });
+      continue;
+    }
     const active = Object.values(state.projects).find(
       (project) => project.status === "active",
     );
+    if (
+      hasAutomationCapability(state, content, "completionBehavior") &&
+      state.completionBehavior !== "startNextFunded"
+    ) {
+      dispatch({
+        type: "setCompletionBehavior",
+        payload: { behavior: "startNextFunded" },
+      });
+      continue;
+    }
     if (active) {
+      if (profile.name === "activeOptimizer" && state.insight >= 1) {
+        dispatch({
+          type: "spendInsight",
+          payload: { amount: 1, purpose: "traceStep" },
+        });
+        continue;
+      }
+      if (
+        hasAutomationCapability(state, content, "queue") &&
+        hasAutomationCapability(state, content, "completionBehavior") &&
+        state.completionBehavior === "startNextFunded" &&
+        state.projectQueue.length === 0
+      ) {
+        const queued = chooseProject(profile, state, content, policyWord());
+        const deficits = queued
+          ? selectProjectDeficits(state, content, queued)
+          : null;
+        if (
+          queued &&
+          queued !== active.id &&
+          deficits?.PRECISION === 0 &&
+          deficits.INTUITION === 0
+        ) {
+          dispatch({ type: "queueProject", payload: { projectId: queued } });
+          continue;
+        }
+      }
       const progress = selectProjectProgress(state, content, active.id);
       const preferred = options.chunkSeconds ?? profile.preferredChunkSeconds;
       const seconds = Math.min(
@@ -195,11 +311,13 @@ export function runSimulation(
     }
 
     const chapter = content.chapters[0]!;
-    const edge = chapter.capstoneEdges.find(
-      (candidate) =>
-        state.ownedArtifacts.includes(candidate.requiredArtifactId) &&
-        !state.assembledCapstoneEdges.includes(candidate.id),
-    );
+    const edge = hasInformationCapability(state, content, "capstoneEdges")
+      ? chapter.capstoneEdges.find(
+          (candidate) =>
+            state.ownedArtifacts.includes(candidate.requiredArtifactId) &&
+            !state.assembledCapstoneEdges.includes(candidate.id),
+        )
+      : undefined;
     if (edge) {
       dispatch({
         type: "assembleCapstoneEdge",
@@ -212,16 +330,30 @@ export function runSimulation(
       continue;
     }
 
-    const projectId = chooseProject(profile, state, content);
+    const projectId = chooseProject(profile, state, content, policyWord());
     if (projectId) {
-      const approach = chooseApproach(profile, state, content, projectId);
+      const approach = chooseApproach(
+        profile,
+        state,
+        content,
+        projectId,
+        policyWord(),
+      );
       const runtime = state.projects[projectId]!;
       if (runtime.approachId !== approach)
         dispatch({
           type: "switchProjectApproach",
           payload: { projectId, approachId: approach },
         });
-      if (dispatch({ type: "startProject", payload: { projectId } })) continue;
+      const deficits = selectProjectDeficits(
+        state,
+        content,
+        projectId,
+        approach,
+      );
+      if (deficits.PRECISION === 0 && deficits.INTUITION === 0)
+        if (dispatch({ type: "startProject", payload: { projectId } }))
+          continue;
     }
 
     const seconds = Math.min(
@@ -261,6 +393,9 @@ export function runSimulation(
     eventLog,
     commandLog,
     resourceTimeline,
+    policyRng,
+    idleAdvanceMs,
+    offlineAdvanceMs,
   };
   const resultWithoutHash = {
     options: {
@@ -281,7 +416,10 @@ export function runSimulation(
     milestoneTimeline,
     achievementTimeline,
     automationTrace: state.automationTrace,
+    policyRng,
     publicationTimingMs: publication ? state.logicalTimeMs : null,
+    idleAdvanceMs,
+    offlineAdvanceMs,
     rejectedActions: commandLog.filter((entry) => !entry.accepted),
     invariantViolations,
     policySummary: {

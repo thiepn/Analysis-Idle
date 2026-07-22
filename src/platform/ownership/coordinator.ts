@@ -12,6 +12,7 @@ export interface OwnershipServices {
   storage: StorageLike;
   now: () => number;
   requestWebLock?: (name: string) => Promise<boolean>;
+  releaseWebLock?: () => void;
   broadcast?: (message: {
     type: "claim" | "release";
     tabId: string;
@@ -24,6 +25,21 @@ interface Lease {
   expiresAtMs: number;
 }
 
+function parseLease(text: string | null): Lease | null {
+  if (!text) return null;
+  try {
+    const value = JSON.parse(text) as Partial<Lease>;
+    return typeof value.tabId === "string" &&
+      value.tabId.length > 0 &&
+      typeof value.expiresAtMs === "number" &&
+      Number.isFinite(value.expiresAtMs)
+      ? { tabId: value.tabId, expiresAtMs: value.expiresAtMs }
+      : null;
+  } catch {
+    return null;
+  }
+}
+
 export class WriterCoordinator {
   public constructor(
     private readonly tabId: string,
@@ -32,24 +48,26 @@ export class WriterCoordinator {
   ) {}
 
   public async acquire(): Promise<OwnershipResult> {
-    if (
-      this.services.requestWebLock &&
-      (await this.services.requestWebLock("analysis-idle:v2:writer"))
-    )
-      return {
-        writer: true,
-        method: "web-lock",
-        diagnostic: "Web Lock acquired",
-      };
     const now = this.services.now();
     const existingText = this.services.storage.getItem(SAVE_KEYS.lease);
-    const existing = existingText ? (JSON.parse(existingText) as Lease) : null;
+    const existing = parseLease(existingText);
     if (existing && existing.expiresAtMs > now && existing.tabId !== this.tabId)
       return {
         writer: false,
         method: "passive",
         diagnostic: `Writer lease held by ${existing.tabId}`,
       };
+    if (
+      this.services.requestWebLock &&
+      (await this.services.requestWebLock("analysis-idle:v2:writer"))
+    ) {
+      this.writeLease(now);
+      return {
+        writer: true,
+        method: "web-lock",
+        diagnostic: "Web Lock acquired",
+      };
+    }
     const lease: Lease = {
       tabId: this.tabId,
       expiresAtMs: now + this.leaseDurationMs,
@@ -73,6 +91,15 @@ export class WriterCoordinator {
       };
     }
     this.services.storage.setItem(SAVE_KEYS.lease, JSON.stringify(lease));
+    if (
+      parseLease(this.services.storage.getItem(SAVE_KEYS.lease))?.tabId !==
+      this.tabId
+    )
+      return {
+        writer: false,
+        method: "passive",
+        diagnostic: "Fallback lease claim lost to another tab",
+      };
     return {
       writer: true,
       method: "lease",
@@ -82,10 +109,19 @@ export class WriterCoordinator {
     };
   }
 
+  private writeLease(now: number): void {
+    this.services.storage.setItem(
+      SAVE_KEYS.lease,
+      JSON.stringify({
+        tabId: this.tabId,
+        expiresAtMs: now + this.leaseDurationMs,
+      }),
+    );
+  }
+
   public renew(): boolean {
     const current = this.services.storage.getItem(SAVE_KEYS.lease);
-    if (!current || (JSON.parse(current) as Lease).tabId !== this.tabId)
-      return false;
+    if (parseLease(current)?.tabId !== this.tabId) return false;
     this.services.storage.setItem(
       SAVE_KEYS.lease,
       JSON.stringify({
@@ -98,7 +134,8 @@ export class WriterCoordinator {
 
   public release(): void {
     const current = this.services.storage.getItem(SAVE_KEYS.lease);
-    if (current && (JSON.parse(current) as Lease).tabId === this.tabId)
+    if (parseLease(current)?.tabId === this.tabId)
       this.services.storage.removeItem(SAVE_KEYS.lease);
+    this.services.releaseWebLock?.();
   }
 }

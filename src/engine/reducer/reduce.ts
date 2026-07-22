@@ -6,6 +6,10 @@ import type {
   GameCommand,
 } from "../commands/types";
 import { evaluateCondition } from "../conditions/evaluate";
+import {
+  hasAutomationCapability,
+  hasInformationCapability,
+} from "../effects/resolve";
 import type { GameEvent } from "../events/types";
 import { gameNumber, gnAdd, gnSubtract } from "../numbers/game-number";
 import {
@@ -121,7 +125,7 @@ export function reduceCommand(
 
   switch (command.type) {
     case "advanceTime": {
-      const { durationMs, offline } = command.payload;
+      const { durationMs, offline, safePolicy } = command.payload;
       if (!Number.isFinite(durationMs) || durationMs < 0)
         return reject(
           state,
@@ -136,6 +140,7 @@ export function reduceCommand(
         content,
         credited,
         offline,
+        safePolicy,
       );
       return accept(
         state,
@@ -149,6 +154,16 @@ export function reduceCommand(
       const { activityId, allocation } = command.payload;
       if (!content.activities.some((activity) => activity.id === activityId))
         return reject(state, "UNKNOWN_ID", "Unknown activity", { activityId });
+      if (
+        !next.activityEnabled[activityId] &&
+        !hasInformationCapability(next, content, `activity:${activityId}`)
+      )
+        return reject(
+          state,
+          "PREREQUISITE_MISSING",
+          "Activity is not unlocked",
+          { activityId },
+        );
       if (!Number.isInteger(allocation) || allocation < 0)
         return reject(
           state,
@@ -195,6 +210,12 @@ export function reduceCommand(
           "Project cannot start from its current state",
           { status: runtime.status },
         );
+      if (next.chapters[definition.chapterId] !== "active")
+        return reject(
+          state,
+          "INVALID_PROJECT_STATE",
+          "Projects can only start in an active chapter",
+        );
       const availability = selectProjectAvailability(
         next,
         content,
@@ -212,20 +233,24 @@ export function reduceCommand(
         content,
         runtime.approachId,
       );
-      const precision = next.resources.PRECISION ?? gameNumber(0);
-      const intuition = next.resources.INTUITION ?? gameNumber(0);
-      const precisionReserve = next.resourceReserves.PRECISION ?? gameNumber(0);
-      const intuitionReserve = next.resourceReserves.INTUITION ?? gameNumber(0);
-      if (
-        precision - precisionReserve < requirements.precision ||
-        intuition - intuitionReserve < requirements.intuition
-      )
-        return reject(
-          state,
-          "INSUFFICIENT_RESOURCE",
-          "Project requirements exceed spendable resources",
-        );
-      if (runtime.progress === 0) {
+      const alreadyReserved =
+        runtime.reservedPrecision > 0 || runtime.reservedIntuition > 0;
+      if (runtime.progress === 0 && !alreadyReserved) {
+        const precision = next.resources.PRECISION ?? gameNumber(0);
+        const intuition = next.resources.INTUITION ?? gameNumber(0);
+        const precisionReserve =
+          next.resourceReserves.PRECISION ?? gameNumber(0);
+        const intuitionReserve =
+          next.resourceReserves.INTUITION ?? gameNumber(0);
+        if (
+          precision - precisionReserve < requirements.precision ||
+          intuition - intuitionReserve < requirements.intuition
+        )
+          return reject(
+            state,
+            "INSUFFICIENT_RESOURCE",
+            "Project requirements exceed spendable resources",
+          );
         next.resources.PRECISION = gnSubtract(
           precision,
           gameNumber(requirements.precision),
@@ -238,6 +263,10 @@ export function reduceCommand(
         runtime.reservedIntuition = gameNumber(requirements.intuition);
       }
       runtime.status = "active";
+      if (!runtime.approachesSeen.includes(runtime.approachId))
+        runtime.approachesSeen.push(runtime.approachId);
+      if (runtime.progress === 0 && !alreadyReserved)
+        runtime.insightSpentThisRun = false;
       runtime.starts += 1;
       next.projectQueue = next.projectQueue.filter((id) => id !== runtime.id);
       events.push({ type: "projectStarted", projectId: runtime.id });
@@ -271,6 +300,10 @@ export function reduceCommand(
         );
       runtime.status = "cancelled";
       runtime.progress = gameNumber(0);
+      runtime.progressSegmentElapsedMs = 0;
+      runtime.progressSegmentStart = gameNumber(0);
+      runtime.progressRatePerSecond = gameNumber(0);
+      runtime.insightSpentThisRun = false;
       next.resources.PRECISION = gnAdd(
         next.resources.PRECISION ?? gameNumber(0),
         runtime.reservedPrecision,
@@ -305,6 +338,13 @@ export function reduceCommand(
           "Completed projects cannot switch approach",
         );
       if (runtime.approachId !== command.payload.approachId) {
+        const comparedBefore = runtime.approachesSeen.length >= 2;
+        if (!runtime.approachesSeen.includes(runtime.approachId))
+          runtime.approachesSeen.push(runtime.approachId);
+        if (!runtime.approachesSeen.includes(command.payload.approachId))
+          runtime.approachesSeen.push(command.payload.approachId);
+        if (!comparedBefore && runtime.approachesSeen.length >= 2)
+          next.records.approachComparisons += 1;
         const oldApproach = content.approaches.find(
           (candidate) => candidate.id === runtime.approachId,
         )!;
@@ -325,6 +365,9 @@ export function reduceCommand(
               content.configuration.projects.approachSwitchPreservation,
           ),
         );
+        runtime.progressSegmentElapsedMs = 0;
+        runtime.progressSegmentStart = runtime.progress;
+        runtime.progressRatePerSecond = gameNumber(0);
         runtime.approachId = command.payload.approachId;
         events.push({
           type: "projectApproachSwitched",
@@ -336,6 +379,12 @@ export function reduceCommand(
       break;
     }
     case "queueProject": {
+      if (!hasAutomationCapability(next, content, "queue"))
+        return reject(
+          state,
+          "PREREQUISITE_MISSING",
+          "Queue automation is not unlocked",
+        );
       const runtime = next.projects[command.payload.projectId];
       if (!runtime) return reject(state, "UNKNOWN_ID", "Unknown project");
       if (
@@ -403,9 +452,26 @@ export function reduceCommand(
       break;
     }
     case "setCompletionBehavior":
+      if (!hasAutomationCapability(next, content, "completionBehavior"))
+        return reject(
+          state,
+          "PREREQUISITE_MISSING",
+          "Completion behavior automation is not unlocked",
+        );
+      if (
+        command.payload.behavior !== "pause" &&
+        command.payload.behavior !== "startNextFunded"
+      )
+        return reject(state, "INVALID_AMOUNT", "Unknown completion behavior");
       next.completionBehavior = command.payload.behavior;
       break;
     case "setResourceReserve": {
+      if (!hasAutomationCapability(next, content, "resourceReserve"))
+        return reject(
+          state,
+          "PREREQUISITE_MISSING",
+          "Resource reserve automation is not unlocked",
+        );
       const { resourceId, amount } = command.payload;
       if (!(resourceId in next.resources))
         return reject(state, "UNKNOWN_ID", "Unknown resource");
@@ -419,6 +485,25 @@ export function reduceCommand(
       break;
     }
     case "setAutomationPriority": {
+      if (!hasAutomationCapability(next, content, "orderedPriority"))
+        return reject(
+          state,
+          "UNSUPPORTED_FUTURE_FEATURE",
+          "Ordered automation priorities are not unlocked in Phase 1 content",
+        );
+      const capabilities = new Set([
+        "queue",
+        "completionBehavior",
+        "resourceReserve",
+        "orderedPriority",
+        "safeOfflinePolicy",
+      ]);
+      if (command.payload.priorities.some((entry) => !capabilities.has(entry)))
+        return reject(
+          state,
+          "INVALID_AMOUNT",
+          "Automation priorities contain an unknown capability",
+        );
       if (
         new Set(command.payload.priorities).size !==
         command.payload.priorities.length
@@ -433,27 +518,53 @@ export function reduceCommand(
     }
     case "spendInsight": {
       const { amount, purpose } = command.payload;
-      if (!Number.isFinite(amount) || amount <= 0)
+      if (!Number.isSafeInteger(amount) || amount <= 0)
         return reject(
           state,
           "INVALID_AMOUNT",
-          "Insight spend must be finite and positive",
+          "Insight spend must be a positive whole charge count",
         );
+      if (
+        purpose !== "strengthenBaseCase" &&
+        purpose !== "traceStep" &&
+        purpose !== "testCounterexample" &&
+        purpose !== "revealDownstream"
+      )
+        return reject(state, "INVALID_AMOUNT", "Unknown Insight intervention");
       if (next.insight < amount)
         return reject(state, "INSIGHT_INSUFFICIENT", "Insufficient Insight");
+      const project = activeProject(next);
+      if (purpose !== "revealDownstream" && !project)
+        return reject(
+          state,
+          "INVALID_PROJECT_STATE",
+          "A project must be active for this Insight intervention",
+        );
       next.insight = gnSubtract(next.insight, gameNumber(amount));
       next.insightSpent = gnAdd(next.insightSpent, gameNumber(amount));
-      next.insightModifiers.push({
-        id: envelope.id,
-        purpose,
-        magnitude: Math.min(
+      if (project) {
+        project.insightSpentThisRun = true;
+        const definition = content.projects.find(
+          (candidate) => candidate.id === project.id,
+        )!;
+        const approach = content.approaches.find(
+          (candidate) => candidate.id === project.approachId,
+        )!;
+        const required = definition.workRequired * approach.workMultiplier;
+        const fraction = Math.min(
           content.configuration.insight.ceiling,
           amount * content.configuration.insight.modifierPerInsight,
-        ),
-        expiresAtLogicalTimeMs:
-          next.logicalTimeMs +
-          content.configuration.insight.modifierDurationSeconds * 1000,
-      });
+        );
+        project.progress = gameNumber(
+          Math.min(
+            required,
+            project.progress + (required - project.progress) * fraction,
+          ),
+        );
+        project.progressSegmentElapsedMs = 0;
+        project.progressSegmentStart = project.progress;
+        project.progressRatePerSecond = gameNumber(0);
+      }
       events.push({ type: "insightSpent", amount, purpose });
       break;
     }
@@ -465,6 +576,14 @@ export function reduceCommand(
         (candidate) => candidate.id === command.payload.edgeId,
       );
       if (!edge) return reject(state, "UNKNOWN_ID", "Unknown capstone edge");
+      if (next.chapters[chapter!.id] !== "active")
+        return reject(state, "INVALID_PROJECT_STATE", "Chapter is not active");
+      if (!hasInformationCapability(next, content, "capstoneEdges"))
+        return reject(
+          state,
+          "PREREQUISITE_MISSING",
+          "Capstone mapping is not unlocked",
+        );
       if (next.assembledCapstoneEdges.includes(edge.id))
         return reject(
           state,
@@ -478,6 +597,12 @@ export function reduceCommand(
           "Required Technique artifact is not owned",
         );
       next.assembledCapstoneEdges.push(edge.id);
+      if (
+        chapter!.capstoneEdges.every((candidate) =>
+          next.assembledCapstoneEdges.includes(candidate.id),
+        )
+      )
+        next.records.validCapstones += 1;
       events.push({ type: "capstoneEdgeAssembled", edgeId: edge.id });
       break;
     }
@@ -500,13 +625,28 @@ export function reduceCommand(
       next.attention.allocations = {};
       next.insightModifiers = [];
       next.projectQueue = [];
+      for (const resourceId of chapter.publication.resetResourceIds)
+        next.resourceReserves[resourceId] = gameNumber(0);
       for (const projectId of chapter.projectIds) {
         const project = next.projects[projectId];
-        if (project && project.status !== "completed") {
+        if (project) {
           project.status = "cancelled";
           project.progress = gameNumber(0);
+          project.progressSegmentElapsedMs = 0;
+          project.progressSegmentStart = gameNumber(0);
+          project.progressRatePerSecond = gameNumber(0);
+          project.insightSpentThisRun = false;
+          project.approachesSeen = [];
+          project.reservedPrecision = gameNumber(0);
+          project.reservedIntuition = gameNumber(0);
         }
       }
+      next.ownedUpgrades = next.ownedUpgrades.filter((upgradeId) => {
+        const upgrade = content.upgrades.find(
+          (entry) => entry.id === upgradeId,
+        );
+        return upgrade?.publicationBehavior !== "reset";
+      });
       next.ownedArtifacts = next.ownedArtifacts.filter(
         (artifact) =>
           chapter.publication.retainedArtifactIds.includes(artifact) ||
@@ -516,10 +656,32 @@ export function reduceCommand(
             )?.sourceProjectId ?? ("" as never),
           ),
       );
+      next.techniqueRecords = Object.fromEntries(
+        Object.entries(next.techniqueRecords).filter(([artifactId]) =>
+          next.ownedArtifacts.includes(artifactId as never),
+        ),
+      );
       if (
         !next.masteryArtifacts.includes(chapter.publication.masteryArtifactId)
       )
         next.masteryArtifacts.push(chapter.publication.masteryArtifactId);
+      const resetResources = new Set(chapter.publication.resetResourceIds);
+      for (const activity of content.activities) {
+        if (resetResources.has(activity.resourceId)) {
+          next.activityEnabled[activity.id] = false;
+          next.activityProduction[activity.id] = {
+            segmentElapsedMs: 0,
+            segmentProduced: gameNumber(0),
+            ratePerSecond: gameNumber(0),
+          };
+        }
+      }
+      const chapterEdges = new Set(
+        chapter.capstoneEdges.map((edge) => edge.id),
+      );
+      next.assembledCapstoneEdges = next.assembledCapstoneEdges.filter(
+        (edge) => !chapterEdges.has(edge),
+      );
       next.records.publications += 1;
       events.push({
         type: "chapterPublished",

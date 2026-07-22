@@ -42,6 +42,7 @@ export type ConditionDefinition =
       text: AccessibleText;
     }
   | { type: "projectCompleted"; projectId: ProjectId; text: AccessibleText }
+  | { type: "projectStarted"; projectId: ProjectId; text: AccessibleText }
   | { type: "upgradeOwned"; upgradeId: UpgradeId; text: AccessibleText }
   | { type: "milestoneReached"; milestoneId: MilestoneId; text: AccessibleText }
   | {
@@ -62,7 +63,18 @@ export type ConditionDefinition =
       text: AccessibleText;
     }
   | { type: "understandingAtLeast"; amount: number; text: AccessibleText }
-  | { type: "insightAtLeast"; amount: number; text: AccessibleText };
+  | { type: "insightAtLeast"; amount: number; text: AccessibleText }
+  | {
+      type: "recordAtLeast";
+      record:
+        | "approachComparisons"
+        | "exactDependencyCompletions"
+        | "projectsCompletedWithoutInsight"
+        | "offlineQueuedCompletions"
+        | "validCapstones";
+      amount: number;
+      text: AccessibleText;
+    };
 
 export type EffectOperation =
   | "flatAdd"
@@ -183,6 +195,7 @@ export interface UpgradeDefinition extends ContentMetadata {
 export interface MilestoneDefinition extends ContentMetadata {
   id: MilestoneId;
   condition: ConditionDefinition;
+  effects: EffectDefinition[];
   resetLayer: ResetLayer;
   publicationBehavior: PublicationBehavior;
 }
@@ -201,6 +214,9 @@ export interface AchievementDefinition extends ContentMetadata {
 export interface CapstoneEdgeDefinition extends ContentMetadata {
   id: CapstoneEdgeId;
   requiredArtifactId: TechniqueArtifactId;
+  fromConcept: string;
+  toConcept: string;
+  relationship: "implication";
 }
 
 export interface PublicationDefinition extends ContentMetadata {

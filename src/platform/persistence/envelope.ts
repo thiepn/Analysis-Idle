@@ -2,6 +2,7 @@ import { z } from "zod";
 import type { GameContent } from "../../shared/contracts";
 import {
   deserializeGameNumber,
+  gameNumber,
   serializeGameNumber,
 } from "../../engine/numbers/game-number";
 import { collectInvariantViolations } from "../../engine/state/invariants";
@@ -10,7 +11,7 @@ import { corruptionChecksum } from "./checksum";
 
 export const SAVE_FORMAT = "analysis-idle-v2";
 export const SAVE_SCHEMA_VERSION = 1;
-export const MAX_IMPORT_BYTES = 512 * 1024;
+export const MAX_IMPORT_BYTES = 250 * 1024;
 
 export interface SaveEnvelope {
   format: typeof SAVE_FORMAT;
@@ -34,6 +35,7 @@ export type SaveValidationCode =
   | "FUTURE_SCHEMA"
   | "INCOMPATIBLE_APP"
   | "INVALID_STATE"
+  | "PASSIVE_READER"
   | "OVERSIZED";
 export type SaveValidationResult =
   | { valid: true; code: "VALID"; envelope: SaveEnvelope; state: GameState }
@@ -52,15 +54,19 @@ const envelopeSchema = z.object({
   savedAtMs: z.number().finite().nonnegative(),
   sessionId: z.string().min(1),
   state: z.record(z.string(), z.unknown()),
-  migration: z.object({
-    from: z.number().int().nonnegative(),
-    to: z.number().int().nonnegative(),
-    applied: z.array(z.string()),
-  }),
-  replayMetadata: z.object({
-    lastCommandSequence: z.number().int().nonnegative(),
-    eventDigest: z.string().nullable(),
-  }),
+  migration: z
+    .object({
+      from: z.number().int().nonnegative(),
+      to: z.number().int().nonnegative(),
+      applied: z.array(z.string()),
+    })
+    .optional(),
+  replayMetadata: z
+    .object({
+      lastCommandSequence: z.number().int().nonnegative(),
+      eventDigest: z.string().nullable(),
+    })
+    .optional(),
   checksum: z.string(),
 });
 
@@ -97,6 +103,10 @@ function encodeState(state: GameState): Record<string, unknown> {
       {
         ...project,
         progress: serializeGameNumber(project.progress),
+        progressSegmentStart: serializeGameNumber(project.progressSegmentStart),
+        progressRatePerSecond: serializeGameNumber(
+          project.progressRatePerSecond,
+        ),
         reservedPrecision: serializeGameNumber(project.reservedPrecision),
         reservedIntuition: serializeGameNumber(project.reservedIntuition),
       },
@@ -140,6 +150,10 @@ function decodeState(encoded: Record<string, unknown>): GameState {
   decoded.understanding = deserializeGameNumber(
     encoded.understanding as string,
   );
+  decoded.techniqueRecords =
+    encoded.techniqueRecords && typeof encoded.techniqueRecords === "object"
+      ? (encoded.techniqueRecords as GameState["techniqueRecords"])
+      : {};
   decoded.projects = Object.fromEntries(
     Object.entries(
       encoded.projects as Record<string, Record<string, unknown>>,
@@ -148,6 +162,25 @@ function decodeState(encoded: Record<string, unknown>): GameState {
       {
         ...project,
         progress: deserializeGameNumber(project.progress as string),
+        progressSegmentElapsedMs:
+          typeof project.progressSegmentElapsedMs === "number"
+            ? project.progressSegmentElapsedMs
+            : 0,
+        progressSegmentStart:
+          typeof project.progressSegmentStart === "string"
+            ? deserializeGameNumber(project.progressSegmentStart)
+            : deserializeGameNumber(project.progress as string),
+        progressRatePerSecond:
+          typeof project.progressRatePerSecond === "string"
+            ? deserializeGameNumber(project.progressRatePerSecond)
+            : gameNumber(0),
+        approachesSeen: Array.isArray(project.approachesSeen)
+          ? project.approachesSeen
+          : [],
+        insightSpentThisRun:
+          typeof project.insightSpentThisRun === "boolean"
+            ? project.insightSpentThisRun
+            : false,
         reservedPrecision: deserializeGameNumber(
           project.reservedPrecision as string,
         ),
@@ -157,6 +190,15 @@ function decodeState(encoded: Record<string, unknown>): GameState {
       },
     ]),
   ) as GameState["projects"];
+  decoded.records = {
+    ...decoded.records,
+    approachComparisons: decoded.records.approachComparisons ?? 0,
+    exactDependencyCompletions: decoded.records.exactDependencyCompletions ?? 0,
+    projectsCompletedWithoutInsight:
+      decoded.records.projectsCompletedWithoutInsight ?? 0,
+    offlineQueuedCompletions: decoded.records.offlineQueuedCompletions ?? 0,
+    validCapstones: decoded.records.validCapstones ?? 0,
+  };
   return decoded;
 }
 
@@ -206,6 +248,14 @@ function migrate(candidate: SaveEnvelope): SaveEnvelope {
     ...unsigned(candidate),
     schemaVersion: 1,
     migration: { from: 0, to: 1, applied: ["v0-to-v1-envelope-metadata"] },
+    replayMetadata: candidate.replayMetadata ?? {
+      lastCommandSequence:
+        typeof candidate.state.sequence === "number" &&
+        Number.isSafeInteger(candidate.state.sequence)
+          ? candidate.state.sequence
+          : 0,
+      eventDigest: null,
+    },
   };
   return { ...migratedPayload, checksum: corruptionChecksum(migratedPayload) };
 }
@@ -250,6 +300,15 @@ export function validateSaveText(
       message: "Save was created by a future schema version",
     };
   const candidate = parsed.data as SaveEnvelope;
+  if (
+    candidate.schemaVersion > 0 &&
+    (!candidate.migration || !candidate.replayMetadata)
+  )
+    return {
+      valid: false,
+      code: "INVALID_SCHEMA",
+      message: "Current save metadata is incomplete",
+    };
   if (corruptionChecksum(unsigned(candidate)) !== candidate.checksum)
     return {
       valid: false,

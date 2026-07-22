@@ -9,7 +9,9 @@ export default defineConfig({
   build: {
     outDir: resolve(import.meta.dirname, "dist"),
     emptyOutDir: true,
-    sourcemap: true,
+    // Release artifacts omit embedded source content; local debugging uses
+    // Vite's development server and CI validates the production bundle.
+    sourcemap: false,
   },
   server: {
     fs: { allow: [resolve(import.meta.dirname)] },

@@ -1,5 +1,6 @@
 import type {
   ActivityId,
+  AutomationCapability,
   EffectDefinition,
   GameContent,
   ProjectId,
@@ -22,17 +23,22 @@ function sourceOwned(effect: EffectDefinition, state: GameState): boolean {
     return state.ownedUpgrades.includes(effect.source.id as never);
   if (effect.source.kind === "milestone")
     return state.reachedMilestones.includes(effect.source.id as never);
-  if (effect.source.kind === "artifact")
+  if (effect.source.kind === "artifact" || effect.source.kind === "method")
     return state.ownedArtifacts.includes(effect.source.id as never);
-  return true;
+  return false;
 }
+
+const ordinalCompare = (left: string, right: string): number =>
+  left < right ? -1 : left > right ? 1 : 0;
 
 export function activeEffects(
   state: GameState,
   content: GameContent,
 ): EffectDefinition[] {
-  return content.upgrades
-    .flatMap((upgrade) => upgrade.effects)
+  return [
+    ...content.upgrades.flatMap((upgrade) => upgrade.effects),
+    ...content.milestones.flatMap((milestone) => milestone.effects),
+  ]
     .filter(
       (effect) =>
         sourceOwned(effect, state) &&
@@ -41,9 +47,35 @@ export function activeEffects(
     .sort(
       (left, right) =>
         left.priority - right.priority ||
-        left.stackingGroup.localeCompare(right.stackingGroup) ||
-        left.id.localeCompare(right.id),
+        ordinalCompare(left.stackingGroup, right.stackingGroup) ||
+        ordinalCompare(left.id, right.id),
     );
+}
+
+export function hasAutomationCapability(
+  state: GameState,
+  content: GameContent,
+  capability: AutomationCapability,
+): boolean {
+  return activeEffects(state, content).some(
+    (effect) =>
+      effect.target.kind === "automation" &&
+      effect.target.capability === capability &&
+      effect.operation === "automationUnlock",
+  );
+}
+
+export function hasInformationCapability(
+  state: GameState,
+  content: GameContent,
+  capability: string,
+): boolean {
+  return activeEffects(state, content).some(
+    (effect) =>
+      effect.target.kind === "information" &&
+      effect.target.capability === capability &&
+      effect.operation === "informationUnlock",
+  );
 }
 
 export function resolveActivityRate(
@@ -66,19 +98,11 @@ export function resolveActivityRate(
     activity.baseRatePerSecond *
     allocation ** content.configuration.attention.activityExponent;
   const contributions: EffectContribution[] = [];
-  for (const effect of activeEffects(state, content)) {
-    if (
-      effect.target.kind !== "activityRate" ||
-      effect.target.id !== activityId
-    )
-      continue;
-    const before = rate;
-    if (effect.operation === "flatAdd") rate += effect.magnitude;
-    else if (effect.operation === "groupAddPercent")
-      rate *= 1 + effect.magnitude;
-    else if (effect.operation === "namedMultiply") rate *= effect.magnitude;
-    else if (effect.operation === "power") rate = rate ** effect.magnitude;
-    if (effect.cap !== null) rate = Math.min(rate, effect.cap);
+  const matching = activeEffects(state, content).filter(
+    (effect) =>
+      effect.target.kind === "activityRate" && effect.target.id === activityId,
+  );
+  const apply = (effect: EffectDefinition, before: number): void => {
     contributions.push({
       effectId: effect.id,
       sourceId: effect.source.id,
@@ -87,7 +111,46 @@ export function resolveActivityRate(
       applied: before !== rate,
       reason: "owned and active",
     });
+  };
+
+  for (const effect of matching.filter(
+    (entry) => entry.operation === "flatAdd",
+  )) {
+    const before = rate;
+    rate += effect.magnitude;
+    apply(effect, before);
   }
+
+  const grouped = new Map<string, EffectDefinition[]>();
+  for (const effect of matching.filter(
+    (entry) => entry.operation === "groupAddPercent",
+  )) {
+    const group = grouped.get(effect.stackingGroup) ?? [];
+    group.push(effect);
+    grouped.set(effect.stackingGroup, group);
+  }
+  for (const group of [...grouped.keys()].sort(ordinalCompare)) {
+    const effects = grouped.get(group)!;
+    const before = rate;
+    rate *= 1 + effects.reduce((sum, effect) => sum + effect.magnitude, 0);
+    effects.forEach((effect) => apply(effect, before));
+  }
+
+  for (const effect of matching.filter(
+    (entry) => entry.operation === "namedMultiply",
+  )) {
+    const before = rate;
+    rate *= effect.magnitude;
+    apply(effect, before);
+  }
+  for (const effect of matching.filter(
+    (entry) => entry.operation === "power",
+  )) {
+    const before = rate;
+    rate **= effect.magnitude;
+    apply(effect, before);
+  }
+
   const insightMagnitude = Math.min(
     content.configuration.insight.ceiling,
     state.insightModifiers
@@ -96,17 +159,18 @@ export function resolveActivityRate(
       )
       .reduce((sum, modifier) => sum + modifier.magnitude, 0),
   );
-  if (insightMagnitude > 0) {
-    rate *= 1 + insightMagnitude;
-    contributions.push({
-      effectId: "insight.active",
-      sourceId: "Insight",
-      operation: "groupAddPercent",
-      magnitude: insightMagnitude,
-      applied: true,
-      reason: "bounded active modifier",
-    });
-  }
+  // Legacy Phase 1 saves can contain expiring modifiers, but Insight is no
+  // longer permitted to hide an activity-rate bonus. Keep them inert until
+  // they expire so old saves remain readable.
+  void insightMagnitude;
+
+  const caps = matching.flatMap((effect) => [
+    ...(effect.operation === "cap" ? [effect.magnitude] : []),
+    ...(effect.cap === null ? [] : [effect.cap]),
+  ]);
+  if (caps.length > 0) rate = Math.min(rate, ...caps);
+  if (!Number.isFinite(rate) || rate < 0)
+    throw new RangeError(`Resolved activity rate is invalid for ${activityId}`);
   return { rate, contributions };
 }
 

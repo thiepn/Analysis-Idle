@@ -1,4 +1,5 @@
 import type { SaveEnvelope } from "./envelope";
+import { exportSave } from "./envelope";
 
 export const DATABASE_NAME = "analysis-idle:v2";
 export const DATABASE_VERSION = 1;
@@ -57,7 +58,35 @@ function append(
 export class IndexedDbHistory {
   public constructor(private readonly database: IDBDatabase) {}
   public appendSave(envelope: SaveEnvelope): Promise<void> {
-    return append(this.database, STORE_SAVE_BACKUPS, envelope);
+    return new Promise((resolve, reject) => {
+      const transaction = this.database.transaction(
+        STORE_SAVE_BACKUPS,
+        "readwrite",
+      );
+      transaction.objectStore(STORE_SAVE_BACKUPS).put(envelope);
+      transaction.oncomplete = () => resolve();
+      transaction.onerror = () =>
+        reject(transaction.error ?? new Error("IndexedDB save backup failed"));
+      transaction.onabort = () =>
+        reject(transaction.error ?? new Error("IndexedDB save backup aborted"));
+    });
+  }
+  public listSaveTexts(): Promise<string[]> {
+    return new Promise((resolve, reject) => {
+      const transaction = this.database.transaction(
+        STORE_SAVE_BACKUPS,
+        "readonly",
+      );
+      const request = transaction.objectStore(STORE_SAVE_BACKUPS).getAll();
+      request.onsuccess = () =>
+        resolve(
+          (request.result as SaveEnvelope[])
+            .sort((left, right) => right.generation - left.generation)
+            .map(exportSave),
+        );
+      request.onerror = () =>
+        reject(request.error ?? new Error("IndexedDB save recovery failed"));
+    });
   }
   public appendReplay(entry: {
     sessionId: string;

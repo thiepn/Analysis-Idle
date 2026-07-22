@@ -15,7 +15,11 @@ import {
   selectPublicationReadiness,
   selectResource,
 } from "../engine/selectors";
-import type { GameCommand } from "../engine";
+import {
+  hasAutomationCapability,
+  hasInformationCapability,
+  type GameCommand,
+} from "../engine";
 import type { AppStore } from "./store";
 
 interface AppProperties {
@@ -42,9 +46,24 @@ export function App({ store }: AppProperties) {
     naturalNumbersContent,
     chapter.id,
   );
+  const queueUnlocked = hasAutomationCapability(
+    state,
+    naturalNumbersContent,
+    "queue",
+  );
+  const completionUnlocked = hasAutomationCapability(
+    state,
+    naturalNumbersContent,
+    "completionBehavior",
+  );
+  const capstoneUnlocked = hasInformationCapability(
+    state,
+    naturalNumbersContent,
+    "capstoneEdges",
+  );
 
   return (
-    <main>
+    <main id="main">
       <header>
         <p class="eyebrow">Analysis Idle v2 · Phase 1</p>
         <h1>Deterministic engine debug interface</h1>
@@ -126,11 +145,11 @@ export function App({ store }: AppProperties) {
                     <div
                       class="stepper"
                       role="group"
-                      aria-label={`${resource.short} Attention allocation`}
+                      aria-label={`${activity.short} Attention allocation`}
                     >
                       <button
                         type="button"
-                        aria-label={`Decrease ${resource.short} Attention`}
+                        aria-label={`Decrease ${activity.short} Attention`}
                         onClick={() =>
                           dispatch({
                             type: "setAttention",
@@ -146,7 +165,7 @@ export function App({ store }: AppProperties) {
                       <output aria-live="polite">{allocation}</output>
                       <button
                         type="button"
-                        aria-label={`Increase ${resource.short} Attention`}
+                        aria-label={`Increase ${activity.short} Attention`}
                         onClick={() =>
                           dispatch({
                             type: "setAttention",
@@ -226,6 +245,12 @@ export function App({ store }: AppProperties) {
                 <div class="button-row">
                   <button
                     type="button"
+                    disabled={!queueUnlocked}
+                    title={
+                      queueUnlocked
+                        ? "Queue this project"
+                        : "Queue automation is not unlocked"
+                    }
                     aria-describedby={controlsId}
                     onClick={() =>
                       dispatch({
@@ -293,6 +318,12 @@ export function App({ store }: AppProperties) {
               {state.ownedArtifacts.includes(artifact.id)
                 ? "owned"
                 : "not owned"}
+              . Compatible with {artifact.compatibleProjectIds.length} project
+              {artifact.compatibleProjectIds.length === 1 ? "" : "s"}; removal{" "}
+              {artifact.removalBehavior}.
+              {state.techniqueRecords[artifact.id]
+                ? ` Earned as ${state.techniqueRecords[artifact.id]!.outputKind} through ${state.techniqueRecords[artifact.id]!.approachId}.`
+                : ""}
             </li>
           ))}
         </ul>
@@ -339,10 +370,17 @@ export function App({ store }: AppProperties) {
         </p>
         <button
           type="button"
+          disabled={
+            state.insight < 1 ||
+            !Object.values(state.projects).some(
+              (project) => project.status === "active",
+            )
+          }
+          title="Reduce a bounded portion of the active project's remaining work"
           onClick={() =>
             dispatch({
               type: "spendInsight",
-              payload: { amount: 1, purpose: "debug active modifier" },
+              payload: { amount: 1, purpose: "traceStep" },
             })
           }
         >
@@ -352,6 +390,8 @@ export function App({ store }: AppProperties) {
           Completion behavior{" "}
           <select
             value={state.completionBehavior}
+            disabled={!completionUnlocked}
+            aria-describedby="completion-behavior-help"
             onChange={(event) =>
               dispatch({
                 type: "setCompletionBehavior",
@@ -366,6 +406,11 @@ export function App({ store }: AppProperties) {
             <option value="startNextFunded">Start next funded</option>
           </select>
         </label>
+        <p id="completion-behavior-help" class="hint">
+          {completionUnlocked
+            ? "Choose the saved project-completion policy."
+            : "Completion behavior unlocks after the induction walkthrough."}
+        </p>
         <details>
           <summary>
             Automation trace ({selectAutomationTrace(state).length})
@@ -380,7 +425,7 @@ export function App({ store }: AppProperties) {
           {selectCapstone(state, naturalNumbersContent, chapter.id).edges.map(
             (edge) => (
               <li key={edge.id}>
-                {edge.id}:{" "}
+                {edge.fromConcept} â†’ {edge.toConcept} ({edge.relationship}):{" "}
                 {edge.assembled
                   ? "assembled"
                   : edge.artifactOwned
@@ -388,6 +433,14 @@ export function App({ store }: AppProperties) {
                     : "required artifact missing"}{" "}
                 <button
                   type="button"
+                  disabled={
+                    !capstoneUnlocked || !edge.artifactOwned || edge.assembled
+                  }
+                  title={
+                    capstoneUnlocked
+                      ? "Assign the required typed Technique artifact"
+                      : "The equivalence map is not unlocked"
+                  }
                   onClick={() =>
                     dispatch({
                       type: "assembleCapstoneEdge",

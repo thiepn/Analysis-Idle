@@ -1,6 +1,7 @@
 import type {
   AchievementId,
   ActivityId,
+  ApproachId,
   CapstoneEdgeId,
   ChapterId,
   MilestoneId,
@@ -31,6 +32,7 @@ export type GameEvent =
   | {
       type: "projectCompleted";
       projectId: ProjectId;
+      approachId: ApproachId;
       artifactIds: TechniqueArtifactId[];
     }
   | { type: "upgradePurchased"; upgradeId: UpgradeId }

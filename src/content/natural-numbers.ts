@@ -50,6 +50,20 @@ const projectComplete = (projectId: string): ConditionDefinition => ({
     `Complete the ${projectId} project.`,
   ),
 });
+const projectStarted = (projectId: string): ConditionDefinition => ({
+  type: "projectStarted",
+  projectId: id<"ProjectId">(projectId),
+  text: accessible(`Start ${projectId}`, `Start the ${projectId} project.`),
+});
+const recordAtLeast = (
+  record: Extract<ConditionDefinition, { type: "recordAtLeast" }>["record"],
+  short: string,
+): ConditionDefinition => ({
+  type: "recordAtLeast",
+  record,
+  amount: 1,
+  text: accessible(short),
+});
 const artifactOwned = (artifactId: string): ConditionDefinition => ({
   type: "techniqueArtifactOwned",
   artifactId: id<"TechniqueArtifactId">(artifactId),
@@ -78,8 +92,8 @@ const resources: ResourceDefinition[] = [
     id: PRECISION,
     ...metadata("Precision", "resource-precision"),
     unit: "precision",
-    initialValue: 50,
-    cap: 5_000,
+    initialValue: 0,
+    cap: 180,
     sourceActivityIds: [FORMALIZE],
     permittedSinks: ["project", "upgrade"],
     resetLayer: "chapter",
@@ -90,8 +104,8 @@ const resources: ResourceDefinition[] = [
     id: INTUITION,
     ...metadata("Intuition", "resource-intuition"),
     unit: "intuition",
-    initialValue: 20,
-    cap: 5_000,
+    initialValue: 0,
+    cap: 150,
     sourceActivityIds: [EXPLORE],
     permittedSinks: ["project", "upgrade"],
     resetLayer: "chapter",
@@ -105,7 +119,7 @@ const activities: ActivityDefinition[] = [
     id: FORMALIZE,
     ...metadata("Formalize", "activity-formalize"),
     resourceId: PRECISION,
-    baseRatePerSecond: 1.5,
+    baseRatePerSecond: 0.25,
     initiallyUnlocked: true,
     resetLayer: "chapter",
   },
@@ -113,7 +127,7 @@ const activities: ActivityDefinition[] = [
     id: EXPLORE,
     ...metadata("Explore", "activity-explore"),
     resourceId: INTUITION,
-    baseRatePerSecond: 1.2,
+    baseRatePerSecond: 0.2,
     initiallyUnlocked: false,
     resetLayer: "chapter",
   },
@@ -506,9 +520,9 @@ const upgradeSeeds: UpgradeSeed[] = [
       effect(
         "nn.effect.recursion_template",
         "nn.keystone.recursion_template",
-        { kind: "project", id: "*" },
-        "projectSpeed",
-        1.05,
+        { kind: "information", capability: "technique:recursionTemplate" },
+        "informationUnlock",
+        1,
         "project.method.recursion",
       ),
     ],
@@ -528,9 +542,9 @@ const upgradeSeeds: UpgradeSeed[] = [
       effect(
         "nn.effect.lemma_reuse",
         "nn.keystone.lemma_reuse",
-        { kind: "project", id: "*" },
-        "projectSpeed",
-        1.05,
+        { kind: "information", capability: "technique:lemmaReuse" },
+        "informationUnlock",
+        1,
         "project.method.lemma",
       ),
     ],
@@ -698,7 +712,7 @@ const upgrades: UpgradeDefinition[] = upgradeSeeds.map((seed) => ({
 }));
 
 const milestoneSeeds: [string, ConditionDefinition][] = [
-  ["zero_named", projectComplete("nn.project.zero_successor")],
+  ["zero_named", projectStarted("nn.project.zero_successor")],
   ["successor_closed", projectComplete("nn.project.zero_successor")],
   ["peano_framed", projectComplete("nn.project.peano_frame")],
   ["recursion_available", projectComplete("nn.project.primitive_recursion")],
@@ -709,7 +723,7 @@ const milestoneSeeds: [string, ConditionDefinition][] = [
       projectComplete("nn.project.multiplication"),
     ),
   ],
-  ["approach_selected", projectComplete("nn.project.induction_walkthrough")],
+  ["approach_selected", projectStarted("nn.project.induction_walkthrough")],
   ["induction_template", projectComplete("nn.project.induction_walkthrough")],
   ["stronger_hypothesis", projectComplete("nn.project.strong_induction")],
   ["least_element", projectComplete("nn.project.well_ordering")],
@@ -728,17 +742,65 @@ const milestoneSeeds: [string, ConditionDefinition][] = [
   ],
 ];
 const milestones: MilestoneDefinition[] = milestoneSeeds.map(
-  ([key, condition]) => ({
-    id: id<"MilestoneId">(`nn.milestone.${key}`),
-    ...metadata(
-      key,
-      `milestone-${key}`,
-      "docs/design/NATURAL_NUMBERS_MILESTONES.md",
-    ),
-    condition,
-    resetLayer: "never",
-    publicationBehavior: "retain",
-  }),
+  ([key, condition]) => {
+    const milestoneId = id<"MilestoneId">(`nn.milestone.${key}`);
+    const capEffects: EffectDefinition[] =
+      key === "operations_built"
+        ? (
+            [
+              ["PRECISION", PRECISION, 420],
+              ["INTUITION", INTUITION, 360],
+            ] as const
+          ).map(([label, resourceId, cap]) => ({
+            id: id<"EffectId">(
+              `nn.effect.operations_cap.${label.toLowerCase()}`,
+            ),
+            ...metadata(
+              `Post-operations ${label} cap`,
+              `effect-operations-cap-${label.toLowerCase()}`,
+              "docs/balance/NATURAL_NUMBERS_BALANCE.md",
+            ),
+            source: { kind: "milestone", id: milestoneId },
+            activation: {
+              type: "all",
+              conditions: [
+                {
+                  type: "milestoneReached",
+                  milestoneId,
+                  text: accessible("Operations built"),
+                },
+                {
+                  type: "chapterStatus",
+                  chapterId: CHAPTER,
+                  status: "active",
+                  text: accessible("Natural Numbers chapter active"),
+                },
+              ],
+              text: accessible("Post-operations cap active"),
+            },
+            target: { kind: "resourceCap", id: resourceId },
+            operation: "cap",
+            magnitude: cap,
+            stackingGroup: `resource.cap.${label.toLowerCase()}`,
+            priority: 100,
+            cap: null,
+            resetLayer: "chapter",
+            publicationBehavior: "reset",
+          }))
+        : [];
+    return {
+      id: milestoneId,
+      ...metadata(
+        key,
+        `milestone-${key}`,
+        "docs/design/NATURAL_NUMBERS_MILESTONES.md",
+      ),
+      condition,
+      effects: capEffects,
+      resetLayer: "never",
+      publicationBehavior: "retain",
+    };
+  },
 );
 
 const achievementSeeds: [
@@ -754,12 +816,15 @@ const achievementSeeds: [
   ["peano_frame", projectComplete("nn.project.peano_frame"), "badgeHistory"],
   [
     "two_ways_forward",
-    projectComplete("nn.project.induction_walkthrough"),
+    recordAtLeast("approachComparisons", "Compare two project approaches"),
     "nonPowerRecords",
   ],
   [
     "exact_hypothesis",
-    projectComplete("nn.project.strong_induction"),
+    recordAtLeast(
+      "exactDependencyCompletions",
+      "Complete a project with exact dependencies",
+    ),
     "badgeHistory",
   ],
   [
@@ -767,16 +832,26 @@ const achievementSeeds: [
     projectComplete("nn.project.counterexample_lab"),
     "nonPowerInformation",
   ],
-  ["without_shortcut", projectComplete("nn.project.addition"), "badgeHistory"],
+  [
+    "without_shortcut",
+    recordAtLeast(
+      "projectsCompletedWithoutInsight",
+      "Complete a project without Insight",
+    ),
+    "badgeHistory",
+  ],
   [
     "patient_plan",
-    projectComplete("nn.project.multiplication"),
+    recordAtLeast(
+      "offlineQueuedCompletions",
+      "Complete an offline queued transition",
+    ),
     "badgeHistory",
   ],
   ["least_of_all", projectComplete("nn.project.well_ordering"), "badgeHistory"],
   [
     "full_circle",
-    projectComplete("nn.project.equivalence_capstone"),
+    recordAtLeast("validCapstones", "Assemble every valid implication edge"),
     "badgeHistory",
   ],
   [
@@ -805,25 +880,33 @@ const achievements: AchievementDefinition[] = achievementSeeds.map(
   }),
 );
 
-const edgeArtifacts = [
-  "addition_lemmas",
-  "strong_induction",
-  "well_ordering",
-  "least_counterexample",
-];
+const edgeDefinitions = [
+  ["well_ordering", "ordinary induction", "Well-Ordering"],
+  ["least_counterexample", "Well-Ordering", "least-counterexample reasoning"],
+  ["addition_lemmas", "strong induction", "ordinary induction"],
+  ["strong_induction", "ordinary induction", "strong induction"],
+] as const;
 const chapter: ChapterDefinition = {
   id: CHAPTER,
   ...metadata("Natural Numbers", "chapter-natural-numbers"),
   projectIds: projects.map((project) => project.id),
-  capstoneEdges: edgeArtifacts.map((key, index) => ({
-    id: id<"CapstoneEdgeId">(`nn.capstone.edge.${index + 1}`),
-    ...metadata(`Implication edge ${index + 1}`, `capstone-edge-${index + 1}`),
-    requiredArtifactId: artifactId(key),
-  })),
+  capstoneEdges: edgeDefinitions.map(
+    ([key, fromConcept, toConcept], index) => ({
+      id: id<"CapstoneEdgeId">(`nn.capstone.edge.${index + 1}`),
+      ...metadata(
+        `Implication edge ${index + 1}`,
+        `capstone-edge-${index + 1}`,
+      ),
+      requiredArtifactId: artifactId(key),
+      fromConcept,
+      toConcept,
+      relationship: "implication",
+    }),
+  ),
   publication: {
     chapterId: CHAPTER,
     ...metadata("Publish Natural Numbers", "publication-natural-numbers"),
-    requiredProjectIds: [projectId("equivalence_capstone")],
+    requiredProjectIds: projectSeeds.map((seed) => projectId(seed.key)),
     requiredCapstoneEdgeIds: [1, 2, 3, 4].map((index) =>
       id<"CapstoneEdgeId">(`nn.capstone.edge.${index}`),
     ),
@@ -850,22 +933,22 @@ export const naturalNumbersContent: GameContent = {
     insight: {
       cap: 3,
       sustainedTargetMin: 0.1,
-      sustainedTargetMax: 0.2,
+      sustainedTargetMax: 0.15,
       ceiling: 0.2,
       modifierPerInsight: 0.1,
       modifierDurationSeconds: 60,
     },
     automation: { queueCapacity: 1 },
     offline: {
-      fullEfficiencyHours: 8,
+      fullEfficiencyHours: 12,
       tailEfficiency: 0.25,
       maximumCreditedHours: 72,
     },
     pacing: {
       firstPublicationMinMinutes: 60,
       firstPublicationMaxMinutes: 120,
-      campaignMinHours: 10,
-      campaignMaxHours: 20,
+      campaignMinHours: 30,
+      campaignMaxHours: 50,
     },
     projects: { approachSwitchPreservation: 0.9, baseSpeedPerSecond: 1 },
   },

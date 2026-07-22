@@ -44,6 +44,9 @@ export function evaluateCondition(
     case "projectCompleted":
       met = state.projects[condition.projectId]?.status === "completed";
       break;
+    case "projectStarted":
+      met = (state.projects[condition.projectId]?.starts ?? 0) > 0;
+      break;
     case "upgradeOwned":
       met = state.ownedUpgrades.includes(condition.upgradeId);
       break;
@@ -67,6 +70,9 @@ export function evaluateCondition(
       break;
     case "insightAtLeast":
       met = state.insight >= condition.amount;
+      break;
+    case "recordAtLeast":
+      met = state.records[condition.record] >= condition.amount;
       break;
   }
   if (!met && unmet.length === 0) unmet = [description];

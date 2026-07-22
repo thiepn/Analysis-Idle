@@ -95,7 +95,12 @@ export function deserializeGameNumber(value: string): GameNumber {
     !/^-?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?$/i.test(value)
   )
     throw new TypeError("Invalid GameNumber string");
-  return gameNumber(Number(value), { allowNegative: value.startsWith("-") });
+  const parsed = gameNumber(Number(value), {
+    allowNegative: value.startsWith("-"),
+  });
+  if (serializeGameNumber(parsed) !== value)
+    throw new TypeError("GameNumber string is not canonical");
+  return parsed;
 }
 
 export function gameNumberPercent(part: GameNumber, whole: GameNumber): number {

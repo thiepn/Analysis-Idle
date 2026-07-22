@@ -163,6 +163,23 @@ export function selectArtifactCompatibility(
   );
 }
 
+export function selectOwnedTechniqueMatches(
+  state: GameState,
+  content: GameContent,
+  projectId: ProjectId,
+) {
+  return content.techniqueArtifacts
+    .filter(
+      (artifact) =>
+        state.ownedArtifacts.includes(artifact.id) &&
+        artifact.compatibleProjectIds.includes(projectId),
+    )
+    .map((artifact) => ({
+      artifact,
+      acquisition: state.techniqueRecords[artifact.id] ?? null,
+    }));
+}
+
 export const selectAvailableUpgrades = (
   state: GameState,
   content: GameContent,
@@ -230,6 +247,9 @@ export function selectCapstone(
   const edges =
     chapter?.capstoneEdges.map((edge) => ({
       id: edge.id,
+      fromConcept: edge.fromConcept,
+      toConcept: edge.toConcept,
+      relationship: edge.relationship,
       assembled: state.assembledCapstoneEdges.includes(edge.id),
       artifactOwned: state.ownedArtifacts.includes(edge.requiredArtifactId),
     })) ?? [];

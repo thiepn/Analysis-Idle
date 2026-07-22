@@ -6,8 +6,8 @@ import type {
 import {
   selectAvailableUpgrades,
   selectProjectAvailability,
-} from "../../../src/engine/selectors";
-import type { GameState } from "../../../src/engine/state/game-state";
+  type GameState,
+} from "../../../src/engine";
 
 export const policyNames = [
   "cheapestAvailable",
@@ -38,6 +38,9 @@ export interface PolicyProfile {
   useOfflineAdvance: boolean;
   preferredChunkSeconds: number;
 }
+
+const compareOrdinal = (left: string, right: string): number =>
+  left < right ? -1 : left > right ? 1 : 0;
 
 const profiles: Record<PolicyName, Omit<PolicyProfile, "name">> = {
   cheapestAvailable: {
@@ -76,7 +79,7 @@ const profiles: Record<PolicyName, Omit<PolicyProfile, "name">> = {
     precisionAttention: 2,
     intuitionAttention: 1,
     approach: "ROTATE",
-    buyOptionalUpgrades: true,
+    buyOptionalUpgrades: false,
     useOfflineAdvance: false,
     preferredChunkSeconds: 30,
   },
@@ -173,18 +176,22 @@ export function chooseApproach(
   state: GameState,
   content: GameContent,
   projectId: ProjectId,
+  randomWord = 0,
 ): ApproachId {
   const project = content.projects.find(
     (candidate) => candidate.id === projectId,
   )!;
-  if (profile.approach !== "ROTATE")
-    return (
-      content.approaches.find((approach) => approach.id === profile.approach)
-        ?.id ?? project.allowedApproachIds[0]!
-    );
+  if (profile.approach !== "ROTATE") {
+    const preferred = content.approaches.find(
+      (approach) => approach.id === profile.approach,
+    )?.id;
+    return preferred && project.allowedApproachIds.includes(preferred)
+      ? preferred
+      : project.allowedApproachIds[0]!;
+  }
   const index =
     (state.records.completedProjects +
-      (profile.name === "randomReasonable" ? state.rng.words[0] : 0)) %
+      (profile.name === "randomReasonable" ? randomWord : 0)) %
     project.allowedApproachIds.length;
   return project.allowedApproachIds[index]!;
 }
@@ -193,13 +200,15 @@ export function chooseProject(
   profile: PolicyProfile,
   state: GameState,
   content: GameContent,
+  randomWord = 0,
 ): ProjectId | null {
   const available = content.projects.filter((project) => {
     const runtime = state.projects[project.id];
     return (
       runtime &&
-      runtime.status !== "completed" &&
-      runtime.status !== "active" &&
+      (runtime.status === "available" ||
+        runtime.status === "paused" ||
+        runtime.status === "cancelled") &&
       selectProjectAvailability(state, content, project.id).available
     );
   });
@@ -210,16 +219,16 @@ export function chooseProject(
         left.precisionRequirement +
           left.intuitionRequirement -
           right.precisionRequirement -
-          right.intuitionRequirement || left.id.localeCompare(right.id),
+          right.intuitionRequirement || compareOrdinal(left.id, right.id),
     )[0]!.id;
   if (profile.name === "nearestMilestone")
     return [...available].sort(
       (left, right) =>
         left.workRequired - right.workRequired ||
-        left.id.localeCompare(right.id),
+        compareOrdinal(left.id, right.id),
     )[0]!.id;
   if (profile.name === "randomReasonable")
-    return available[state.rng.words[1] % available.length]!.id;
+    return available[randomWord % available.length]!.id;
   return available[0]!.id;
 }
 
@@ -240,13 +249,15 @@ export function chooseAffordableUpgrade(
     ? available
     : available.filter(
         (upgrade) =>
-          upgrade.cost["PRECISION" as never] === 0 &&
-          upgrade.cost["INTUITION" as never] === 0,
+          upgrade.category === "capstone" ||
+          upgrade.category === "compression" ||
+          (upgrade.cost["PRECISION" as never] === 0 &&
+            upgrade.cost["INTUITION" as never] === 0),
       );
   return (
     [...filtered].sort(
       (left, right) =>
-        left.tier - right.tier || left.id.localeCompare(right.id),
+        left.tier - right.tier || compareOrdinal(left.id, right.id),
     )[0] ?? null
   );
 }
