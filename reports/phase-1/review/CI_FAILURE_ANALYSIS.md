@@ -46,4 +46,4 @@ Phase 1 passed for both [push run 29957792669](https://github.com/thiepn/Analysi
 
 ## Final verification
 
-Final remote verification is pending the correction push; acceptance remains REQUEST_CHANGES until both required workflows succeed.
+Phase 0 run [29959499665](https://github.com/thiepn/Analysis-Idle/actions/runs/29959499665) and Phase 1 run [29959499575](https://github.com/thiepn/Analysis-Idle/actions/runs/29959499575) both concluded success for cd0aa91380f022c3c66096391214e90a6ff4f8b1.
