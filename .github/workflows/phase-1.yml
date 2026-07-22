@@ -14,6 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Boundary validation compares the PR tree with the immutable v1
+          # commit. Fetch the history needed to make that comparison real.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
