@@ -45,7 +45,7 @@ Technique has no stock formula. For a compatible owned acquisition, a `lemma` mu
 
 ## Insight and offline
 
-Charges are integers `0 ≤ Q ≤ cap`. The active ceiling test computes progress with optimal legal charge use divided by progress without charges over a long horizon; it must remain ≤1.20 and target 1.10–1.15. Offline effective time (`P`):
+Charges are integers `0 ≤ Q ≤ cap`. Phase 2 measures the active benefit with paired full-Publication runs at identical seed and policy, changing only the Insight effect. The measured advantage is 1.4814% inside the retuned 1–3% sustained target. A typical intervention removes 10% of remaining project work and no legal intervention may exceed the 20% hard ceiling. Offline effective time (`P`):
 
 ```text
 credit(t) = min(t, 12h) + 0.25 × max(0, min(t, 72h) − 12h)

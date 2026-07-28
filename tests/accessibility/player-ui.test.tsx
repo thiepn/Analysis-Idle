@@ -65,6 +65,42 @@ describe("player accessibility contracts", () => {
     expect(screen.getByText(/Zero is a natural number/)).toBeTruthy();
   });
 
+  it("represents every required Proof Map node type and preserves selected state", async () => {
+    const user = userEvent.setup();
+    const state = mapState();
+    for (const project of naturalNumbersContent.projects)
+      state.projects[project.id]!.status = "completed";
+    state.ownedArtifacts = naturalNumbersContent.techniqueArtifacts.map(
+      (artifact) => artifact.id,
+    );
+    state.assembledCapstoneEdges =
+      naturalNumbersContent.chapters[0]!.capstoneEdges.map((edge) => edge.id);
+    render(<App store={createAppStore(12_345, state, true)} />);
+    await user.click(screen.getAllByRole("button", { name: "Proof Map" })[0]!);
+
+    for (const type of [
+      "definition",
+      "example",
+      "exercise",
+      "lemma",
+      "proof step",
+      "Technique artifact",
+      "capstone element",
+      "Publication dependency",
+    ])
+      expect(screen.getAllByText(type, { exact: true }).length).toBeGreaterThan(
+        0,
+      );
+    expect(
+      screen.getByRole("button", {
+        name: /Zero and Successor, project,.*completed, selected/i,
+      }),
+    ).toBeTruthy();
+    expect(screen.getAllByText(/Prerequisite/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Output/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Next action/).length).toBeGreaterThan(0);
+  });
+
   it("traps dialog focus, supports Escape, and restores the invoking control", async () => {
     const user = userEvent.setup();
     const state = mapState();

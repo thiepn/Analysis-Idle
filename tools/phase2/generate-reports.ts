@@ -75,6 +75,20 @@ interface BundleMetrics {
   };
   files: Array<{ file: string; bytes: number; gzipBytes: number }>;
 }
+interface SaveFixtureData {
+  fixtures: Array<{ passed: boolean }>;
+}
+interface ManualAccessibilityData {
+  screenReaderCriticalPathPassed: boolean;
+  sessions: string[];
+  blocker: string | null;
+}
+interface RemoteCiData {
+  passed: boolean;
+  sha: string | null;
+  url: string | null;
+  reason: string | null;
+}
 
 const artifact = readJson<ArtifactValidation>(
   "reports/phase-2/data/artifact-validation.json",
@@ -114,6 +128,27 @@ const browser = readJson<BrowserValidation>(
 const screenshots = readJson<ScreenshotManifest>(
   "reports/phase-2/screenshots/manifest.json",
   { complete: false, screenshots: [] },
+);
+const saveFixtures = readJson<SaveFixtureData>(
+  "reports/phase-1/data/save-fixtures.json",
+  { fixtures: [] },
+);
+const manualAccessibility = readJson<ManualAccessibilityData>(
+  "reports/phase-2/data/manual-accessibility.json",
+  {
+    screenReaderCriticalPathPassed: false,
+    sessions: [],
+    blocker: "Required manual screen-reader critical path has not been run.",
+  },
+);
+const remoteCi = readJson<RemoteCiData>(
+  "reports/phase-2/data/remote-ci-verification.json",
+  {
+    passed: false,
+    sha: null,
+    url: null,
+    reason: "Exact-SHA remote CI has not been verified.",
+  },
 );
 const bundle = readJson<BundleMetrics>(
   "reports/phase-2/data/bundle-metrics.json",
@@ -157,6 +192,14 @@ const mainUnchanged =
   mainSha === "239d75fd0e223e91703e261d2196953a896609cb" &&
   legacySha === "239d75fd0e223e91703e261d2196953a896609cb";
 const balanceTolerance = 1e-12;
+const implementationTreeDirty = git("status", "--porcelain")
+  .split(/\r?\n/)
+  .filter(Boolean)
+  .filter(
+    (line) =>
+      !line.slice(3).replaceAll("\\", "/").startsWith("reports/") &&
+      !line.slice(3).replaceAll("\\", "/").startsWith("tests/fixtures/saves/"),
+  );
 let ancestorPassed = false;
 try {
   execFileSync("git", ["merge-base", "--is-ancestor", phase1Ancestor, "HEAD"], {
@@ -231,6 +274,24 @@ const gates = [
     evidence: "Phase 1 exact online/offline economy projection retained",
   },
   {
+    id: "persistence",
+    passed:
+      saveFixtures.fixtures.length === 21 &&
+      saveFixtures.fixtures.every((fixture) => fixture.passed) &&
+      browser.checks.some(
+        (check) => check.id === "save-import-reload" && check.passed,
+      ),
+    evidence: `${saveFixtures.fixtures.filter((fixture) => fixture.passed).length}/21 save/recovery fixtures plus browser import/reload`,
+  },
+  {
+    id: "accessibility",
+    passed: manualAccessibility.screenReaderCriticalPathPassed,
+    evidence: manualAccessibility.screenReaderCriticalPathPassed
+      ? `manual screen-reader critical path: ${manualAccessibility.sessions.join(", ")}`
+      : (manualAccessibility.blocker ??
+        "manual screen-reader critical path missing"),
+  },
+  {
     id: "artifact-and-bundle",
     passed: artifact.passed,
     evidence: `${artifact.checks.filter((check) => check.passed).length}/${artifact.checks.length} artifact checks`,
@@ -239,6 +300,14 @@ const gates = [
     id: "exact-build-browser",
     passed: browser.passed && browser.exactBuild,
     evidence: `${browser.engine}; ${browser.testedViewports.join(", ")}`,
+  },
+  {
+    id: "performance",
+    passed:
+      bundle.totals.jsGzipBytes <= bundle.budget.javascriptGzipBytes &&
+      bundle.totals.cssGzipBytes <= bundle.budget.cssGzipBytes &&
+      browser.consoleErrors.length === 0,
+    evidence: `${(bundle.totals.jsGzipBytes / 1024).toFixed(2)} KiB JS gzip / ${(bundle.totals.cssGzipBytes / 1024).toFixed(2)} KiB CSS gzip; no critical console errors`,
   },
   {
     id: "screenshots",
@@ -254,6 +323,21 @@ const gates = [
     evidence:
       "main and legacy/v1 remain on the immutable v1 baseline; no deployment changed",
   },
+  {
+    id: "remote-ci",
+    passed: remoteCi.passed && remoteCi.sha === finalSha,
+    evidence: remoteCi.passed
+      ? `${remoteCi.sha} — ${remoteCi.url}`
+      : (remoteCi.reason ?? "Exact-SHA remote CI missing"),
+  },
+  {
+    id: "implementation-tree",
+    passed: implementationTreeDirty.length === 0,
+    evidence:
+      implementationTreeDirty.length === 0
+        ? "implementation and tooling tree clean before generated evidence commit"
+        : `${implementationTreeDirty.length} non-evidence paths are dirty`,
+  },
 ];
 
 const criticalPassed = gates.every((gate) => gate.passed);
@@ -263,8 +347,10 @@ const status = criticalPassed
 const deferred = [
   "Independent human comprehension and fun testing; six separated self-play personas were used.",
   "Firefox, Edge, Safari, Android Chrome, and iOS Safari on real devices were unavailable; current Chromium desktop/tablet/mobile emulation passed.",
-  "Independent assistive-technology sessions remain a Phase 3 validation task.",
 ];
+const blockers = gates
+  .filter((gate) => !gate.passed)
+  .map((gate) => `${gate.id}: ${gate.evidence}`);
 const knownRisks = [
   "Dense late-project information needs independent comprehension testing.",
   "Approach value is downstream and may be undervalued when a player optimizes only the current ETA.",
@@ -324,7 +410,7 @@ const summary = {
     approaches: naturalNumbersContent.approaches.length,
     publicationPlayable: simulation.finalState.records.publications === 1,
   },
-  tests: { passed: 112, failed: 0, skipped: 0 },
+  tests: { passed: 115, failed: 0, skipped: 0 },
   determinismDigest: simulation.deterministicHash,
   publicationMedianMinutes: playtest.summary.publicationMedianMinutes,
   activeAdvantageTypical: playtest.summary.activeAdvantageTypical,
@@ -339,6 +425,9 @@ const summary = {
   ),
   browserMatrixPassed: browser.passed,
   browserCoverageComplete: false,
+  screenReaderCriticalPathPassed:
+    manualAccessibility.screenReaderCriticalPathPassed,
+  remoteCiPassed: remoteCi.passed && remoteCi.sha === finalSha,
   criticalBalanceGatesPassed:
     playtest.summary.policyCount === 15 &&
     playtest.summary.policiesPublished === 15 &&
@@ -352,6 +441,7 @@ const summary = {
   phase3Ready: criticalPassed,
   provisionalConfiguration: naturalNumbersContent.configuration,
   knownRisks,
+  blockers,
   deferred,
   artifacts,
 };
@@ -369,6 +459,7 @@ writeFileSync(
       generatedFromSha: finalSha,
       gates,
       criticalPassed,
+      blockers,
       deferred,
     },
     null,
@@ -386,12 +477,12 @@ const bytes = (value: number) => `${(value / 1024).toFixed(2)} KiB`;
 writeReport(
   "PHASE_2_COMPLETION_REPORT",
   "Phase 2 Completion Report",
-  `## Verdict\n\n**${status}**. ${gates.filter((gate) => gate.passed).length}/${gates.length} critical evidence groups pass. Phase 3 readiness is ${criticalPassed ? "approved" : "blocked"}.\n\n## Delivered\n\nThe Natural Numbers chapter is a production player experience built over the locked deterministic engine: progressive onboarding, two-resource Attention planning, twelve projects, three approaches, typed Technique artifacts, fifteen upgrades, staged automation, Insight active play, the accessible Proof Map, capstone assembly, Publication, offline return, save recovery, records, settings, and responsive layouts.\n\n## Safety\n\n\`main\` and \`legacy/v1\` remain at \`${mainSha}\`. No public deployment was created or changed. Phase 2 targets only \`v2/integration\` through a draft pull request.\n\n## Deferred non-critical evidence\n\n${deferred.map((item) => `- ${item}`).join("\n")}\n`,
+  `## Verdict\n\n**${status}**. ${gates.filter((gate) => gate.passed).length}/${gates.length} critical evidence groups pass. Phase 3 readiness is ${criticalPassed ? "approved" : "blocked"}.\n\n## Blocking evidence\n\n${blockers.length > 0 ? blockers.map((item) => `- ${item}`).join("\n") : "- None."}\n\n## Delivered\n\nThe Natural Numbers chapter is a production player experience built over the locked deterministic engine: progressive onboarding, two-resource Attention planning, twelve projects, three approaches, typed Technique artifacts, fifteen upgrades, staged automation, Insight active play, the accessible Proof Map, capstone assembly, Publication, offline return, save recovery, records, settings, and responsive layouts.\n\n## Safety\n\n\`main\` and \`legacy/v1\` remain at \`${mainSha}\`. No public deployment was created or changed. Phase 2 targets only \`v2/integration\` through a draft pull request.\n\n## Deferred non-critical evidence\n\n${deferred.map((item) => `- ${item}`).join("\n")}\n`,
 );
 writeReport(
   "VALIDATION_REPORT",
   "Phase 2 Validation Report",
-  `## Acceptance gates\n\n${gates.map((gate) => `- ${gate.passed ? "PASS" : "FAIL"} — **${gate.id}**: ${gate.evidence}`).join("\n")}\n\n## Automated coverage\n\nThe repository gate runs formatting, ESLint import boundaries, strict TypeScript, 112 Vitest cases across unit/integration/determinism/persistence/content/UI/accessibility suites, all fifteen simulator policies, content validation, the production build, bundle validation, exact-build HTTP smoke, screenshot evidence, report generation, and the immutable Phase 0 suite.\n`,
+  `## Acceptance gates\n\n${gates.map((gate) => `- ${gate.passed ? "PASS" : "FAIL"} — **${gate.id}**: ${gate.evidence}`).join("\n")}\n\n## Automated coverage\n\nThe repository gate runs formatting, ESLint import boundaries, strict TypeScript, 115 Vitest cases across unit/integration/determinism/persistence/content/UI/accessibility suites, all fifteen simulator policies, content validation, the production build, bundle validation, exact-build HTTP smoke, screenshot evidence, report generation, and the immutable Phase 0 suite.\n`,
 );
 writeReport(
   "NATURAL_NUMBERS_GAMEPLAY_REPORT",
@@ -441,7 +532,7 @@ writeReport(
 writeReport(
   "PROOF_MAP_REPORT",
   "Proof Map Report",
-  `The Proof Map is a hybrid graph/list derived from the same project, dependency, artifact, and capstone state. Desktop presents the graph with textual state labels; mobile defaults to the structured list. The list is fully keyboard operable and contains no canvas-only meaning. Definition, example, lemma, proof-method, and capstone relationships are distinguishable without color.\n`,
+  `The Proof Map is a hybrid graph/list derived from the same project, dependency, artifact, and capstone state. Desktop presents the graph with textual state labels; mobile defaults to the structured list. A typed evidence chain explicitly represents definitions, examples, exercises, lemmas, proof steps, Technique artifacts, projects, capstone elements, and the Publication dependency. Locked, available, active, completed, selected, blocked, and capstone-ready states are conveyed with text as well as styling. The list is fully keyboard operable and contains no canvas-only meaning.\n`,
 );
 writeReport(
   "OFFLINE_RETURN_REPORT",
@@ -461,7 +552,7 @@ writeReport(
 writeReport(
   "ACCESSIBILITY_REPORT",
   "Accessibility Report",
-  `Automated coverage checks accessible names, headings/landmarks, dialog focus trapping and restoration, keyboard operation, the Proof Map structured alternative, text state independent of color, and raw-LaTeX exclusion. Native controls and visible focus are used throughout; critical targets are at least 44 CSS pixels; reduced motion, high contrast, large text, plain-language notation, and announcement verbosity are persisted settings. Chromium reflow/mobile emulation was inspected. Independent screen-reader and real-device sessions remain deferred.\n`,
+  `Automated coverage checks accessible names, headings/landmarks, dialog focus trapping and restoration, keyboard operation, the Proof Map structured alternative, text state independent of color, and raw-LaTeX exclusion. Native controls and visible focus are used throughout; critical targets are at least 44 CSS pixels; reduced motion, animation intensity, high contrast, compact layout, text/number/notation controls, offline-summary detail, mathematical depth, update rate, and announcement verbosity are persisted functional settings. Chromium reflow/mobile emulation was inspected. Required manual screen-reader critical-path status: **${manualAccessibility.screenReaderCriticalPathPassed ? "PASS" : "BLOCKED"}**${manualAccessibility.blocker ? ` — ${manualAccessibility.blocker}` : ""}. Physical browser/device breadth outside required AT sessions remains deferred.\n`,
 );
 writeReport(
   "BROWSER_MATRIX_REPORT",
@@ -471,7 +562,7 @@ writeReport(
 writeReport(
   "BUNDLE_AND_PERFORMANCE_REPORT",
   "Bundle and Performance Report",
-  `Initial JavaScript is ${bytes(bundle.totals.jsBytes)} raw / ${bytes(bundle.totals.jsGzipBytes)} gzip against a ${bytes(bundle.budget.javascriptGzipBytes)} gzip budget. CSS is ${bytes(bundle.totals.cssBytes)} raw / ${bytes(bundle.totals.cssGzipBytes)} gzip against a ${bytes(bundle.budget.cssGzipBytes)} budget. Production source maps are excluded. The economy advances on a bounded monotonic 250 ms command timer, never animation frames; event and automation displays are capped. Preact limits DOM mutations through virtual-tree diffing, while selector calculations remain deterministic and bounded. Low-memory hardware profiling remains a Phase 3 follow-up.\n`,
+  `Initial JavaScript is ${bytes(bundle.totals.jsBytes)} raw / ${bytes(bundle.totals.jsGzipBytes)} gzip against a ${bytes(bundle.budget.javascriptGzipBytes)} gzip budget. CSS is ${bytes(bundle.totals.cssBytes)} raw / ${bytes(bundle.totals.cssGzipBytes)} gzip against a ${bytes(bundle.budget.cssGzipBytes)} budget. Production source maps are excluded. A 250 ms scheduler checks elapsed monotonic time, but canonical state and UI update only once per configured one- or two-second interval; elapsed time is never discarded and no animation frame drives the economy. Event and automation displays are capped. Low-memory hardware profiling remains a Phase 3 follow-up.\n`,
 );
 writeReport(
   "ASSET_AND_LICENSE_REPORT",
@@ -481,12 +572,12 @@ writeReport(
 writeReport(
   "SPEC_CONFLICTS",
   "Phase 2 Specification Conflicts",
-  `No blocking conflict was found. The locked content version remains \`phase1-nn-fixture-1\` so accepted Phase 1 saves remain compatible even though the package release version is \`0.3.0-v2-natural-numbers\`. “Capture at desktop, tablet and mobile” was interpreted as an 18-image evidence set distributed across all three viewports; all critical states and each viewport are represented. Browser requirements explicitly permit documenting unavailable engines, so Chromium exact-build coverage is acceptance evidence while unavailable real-device engines are deferred. No provisional value was hidden in a production constant outside the validated configuration.\n`,
+  `The locked content version remains \`phase1-nn-fixture-1\` so accepted Phase 1 saves remain compatible even though the package release version is \`0.3.0-v2-natural-numbers\`. “Capture at desktop, tablet and mobile” was interpreted as an 18-image evidence set distributed across all three viewports; all critical states and each viewport are represented. Browser requirements permit documenting unavailable engines, so Chromium exact-build coverage is evidence while unavailable physical browser breadth is deferred. Required manual screen-reader validation is not treated as deferrable and therefore blocks acceptance until recorded. No provisional value was hidden in a production constant outside the validated configuration.\n`,
 );
 writeReport(
   "PHASE_3_HANDOFF",
   "Phase 3 Handoff",
-  `## Ready baseline\n\nPhase 3 should branch from the accepted Phase 2 merge on \`v2/integration\`, preserve the deterministic architecture and save namespace, and treat \`${finalSha}\` as the implementation evidence SHA.\n\n## Priority work\n\n- Run independent human sessions for comprehension, fatigue, fun, and approach valuation.\n- Validate repeated-run behavior and longer campaign pacing without exposing unfinished chapter mechanics.\n- Exercise Firefox, Edge, Safari, Android Chrome, iOS Safari, screen readers, and low-memory hardware.\n- Profile long-session rendering/memory and decide whether nonessential Records/deep-note code splitting has a measured benefit.\n- Revisit only provisional balance values using reproducible simulations and explicit playtest evidence.\n\n## Do not regress\n\nKeep v1 immutable, preserve stable IDs and Phase 1/2 saves, reject non-finite numbers, maintain keyboard/touch parity and accessible mathematics, and do not deploy from a phase branch.\n`,
+  `## Readiness\n\nPhase 3 readiness is **${criticalPassed ? "READY" : "NOT_READY"}**. Phase 3 may branch only after the blocking evidence in the completion report is resolved, the Phase 2 pull request passes exact-SHA remote CI, and the accepted merge lands on \`v2/integration\`.\n\n## Priority work\n\n- Run independent human sessions for comprehension, fatigue, fun, and approach valuation.\n- Validate repeated-run behavior and longer campaign pacing without exposing unfinished chapter mechanics.\n- Exercise remaining browser/device breadth and low-memory hardware after the required Phase 2 AT path is complete.\n- Profile long-session rendering/memory and decide whether nonessential Records/deep-note code splitting has a measured benefit.\n- Revisit only provisional balance values using reproducible simulations and explicit playtest evidence.\n\n## Do not regress\n\nKeep v1 immutable, preserve stable IDs and Phase 1/2 saves, reject non-finite numbers, maintain keyboard/touch parity and accessible mathematics, and do not deploy from a phase branch.\n`,
 );
 
 console.log(

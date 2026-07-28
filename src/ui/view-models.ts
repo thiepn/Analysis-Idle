@@ -109,6 +109,18 @@ function nextProject(state: GameState): ProjectId | null {
 }
 
 export function selectCurrentObjective(state: GameState): ObjectiveModel {
+  const chapter = naturalNumbersContent.chapters[0]!;
+  if (state.chapters[chapter.id] === "published")
+    return {
+      eyebrow: "Chapter published",
+      title: "Natural Numbers archived",
+      explanation:
+        "Your validated methods and proof history are preserved. The next chapter is intentionally not active in this Phase 2 slice.",
+      actionLabel: "Review the published archive",
+      targetView: "records",
+      projectId: null,
+    };
+
   if (!owned(state, "nn.info.rate_ledger"))
     return {
       eyebrow: "Guided beginning",
@@ -173,17 +185,6 @@ export function selectCurrentObjective(state: GameState): ObjectiveModel {
       projectId: null,
     };
 
-  const chapter = naturalNumbersContent.chapters[0]!;
-  if (state.chapters[chapter.id] === "published")
-    return {
-      eyebrow: "Chapter published",
-      title: "Natural Numbers archived",
-      explanation:
-        "Your validated methods and proof history are preserved. The next chapter is intentionally not active in this Phase 2 slice.",
-      actionLabel: "Review the published archive",
-      targetView: "records",
-      projectId: null,
-    };
   const readiness = selectPublicationReadiness(
     state,
     naturalNumbersContent,

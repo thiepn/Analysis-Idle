@@ -4,6 +4,8 @@ import { getProjectPresentation } from "../content/natural-numbers-copy";
 import {
   selectOwnedTechniqueMatches,
   selectProjectAvailability,
+  selectProjectDeficits,
+  selectPublicationReadiness,
   type GameState,
 } from "../engine";
 import type { ProjectId } from "../shared/contracts";
@@ -40,10 +42,69 @@ function nodeStatus(state: GameState, projectId: ProjectId) {
   if (runtime.status === "active") return "active";
   if (runtime.status === "queued") return "queued";
   if (runtime.status === "paused") return "paused";
-  if (runtime.status === "available" && availability.available)
-    return "available";
+  if (runtime.status === "available" && availability.available) {
+    if (projectId === "nn.project.equivalence_capstone")
+      return "capstone-ready";
+    const deficits = selectProjectDeficits(
+      state,
+      naturalNumbersContent,
+      projectId,
+    );
+    return deficits.PRECISION > 0 || deficits.INTUITION > 0
+      ? "blocked"
+      : "available";
+  }
   return "locked";
 }
+
+function nextAction(status: string): string {
+  if (status === "completed") return "Review the archived result";
+  if (status === "active") return "Continue the active project";
+  if (status === "queued") return "Review the queued plan";
+  if (status === "paused") return "Resume or revise the project";
+  if (status === "available" || status === "capstone-ready")
+    return "Review and start the project";
+  if (status === "blocked") return "Prepare the displayed resource deficit";
+  return "Complete the listed prerequisites";
+}
+
+const mathematicalNodes: Array<{
+  id: string;
+  type: "definition" | "example" | "exercise" | "lemma" | "proof step";
+  title: string;
+  projectId: ProjectId;
+}> = [
+  {
+    id: "definition-zero-successor",
+    type: "definition",
+    title: "Zero and successor definition",
+    projectId: "nn.project.zero_successor" as ProjectId,
+  },
+  {
+    id: "example-recursive-addition",
+    type: "example",
+    title: "Recursive addition example",
+    projectId: "nn.project.addition" as ProjectId,
+  },
+  {
+    id: "exercise-missing-step",
+    type: "exercise",
+    title: "Missing base or step exercise",
+    projectId: "nn.project.counterexample_lab" as ProjectId,
+  },
+  {
+    id: "lemma-addition",
+    type: "lemma",
+    title: "Reusable addition lemmas",
+    projectId: "nn.project.addition_lemmas" as ProjectId,
+  },
+  {
+    id: "proof-step-induction",
+    type: "proof step",
+    title: "Induction base and successor step",
+    projectId: "nn.project.induction_walkthrough" as ProjectId,
+  },
+];
 
 export function ProofMap({
   state,
@@ -71,6 +132,13 @@ export function ProofMap({
       );
     });
   }, [state]);
+  const visibleIds = new Set(visible.map((project) => project.id));
+  const chapter = naturalNumbersContent.chapters[0]!;
+  const publication = selectPublicationReadiness(
+    state,
+    naturalNumbersContent,
+    chapter.id,
+  );
 
   return (
     <section class="view-section" aria-labelledby="proof-map-title">
@@ -131,18 +199,19 @@ export function ProofMap({
           {visible.map((project) => {
             const position = positions[project.id]!;
             const status = nodeStatus(state, project.id);
+            const selected = selectedProjectId === project.id;
             const presentation = getProjectPresentation(project.id);
             return (
               <button
                 type="button"
                 key={project.id}
-                class={`proof-node proof-node-${status}`}
+                class={`proof-node proof-node-${status} ${selected ? "proof-node-selected" : ""}`}
                 style={{ left: `${position.x}%`, top: `${position.y}%` }}
                 aria-pressed={selectedProjectId === project.id}
-                aria-label={`${project.short}, ${presentation.concept}, ${status}`}
+                aria-label={`${project.short}, project, ${presentation.concept}, ${status}${selected ? ", selected" : ""}`}
                 onClick={() => onSelect(project.id)}
               >
-                <span class="node-type">{presentation.concept}</span>
+                <span class="node-type">project · {presentation.concept}</span>
                 <strong>{project.short}</strong>
                 <span class="node-status">{status}</span>
               </button>
@@ -170,7 +239,8 @@ export function ProofMap({
                   <span>
                     <strong>{project.short}</strong>
                     <small>
-                      {presentation.concept} · {status}
+                      project · {presentation.concept} · {status}
+                      {selectedProjectId === project.id ? " · selected" : ""}
                     </small>
                   </span>
                   <span aria-hidden="true">→</span>
@@ -211,6 +281,167 @@ export function ProofMap({
           })}
         </ol>
       )}
+
+      <section
+        class="map-element-section"
+        aria-labelledby="proof-map-elements-title"
+      >
+        <div class="section-heading compact-heading">
+          <div>
+            <p class="kicker">Typed dependency nodes</p>
+            <h3 id="proof-map-elements-title">Mathematical evidence chain</h3>
+            <p>
+              These nodes expose the definitions, examples, exercises, lemmas,
+              proof steps, learned Technique, capstone implications and final
+              Publication dependency represented by the project graph.
+            </p>
+          </div>
+        </div>
+        <ul class="map-element-grid">
+          {mathematicalNodes
+            .filter((node) => visibleIds.has(node.projectId))
+            .map((node) => (
+              <li key={node.id}>
+                <button
+                  type="button"
+                  class="map-element-node"
+                  onClick={() => onSelect(node.projectId)}
+                >
+                  <span class="node-type">{node.type}</span>
+                  <strong>{node.title}</strong>
+                  <small>
+                    Project dependency · {nodeStatus(state, node.projectId)}
+                  </small>
+                  <small>
+                    Prerequisites ·{" "}
+                    {naturalNumbersContent.projects
+                      .find((project) => project.id === node.projectId)!
+                      .prerequisiteProjectIds.map(
+                        (id) =>
+                          naturalNumbersContent.projects.find(
+                            (project) => project.id === id,
+                          )?.short ?? id,
+                      )
+                      .join(", ") || "None"}
+                  </small>
+                  <small>
+                    Output · {getProjectPresentation(node.projectId).gameplay}
+                  </small>
+                  <small>
+                    Next action ·{" "}
+                    {nextAction(nodeStatus(state, node.projectId))}
+                  </small>
+                </button>
+              </li>
+            ))}
+          {naturalNumbersContent.techniqueArtifacts
+            .filter((artifact) => visibleIds.has(artifact.sourceProjectId))
+            .map((artifact) => (
+              <li key={artifact.id}>
+                <button
+                  type="button"
+                  class="map-element-node"
+                  onClick={() => onSelect(artifact.sourceProjectId)}
+                >
+                  <span class="node-type">Technique artifact</span>
+                  <strong>{artifact.short}</strong>
+                  <small>
+                    {state.ownedArtifacts.includes(artifact.id)
+                      ? "completed · learned"
+                      : state.projects[artifact.sourceProjectId]?.status ===
+                          "active"
+                        ? "active · being prepared"
+                        : "locked · complete its source project"}
+                  </small>
+                  <small>
+                    Prerequisite ·{" "}
+                    {naturalNumbersContent.projects.find(
+                      (project) => project.id === artifact.sourceProjectId,
+                    )?.short ?? artifact.sourceProjectId}
+                  </small>
+                  <small>
+                    Output · {artifact.kind.replaceAll(/([A-Z])/g, " $1")}
+                  </small>
+                  <small>
+                    Next action ·{" "}
+                    {state.ownedArtifacts.includes(artifact.id)
+                      ? "Review compatible downstream projects"
+                      : "Complete the source project"}
+                  </small>
+                </button>
+              </li>
+            ))}
+          {chapter.capstoneEdges.map((edge) => (
+            <li key={edge.id}>
+              <button
+                type="button"
+                class="map-element-node"
+                onClick={() =>
+                  onSelect("nn.project.equivalence_capstone" as ProjectId)
+                }
+              >
+                <span class="node-type">capstone element</span>
+                <strong>
+                  {edge.fromConcept} → {edge.toConcept}
+                </strong>
+                <small>
+                  {state.assembledCapstoneEdges.includes(edge.id)
+                    ? "completed · implication assembled"
+                    : state.ownedArtifacts.includes(edge.requiredArtifactId)
+                      ? "capstone-ready · Technique available"
+                      : "blocked · required Technique not learned"}
+                </small>
+                <small>
+                  Prerequisite ·{" "}
+                  {naturalNumbersContent.techniqueArtifacts.find(
+                    (artifact) => artifact.id === edge.requiredArtifactId,
+                  )?.short ?? edge.requiredArtifactId}
+                </small>
+                <small>Output · validated implication edge</small>
+                <small>
+                  Next action ·{" "}
+                  {state.assembledCapstoneEdges.includes(edge.id)
+                    ? "Review the assembled edge"
+                    : state.ownedArtifacts.includes(edge.requiredArtifactId)
+                      ? "Assemble this implication below"
+                      : "Learn the required Technique"}
+                </small>
+              </button>
+            </li>
+          ))}
+          <li>
+            <button
+              type="button"
+              class="map-element-node"
+              onClick={() =>
+                onSelect("nn.project.equivalence_capstone" as ProjectId)
+              }
+            >
+              <span class="node-type">Publication dependency</span>
+              <strong>Foundations of the Natural Numbers</strong>
+              <small>
+                {state.chapters[chapter.id] === "published"
+                  ? "completed · published"
+                  : publication.ready
+                    ? "capstone-ready · Publication available"
+                    : `blocked · ${publication.missing.length} dependencies remain`}
+              </small>
+              <small>
+                Prerequisites · 12 completed projects and 4 capstone edges
+              </small>
+              <small>Output · Induction Framework Mastery card</small>
+              <small>
+                Next action ·{" "}
+                {state.chapters[chapter.id] === "published"
+                  ? "Review the published archive"
+                  : publication.ready
+                    ? "Open Publication and review the reset ledger"
+                    : "Complete the remaining dependencies"}
+              </small>
+            </button>
+          </li>
+        </ul>
+      </section>
 
       {selectedProjectId ? (
         <aside class="map-detail" aria-live="polite">

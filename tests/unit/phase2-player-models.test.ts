@@ -45,6 +45,12 @@ describe("Phase 2 player-facing models", () => {
       title: "Start Zero and Successor",
       targetView: "projects",
     });
+
+    state.chapters["nn.chapter.natural_numbers"] = "published";
+    expect(selectCurrentObjective(state)).toMatchObject({
+      title: "Natural Numbers archived",
+      targetView: "records",
+    });
   });
 
   it("formats finite numbers, rates, and durations centrally", () => {

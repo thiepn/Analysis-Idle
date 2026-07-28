@@ -1285,7 +1285,6 @@ function AutomationView({
                 <legend>When a project completes</legend>
                 <label>
                   <input
-                    id="completion-start-next"
                     type="radio"
                     name="completion-rule"
                     checked={state.completionBehavior === "pause"}
@@ -1300,6 +1299,7 @@ function AutomationView({
                 </label>
                 <label>
                   <input
+                    id="completion-start-next"
                     type="radio"
                     name="completion-rule"
                     checked={state.completionBehavior === "startNextFunded"}
@@ -2319,6 +2319,8 @@ export function App({ store }: AppProperties) {
   const activeRuntime = Object.values(state.projects).find(
     (project) => project.status === "active",
   );
+  const chapterPublished =
+    state.chapters[naturalNumbersIds.CHAPTER] === "published";
   const recentImportantEvents = useMemo(
     () =>
       [...snapshot.events]
@@ -2512,7 +2514,9 @@ export function App({ store }: AppProperties) {
                 ? naturalNumbersContent.projects.find(
                     (project) => project.id === activeRuntime.id,
                   )?.short
-                : "Study plan active"}
+                : chapterPublished
+                  ? "Published archive"
+                  : "Study plan active"}
             </h2>
             <p>
               {activeRuntime
@@ -2523,7 +2527,9 @@ export function App({ store }: AppProperties) {
                       activeRuntime.id,
                     ).etaSeconds,
                   )} remain.`
-                : "Choose a project when its inputs are prepared."}
+                : chapterPublished
+                  ? "Natural Numbers is complete. Phase 3 will introduce the next active chapter."
+                  : "Choose a project when its inputs are prepared."}
             </p>
           </section>
           {recentImportantEvents.length > 0 ? (
