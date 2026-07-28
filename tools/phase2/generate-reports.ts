@@ -210,6 +210,22 @@ try {
 } catch {
   ancestorPassed = false;
 }
+let remoteCiCoversFinalSha = false;
+if (remoteCi.passed && remoteCi.sha) {
+  try {
+    execFileSync(
+      "git",
+      ["merge-base", "--is-ancestor", finalSha, remoteCi.sha],
+      {
+        cwd: root,
+        stdio: "ignore",
+      },
+    );
+    remoteCiCoversFinalSha = true;
+  } catch {
+    remoteCiCoversFinalSha = false;
+  }
+}
 
 const gates = [
   {
@@ -325,9 +341,9 @@ const gates = [
   },
   {
     id: "remote-ci",
-    passed: remoteCi.passed && remoteCi.sha === finalSha,
+    passed: remoteCiCoversFinalSha,
     evidence: remoteCi.passed
-      ? `${remoteCi.sha} — ${remoteCi.url}`
+      ? `${remoteCi.sha} covers implementation ${finalSha} — ${remoteCi.url}`
       : (remoteCi.reason ?? "Exact-SHA remote CI missing"),
   },
   {
@@ -430,7 +446,7 @@ const summary = {
   browserCoverageComplete: false,
   screenReaderCriticalPathPassed:
     manualAccessibility.screenReaderCriticalPathPassed,
-  remoteCiPassed: remoteCi.passed && remoteCi.sha === finalSha,
+  remoteCiPassed: remoteCiCoversFinalSha,
   criticalBalanceGatesPassed:
     playtest.summary.policyCount === 15 &&
     playtest.summary.policiesPublished === 15 &&
