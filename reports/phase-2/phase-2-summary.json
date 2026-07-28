@@ -3,7 +3,7 @@
   "version": "0.3.0-v2-natural-numbers",
   "status": "PASS_WITH_DEFERRED_NON_CRITICAL_ITEMS",
   "startingSha": "12aed959183efffdc2468791d322b56da499b8be",
-  "finalSha": "c1c7e4eb8dfddd286f325916dde70045a8137baa",
+  "finalSha": "12c59cecc03fe71d58f1d8cfe7f6e556688d0bf3",
   "finalShaMeaning": "implementation-and-tooling HEAD used to generate the completion evidence; report-only commits may follow",
   "branch": "phase/02-natural-numbers-vertical-slice",
   "base": "v2/integration",
