@@ -385,6 +385,9 @@ const artifacts = [
   "reports/phase-2/data/artifact-validation.json",
   "reports/phase-2/data/bundle-metrics.json",
   "reports/phase-2/data/browser-validation.json",
+  "reports/phase-2/data/manual-accessibility.json",
+  "reports/phase-2/data/remote-ci-verification.json",
+  "reports/phase-2/review/INDEPENDENT_ULTRA_REVIEW.md",
   "reports/phase-2/screenshots/manifest.json",
 ];
 
