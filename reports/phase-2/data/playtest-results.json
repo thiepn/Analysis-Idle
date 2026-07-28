@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 1,
+  "method": "Deterministic policy fixtures plus clearly separated self-play personas; no independent human participants were available.",
+  "limitations": [
+    "Self-play does not establish comprehension, fun, frustration, fatigue or retention.",
+    "Mobile and keyboard personas are structured audits, not independent participants.",
+    "No personal data or telemetry was collected."
+  ],
+  "checkpoints": [
+    {
+      "id": "first-5-minutes",
+      "elapsedMinutes": 5,
+      "completedProjects": 2,
+      "upgrades": ["nn.info.rate_ledger", "nn.activity.explore"],
+      "milestones": [
+        "nn.milestone.zero_named",
+        "nn.milestone.successor_closed",
+        "nn.milestone.peano_framed"
+      ],
+      "resources": {
+        "PRECISION": 102.515894218065,
+        "INTUITION": 30.45
+      },
+      "understanding": 2,
+      "nextDecision": null
+    },
+    {
+      "id": "first-15-minutes",
+      "elapsedMinutes": 15,
+      "completedProjects": 4,
+      "upgrades": ["nn.info.rate_ledger", "nn.activity.explore"],
+      "milestones": [
+        "nn.milestone.zero_named",
+        "nn.milestone.successor_closed",
+        "nn.milestone.peano_framed",
+        "nn.milestone.recursion_available"
+      ],
+      "resources": {
+        "PRECISION": 132.783754274729,
+        "INTUITION": 38.1746740558421
+      },
+      "understanding": 4,
+      "nextDecision": null
+    },
+    {
+      "id": "first-30-minutes",
+      "elapsedMinutes": 30,
+      "completedProjects": 6,
+      "upgrades": ["nn.info.rate_ledger", "nn.activity.explore"],
+      "milestones": [
+        "nn.milestone.zero_named",
+        "nn.milestone.successor_closed",
+        "nn.milestone.peano_framed",
+        "nn.milestone.recursion_available",
+        "nn.milestone.operations_built",
+        "nn.milestone.approach_selected"
+      ],
+      "resources": {
+        "PRECISION": 121.176007157888,
+        "INTUITION": 118.65
+      },
+      "understanding": 6,
+      "nextDecision": null
+    }
+  ],
+  "policies": [
+    {
+      "name": "cheapestAvailable",
+      "publicationMinutes": 104.8875,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 5,
+      "idleAdvanceMinutes": 25,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "009817e17ce7f261dd8807a219557f5ef0307af7d3d652d903513bfc161ad08e"
+    },
+    {
+      "name": "immediatePayback",
+      "publicationMinutes": 100.2375,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 5,
+      "idleAdvanceMinutes": 24,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "03a733cedc093ad32288a13cd26963be68c408a3ea043fb4bbec215561a31b0a"
+    },
+    {
+      "name": "futureValue",
+      "publicationMinutes": 103.2625,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 5,
+      "idleAdvanceMinutes": 19,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "7559f14202d6cf54548ca4c93b21c83dff2907e2ba5141950776058a7a1b2012"
+    },
+    {
+      "name": "nearestMilestone",
+      "publicationMinutes": 93.0375,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 0,
+      "idleAdvanceMinutes": 12.25,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "ec6fbde7335a86963187614dfb448611bcf31cd20a6311aa44b418f1b2f8eab8"
+    },
+    {
+      "name": "balanced",
+      "publicationMinutes": 93.7875,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 0,
+      "idleAdvanceMinutes": 13,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "3e5460f1a9434744ffba7b698ed51c070482ac44e5406b344942d51d6d9bf15e"
+    },
+    {
+      "name": "formalSpecialist",
+      "publicationMinutes": 100.2375,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 5,
+      "idleAdvanceMinutes": 24,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "e1b8348eb4bd3315c64219c9cb55badc0e5b666e2dc8fdc434c633ca17d8faac"
+    },
+    {
+      "name": "exploratorySpecialist",
+      "publicationMinutes": 103.75,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 5,
+      "idleAdvanceMinutes": 24,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "a135f3946c68763cddeecc4003f30c1cb3bf7f3a86223a8dc135fdafac03cd9c"
+    },
+    {
+      "name": "constructiveSpecialist",
+      "publicationMinutes": 104.8625,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 5,
+      "idleAdvanceMinutes": 22.5,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "8058f440aa0d323539f44e9258caf2e65409aa23e4e55cd18480fb703d6501d6"
+    },
+    {
+      "name": "hybrid",
+      "publicationMinutes": 105.3875,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 5,
+      "idleAdvanceMinutes": 25.5,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "7387a50669837fc0e17abd2b510d81f758906a99979f3d899d20b2a525706f74"
+    },
+    {
+      "name": "activeOptimizer",
+      "publicationMinutes": 98.0075,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 3,
+      "automationTraceEntries": 5,
+      "idleAdvanceMinutes": 25,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "095cb8f1d05b0804f00574bfd3223db46f3b0c54e958d8532efa3da9ffa80a85"
+    },
+    {
+      "name": "mostlyIdle",
+      "publicationMinutes": 104.22311663011587,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 0,
+      "idleAdvanceMinutes": 20,
+      "offlineAdvanceMinutes": 130.40205192510575,
+      "deterministicHash": "a0b0ccbbcf41cd9d3862fc714540651bd69c56f8d605ed3f89c86d30e968acfb"
+    },
+    {
+      "name": "weakButPlausible",
+      "publicationMinutes": 113.7875,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 0,
+      "idleAdvanceMinutes": 33,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "f56ad7423df8696751f0b9bb18407ce1a20dcedf7cc88078495636aac9c14857"
+    },
+    {
+      "name": "randomReasonable",
+      "publicationMinutes": 107.80416666666666,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 6,
+      "idleAdvanceMinutes": 26.516666666666666,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "1ba0dfd4087f20045acd119aa3f43d62fd9880e3f00f886aaf051b83675d769e"
+    },
+    {
+      "name": "longOffline",
+      "publicationMinutes": 110.03899886664473,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 4,
+      "idleAdvanceMinutes": 50,
+      "offlineAdvanceMinutes": 157.83170640540538,
+      "deterministicHash": "bd28129e1c34ba27677ec787767dc9d649d9e75d57ccbf1f3dcfa4a2a2c2092a"
+    },
+    {
+      "name": "ignoreOneSystem",
+      "publicationMinutes": 97.25,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 0,
+      "idleAdvanceMinutes": 17,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "7870870954370c17139da83faec616c9a67cb077fd8bcb20ffb50d6b668659b2"
+    }
+  ],
+  "personaSessions": [
+    {
+      "persona": "idle-game veteran",
+      "method": "separated self-play audit",
+      "sessions": [
+        "first 5 minutes",
+        "first 30 minutes",
+        "complete Publication run"
+      ],
+      "observations": [
+        "The objective card and ETA establish that waiting executes a plan.",
+        "Queue and completion rules replace repeated revisits without choosing strategy.",
+        "The dense project detail remains optional behind the Projects view."
+      ],
+      "risks": [
+        "Approach value is downstream and may be undervalued by players optimizing ETA."
+      ]
+    },
+    {
+      "persona": "casual player",
+      "method": "separated self-play audit",
+      "sessions": [
+        "first 5 minutes",
+        "first 15 minutes",
+        "first offline return"
+      ],
+      "observations": [
+        "The opening labels its first confirmation as guided rather than strategic.",
+        "Explore creates the first genuine allocation choice after the foundation project.",
+        "Return progress is one summary with a direct next-decision action."
+      ],
+      "risks": [
+        "Project requirement detail may still be dense on a first visit."
+      ]
+    },
+    {
+      "persona": "mathematics student",
+      "method": "separated self-play audit",
+      "sessions": ["first 30 minutes", "complete Publication run"],
+      "observations": [
+        "Definitions, examples, lemmas and proof methods are distinguished.",
+        "Well-Ordering has no false multiplication dependency.",
+        "The capstone requires method-bearing implication edges, not a stock threshold."
+      ],
+      "risks": [
+        "Exact source citations are repository references rather than in-app bibliography entries."
+      ]
+    },
+    {
+      "persona": "non-mathematics player",
+      "method": "separated self-play audit",
+      "sessions": ["first 5 minutes", "first 15 minutes"],
+      "observations": [
+        "Gameplay explanations precede optional mathematics and deeper proof notes.",
+        "No recall question or formal proof input gates progress.",
+        "Technique is described as named learned methods rather than an abstract score."
+      ],
+      "risks": [
+        "Terms such as implication and recursive definition still need external human comprehension testing."
+      ]
+    },
+    {
+      "persona": "mobile player",
+      "method": "responsive self-play audit",
+      "sessions": ["first 15 minutes", "first offline return"],
+      "observations": [
+        "Bottom navigation and 44-pixel stepper controls support one-hand portrait play.",
+        "Projects use a horizontal project strip and single-column detail.",
+        "The Proof Map switches to the structured list below tablet width."
+      ],
+      "risks": [
+        "Real iOS Safari and Android TalkBack devices were not available locally."
+      ]
+    },
+    {
+      "persona": "keyboard-only user",
+      "method": "automated plus separated self-play audit",
+      "sessions": ["first 15 minutes", "complete Publication run"],
+      "observations": [
+        "Every critical action uses native controls with visible focus.",
+        "Dialogs trap focus, support Escape and restore the invoking control.",
+        "The Proof Map structured alternative is fully keyboard operable."
+      ],
+      "risks": ["Independent assistive-technology testing remains required."]
+    }
+  ],
+  "summary": {
+    "policyCount": 15,
+    "policiesPublished": 15,
+    "publicationMedianMinutes": 103.75,
+    "publicationMinMinutes": 93.0375,
+    "publicationMaxMinutes": 113.7875,
+    "activeAdvantageTypical": 0,
+    "activeAdvantageMaximum": 0,
+    "rejectedCommands": 0,
+    "invariantViolations": []
+  }
+}

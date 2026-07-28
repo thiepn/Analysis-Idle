@@ -199,6 +199,15 @@ function decodeState(encoded: Record<string, unknown>): GameState {
     offlineQueuedCompletions: decoded.records.offlineQueuedCompletions ?? 0,
     validCapstones: decoded.records.validCapstones ?? 0,
   };
+  decoded.settings = {
+    reducedMotion: decoded.settings?.reducedMotion ?? false,
+    highContrast: decoded.settings?.highContrast ?? false,
+    notation: decoded.settings?.notation ?? "plain",
+    textScale: decoded.settings?.textScale ?? "standard",
+    announcementVerbosity:
+      decoded.settings?.announcementVerbosity ?? "essential",
+    confirmations: decoded.settings?.confirmations ?? true,
+  };
   return decoded;
 }
 

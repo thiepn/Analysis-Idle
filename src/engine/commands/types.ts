@@ -50,7 +50,13 @@ export type GameCommand =
   | {
       type: "changeSetting";
       payload: {
-        setting: "reducedMotion" | "highContrast" | "notation";
+        setting:
+          | "reducedMotion"
+          | "highContrast"
+          | "notation"
+          | "textScale"
+          | "announcementVerbosity"
+          | "confirmations";
         value: boolean | string;
       };
     }

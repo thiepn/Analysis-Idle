@@ -19,9 +19,19 @@ export default tseslint.config(
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   {
+    files: ["**/*.mjs"],
+    extends: [tseslint.configs.disableTypeChecked],
+    languageOptions: {
+      globals: {
+        console: "readonly",
+        process: "readonly",
+      },
+    },
+  },
+  {
     files: [
       "src/**/*.{ts,tsx}",
-      "tools/{simulator,phase1}/**/*.ts",
+      "tools/{simulator,phase1,phase2}/**/*.ts",
       "tests/**/*.{ts,tsx}",
       "*.config.ts",
     ],

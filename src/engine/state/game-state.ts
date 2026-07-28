@@ -116,6 +116,9 @@ export interface GameState {
     reducedMotion: boolean;
     highContrast: boolean;
     notation: "plain" | "unicode";
+    textScale: "standard" | "large";
+    announcementVerbosity: "essential" | "all";
+    confirmations: boolean;
   };
   rng: RngState;
   records: {
@@ -240,7 +243,14 @@ export function createInitialState(
     assembledCapstoneEdges: [],
     chapters,
     masteryArtifacts: [],
-    settings: { reducedMotion: false, highContrast: false, notation: "plain" },
+    settings: {
+      reducedMotion: false,
+      highContrast: false,
+      notation: "plain",
+      textScale: "standard",
+      announcementVerbosity: "essential",
+      confirmations: true,
+    },
     rng: createRng(seed),
     records: {
       totalActiveMs: 0,

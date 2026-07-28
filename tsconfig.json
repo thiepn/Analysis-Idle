@@ -17,12 +17,13 @@
     "noImplicitOverride": true,
     "noFallthroughCasesInSwitch": true,
     "noEmit": true,
-    "types": ["node", "vitest/globals"]
+    "types": ["node", "vitest/globals", "vite/client"]
   },
   "include": [
     "src",
     "tools/simulator",
     "tools/phase1",
+    "tools/phase2",
     "tests",
     "vite.config.ts",
     "vitest.config.ts"

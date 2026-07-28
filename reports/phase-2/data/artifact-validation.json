@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "checks": [
+    {
+      "id": "content-project-count",
+      "passed": true,
+      "detail": "12 projects"
+    },
+    {
+      "id": "content-upgrade-count",
+      "passed": true,
+      "detail": "15 upgrades"
+    },
+    {
+      "id": "content-milestone-count",
+      "passed": true,
+      "detail": "11 milestones"
+    },
+    {
+      "id": "content-achievement-count",
+      "passed": true,
+      "detail": "10 achievements"
+    },
+    {
+      "id": "content-approach-count",
+      "passed": true,
+      "detail": "3 approaches"
+    },
+    {
+      "id": "two-stock-model",
+      "passed": true,
+      "detail": "2 stocks; Technique is non-stock"
+    },
+    {
+      "id": "achievement-no-power",
+      "passed": true,
+      "detail": "all achievement rewards are badge/history or explicit non-power classes"
+    },
+    {
+      "id": "raw-latex-excluded",
+      "passed": true,
+      "detail": "player-facing source contains no raw LaTeX commands"
+    },
+    {
+      "id": "mandatory-click-production-excluded",
+      "passed": true,
+      "detail": "production advances through explicit time commands, not click production"
+    },
+    {
+      "id": "dist-exists",
+      "passed": true,
+      "detail": "production dist directory exists"
+    },
+    {
+      "id": "phase2-js-budget",
+      "passed": true,
+      "detail": "64823 gzip bytes against a realistic 90 KiB Phase 2 budget"
+    },
+    {
+      "id": "phase2-css-budget",
+      "passed": true,
+      "detail": "6627 gzip bytes against a 15 KiB Phase 2 budget"
+    },
+    {
+      "id": "source-maps-excluded",
+      "passed": true,
+      "detail": "production source maps are absent"
+    },
+    {
+      "id": "vite-base-path",
+      "passed": true,
+      "detail": "built asset URLs use /Analysis-Idle/"
+    }
+  ]
+}

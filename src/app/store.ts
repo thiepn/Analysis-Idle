@@ -24,6 +24,7 @@ import { WriterCoordinator } from "../platform/ownership/coordinator";
 import { createBrowserOwnershipAdapter } from "../platform/ownership/browser-services";
 import { sanitizeElapsed } from "../platform/time/clock";
 import { advanceOffline } from "../platform/time/offline";
+import { importantEventMessage } from "../ui/notifications";
 
 export interface StoreSnapshot {
   state: GameState;
@@ -31,6 +32,26 @@ export interface StoreSnapshot {
   lastResult: CommandResult | null;
   statusMessage: string;
   exportText: string;
+  saveState: "saved" | "dirty" | "saving" | "error";
+  lastSavedAtMs: number | null;
+  generation: number;
+  writer: boolean;
+  legacyFound: boolean;
+  recoverySource: string | null;
+  offlineSummary: OfflineSummary | null;
+}
+
+export interface OfflineSummary {
+  elapsedMs: number;
+  creditedMs: number;
+  discardedMs: number;
+  resourceChanges: Record<string, number>;
+  completedProjectIds: string[];
+  reachedMilestoneIds: string[];
+  recordedAchievementIds: string[];
+  stoppedForDecision: boolean;
+  stopReason: string | null;
+  policyTrace: string[];
 }
 
 export interface AppStore {
@@ -40,21 +61,77 @@ export interface AppStore {
   save(): Promise<void>;
   load(): void;
   export(): void;
+  exportLegacy(): string | null;
+  previewImport(text: string): SaveValidationResult;
   import(text: string): SaveValidationResult;
+  dismissOfflineSummary(): void;
   initialize(): Promise<void>;
 }
 
-export function createAppStore(seed = 12_345): AppStore {
+export function summarizeOffline(
+  before: GameState,
+  after: GameState,
+  elapsedMs: number,
+  creditedMs: number,
+  discardedMs: number,
+  policyTrace: string[],
+): OfflineSummary {
+  return {
+    elapsedMs,
+    creditedMs,
+    discardedMs,
+    resourceChanges: Object.fromEntries(
+      Object.keys(after.resources).map((id) => [
+        id,
+        (after.resources[id] ?? 0) - (before.resources[id] ?? 0),
+      ]),
+    ),
+    completedProjectIds: Object.values(after.projects)
+      .filter(
+        (project) =>
+          project.status === "completed" &&
+          before.projects[project.id]?.status !== "completed",
+      )
+      .map((project) => project.id),
+    reachedMilestoneIds: after.reachedMilestones.filter(
+      (id) => !before.reachedMilestones.includes(id),
+    ),
+    recordedAchievementIds: after.recordedAchievements.filter(
+      (id) => !before.recordedAchievements.includes(id),
+    ),
+    stoppedForDecision: after.diagnostics.unresolvedDecision !== null,
+    stopReason: after.diagnostics.unresolvedDecision,
+    policyTrace,
+  };
+}
+
+export function createAppStore(
+  seed = 12_345,
+  initialState?: GameState,
+): AppStore {
   let snapshot: StoreSnapshot = {
-    state: createInitialState(naturalNumbersContent, seed),
+    state: initialState
+      ? structuredClone(initialState)
+      : createInitialState(naturalNumbersContent, seed),
     events: [],
     lastResult: null,
-    statusMessage: "Engine ready.",
+    statusMessage: "Ready. Your plan advances with time.",
     exportText: "",
+    saveState: "saved",
+    lastSavedAtMs: null,
+    generation: 0,
+    writer: true,
+    legacyFound: false,
+    recoverySource: null,
+    offlineSummary: null,
   };
   let generation = 0;
   let indexedDbHistory: IndexedDbHistory | null = null;
   let writer = true;
+  let simulationTimer: number | null = null;
+  let hiddenAtMs: number | null = null;
+  let lastMonotonicMs =
+    typeof performance === "undefined" ? 0 : performance.now();
   const listeners = new Set<() => void>();
   const notify = () => listeners.forEach((listener) => listener());
   const update = (patch: Partial<StoreSnapshot>) => {
@@ -64,11 +141,12 @@ export function createAppStore(seed = 12_345): AppStore {
 
   const persist = async (): Promise<void> => {
     if (!writer) return;
+    update({ saveState: "saving" });
     const saveEnvelope = createSaveEnvelope(snapshot.state, {
       generation: generation + 1,
       savedAtMs: Date.now(),
-      sessionId: "debug-ui",
-      buildId: "phase-1",
+      sessionId: "player-ui",
+      buildId: "phase-2",
     });
     try {
       const result = await saveWithRotation(
@@ -78,10 +156,16 @@ export function createAppStore(seed = 12_345): AppStore {
         indexedDbHistory ?? undefined,
       );
       generation = result.generation;
-      update({ statusMessage: result.message });
+      update({
+        statusMessage: result.message,
+        saveState: "saved",
+        lastSavedAtMs: saveEnvelope.savedAtMs,
+        generation,
+      });
     } catch (error) {
       update({
         statusMessage: `SAVE_FAILED: ${error instanceof Error ? error.message : "Unknown save error"}`,
+        saveState: "error",
       });
       throw error;
     }
@@ -117,11 +201,17 @@ export function createAppStore(seed = 12_345): AppStore {
       naturalNumbersContent,
     );
     if (result.accepted) {
+      const importantMessage = importantEventMessage(result.events);
       update({
         state: result.state,
         events: [...snapshot.events, ...result.events].slice(-100),
         lastResult: result,
-        statusMessage: `${command.type} accepted.`,
+        statusMessage:
+          importantMessage ??
+          (command.type === "advanceTime"
+            ? snapshot.statusMessage
+            : `${command.type} accepted.`),
+        saveState: "dirty",
       });
       saveScheduler.markAcceptedCommand();
       if (command.type === "publishChapter") void saveScheduler.flush();
@@ -153,15 +243,30 @@ export function createAppStore(seed = 12_345): AppStore {
         state,
         naturalNumbersContent,
         elapsed.elapsedMs,
-        false,
+        true,
       );
+      const before = state;
       state = advanced.state;
-      offlineMessage = ` Offline credited ${advanced.creditedMs} ms${advanced.stoppedForDecision ? " and stopped at a decision" : ""}.`;
+      offlineMessage = ` Offline progress reconciled${advanced.stoppedForDecision ? " and stopped at a decision" : ""}.`;
+      update({
+        offlineSummary: summarizeOffline(
+          before,
+          state,
+          elapsed.rawElapsedMs,
+          advanced.creditedMs,
+          advanced.discardedMs,
+          advanced.policyTrace,
+        ),
+      });
     }
     if (elapsed.anomaly !== "NONE") state.records.clockAnomalies += 1;
     update({
       state,
       statusMessage: `Loaded generation ${generation} from ${result.source}.${offlineMessage}`,
+      generation,
+      lastSavedAtMs: result.envelope.savedAtMs,
+      saveState: "saved",
+      recoverySource: result.source,
     });
   };
 
@@ -186,6 +291,7 @@ export function createAppStore(seed = 12_345): AppStore {
       else if (result.status === "LEGACY_V1_FOUND")
         update({
           statusMessage: "LEGACY_V1_FOUND: legacy data remains untouched.",
+          legacyFound: true,
         });
       else
         update({
@@ -197,14 +303,35 @@ export function createAppStore(seed = 12_345): AppStore {
         createSaveEnvelope(snapshot.state, {
           generation: generation + 1,
           savedAtMs: Date.now(),
-          sessionId: "debug-ui",
-          buildId: "phase-1",
+          sessionId: "player-ui",
+          buildId: "phase-2",
         }),
       );
       update({
         exportText: text,
         statusMessage: "Export prepared as inert JSON text.",
       });
+    },
+    exportLegacy() {
+      const legacy = localStorage.getItem("mathIdleSave");
+      if (legacy === null) {
+        update({ statusMessage: "No legacy v1 save was found." });
+        return null;
+      }
+      update({
+        statusMessage:
+          "Legacy v1 save copied as read-only text. It was not changed or converted.",
+      });
+      return legacy;
+    },
+    previewImport(text) {
+      const result = previewImport(text, naturalNumbersContent);
+      update({
+        statusMessage: result.valid
+          ? `Import validated: generation ${result.envelope.generation}, content ${result.envelope.contentVersion}. Confirm to replace the current game.`
+          : `${result.code}: ${result.message}`,
+      });
+      return result;
     },
     import(text) {
       const result = previewImport(text, naturalNumbersContent);
@@ -224,8 +351,8 @@ export function createAppStore(seed = 12_345): AppStore {
           const imported = createSaveEnvelope(result.state, {
             generation: Math.max(generation, result.envelope.generation) + 1,
             savedAtMs: Date.now(),
-            sessionId: "debug-ui-import",
-            buildId: "phase-1",
+            sessionId: "player-ui-import",
+            buildId: "phase-2",
           });
           promoteLocalSave(localStorage, imported, naturalNumbersContent);
           if (indexedDbHistory)
@@ -239,6 +366,10 @@ export function createAppStore(seed = 12_345): AppStore {
           update({
             state: result.state,
             statusMessage: `Imported validated generation ${generation}.`,
+            generation,
+            lastSavedAtMs: imported.savedAtMs,
+            saveState: "saved",
+            recoverySource: "import",
           });
         } catch (error) {
           localStorage.removeItem(SAVE_KEYS.staging);
@@ -251,6 +382,9 @@ export function createAppStore(seed = 12_345): AppStore {
         }
       } else update({ statusMessage: `${result.code}: ${result.message}` });
       return result;
+    },
+    dismissOfflineSummary() {
+      update({ offlineSummary: null });
     },
     async initialize() {
       let candidates: string[] = [];
@@ -277,6 +411,7 @@ export function createAppStore(seed = 12_345): AppStore {
       const ownership = await coordinator.acquire();
       writer = ownership.writer;
       ownershipAdapter.setWriter(writer);
+      update({ writer });
       let ownershipRefreshInFlight = false;
       const renewal = window.setInterval(() => {
         if (ownershipRefreshInFlight) return;
@@ -286,6 +421,7 @@ export function createAppStore(seed = 12_345): AppStore {
             ownershipAdapter.setWriter(false);
             update({
               statusMessage: "Writer ownership was lost; tab is passive.",
+              writer: false,
             });
           }
           return;
@@ -296,7 +432,10 @@ export function createAppStore(seed = 12_345): AppStore {
           .then((takeover) => {
             writer = takeover.writer;
             ownershipAdapter.setWriter(writer);
-            if (writer) update({ statusMessage: takeover.diagnostic });
+            update({
+              writer,
+              ...(writer ? { statusMessage: takeover.diagnostic } : {}),
+            });
           })
           .finally(() => {
             ownershipRefreshInFlight = false;
@@ -306,6 +445,7 @@ export function createAppStore(seed = 12_345): AppStore {
         "pagehide",
         () => {
           window.clearInterval(renewal);
+          if (simulationTimer !== null) window.clearInterval(simulationTimer);
           coordinator.release();
           ownershipAdapter.close();
         },
@@ -320,8 +460,65 @@ export function createAppStore(seed = 12_345): AppStore {
       else if (result.status === "LEGACY_V1_FOUND")
         update({
           statusMessage: "LEGACY_V1_FOUND: legacy data remains untouched.",
+          legacyFound: true,
         });
       else update({ statusMessage: ownership.diagnostic });
+
+      const advanceVisibleTime = () => {
+        if (!writer || document.visibilityState === "hidden") return;
+        const now = performance.now();
+        const durationMs = Math.min(1_000, Math.max(0, now - lastMonotonicMs));
+        lastMonotonicMs = now;
+        if (durationMs < 1) return;
+        dispatch({
+          type: "advanceTime",
+          payload: { durationMs, offline: false, safePolicy: false },
+        });
+      };
+      simulationTimer = window.setInterval(advanceVisibleTime, 250);
+
+      const onVisibilityChange = () => {
+        if (document.visibilityState === "hidden") {
+          hiddenAtMs = Date.now();
+          void saveScheduler.flush().catch(() => undefined);
+          return;
+        }
+        lastMonotonicMs = performance.now();
+        if (hiddenAtMs === null || !writer) return;
+        const wallDurationMs = Math.max(0, Date.now() - hiddenAtMs);
+        hiddenAtMs = null;
+        if (wallDurationMs < 1_000) return;
+        const before = snapshot.state;
+        const advanced = advanceOffline(
+          before,
+          naturalNumbersContent,
+          wallDurationMs,
+          true,
+        );
+        update({
+          state: advanced.state,
+          saveState: "dirty",
+          offlineSummary: summarizeOffline(
+            before,
+            advanced.state,
+            wallDurationMs,
+            advanced.creditedMs,
+            advanced.discardedMs,
+            advanced.policyTrace,
+          ),
+          statusMessage: advanced.stoppedForDecision
+            ? "Return progress stopped at a decision."
+            : "Return progress applied from your saved plan.",
+        });
+        saveScheduler.markAcceptedCommand();
+      };
+      document.addEventListener("visibilitychange", onVisibilityChange);
+      window.addEventListener(
+        "pagehide",
+        () =>
+          document.removeEventListener("visibilitychange", onVisibilityChange),
+        { once: true },
+      );
     },
   };
 }

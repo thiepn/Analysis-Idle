@@ -693,7 +693,9 @@ export function reduceCommand(
     case "changeSetting": {
       const { setting, value } = command.payload;
       if (
-        (setting === "reducedMotion" || setting === "highContrast") &&
+        (setting === "reducedMotion" ||
+          setting === "highContrast" ||
+          setting === "confirmations") &&
         typeof value !== "boolean"
       )
         return reject(
@@ -706,6 +708,22 @@ export function reduceCommand(
           state,
           "INVALID_SETTINGS_VALUE",
           "Notation must be plain or unicode",
+        );
+      if (setting === "textScale" && value !== "standard" && value !== "large")
+        return reject(
+          state,
+          "INVALID_SETTINGS_VALUE",
+          "Text scale must be standard or large",
+        );
+      if (
+        setting === "announcementVerbosity" &&
+        value !== "essential" &&
+        value !== "all"
+      )
+        return reject(
+          state,
+          "INVALID_SETTINGS_VALUE",
+          "Announcement verbosity must be essential or all",
         );
       Object.assign(next.settings, { [setting]: value });
       events.push({ type: "settingChanged", setting, value });

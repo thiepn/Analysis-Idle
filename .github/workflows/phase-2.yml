@@ -1,0 +1,38 @@
+name: Phase 2 validation
+
+on:
+  pull_request:
+    branches: [v2/integration]
+  push:
+    branches: [phase/02-natural-numbers-vertical-slice]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Full immutable-baseline and Phase 2 gate
+        run: npm run ci
+      - name: Import boundaries
+        run: node tools/phase1/validate-boundaries.mjs
+      - name: Exact production build
+        run: npm run exact-build:smoke
+      - name: Generated reports are stable
+        run: git diff --exit-code -- reports/phase-0 reports/phase-1 reports/phase-2
+      - name: Upload validation artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase-2-validation
+          path: |
+            dist/
+            reports/phase-2/
