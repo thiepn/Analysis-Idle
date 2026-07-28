@@ -1,0 +1,336 @@
+{
+  "format": "analysis-idle-v2",
+  "schemaVersion": 1,
+  "contentVersion": "phase1-nn-fixture-1",
+  "buildId": "phase-1",
+  "generation": 3,
+  "savedAtMs": 3000,
+  "sessionId": "published",
+  "state": {
+    "schemaVersion": 1,
+    "contentVersion": "phase1-nn-fixture-1",
+    "sequence": 253,
+    "logicalTimeMs": 5627250,
+    "resources": {
+      "PRECISION": "0",
+      "INTUITION": "0"
+    },
+    "attention": {
+      "capacity": 3,
+      "allocations": {}
+    },
+    "activityEnabled": {
+      "FORMALIZE": false,
+      "EXPLORE": false
+    },
+    "activityProduction": {
+      "FORMALIZE": {
+        "segmentElapsedMs": 0,
+        "segmentProduced": "0",
+        "ratePerSecond": "0"
+      },
+      "EXPLORE": {
+        "segmentElapsedMs": 0,
+        "segmentProduced": "0",
+        "ratePerSecond": "0"
+      }
+    },
+    "projects": {
+      "nn.project.zero_successor": {
+        "id": "nn.project.zero_successor",
+        "status": "cancelled",
+        "approachId": "FORMAL",
+        "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
+        "reservedPrecision": "0",
+        "reservedIntuition": "0",
+        "starts": 1,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
+      },
+      "nn.project.peano_frame": {
+        "id": "nn.project.peano_frame",
+        "status": "cancelled",
+        "approachId": "EXPLORATORY",
+        "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
+        "reservedPrecision": "0",
+        "reservedIntuition": "0",
+        "starts": 1,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
+      },
+      "nn.project.primitive_recursion": {
+        "id": "nn.project.primitive_recursion",
+        "status": "cancelled",
+        "approachId": "CONSTRUCTIVE",
+        "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
+        "reservedPrecision": "0",
+        "reservedIntuition": "0",
+        "starts": 1,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
+      },
+      "nn.project.addition": {
+        "id": "nn.project.addition",
+        "status": "cancelled",
+        "approachId": "FORMAL",
+        "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
+        "reservedPrecision": "0",
+        "reservedIntuition": "0",
+        "starts": 1,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
+      },
+      "nn.project.addition_lemmas": {
+        "id": "nn.project.addition_lemmas",
+        "status": "cancelled",
+        "approachId": "EXPLORATORY",
+        "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
+        "reservedPrecision": "0",
+        "reservedIntuition": "0",
+        "starts": 1,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
+      },
+      "nn.project.multiplication": {
+        "id": "nn.project.multiplication",
+        "status": "cancelled",
+        "approachId": "CONSTRUCTIVE",
+        "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
+        "reservedPrecision": "0",
+        "reservedIntuition": "0",
+        "starts": 1,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
+      },
+      "nn.project.induction_walkthrough": {
+        "id": "nn.project.induction_walkthrough",
+        "status": "cancelled",
+        "approachId": "FORMAL",
+        "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
+        "reservedPrecision": "0",
+        "reservedIntuition": "0",
+        "starts": 1,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
+      },
+      "nn.project.counterexample_lab": {
+        "id": "nn.project.counterexample_lab",
+        "status": "cancelled",
+        "approachId": "EXPLORATORY",
+        "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
+        "reservedPrecision": "0",
+        "reservedIntuition": "0",
+        "starts": 1,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
+      },
+      "nn.project.strong_induction": {
+        "id": "nn.project.strong_induction",
+        "status": "cancelled",
+        "approachId": "CONSTRUCTIVE",
+        "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
+        "reservedPrecision": "0",
+        "reservedIntuition": "0",
+        "starts": 1,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
+      },
+      "nn.project.well_ordering": {
+        "id": "nn.project.well_ordering",
+        "status": "cancelled",
+        "approachId": "FORMAL",
+        "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
+        "reservedPrecision": "0",
+        "reservedIntuition": "0",
+        "starts": 1,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
+      },
+      "nn.project.least_counterexample": {
+        "id": "nn.project.least_counterexample",
+        "status": "cancelled",
+        "approachId": "EXPLORATORY",
+        "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
+        "reservedPrecision": "0",
+        "reservedIntuition": "0",
+        "starts": 1,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
+      },
+      "nn.project.equivalence_capstone": {
+        "id": "nn.project.equivalence_capstone",
+        "status": "cancelled",
+        "approachId": "CONSTRUCTIVE",
+        "progress": "0",
+        "progressSegmentElapsedMs": 0,
+        "progressSegmentStart": "0",
+        "progressRatePerSecond": "0",
+        "reservedPrecision": "0",
+        "reservedIntuition": "0",
+        "starts": 1,
+        "approachesSeen": [],
+        "insightSpentThisRun": false
+      }
+    },
+    "projectQueue": [],
+    "completionBehavior": "pause",
+    "resourceReserves": {
+      "PRECISION": "0",
+      "INTUITION": "0"
+    },
+    "automationPriority": [
+      "queue",
+      "completionBehavior",
+      "resourceReserve",
+      "orderedPriority",
+      "safeOfflinePolicy"
+    ],
+    "automationRules": [],
+    "automationTrace": [],
+    "ownedUpgrades": [
+      "nn.info.rate_ledger",
+      "nn.activity.explore",
+      "nn.capstone.equivalence_map",
+      "nn.compression.publication_index"
+    ],
+    "ownedArtifacts": [
+      "nn.artifact.addition_lemmas",
+      "nn.artifact.strong_induction",
+      "nn.artifact.well_ordering",
+      "nn.artifact.least_counterexample"
+    ],
+    "techniqueRecords": {
+      "nn.artifact.addition_lemmas": {
+        "artifactId": "nn.artifact.addition_lemmas",
+        "sourceProjectId": "nn.project.addition_lemmas",
+        "approachId": "EXPLORATORY",
+        "outputKind": "reveal",
+        "acquiredAtLogicalTimeMs": 1178250
+      },
+      "nn.artifact.strong_induction": {
+        "artifactId": "nn.artifact.strong_induction",
+        "sourceProjectId": "nn.project.strong_induction",
+        "approachId": "CONSTRUCTIVE",
+        "outputKind": "template",
+        "acquiredAtLogicalTimeMs": 3062250
+      },
+      "nn.artifact.well_ordering": {
+        "artifactId": "nn.artifact.well_ordering",
+        "sourceProjectId": "nn.project.well_ordering",
+        "approachId": "FORMAL",
+        "outputKind": "lemma",
+        "acquiredAtLogicalTimeMs": 3632250
+      },
+      "nn.artifact.least_counterexample": {
+        "artifactId": "nn.artifact.least_counterexample",
+        "sourceProjectId": "nn.project.least_counterexample",
+        "approachId": "EXPLORATORY",
+        "outputKind": "reveal",
+        "acquiredAtLogicalTimeMs": 4172250
+      }
+    },
+    "reachedMilestones": [
+      "nn.milestone.zero_named",
+      "nn.milestone.successor_closed",
+      "nn.milestone.peano_framed",
+      "nn.milestone.recursion_available",
+      "nn.milestone.operations_built",
+      "nn.milestone.approach_selected",
+      "nn.milestone.induction_template",
+      "nn.milestone.stronger_hypothesis",
+      "nn.milestone.least_element",
+      "nn.milestone.equivalent_foundations",
+      "nn.milestone.published"
+    ],
+    "recordedAchievements": [
+      "nn.achievement.first_successor",
+      "nn.achievement.without_shortcut",
+      "nn.achievement.two_ways_forward",
+      "nn.achievement.peano_frame",
+      "nn.achievement.counterexample_found",
+      "nn.achievement.least_of_all",
+      "nn.achievement.full_circle",
+      "nn.achievement.exact_hypothesis",
+      "nn.achievement.published_foundations"
+    ],
+    "understanding": "12",
+    "insight": "3",
+    "insightSpent": "0",
+    "insightModifiers": [],
+    "assembledCapstoneEdges": [],
+    "chapters": {
+      "nn.chapter.natural_numbers": "published"
+    },
+    "masteryArtifacts": ["mastery.induction_framework"],
+    "settings": {
+      "reducedMotion": false,
+      "highContrast": false,
+      "notation": "plain"
+    },
+    "rng": {
+      "algorithm": "xoshiro128ss",
+      "words": [2258480790, 3283241497, 613117429, 2940958500],
+      "draws": 0
+    },
+    "records": {
+      "totalActiveMs": 5627250,
+      "totalOfflineCreditedMs": 0,
+      "publications": 1,
+      "completedProjects": 12,
+      "approachComparisons": 8,
+      "exactDependencyCompletions": 1,
+      "projectsCompletedWithoutInsight": 12,
+      "offlineQueuedCompletions": 0,
+      "validCapstones": 1,
+      "clockAnomalies": 0
+    },
+    "diagnostics": {
+      "lastRejectionCode": null,
+      "invariantViolations": [],
+      "unresolvedDecision": null
+    }
+  },
+  "migration": {
+    "from": 1,
+    "to": 1,
+    "applied": []
+  },
+  "replayMetadata": {
+    "lastCommandSequence": 253,
+    "eventDigest": null
+  },
+  "checksum": "fnv1a32:edb6633e"
+}

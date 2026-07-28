@@ -1,0 +1,21 @@
+{
+  "supported": [
+    "constant",
+    "all",
+    "any",
+    "not",
+    "resourceAtLeast",
+    "projectCompleted",
+    "projectStarted",
+    "upgradeOwned",
+    "milestoneReached",
+    "achievementRecorded",
+    "chapterStatus",
+    "attentionCapacityAtLeast",
+    "techniqueArtifactOwned",
+    "understandingAtLeast",
+    "insightAtLeast",
+    "recordAtLeast"
+  ],
+  "arbitraryCallbacks": false
+}

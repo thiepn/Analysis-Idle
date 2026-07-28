@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "verdict": "PASS_WITH_CORRECTIONS",
+  "local": {
+    "pass": true,
+    "tests": {
+      "unit": 24,
+      "integration": 7,
+      "determinismAndSimulator": 20,
+      "persistence": 18,
+      "content": 6,
+      "ui": 5,
+      "total": 80
+    },
+    "content": true,
+    "policies": 15,
+    "saves": 21,
+    "determinismDigest": "529c97fcc770ff77c1fb099fb23501a312e406efbdc1ec2d52f2e99e04dddbba",
+    "offlineEquivalent": true,
+    "bundleGates": {
+      "buildOutputPresent": true,
+      "applicationJsGzip": true,
+      "entryJsGzip": true,
+      "cssGzip": true,
+      "initialShellGzip": true,
+      "sourceMapsExcluded": true,
+      "simulatorThroughput": true,
+      "offlineCatchup": true,
+      "debugUiRender": "PASS via UI smoke suite"
+    }
+  },
+  "remote": {
+    "status": "SUCCESS",
+    "phase0": {
+      "runId": 29959499665,
+      "conclusion": "success",
+      "url": "https://github.com/thiepn/Analysis-Idle/actions/runs/29959499665",
+      "headSha": "cd0aa91380f022c3c66096391214e90a6ff4f8b1"
+    },
+    "phase1": {
+      "runId": 29959499575,
+      "conclusion": "success",
+      "url": "https://github.com/thiepn/Analysis-Idle/actions/runs/29959499575",
+      "headSha": "cd0aa91380f022c3c66096391214e90a6ff4f8b1"
+    },
+    "note": "Phase 0 pull-request run 29959499665, Phase 1 pull-request run 29959499575, and Phase 1 push run 29959495757 all succeeded on cd0aa91380f022c3c66096391214e90a6ff4f8b1."
+  }
+}

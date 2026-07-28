@@ -1,0 +1,37 @@
+name: Phase 1 validation
+
+on:
+  pull_request:
+    branches: [v2/integration]
+  push:
+    branches: [phase/01-deterministic-engine]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Boundary validation compares the PR tree with the immutable v1
+          # commit. Fetch the history needed to make that comparison real.
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run ci
+      - name: Import boundaries
+        run: node tools/phase1/validate-boundaries.mjs
+      - name: Generated reports are stable
+        run: git diff --exit-code -- reports/phase-1
+      - name: Upload validation artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase-1-validation
+          path: |
+            dist/
+            reports/phase-1/

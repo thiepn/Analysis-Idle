@@ -1,0 +1,670 @@
+{
+  "baseSha": "933ba5d67b22362c3f5d45e6b35eb481701793ab",
+  "reviewStartSha": "3cd4ee7a5376dd3330f4cff065b1bef4bcc36843",
+  "files": [
+    {
+      "status": "M",
+      "path": ".github/workflows/phase-0.yml",
+      "category": "CI"
+    },
+    {
+      "status": "A",
+      "path": ".github/workflows/phase-1.yml",
+      "category": "CI"
+    },
+    {
+      "status": "M",
+      "path": ".gitignore",
+      "category": "DOCUMENTATION"
+    },
+    {
+      "status": "A",
+      "path": ".prettierignore",
+      "category": "DOCUMENTATION"
+    },
+    {
+      "status": "M",
+      "path": "docs/balance/NATURAL_NUMBERS_BALANCE.md",
+      "category": "DOCUMENTATION"
+    },
+    {
+      "status": "M",
+      "path": "docs/technical/DEPENDENCY_DECISIONS.md",
+      "category": "DOCUMENTATION"
+    },
+    {
+      "status": "A",
+      "path": "eslint.config.js",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "M",
+      "path": "experiments/models.test.ts",
+      "category": "DOCUMENTATION"
+    },
+    {
+      "status": "M",
+      "path": "experiments/models.ts",
+      "category": "DOCUMENTATION"
+    },
+    {
+      "status": "M",
+      "path": "package-lock.json",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "M",
+      "path": "package.json",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "M",
+      "path": "reports/phase-0/data/attention-model-results.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "M",
+      "path": "reports/phase-0/data/determinism-manifest.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/ACCESSIBILITY_SMOKE_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/ATTENTION_MODEL_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/BALANCE_AND_POLICY_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/BUNDLE_AND_PERFORMANCE_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/CONDITION_COVERAGE_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/CONTENT_VALIDATION_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/DEPENDENCY_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/EFFECT_STACK_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/ENGINE_DETERMINISM_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/NUMERICAL_RANGE_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/OFFLINE_EQUIVALENCE_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/PHASE_1_COMPLETION_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/PHASE_2_HANDOFF.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/SAVE_AND_MIGRATION_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/SPEC_CONFLICTS.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/STATE_INVARIANT_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/TECHNIQUE_MODEL_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/VALIDATION_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/data/attention-model.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/data/balance-and-policy.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/data/bundle-and-performance.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/data/condition-coverage.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/data/content-validation.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/data/determinism-manifest.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/data/effect-stack.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/data/numerical-range.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/data/offline-equivalence.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/data/save-fixtures.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/data/state-invariants.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/generated/simulator/balanced.csv",
+      "category": "GENERATED"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/generated/simulator/balanced.json",
+      "category": "GENERATED"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/phase-1-summary.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/ARCHITECTURE_REVIEW.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/BUNDLE_REVIEW.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/CI_FAILURE_ANALYSIS.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/CORRECTION_LOG.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/DETERMINISM_REVIEW.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/DIFF_COVERAGE.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/INDEPENDENT_REVIEW_REPORT.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/OFFLINE_REVIEW.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/PARAMETER_RECONCILIATION.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/POLICY_DIFFERENTIATION_REVIEW.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/SAVE_REVIEW.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/TEST_COVERAGE_GAPS.md",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/data/ci-failure-analysis.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/data/diff-coverage.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/data/parameter-reconciliation.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/data/remote-ci-verification.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/review-summary.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/review/validation-results.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "reports/phase-1/validation-results.json",
+      "category": "REPORT"
+    },
+    {
+      "status": "A",
+      "path": "src/app/App.tsx",
+      "category": "UI"
+    },
+    {
+      "status": "A",
+      "path": "src/app/store.ts",
+      "category": "UI"
+    },
+    {
+      "status": "A",
+      "path": "src/content/index.ts",
+      "category": "CONTENT"
+    },
+    {
+      "status": "A",
+      "path": "src/content/natural-numbers.ts",
+      "category": "CONTENT"
+    },
+    {
+      "status": "A",
+      "path": "src/content/schemas.ts",
+      "category": "CONTENT"
+    },
+    {
+      "status": "A",
+      "path": "src/content/validate.ts",
+      "category": "CONTENT"
+    },
+    {
+      "status": "A",
+      "path": "src/engine/commands/types.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "src/engine/conditions/evaluate.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "src/engine/effects/resolve.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "src/engine/events/types.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "src/engine/index.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "src/engine/numbers/game-number.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "src/engine/reducer/reduce.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "src/engine/rng/xoshiro.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "src/engine/selectors/index.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "src/engine/state/game-state.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "src/engine/state/invariants.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "src/engine/time/advance.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "src/main.tsx",
+      "category": "UI"
+    },
+    {
+      "status": "A",
+      "path": "src/platform/ownership/browser-services.ts",
+      "category": "PERSISTENCE"
+    },
+    {
+      "status": "A",
+      "path": "src/platform/ownership/coordinator.ts",
+      "category": "PERSISTENCE"
+    },
+    {
+      "status": "A",
+      "path": "src/platform/persistence/checksum.ts",
+      "category": "PERSISTENCE"
+    },
+    {
+      "status": "A",
+      "path": "src/platform/persistence/envelope.ts",
+      "category": "PERSISTENCE"
+    },
+    {
+      "status": "A",
+      "path": "src/platform/persistence/index.ts",
+      "category": "PERSISTENCE"
+    },
+    {
+      "status": "A",
+      "path": "src/platform/persistence/indexed-db.ts",
+      "category": "PERSISTENCE"
+    },
+    {
+      "status": "A",
+      "path": "src/platform/persistence/local-storage.ts",
+      "category": "PERSISTENCE"
+    },
+    {
+      "status": "A",
+      "path": "src/platform/persistence/scheduler.ts",
+      "category": "PERSISTENCE"
+    },
+    {
+      "status": "A",
+      "path": "src/platform/time/clock.ts",
+      "category": "PERSISTENCE"
+    },
+    {
+      "status": "A",
+      "path": "src/platform/time/offline.ts",
+      "category": "PERSISTENCE"
+    },
+    {
+      "status": "A",
+      "path": "src/shared/contracts.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "src/styles.css",
+      "category": "UI"
+    },
+    {
+      "status": "A",
+      "path": "tests/content/content-validation.test.ts",
+      "category": "TEST"
+    },
+    {
+      "status": "A",
+      "path": "tests/determinism/time-replay.test.ts",
+      "category": "TEST"
+    },
+    {
+      "status": "A",
+      "path": "tests/fixtures/saves/corrupt-json.json",
+      "category": "GENERATED"
+    },
+    {
+      "status": "A",
+      "path": "tests/fixtures/saves/current-valid.json",
+      "category": "GENERATED"
+    },
+    {
+      "status": "A",
+      "path": "tests/fixtures/saves/future-unsupported.json",
+      "category": "GENERATED"
+    },
+    {
+      "status": "A",
+      "path": "tests/fixtures/saves/invalid-checksum.json",
+      "category": "GENERATED"
+    },
+    {
+      "status": "A",
+      "path": "tests/fixtures/saves/invalid-schema.json",
+      "category": "GENERATED"
+    },
+    {
+      "status": "A",
+      "path": "tests/fixtures/saves/new-empty-v2.json",
+      "category": "GENERATED"
+    },
+    {
+      "status": "A",
+      "path": "tests/fixtures/saves/older-supported-v2.json",
+      "category": "GENERATED"
+    },
+    {
+      "status": "A",
+      "path": "tests/fixtures/saves/partial-write.json",
+      "category": "GENERATED"
+    },
+    {
+      "status": "A",
+      "path": "tests/fixtures/saves/post-publication.json",
+      "category": "GENERATED"
+    },
+    {
+      "status": "A",
+      "path": "tests/fixtures/saves/rng-replay.json",
+      "category": "GENERATED"
+    },
+    {
+      "status": "A",
+      "path": "tests/helpers.ts",
+      "category": "TEST"
+    },
+    {
+      "status": "A",
+      "path": "tests/integration/lifecycle.test.ts",
+      "category": "TEST"
+    },
+    {
+      "status": "A",
+      "path": "tests/integration/offline-equivalence.test.ts",
+      "category": "TEST"
+    },
+    {
+      "status": "A",
+      "path": "tests/persistence/save.test.ts",
+      "category": "TEST"
+    },
+    {
+      "status": "A",
+      "path": "tests/simulator/policies.test.ts",
+      "category": "TEST"
+    },
+    {
+      "status": "A",
+      "path": "tests/ui/app.test.tsx",
+      "category": "TEST"
+    },
+    {
+      "status": "A",
+      "path": "tests/unit/conditions-effects.test.ts",
+      "category": "TEST"
+    },
+    {
+      "status": "A",
+      "path": "tests/unit/invariants.test.ts",
+      "category": "TEST"
+    },
+    {
+      "status": "A",
+      "path": "tests/unit/numbers-rng.test.ts",
+      "category": "TEST"
+    },
+    {
+      "status": "A",
+      "path": "tests/unit/reducer.test.ts",
+      "category": "TEST"
+    },
+    {
+      "status": "A",
+      "path": "tools/phase1/content-validate.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "tools/phase1/generate-reports.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "tools/phase1/generate-review-reports.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "tools/phase1/save-fixtures.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "tools/phase1/validate-boundaries.mjs",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "tools/simulator/cli/index.ts",
+      "category": "SIMULATOR"
+    },
+    {
+      "status": "A",
+      "path": "tools/simulator/core.ts",
+      "category": "SIMULATOR"
+    },
+    {
+      "status": "A",
+      "path": "tools/simulator/policies/index.ts",
+      "category": "SIMULATOR"
+    },
+    {
+      "status": "A",
+      "path": "tools/simulator/reports/generate.ts",
+      "category": "SIMULATOR"
+    },
+    {
+      "status": "A",
+      "path": "tsconfig.json",
+      "category": "DOCUMENTATION"
+    },
+    {
+      "status": "A",
+      "path": "v2/index.html",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "vite.config.ts",
+      "category": "PRODUCTION"
+    },
+    {
+      "status": "A",
+      "path": "vitest.config.ts",
+      "category": "PRODUCTION"
+    }
+  ],
+  "categoryCounts": {
+    "CI": 2,
+    "CONTENT": 4,
+    "DOCUMENTATION": 7,
+    "GENERATED": 12,
+    "PERSISTENCE": 10,
+    "PRODUCTION": 24,
+    "REPORT": 51,
+    "SIMULATOR": 4,
+    "TEST": 12,
+    "UI": 4
+  },
+  "reviewedCount": 130,
+  "unclassifiedCount": 0
+}

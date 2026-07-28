@@ -7,8 +7,8 @@ Every number below is `PROVISIONAL` and belongs in validated Phase 1 content dat
 | Parameter | Center |
 |---|---:|
 | Attention capacity | 3; fourth unlock mid-chapter |
-| Formalize base rate | 0.18 Precision/s |
-| Explore base rate | 0.14 Intuition/s |
+| Formalize base rate | 0.25 Precision/s (`PROVISIONAL`, Phase 1 simulator calibration) |
+| Explore base rate | 0.20 Intuition/s (`PROVISIONAL`, Phase 1 simulator calibration) |
 | Attention exponent | 0.80 |
 | Initial stock caps | 180 Precision / 150 Intuition |
 | Post-operations caps | 420 / 360 |

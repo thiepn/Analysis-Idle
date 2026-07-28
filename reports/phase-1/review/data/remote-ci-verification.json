@@ -1,0 +1,16 @@
+{
+  "status": "SUCCESS",
+  "phase0": {
+    "runId": 29959499665,
+    "conclusion": "success",
+    "url": "https://github.com/thiepn/Analysis-Idle/actions/runs/29959499665",
+    "headSha": "cd0aa91380f022c3c66096391214e90a6ff4f8b1"
+  },
+  "phase1": {
+    "runId": 29959499575,
+    "conclusion": "success",
+    "url": "https://github.com/thiepn/Analysis-Idle/actions/runs/29959499575",
+    "headSha": "cd0aa91380f022c3c66096391214e90a6ff4f8b1"
+  },
+  "note": "Phase 0 pull-request run 29959499665, Phase 1 pull-request run 29959499575, and Phase 1 push run 29959495757 all succeeded on cd0aa91380f022c3c66096391214e90a6ff4f8b1."
+}

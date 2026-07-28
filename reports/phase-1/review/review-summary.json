@@ -1,0 +1,16 @@
+{
+  "review": "Phase 1 independent adversarial acceptance",
+  "verdict": "PASS_WITH_CORRECTIONS",
+  "repository": "thiepn/Analysis-Idle",
+  "pullRequest": 1,
+  "branch": "phase/01-deterministic-engine",
+  "base": "v2/integration",
+  "baseSha": "933ba5d67b22362c3f5d45e6b35eb481701793ab",
+  "reviewStartSha": "3cd4ee7a5376dd3330f4cff065b1bef4bcc36843",
+  "legacySha": "239d75fd0e223e91703e261d2196953a896609cb",
+  "correctionRequired": true,
+  "localPass": true,
+  "remotePass": true,
+  "mergeReadiness": "READY TO MERGE",
+  "phase2Authorization": "AUTHORIZED AFTER MERGE"
+}

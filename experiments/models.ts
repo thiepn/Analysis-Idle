@@ -21,7 +21,8 @@ export function allocationOutput(allocation: number[], exponent: number, weights
   if (allocation.length !== weights.length || allocation.length === 0) throw new Error("shape mismatch");
   if (allocation.some((value) => !Number.isFinite(value) || value < 0)) throw new Error("invalid allocation");
   if (weights.some((value) => !Number.isFinite(value) || value <= 0)) throw new Error("invalid weight");
-  return allocation.reduce((sum, value, index) => sum + weights[index]! * value ** exponent, 0);
+  const output = allocation.reduce((sum, value, index) => sum + weights[index]! * value ** exponent, 0);
+  return Number(output.toFixed(12));
 }
 
 export function bestAllocation(total: number, exponent: number, weights: number[]): { allocation: number[]; output: number } {

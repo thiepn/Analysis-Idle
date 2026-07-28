@@ -1,0 +1,55 @@
+{
+  "reviewStart": {
+    "phase0RunId": 29668727057,
+    "phase1PullRequestRunId": 29668727067,
+    "phase1PushRunId": 29668013069,
+    "firstCorrectionPushRunId": 29955301982,
+    "secondCorrectionPhase0RunId": 29957795160,
+    "secondCorrectionPhase1PullRequestRunId": 29957794810,
+    "secondCorrectionPhase1PushRunId": 29957792669
+  },
+  "rootCauses": [
+    "actions/checkout used the depth-1 default",
+    "Phase 0 and Phase 1 report-only exponent calculations retained platform-specific floating-point tail digits"
+  ],
+  "missingObject": "239d75fd0e223e91703e261d2196953a896609cb",
+  "evidence": [
+    "fatal: not a tree object",
+    "Error: Command failed: git ls-tree -r --long 239d75fd0e223e91703e261d2196953a896609cb",
+    "one or more of the 22 v1 baseline files differ from the immutable legacy commit",
+    "\"two\": 1.681792830507429 -> 1.6817928305074292",
+    "\"marginalThird\": 0.5977142264473485 -> 0.5977142264473483",
+    "Phase 0 \"output\": 2.681792830507429 -> 2.6817928305074292"
+  ],
+  "correction": {
+    "files": [
+      ".github/workflows/phase-0.yml",
+      ".github/workflows/phase-1.yml",
+      "experiments/models.ts",
+      "experiments/models.test.ts",
+      "tools/simulator/reports/generate.ts",
+      "tools/phase1/generate-reports.ts"
+    ],
+    "changes": [
+      "actions/checkout fetch-depth: 0",
+      "round Phase 0 allocation outputs and Phase 1 comparator floats to 12 decimal places"
+    ],
+    "checksBypassed": false
+  },
+  "finalVerification": {
+    "status": "SUCCESS",
+    "phase0": {
+      "runId": 29959499665,
+      "conclusion": "success",
+      "url": "https://github.com/thiepn/Analysis-Idle/actions/runs/29959499665",
+      "headSha": "cd0aa91380f022c3c66096391214e90a6ff4f8b1"
+    },
+    "phase1": {
+      "runId": 29959499575,
+      "conclusion": "success",
+      "url": "https://github.com/thiepn/Analysis-Idle/actions/runs/29959499575",
+      "headSha": "cd0aa91380f022c3c66096391214e90a6ff4f8b1"
+    },
+    "note": "Phase 0 pull-request run 29959499665, Phase 1 pull-request run 29959499575, and Phase 1 push run 29959495757 all succeeded on cd0aa91380f022c3c66096391214e90a6ff4f8b1."
+  }
+}
