@@ -296,9 +296,7 @@
     "chapters": {
       "nn.chapter.natural_numbers": "published"
     },
-    "masteryArtifacts": [
-      "mastery.induction_framework"
-    ],
+    "masteryArtifacts": ["mastery.induction_framework"],
     "settings": {
       "reducedMotion": false,
       "highContrast": false,
@@ -309,12 +307,7 @@
     },
     "rng": {
       "algorithm": "xoshiro128ss",
-      "words": [
-        2258480790,
-        3283241497,
-        613117429,
-        2940958500
-      ],
+      "words": [2258480790, 3283241497, 613117429, 2940958500],
       "draws": 0
     },
     "records": {
@@ -380,9 +373,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.zero_successor",
       "approachId": "FORMAL",
-      "artifactIds": [
-        "nn.artifact.zero_successor"
-      ]
+      "artifactIds": ["nn.artifact.zero_successor"]
     },
     {
       "type": "timeAdvanced",
@@ -546,9 +537,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.peano_frame",
       "approachId": "EXPLORATORY",
-      "artifactIds": [
-        "nn.artifact.peano_frame"
-      ]
+      "artifactIds": ["nn.artifact.peano_frame"]
     },
     {
       "type": "timeAdvanced",
@@ -724,9 +713,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.primitive_recursion",
       "approachId": "CONSTRUCTIVE",
-      "artifactIds": [
-        "nn.artifact.primitive_recursion"
-      ]
+      "artifactIds": ["nn.artifact.primitive_recursion"]
     },
     {
       "type": "timeAdvanced",
@@ -914,9 +901,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.addition",
       "approachId": "FORMAL",
-      "artifactIds": [
-        "nn.artifact.addition"
-      ]
+      "artifactIds": ["nn.artifact.addition"]
     },
     {
       "type": "timeAdvanced",
@@ -1125,9 +1110,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.addition_lemmas",
       "approachId": "EXPLORATORY",
-      "artifactIds": [
-        "nn.artifact.addition_lemmas"
-      ]
+      "artifactIds": ["nn.artifact.addition_lemmas"]
     },
     {
       "type": "timeAdvanced",
@@ -1344,9 +1327,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.multiplication",
       "approachId": "CONSTRUCTIVE",
-      "artifactIds": [
-        "nn.artifact.multiplication"
-      ]
+      "artifactIds": ["nn.artifact.multiplication"]
     },
     {
       "type": "timeAdvanced",
@@ -1646,9 +1627,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.induction_walkthrough",
       "approachId": "FORMAL",
-      "artifactIds": [
-        "nn.artifact.induction_walkthrough"
-      ]
+      "artifactIds": ["nn.artifact.induction_walkthrough"]
     },
     {
       "type": "timeAdvanced",
@@ -1842,9 +1821,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.counterexample_lab",
       "approachId": "EXPLORATORY",
-      "artifactIds": [
-        "nn.artifact.counterexample_lab"
-      ]
+      "artifactIds": ["nn.artifact.counterexample_lab"]
     },
     {
       "type": "timeAdvanced",
@@ -2245,9 +2222,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.strong_induction",
       "approachId": "CONSTRUCTIVE",
-      "artifactIds": [
-        "nn.artifact.strong_induction"
-      ]
+      "artifactIds": ["nn.artifact.strong_induction"]
     },
     {
       "type": "timeAdvanced",
@@ -2580,9 +2555,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.well_ordering",
       "approachId": "FORMAL",
-      "artifactIds": [
-        "nn.artifact.well_ordering"
-      ]
+      "artifactIds": ["nn.artifact.well_ordering"]
     },
     {
       "type": "timeAdvanced",
@@ -2882,9 +2855,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.least_counterexample",
       "approachId": "EXPLORATORY",
-      "artifactIds": [
-        "nn.artifact.least_counterexample"
-      ]
+      "artifactIds": ["nn.artifact.least_counterexample"]
     },
     {
       "type": "timeAdvanced",
@@ -3687,9 +3658,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.equivalence_capstone",
       "approachId": "CONSTRUCTIVE",
-      "artifactIds": [
-        "nn.artifact.equivalence_capstone"
-      ]
+      "artifactIds": ["nn.artifact.equivalence_capstone"]
     },
     {
       "type": "timeAdvanced",
@@ -8967,9 +8936,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.zero_successor",
       "approachId": "FORMAL",
-      "artifactIds": [
-        "nn.artifact.zero_successor"
-      ]
+      "artifactIds": ["nn.artifact.zero_successor"]
     },
     {
       "type": "projectApproachSwitched",
@@ -8984,9 +8951,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.peano_frame",
       "approachId": "EXPLORATORY",
-      "artifactIds": [
-        "nn.artifact.peano_frame"
-      ]
+      "artifactIds": ["nn.artifact.peano_frame"]
     },
     {
       "type": "projectApproachSwitched",
@@ -9001,9 +8966,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.primitive_recursion",
       "approachId": "CONSTRUCTIVE",
-      "artifactIds": [
-        "nn.artifact.primitive_recursion"
-      ]
+      "artifactIds": ["nn.artifact.primitive_recursion"]
     },
     {
       "type": "projectStarted",
@@ -9013,9 +8976,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.addition",
       "approachId": "FORMAL",
-      "artifactIds": [
-        "nn.artifact.addition"
-      ]
+      "artifactIds": ["nn.artifact.addition"]
     },
     {
       "type": "projectApproachSwitched",
@@ -9030,9 +8991,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.addition_lemmas",
       "approachId": "EXPLORATORY",
-      "artifactIds": [
-        "nn.artifact.addition_lemmas"
-      ]
+      "artifactIds": ["nn.artifact.addition_lemmas"]
     },
     {
       "type": "projectApproachSwitched",
@@ -9047,9 +9006,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.multiplication",
       "approachId": "CONSTRUCTIVE",
-      "artifactIds": [
-        "nn.artifact.multiplication"
-      ]
+      "artifactIds": ["nn.artifact.multiplication"]
     },
     {
       "type": "projectStarted",
@@ -9059,9 +9016,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.induction_walkthrough",
       "approachId": "FORMAL",
-      "artifactIds": [
-        "nn.artifact.induction_walkthrough"
-      ]
+      "artifactIds": ["nn.artifact.induction_walkthrough"]
     },
     {
       "type": "projectApproachSwitched",
@@ -9076,9 +9031,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.counterexample_lab",
       "approachId": "EXPLORATORY",
-      "artifactIds": [
-        "nn.artifact.counterexample_lab"
-      ]
+      "artifactIds": ["nn.artifact.counterexample_lab"]
     },
     {
       "type": "projectApproachSwitched",
@@ -9093,9 +9046,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.strong_induction",
       "approachId": "CONSTRUCTIVE",
-      "artifactIds": [
-        "nn.artifact.strong_induction"
-      ]
+      "artifactIds": ["nn.artifact.strong_induction"]
     },
     {
       "type": "projectStarted",
@@ -9105,9 +9056,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.well_ordering",
       "approachId": "FORMAL",
-      "artifactIds": [
-        "nn.artifact.well_ordering"
-      ]
+      "artifactIds": ["nn.artifact.well_ordering"]
     },
     {
       "type": "projectApproachSwitched",
@@ -9122,9 +9071,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.least_counterexample",
       "approachId": "EXPLORATORY",
-      "artifactIds": [
-        "nn.artifact.least_counterexample"
-      ]
+      "artifactIds": ["nn.artifact.least_counterexample"]
     },
     {
       "type": "projectApproachSwitched",
@@ -9139,9 +9086,7 @@
       "type": "projectCompleted",
       "projectId": "nn.project.equivalence_capstone",
       "approachId": "CONSTRUCTIVE",
-      "artifactIds": [
-        "nn.artifact.equivalence_capstone"
-      ]
+      "artifactIds": ["nn.artifact.equivalence_capstone"]
     }
   ],
   "upgradeTimeline": [
@@ -9249,12 +9194,7 @@
   "automationTrace": [],
   "policyRng": {
     "algorithm": "xoshiro128ss",
-    "words": [
-      17989553,
-      518065051,
-      325355099,
-      307957491
-    ],
+    "words": [17989553, 518065051, 325355099, 307957491],
     "draws": 0
   },
   "publicationTimingMs": 5627250,
