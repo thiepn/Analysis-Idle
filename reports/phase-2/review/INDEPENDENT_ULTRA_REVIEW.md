@@ -1,7 +1,9 @@
 # Phase 2 Independent Ultra Review
 
-Reviewed implementation: `694ec49`  
-Review reconciliation head: `9fcc4e0`  
+Reviewed implementation: `694ec49`
+
+Review reconciliation head: `9fcc4e0`
+
 Branch: `phase/02-natural-numbers-vertical-slice`
 
 ## Verdict
