@@ -18,7 +18,7 @@ const readJson = <T>(path: string, fallback: T): T => {
   }
 };
 const git = (...arguments_: string[]) =>
-  execFileSync("git", arguments_, { cwd: root, encoding: "utf8" }).trim();
+  execFileSync("git", arguments_, { cwd: root, encoding: "utf8" }).trimEnd();
 
 interface ArtifactValidation {
   passed: boolean;
