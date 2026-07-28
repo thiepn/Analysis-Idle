@@ -3,6 +3,8 @@ import type {
   AutomationCapability,
   EffectDefinition,
   GameContent,
+  ApproachId,
+  ProjectDefinition,
   ProjectId,
   ResourceId,
 } from "../../shared/contracts";
@@ -206,4 +208,43 @@ export function resolveProjectSpeed(
     }
   }
   return speed;
+}
+
+export function resolveProjectRequirements(
+  definition: ProjectDefinition,
+  approachId: ApproachId,
+  state: GameState,
+  content: GameContent,
+): { precision: number; intuition: number; work: number } {
+  const approach = content.approaches.find(
+    (candidate) => candidate.id === approachId,
+  );
+  if (!approach) throw new Error(`Unknown approach ${approachId}`);
+  const outputKinds = new Set(
+    content.techniqueArtifacts
+      .filter(
+        (artifact) =>
+          state.ownedArtifacts.includes(artifact.id) &&
+          artifact.compatibleProjectIds.includes(definition.id),
+      )
+      .map((artifact) => state.techniqueRecords[artifact.id]?.outputKind)
+      .filter(
+        (kind): kind is "lemma" | "reveal" | "template" => kind !== undefined,
+      ),
+  );
+  const bonuses = content.configuration.projects.techniqueOutputBonuses;
+  return {
+    precision:
+      definition.precisionRequirement *
+      approach.precisionRequirementMultiplier *
+      (outputKinds.has("lemma") ? 1 - bonuses.lemmaPrecisionDiscount : 1),
+    intuition:
+      definition.intuitionRequirement *
+      approach.intuitionRequirementMultiplier *
+      (outputKinds.has("reveal") ? 1 - bonuses.revealIntuitionDiscount : 1),
+    work:
+      definition.workRequired *
+      approach.workMultiplier *
+      (outputKinds.has("template") ? 1 - bonuses.templateWorkDiscount : 1),
+  };
 }

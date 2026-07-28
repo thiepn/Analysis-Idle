@@ -231,6 +231,7 @@
     "insight": "0",
     "insightSpent": "0",
     "insightModifiers": [],
+    "insightReveals": [],
     "assembledCapstoneEdges": [],
     "chapters": {
       "nn.chapter.natural_numbers": "active"
@@ -238,8 +239,17 @@
     "masteryArtifacts": [],
     "settings": {
       "reducedMotion": false,
+      "animationIntensity": "full",
       "highContrast": false,
-      "notation": "plain"
+      "notation": "plain",
+      "updateRate": "standard",
+      "numberFormat": "standard",
+      "compactLayout": false,
+      "textScale": "standard",
+      "announcementVerbosity": "essential",
+      "offlineSummaryDetail": "detailed",
+      "mathExplanationDepth": "guided",
+      "confirmations": true
     },
     "rng": {
       "algorithm": "xoshiro128ss",
@@ -273,5 +283,5 @@
     "lastCommandSequence": 0,
     "eventDigest": null
   },
-  "checksum": "fnv1a32:4cc3e9a2"
+  "checksum": "fnv1a32:2b7523ff"
 }

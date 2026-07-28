@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "requiredCount": 18,
+  "complete": true,
+  "screenshots": [
+    {
+      "name": "opening-desktop.png",
+      "exists": true,
+      "bytes": 82627,
+      "manuallyInspected": true
+    },
+    {
+      "name": "second-resource-tablet.png",
+      "exists": true,
+      "bytes": 83182,
+      "manuallyInspected": true
+    },
+    {
+      "name": "attention-mobile.png",
+      "exists": true,
+      "bytes": 39830,
+      "manuallyInspected": true
+    },
+    {
+      "name": "first-project-desktop.png",
+      "exists": true,
+      "bytes": 111729,
+      "manuallyInspected": true
+    },
+    {
+      "name": "approach-selection-tablet.png",
+      "exists": true,
+      "bytes": 101765,
+      "manuallyInspected": true
+    },
+    {
+      "name": "technique-artifact-mobile.png",
+      "exists": true,
+      "bytes": 46012,
+      "manuallyInspected": true
+    },
+    {
+      "name": "upgrades-desktop.png",
+      "exists": true,
+      "bytes": 103094,
+      "manuallyInspected": true
+    },
+    {
+      "name": "proof-map-desktop.png",
+      "exists": true,
+      "bytes": 103871,
+      "manuallyInspected": true
+    },
+    {
+      "name": "automation-tablet.png",
+      "exists": true,
+      "bytes": 80862,
+      "manuallyInspected": true
+    },
+    {
+      "name": "insight-mobile.png",
+      "exists": true,
+      "bytes": 38608,
+      "manuallyInspected": true
+    },
+    {
+      "name": "offline-return-desktop.png",
+      "exists": true,
+      "bytes": 96823,
+      "manuallyInspected": true
+    },
+    {
+      "name": "capstone-desktop.png",
+      "exists": true,
+      "bytes": 109642,
+      "manuallyInspected": true
+    },
+    {
+      "name": "publication-ready-tablet.png",
+      "exists": true,
+      "bytes": 91514,
+      "manuallyInspected": true
+    },
+    {
+      "name": "publication-sequence-mobile.png",
+      "exists": true,
+      "bytes": 46511,
+      "manuallyInspected": true
+    },
+    {
+      "name": "post-publication-desktop.png",
+      "exists": true,
+      "bytes": 97675,
+      "manuallyInspected": true
+    },
+    {
+      "name": "settings-mobile.png",
+      "exists": true,
+      "bytes": 36477,
+      "manuallyInspected": true
+    },
+    {
+      "name": "save-recovery-tablet.png",
+      "exists": true,
+      "bytes": 71815,
+      "manuallyInspected": true
+    },
+    {
+      "name": "import-preview-desktop.png",
+      "exists": true,
+      "bytes": 93172,
+      "manuallyInspected": true
+    }
+  ]
+}

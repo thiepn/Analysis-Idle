@@ -3,6 +3,7 @@ import { naturalNumbersContent, naturalNumbersIds } from "../../src/content";
 import { evaluateCondition } from "../../src/engine/conditions/evaluate";
 import {
   resolveActivityRate,
+  resolveProjectRequirements,
   resolveProjectSpeed,
 } from "../../src/engine/effects/resolve";
 import { selectArtifactCompatibility } from "../../src/engine/selectors";
@@ -125,6 +126,44 @@ describe("conditions and effects", () => {
     expect(completeWith(naturalNumbersIds.CONSTRUCTIVE).outputKind).toBe(
       "template",
     );
+  });
+
+  it("gives lemma, reveal, and template outputs distinct downstream effects", () => {
+    const definition = naturalNumbersContent.projects.find(
+      (project) => project.id === "nn.project.peano_frame",
+    )!;
+    const baseline = createInitialState(naturalNumbersContent);
+    const base = resolveProjectRequirements(
+      definition,
+      naturalNumbersIds.FORMAL,
+      baseline,
+      naturalNumbersContent,
+    );
+    const withKind = (outputKind: "lemma" | "reveal" | "template") => {
+      const state = structuredClone(baseline);
+      state.ownedArtifacts.push("nn.artifact.zero_successor" as never);
+      state.techniqueRecords["nn.artifact.zero_successor"] = {
+        artifactId: "nn.artifact.zero_successor" as never,
+        sourceProjectId: "nn.project.zero_successor" as never,
+        approachId:
+          outputKind === "lemma"
+            ? naturalNumbersIds.FORMAL
+            : outputKind === "reveal"
+              ? naturalNumbersIds.EXPLORATORY
+              : naturalNumbersIds.CONSTRUCTIVE,
+        outputKind,
+        acquiredAtLogicalTimeMs: 0,
+      };
+      return resolveProjectRequirements(
+        definition,
+        naturalNumbersIds.FORMAL,
+        state,
+        naturalNumbersContent,
+      );
+    };
+    expect(withKind("lemma").precision).toBeCloseTo(base.precision * 0.9);
+    expect(withKind("reveal").intuition).toBeCloseTo(base.intuition * 0.9);
+    expect(withKind("template").work).toBeCloseTo(base.work * 0.9);
   });
 
   it("adds percentages within a stacking group and requires method ownership", () => {

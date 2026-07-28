@@ -13,7 +13,7 @@ Every number below is `PROVISIONAL` and belongs in validated Phase 1 content dat
 | Initial stock caps | 180 Precision / 150 Intuition |
 | Post-operations caps | 420 / 360 |
 | Insight cap | 3 |
-| Active sustained target/ceiling | 10–15% / 20% |
+| Active sustained target/ceiling | 1–3% full-Publication / 20% per intervention; 10% typical per use |
 | Project base speed | 1 work/s before typed effects |
 | Approach-switch work preservation | ≥90% |
 | Offline credit | 12h full, then 25% to 72h |
@@ -33,6 +33,6 @@ Run at minimum: 3/0→2/1 opening, balanced, project-bottleneck, all-in each sto
 - Formal/Exploratory/Constructive normalized capstone times within 15%, with distinguishable downstream artifacts.
 - Technique preparation is visible in project previews/ledgers, changes matching artifact options, and never acts as a hidden rate or automation gate.
 - First Publication between 60–120 active-equivalent minutes for target policies; plausible mistake ≤5m recovery in opening hour.
-- Insight optimal sustained advantage 10–15%, never >20%.
+- Insight optimal sustained full-Publication advantage 1–3%, with a 10% typical per-use reduction and no intervention above 20%. Phase 2 paired runs measure 1.4814%; human testing must determine whether this feels useful.
 
 Human playtests remain required for comprehension, fun, frustration, and perceived distinctness.

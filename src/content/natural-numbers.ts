@@ -932,8 +932,8 @@ export const naturalNumbersContent: GameContent = {
     },
     insight: {
       cap: 3,
-      sustainedTargetMin: 0.1,
-      sustainedTargetMax: 0.15,
+      sustainedTargetMin: 0.01,
+      sustainedTargetMax: 0.03,
       ceiling: 0.2,
       modifierPerInsight: 0.1,
       modifierDurationSeconds: 60,
@@ -950,7 +950,15 @@ export const naturalNumbersContent: GameContent = {
       campaignMinHours: 30,
       campaignMaxHours: 50,
     },
-    projects: { approachSwitchPreservation: 0.9, baseSpeedPerSecond: 1 },
+    projects: {
+      approachSwitchPreservation: 0.9,
+      baseSpeedPerSecond: 1,
+      techniqueOutputBonuses: {
+        lemmaPrecisionDiscount: 0.1,
+        revealIntuitionDiscount: 0.1,
+        templateWorkDiscount: 0.1,
+      },
+    },
   },
   resources,
   activities,

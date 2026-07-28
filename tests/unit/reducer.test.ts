@@ -79,6 +79,24 @@ describe("typed reducer", () => {
     expect(state.projects[project.id]!.reservedPrecision).toBe(0);
   });
 
+  it("clamps cancellation refunds to the active resource caps", () => {
+    let state = createInitialState(naturalNumbersContent);
+    state.resources.PRECISION = gameNumber(100);
+    state.resources.INTUITION = gameNumber(100);
+    state = dispatch(state, {
+      type: "startProject",
+      payload: { projectId: "nn.project.zero_successor" as never },
+    });
+    state.resources.PRECISION = gameNumber(179);
+    state.resources.INTUITION = gameNumber(179);
+    state = dispatch(state, {
+      type: "cancelProject",
+      payload: { projectId: "nn.project.zero_successor" as never },
+    });
+    expect(state.resources.PRECISION).toBe(180);
+    expect(state.resources.INTUITION).toBe(150);
+  });
+
   it("preserves at least the configured floor without a switching exploit", () => {
     let state = createInitialState(naturalNumbersContent);
     state.resources.PRECISION = gameNumber(100);
@@ -174,6 +192,7 @@ describe("typed reducer", () => {
   it("rejects fractional Insight charges", () => {
     const state = createInitialState(naturalNumbersContent);
     state.insight = gameNumber(1);
+    state.ownedUpgrades.push("nn.active.insight_notebook" as never);
     const result = reduceCommand(
       state,
       envelope(
@@ -191,6 +210,7 @@ describe("typed reducer", () => {
 
   it("rejects Insight underflow", () => {
     const state = createInitialState(naturalNumbersContent);
+    state.ownedUpgrades.push("nn.active.insight_notebook" as never);
     const result = reduceCommand(
       state,
       envelope(
@@ -210,6 +230,7 @@ describe("typed reducer", () => {
   it("applies a bounded typed Insight intervention to remaining project work", () => {
     const initial = createInitialState(naturalNumbersContent);
     initial.insight = gameNumber(3);
+    initial.ownedUpgrades.push("nn.active.insight_notebook" as never);
     initial.attention.allocations[naturalNumbersIds.FORMALIZE] = 1;
     initial.projects["nn.project.zero_successor"]!.status = "active";
     const spent = reduceCommand(
@@ -217,7 +238,7 @@ describe("typed reducer", () => {
       envelope(
         {
           type: "spendInsight",
-          payload: { amount: 3, purpose: "strengthenBaseCase" },
+          payload: { amount: 1, purpose: "strengthenBaseCase" },
         },
         1,
       ),
@@ -227,7 +248,7 @@ describe("typed reducer", () => {
     if (!spent.accepted) return;
     expect(
       spent.state.projects["nn.project.zero_successor"]!.progress,
-    ).toBeCloseTo(8.55, 12);
+    ).toBeCloseTo(4.275, 12);
     expect(
       resolveActivityRate(
         naturalNumbersIds.FORMALIZE,
@@ -249,6 +270,80 @@ describe("typed reducer", () => {
     expect(advanced.accepted).toBe(true);
     if (!advanced.accepted) return;
     expect(advanced.state.insightModifiers).toEqual([]);
-    expect(advanced.state.insight).toBe(0);
+    expect(advanced.state.insight).toBe(2);
+  });
+
+  it("gates Insight ownership, its ceiling, and repeated intervention", () => {
+    const base = createInitialState(naturalNumbersContent);
+    base.insight = gameNumber(3);
+    base.projects["nn.project.zero_successor"]!.status = "active";
+    const locked = reduceCommand(
+      base,
+      envelope(
+        {
+          type: "spendInsight",
+          payload: { amount: 1, purpose: "traceStep" },
+        },
+        1,
+      ),
+      naturalNumbersContent,
+    );
+    expect(locked.accepted).toBe(false);
+    if (!locked.accepted)
+      expect(locked.reason.code).toBe("PREREQUISITE_MISSING");
+
+    base.ownedUpgrades.push("nn.active.insight_notebook" as never);
+    const overCeiling = reduceCommand(
+      base,
+      envelope(
+        {
+          type: "spendInsight",
+          payload: { amount: 3, purpose: "traceStep" },
+        },
+        1,
+      ),
+      naturalNumbersContent,
+    );
+    expect(overCeiling.accepted).toBe(false);
+    const once = dispatch(base, {
+      type: "spendInsight",
+      payload: { amount: 1, purpose: "traceStep" },
+    });
+    const twice = reduceCommand(
+      once,
+      envelope(
+        {
+          type: "spendInsight",
+          payload: { amount: 1, purpose: "traceStep" },
+        },
+        once.sequence + 1,
+      ),
+      naturalNumbersContent,
+    );
+    expect(twice.accepted).toBe(false);
+  });
+
+  it("reveals downstream requirements without accelerating project work", () => {
+    const state = createInitialState(naturalNumbersContent);
+    state.insight = gameNumber(1);
+    state.ownedUpgrades.push("nn.active.insight_notebook" as never);
+    state.projects["nn.project.zero_successor"]!.status = "active";
+    const result = reduceCommand(
+      state,
+      envelope(
+        {
+          type: "spendInsight",
+          payload: { amount: 1, purpose: "revealDownstream" },
+        },
+        1,
+      ),
+      naturalNumbersContent,
+    );
+    expect(result.accepted).toBe(true);
+    if (!result.accepted) return;
+    expect(result.state.projects["nn.project.zero_successor"]!.progress).toBe(
+      0,
+    );
+    expect(result.state.insightReveals).toEqual(["nn.project.zero_successor"]);
   });
 });

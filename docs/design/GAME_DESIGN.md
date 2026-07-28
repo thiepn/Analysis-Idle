@@ -44,13 +44,13 @@ Approaches change downstream artifacts and dependency behavior—not only rates.
 
 ## Active and idle coexistence
 
-Insight arrives deterministically and is stored. Its default intervention removes a bounded portion of remaining project work or reveals a downstream requirement. Sustained benefit targets 10–15%, with a tested hard ceiling of 20%. No popups, timing windows, or repeatable clicking.
+Insight arrives deterministically and is stored. Its default intervention removes 10% of remaining project work or reveals a downstream requirement without acceleration. Phase 2 paired full-Publication evidence retunes sustained benefit to 1–3% (measured 1.4814%), with a tested hard per-intervention ceiling of 20%. No popups, timing windows, or repeatable clicking.
 
 Offline progress uses deterministic event-driven catch-up. It runs the saved plan until an unresolved decision, then only actions allowed by an explicit safe policy. Return uses one summary with elapsed time, policy, gains, completions, deferred decisions, caps, blocked rules, and next action.
 
 ## Publication
 
-Publication is a typed chapter transformation. It archives the dependency workspace; resets chapter stocks, allocations, active/queued projects, and chapter modifiers; retains settings, accessibility, records, automation capabilities/templates, Insight, and published methods; and exposes a compressed theorem/method card to later chapters. Published chapters do not passively farm raw currency.
+Publication is a typed chapter transformation. It archives completed project runtimes, approach histories, Technique acquisitions, and capstone edges as read-only records; resets chapter stocks, allocations, active/queued operational state, and chapter modifiers; retains settings, accessibility, records, automation capabilities/templates, Insight, and published methods; and exposes a compressed theorem/method card to later chapters. Published chapters do not passively farm raw currency.
 
 ## Progression and scope
 

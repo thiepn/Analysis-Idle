@@ -1,0 +1,5 @@
+{
+  "screenReaderCriticalPathPassed": false,
+  "sessions": [],
+  "blocker": "Required manual screen-reader critical-path sessions have not been run in this environment."
+}

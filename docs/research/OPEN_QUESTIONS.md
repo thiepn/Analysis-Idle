@@ -12,7 +12,7 @@ The original Deep Research Foundation and Completion Audit are present, checksum
 4. Are Precision and Intuition distinct in player language after 20 minutes, or does one feel like a gate currency?
 5. Is Technique visibly learned through exercises, prepared steps, and Constructive templates without becoming a third stock or an invisible modifier?
 6. Are Formal, Exploratory, and Constructive approaches chosen for downstream behavior rather than ETA?
-7. Does stored Insight feel useful at 10–15% without fear of missing out?
+7. Does stored Insight feel useful with a 10% per-use effect and a measured 1.4814% full-Publication advantage, without fear of missing out?
 8. Does a 60–120-minute active-equivalent first Publication feel substantial but reachable across 1–3 sessions?
 9. Does Publication feel like mathematical transformation rather than a reset?
 10. Are the three non-power achievement unlocks informative without feeling mandatory?

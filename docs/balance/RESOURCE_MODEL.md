@@ -13,7 +13,7 @@ Attention is dimensionless capacity; Understanding is monotonic validated-conten
 
 ## Technique as visible method state
 
-Technique is accepted with revision from the research Foundation: it is mathematically important, but the Natural Numbers slice does not model it as a third stock. Named exercises prepare specific proof steps, and Constructive work emits typed templates. These artifacts have visible sources, matching sinks, ownership, reset/persistence, and completion-ledger entries. Technique has no balance scalar, passive production, decay, exchange, hidden rate, or automation-unlock role. Removing this method state must eliminate prepared-step/template choices without changing Precision or Intuition arithmetic.
+Technique is accepted with revision from the research Foundation: it is mathematically important, but the Natural Numbers slice does not model it as a third stock. Named projects emit approach-typed lemmas, reveals, or templates. Compatible output effects are explicit and non-stacking by kind: lemma −10% Precision requirement, reveal −10% Intuition requirement, template −10% work (`PROVISIONAL`). These artifacts have visible sources, matching sinks, ownership, reset/persistence, and completion-ledger entries. Technique has no stock balance, passive production, decay, exchange, hidden rate, or automation-unlock role.
 
 ## Source–sink matrix
 

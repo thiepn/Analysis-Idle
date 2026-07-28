@@ -2,7 +2,7 @@
 
 All numerical inputs and base work are `PROVISIONAL` tuning data (`P`). Work is measured in project-work seconds at base speed 1 work/s. Starting a project atomically reserves requirements; completion consumes them; cancel returns reserved inputs; approach changes preserve inputs and ≥90% completed work (`P`). Every project awards monotonic Understanding and an explicit artifact.
 
-Projects use their dedicated slot and advance linearly from explicit elapsed time; the activity Attention exponent never applies to project work. Technique is visible method preparation rather than a resource: Induction Walkthrough and Missing Base, Missing Step contain named exercises that prepare specific proof steps, while Constructive output records typed steps/templates for matching later nodes. Project previews and ledgers expose every prepared step and reuse match. No Technique value silently changes rates or unlocks universal automation.
+Projects use their dedicated slot and advance linearly from explicit elapsed time; the activity Attention exponent never applies to project work. Technique is visible method preparation rather than a resource. A compatible Formal lemma reduces the displayed Precision requirement by 10%, an Exploratory reveal reduces the displayed Intuition requirement by 10%, and a Constructive template reduces the displayed work requirement by 10% (`PROVISIONAL`). Each output kind applies at most once per project. Project previews and ledgers expose every match and adjusted requirement. Technique never unlocks universal automation.
 
 | Stable ID | Title | Dependencies | Base Precision / Intuition / work (P) | Core artifact / strategic purpose | Required tests |
 |---|---|---|---:|---|---|

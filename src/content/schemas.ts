@@ -408,6 +408,13 @@ const configurationSchema = z
       .object({
         approachSwitchPreservation: z.number().finite().min(0.9).max(1),
         baseSpeedPerSecond: finitePositive,
+        techniqueOutputBonuses: z
+          .object({
+            lemmaPrecisionDiscount: z.number().finite().min(0).max(0.5),
+            revealIntuitionDiscount: z.number().finite().min(0).max(0.5),
+            templateWorkDiscount: z.number().finite().min(0).max(0.5),
+          })
+          .strict(),
       })
       .strict(),
   })

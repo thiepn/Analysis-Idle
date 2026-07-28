@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "status": "BLOCKED",
+  "generatedFromSha": "fee4e13c9bf9d21b94bf1c18df884876f377604a",
+  "gates": [
+    {
+      "id": "git-entry",
+      "passed": true,
+      "evidence": "start 12aed959183efffdc2468791d322b56da499b8be; Phase 1 ancestor 511a03b40eef243ca3c77ff69083ae9d5632758a; main 239d75fd0e223e91703e261d2196953a896609cb"
+    },
+    {
+      "id": "complete-content",
+      "passed": true,
+      "evidence": "12 projects, 15 upgrades, 11 milestones, 10 achievements, 3 approaches"
+    },
+    {
+      "id": "publication",
+      "passed": true,
+      "evidence": "balanced deterministic run published at 87.00 minutes"
+    },
+    {
+      "id": "determinism-and-invariants",
+      "passed": true,
+      "evidence": "65002d9fe5cbac0b90bb2b72f06c459f0f63f834dad15141d8d6fe82112bad38"
+    },
+    {
+      "id": "policy-fixtures",
+      "passed": true,
+      "evidence": "15/15 policies published"
+    },
+    {
+      "id": "active-advantage",
+      "passed": true,
+      "evidence": "paired full-Publication sustained 1.48%; theoretical single-intervention ceiling 20%"
+    },
+    {
+      "id": "offline-equivalence",
+      "passed": true,
+      "evidence": "Phase 1 exact online/offline economy projection retained"
+    },
+    {
+      "id": "persistence",
+      "passed": true,
+      "evidence": "21/21 save/recovery fixtures plus browser import/reload"
+    },
+    {
+      "id": "accessibility",
+      "passed": false,
+      "evidence": "Required manual screen-reader critical-path sessions have not been run in this environment."
+    },
+    {
+      "id": "artifact-and-bundle",
+      "passed": true,
+      "evidence": "14/14 artifact checks"
+    },
+    {
+      "id": "exact-build-browser",
+      "passed": true,
+      "evidence": "Chromium (Codex in-app browser); desktop 1440x1000 (1425x990 content capture), tablet 1024x900 (1009x887 content capture), mobile 390x844 (375x812 content capture)"
+    },
+    {
+      "id": "performance",
+      "passed": true,
+      "evidence": "67.95 KiB JS gzip / 6.70 KiB CSS gzip; no critical console errors"
+    },
+    {
+      "id": "screenshots",
+      "passed": true,
+      "evidence": "18/18 manually inspected"
+    },
+    {
+      "id": "v1-deployment-safety",
+      "passed": true,
+      "evidence": "main and legacy/v1 remain on the immutable v1 baseline; no deployment changed"
+    },
+    {
+      "id": "remote-ci",
+      "passed": true,
+      "evidence": "72c9d7840f8df476241fd832f1dad5e364f2d323 covers implementation fee4e13c9bf9d21b94bf1c18df884876f377604a — https://github.com/thiepn/Analysis-Idle/actions/runs/30402404390"
+    },
+    {
+      "id": "implementation-tree",
+      "passed": true,
+      "evidence": "implementation and tooling tree clean before generated evidence commit"
+    }
+  ],
+  "criticalPassed": false,
+  "blockers": [
+    "accessibility: Required manual screen-reader critical-path sessions have not been run in this environment."
+  ],
+  "deferred": [
+    "Independent human comprehension and fun testing; six separated self-play personas were used.",
+    "Firefox, Edge, Safari, Android Chrome, and iOS Safari on real devices were unavailable; current Chromium desktop/tablet/mobile emulation passed."
+  ]
+}

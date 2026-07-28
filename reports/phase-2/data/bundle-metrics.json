@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "budget": {
+    "javascriptGzipBytes": 92160,
+    "cssGzipBytes": 15360,
+    "rationale": "Phase 2 adds a complete production UI and Proof Map over the 49.88 KiB Phase 1 JS baseline while retaining a sub-100 KiB application target."
+  },
+  "totals": {
+    "jsBytes": 248674,
+    "jsGzipBytes": 69576,
+    "cssBytes": 29691,
+    "cssGzipBytes": 6858
+  },
+  "files": [
+    {
+      "file": "index.html",
+      "bytes": 762,
+      "gzipBytes": 435
+    },
+    {
+      "file": "assets/index-BWTAmVsx.js",
+      "bytes": 248674,
+      "gzipBytes": 69576
+    },
+    {
+      "file": "assets/index-DjIhXYTi.css",
+      "bytes": 29691,
+      "gzipBytes": 6858
+    }
+  ]
+}

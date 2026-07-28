@@ -1,4 +1,4 @@
-import type { GameContent, ProjectDefinition } from "../../shared/contracts";
+import type { GameContent } from "../../shared/contracts";
 import type {
   CommandEnvelope,
   CommandRejectionCode,
@@ -9,6 +9,8 @@ import { evaluateCondition } from "../conditions/evaluate";
 import {
   hasAutomationCapability,
   hasInformationCapability,
+  resolveProjectRequirements,
+  resolveResourceCap,
 } from "../effects/resolve";
 import type { GameEvent } from "../events/types";
 import { gameNumber, gnAdd, gnSubtract } from "../numbers/game-number";
@@ -18,6 +20,7 @@ import {
 } from "../selectors";
 import { activeProject, cloneState, type GameState } from "../state/game-state";
 import { collectInvariantViolations } from "../state/invariants";
+import { refreshRecords } from "../state/records";
 import {
   advanceDeterministicTime,
   calculateOfflineCredit,
@@ -34,56 +37,6 @@ const reject = (
   reason: { code, message, details },
   events: [],
 });
-
-function approachAdjustedRequirements(
-  definition: ProjectDefinition,
-  content: GameContent,
-  approachId: string,
-) {
-  const approach = content.approaches.find(
-    (candidate) => candidate.id === approachId,
-  )!;
-  return {
-    precision:
-      definition.precisionRequirement * approach.precisionRequirementMultiplier,
-    intuition:
-      definition.intuitionRequirement * approach.intuitionRequirementMultiplier,
-  };
-}
-
-function refreshRecords(
-  next: GameState,
-  content: GameContent,
-  events: GameEvent[],
-): void {
-  let changed = true;
-  while (changed) {
-    changed = false;
-    for (const milestone of content.milestones) {
-      if (
-        !next.reachedMilestones.includes(milestone.id) &&
-        evaluateCondition(milestone.condition, next, content).met
-      ) {
-        next.reachedMilestones.push(milestone.id);
-        events.push({ type: "milestoneReached", milestoneId: milestone.id });
-        changed = true;
-      }
-    }
-    for (const achievement of content.achievements) {
-      if (
-        !next.recordedAchievements.includes(achievement.id) &&
-        evaluateCondition(achievement.condition, next, content).met
-      ) {
-        next.recordedAchievements.push(achievement.id);
-        events.push({
-          type: "achievementRecorded",
-          achievementId: achievement.id,
-        });
-        changed = true;
-      }
-    }
-  }
-}
 
 function accept(
   original: GameState,
@@ -228,10 +181,11 @@ export function reduceCommand(
           "Project prerequisites are not met",
           { missing: availability.reasons.join(", ") },
         );
-      const requirements = approachAdjustedRequirements(
+      const requirements = resolveProjectRequirements(
         definition,
-        content,
         runtime.approachId,
+        next,
+        content,
       );
       const alreadyReserved =
         runtime.reservedPrecision > 0 || runtime.reservedIntuition > 0;
@@ -304,13 +258,23 @@ export function reduceCommand(
       runtime.progressSegmentStart = gameNumber(0);
       runtime.progressRatePerSecond = gameNumber(0);
       runtime.insightSpentThisRun = false;
-      next.resources.PRECISION = gnAdd(
-        next.resources.PRECISION ?? gameNumber(0),
-        runtime.reservedPrecision,
+      next.resources.PRECISION = gameNumber(
+        Math.min(
+          resolveResourceCap("PRECISION" as never, next, content),
+          gnAdd(
+            next.resources.PRECISION ?? gameNumber(0),
+            runtime.reservedPrecision,
+          ),
+        ),
       );
-      next.resources.INTUITION = gnAdd(
-        next.resources.INTUITION ?? gameNumber(0),
-        runtime.reservedIntuition,
+      next.resources.INTUITION = gameNumber(
+        Math.min(
+          resolveResourceCap("INTUITION" as never, next, content),
+          gnAdd(
+            next.resources.INTUITION ?? gameNumber(0),
+            runtime.reservedIntuition,
+          ),
+        ),
       );
       runtime.reservedPrecision = gameNumber(0);
       runtime.reservedIntuition = gameNumber(0);
@@ -345,16 +309,18 @@ export function reduceCommand(
           runtime.approachesSeen.push(command.payload.approachId);
         if (!comparedBefore && runtime.approachesSeen.length >= 2)
           next.records.approachComparisons += 1;
-        const oldApproach = content.approaches.find(
-          (candidate) => candidate.id === runtime.approachId,
-        )!;
-        const newApproach = content.approaches.find(
-          (candidate) => candidate.id === command.payload.approachId,
-        )!;
-        const oldRequired =
-          definition.workRequired * oldApproach.workMultiplier;
-        const newRequired =
-          definition.workRequired * newApproach.workMultiplier;
+        const oldRequired = resolveProjectRequirements(
+          definition,
+          runtime.approachId,
+          next,
+          content,
+        ).work;
+        const newRequired = resolveProjectRequirements(
+          definition,
+          command.payload.approachId,
+          next,
+          content,
+        ).work;
         const completedFraction =
           oldRequired === 0 ? 0 : runtime.progress / oldRequired;
         runtime.progress = gameNumber(
@@ -387,6 +353,15 @@ export function reduceCommand(
         );
       const runtime = next.projects[command.payload.projectId];
       if (!runtime) return reject(state, "UNKNOWN_ID", "Unknown project");
+      const definition = content.projects.find(
+        (project) => project.id === runtime.id,
+      )!;
+      if (next.chapters[definition.chapterId] !== "active")
+        return reject(
+          state,
+          "INVALID_PROJECT_STATE",
+          "Projects can only be queued in an active chapter",
+        );
       if (
         next.projectQueue.length >=
         content.configuration.automation.queueCapacity
@@ -518,6 +493,12 @@ export function reduceCommand(
     }
     case "spendInsight": {
       const { amount, purpose } = command.payload;
+      if (!hasInformationCapability(next, content, "insightActions"))
+        return reject(
+          state,
+          "PREREQUISITE_MISSING",
+          "Insight interventions are not unlocked",
+        );
       if (!Number.isSafeInteger(amount) || amount <= 0)
         return reject(
           state,
@@ -533,37 +514,65 @@ export function reduceCommand(
         return reject(state, "INVALID_AMOUNT", "Unknown Insight intervention");
       if (next.insight < amount)
         return reject(state, "INSIGHT_INSUFFICIENT", "Insufficient Insight");
+      if (purpose === "revealDownstream" && amount !== 1)
+        return reject(
+          state,
+          "INVALID_AMOUNT",
+          "A downstream reveal uses exactly one Insight charge",
+        );
       const project = activeProject(next);
-      if (purpose !== "revealDownstream" && !project)
+      if (!project)
         return reject(
           state,
           "INVALID_PROJECT_STATE",
           "A project must be active for this Insight intervention",
         );
+      if (project.insightSpentThisRun)
+        return reject(
+          state,
+          "INVALID_PROJECT_STATE",
+          "Only one Insight intervention is allowed per project run",
+        );
+      if (
+        amount * content.configuration.insight.modifierPerInsight >
+        content.configuration.insight.ceiling
+      )
+        return reject(
+          state,
+          "INVALID_AMOUNT",
+          "Insight intervention exceeds the configured active advantage ceiling",
+        );
       next.insight = gnSubtract(next.insight, gameNumber(amount));
       next.insightSpent = gnAdd(next.insightSpent, gameNumber(amount));
-      if (project) {
+      {
         project.insightSpentThisRun = true;
-        const definition = content.projects.find(
-          (candidate) => candidate.id === project.id,
-        )!;
-        const approach = content.approaches.find(
-          (candidate) => candidate.id === project.approachId,
-        )!;
-        const required = definition.workRequired * approach.workMultiplier;
-        const fraction = Math.min(
-          content.configuration.insight.ceiling,
-          amount * content.configuration.insight.modifierPerInsight,
-        );
-        project.progress = gameNumber(
-          Math.min(
-            required,
-            project.progress + (required - project.progress) * fraction,
-          ),
-        );
-        project.progressSegmentElapsedMs = 0;
-        project.progressSegmentStart = project.progress;
-        project.progressRatePerSecond = gameNumber(0);
+        if (purpose === "revealDownstream") {
+          if (!next.insightReveals.includes(project.id))
+            next.insightReveals.push(project.id);
+        } else {
+          const definition = content.projects.find(
+            (candidate) => candidate.id === project.id,
+          )!;
+          const required = resolveProjectRequirements(
+            definition,
+            project.approachId,
+            next,
+            content,
+          ).work;
+          const fraction = Math.min(
+            content.configuration.insight.ceiling,
+            amount * content.configuration.insight.modifierPerInsight,
+          );
+          project.progress = gameNumber(
+            Math.min(
+              required,
+              project.progress + (required - project.progress) * fraction,
+            ),
+          );
+          project.progressSegmentElapsedMs = 0;
+          project.progressSegmentStart = project.progress;
+          project.progressRatePerSecond = gameNumber(0);
+        }
       }
       events.push({ type: "insightSpent", amount, purpose });
       break;
@@ -624,43 +633,18 @@ export function reduceCommand(
         next.resources[resourceId] = gameNumber(0);
       next.attention.allocations = {};
       next.insightModifiers = [];
+      next.insightReveals = [];
       next.projectQueue = [];
       for (const resourceId of chapter.publication.resetResourceIds)
         next.resourceReserves[resourceId] = gameNumber(0);
-      for (const projectId of chapter.projectIds) {
-        const project = next.projects[projectId];
-        if (project) {
-          project.status = "cancelled";
-          project.progress = gameNumber(0);
-          project.progressSegmentElapsedMs = 0;
-          project.progressSegmentStart = gameNumber(0);
-          project.progressRatePerSecond = gameNumber(0);
-          project.insightSpentThisRun = false;
-          project.approachesSeen = [];
-          project.reservedPrecision = gameNumber(0);
-          project.reservedIntuition = gameNumber(0);
-        }
-      }
+      // Completed project records, Technique acquisitions, and capstone edges
+      // are the chapter's read-only Publication archive.
       next.ownedUpgrades = next.ownedUpgrades.filter((upgradeId) => {
         const upgrade = content.upgrades.find(
           (entry) => entry.id === upgradeId,
         );
         return upgrade?.publicationBehavior !== "reset";
       });
-      next.ownedArtifacts = next.ownedArtifacts.filter(
-        (artifact) =>
-          chapter.publication.retainedArtifactIds.includes(artifact) ||
-          !chapter.projectIds.includes(
-            content.techniqueArtifacts.find(
-              (candidate) => candidate.id === artifact,
-            )?.sourceProjectId ?? ("" as never),
-          ),
-      );
-      next.techniqueRecords = Object.fromEntries(
-        Object.entries(next.techniqueRecords).filter(([artifactId]) =>
-          next.ownedArtifacts.includes(artifactId as never),
-        ),
-      );
       if (
         !next.masteryArtifacts.includes(chapter.publication.masteryArtifactId)
       )
@@ -676,12 +660,6 @@ export function reduceCommand(
           };
         }
       }
-      const chapterEdges = new Set(
-        chapter.capstoneEdges.map((edge) => edge.id),
-      );
-      next.assembledCapstoneEdges = next.assembledCapstoneEdges.filter(
-        (edge) => !chapterEdges.has(edge),
-      );
       next.records.publications += 1;
       events.push({
         type: "chapterPublished",
@@ -693,7 +671,10 @@ export function reduceCommand(
     case "changeSetting": {
       const { setting, value } = command.payload;
       if (
-        (setting === "reducedMotion" || setting === "highContrast") &&
+        (setting === "reducedMotion" ||
+          setting === "highContrast" ||
+          setting === "compactLayout" ||
+          setting === "confirmations") &&
         typeof value !== "boolean"
       )
         return reject(
@@ -706,6 +687,71 @@ export function reduceCommand(
           state,
           "INVALID_SETTINGS_VALUE",
           "Notation must be plain or unicode",
+        );
+      if (
+        setting === "updateRate" &&
+        value !== "standard" &&
+        value !== "reduced"
+      )
+        return reject(
+          state,
+          "INVALID_SETTINGS_VALUE",
+          "Update rate must be standard or reduced",
+        );
+      if (
+        setting === "animationIntensity" &&
+        !["full", "subtle", "none"].includes(value as string)
+      )
+        return reject(
+          state,
+          "INVALID_SETTINGS_VALUE",
+          "Animation intensity must be full, subtle, or none",
+        );
+      if (
+        setting === "numberFormat" &&
+        value !== "standard" &&
+        value !== "compact"
+      )
+        return reject(
+          state,
+          "INVALID_SETTINGS_VALUE",
+          "Number format must be standard or compact",
+        );
+      if (
+        setting === "offlineSummaryDetail" &&
+        value !== "summary" &&
+        value !== "detailed"
+      )
+        return reject(
+          state,
+          "INVALID_SETTINGS_VALUE",
+          "Offline summary detail must be summary or detailed",
+        );
+      if (
+        setting === "mathExplanationDepth" &&
+        value !== "guided" &&
+        value !== "expanded"
+      )
+        return reject(
+          state,
+          "INVALID_SETTINGS_VALUE",
+          "Mathematical explanation depth must be guided or expanded",
+        );
+      if (setting === "textScale" && value !== "standard" && value !== "large")
+        return reject(
+          state,
+          "INVALID_SETTINGS_VALUE",
+          "Text scale must be standard or large",
+        );
+      if (
+        setting === "announcementVerbosity" &&
+        value !== "essential" &&
+        value !== "all"
+      )
+        return reject(
+          state,
+          "INVALID_SETTINGS_VALUE",
+          "Announcement verbosity must be essential or all",
         );
       Object.assign(next.settings, { [setting]: value });
       events.push({ type: "settingChanged", setting, value });

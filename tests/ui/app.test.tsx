@@ -1,5 +1,11 @@
 // @vitest-environment jsdom
-import { cleanup, render, screen } from "@testing-library/preact";
+import {
+  cleanup,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/preact";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it } from "vitest";
 import { App } from "../../src/app/App";
@@ -18,44 +24,76 @@ afterEach(() => {
   localStorage.clear();
 });
 
-describe("accessible debug UI", () => {
-  it("operates Attention with keyboard and updates selector output", async () => {
+function begunState() {
+  const state = createInitialState(naturalNumbersContent);
+  state.ownedUpgrades.push("nn.info.rate_ledger" as never);
+  state.resources.PRECISION = gameNumber(100);
+  return state;
+}
+
+describe("Natural Numbers production UI", () => {
+  it("begins with one guided action and hides future systems", () => {
+    render(<App store={createAppStore(12_345, undefined, true)} />);
+    expect(
+      screen.getByRole("heading", { name: "Begin with zero" }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole("button", { name: "Use zero as the beginning" }),
+    ).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Projects" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Automation" })).toBeNull();
+    expect(screen.queryByText("Publication")).toBeNull();
+  });
+
+  it("reveals Study, operates Attention with keyboard, and preserves focus", async () => {
     const user = userEvent.setup();
-    render(<App store={createAppStore()} />);
+    render(<App store={createAppStore(12_345, undefined, true)} />);
+    await user.click(
+      screen.getByRole("button", { name: "Use zero as the beginning" }),
+    );
+    const studyButtons = screen.getAllByRole("button", { name: "Study" });
+    await user.click(studyButtons[0]!);
     const decrease = screen.getByRole("button", {
       name: "Decrease Formalize Attention",
     });
     decrease.focus();
     await user.keyboard("{Enter}");
-    expect(screen.getByText(/2 of 3 allocated/)).toBeTruthy();
+    expect(
+      screen.getByRole("group", {
+        name: /Formalize Attention allocation, 2 of 3/,
+      }),
+    ).toBeTruthy();
     expect(document.activeElement).toBe(decrease);
   });
 
-  it("announces a typed rejection and preserves control focus", async () => {
+  it("starts, pauses, and cancellation-confirms through typed commands", async () => {
     const user = userEvent.setup();
-    render(<App store={createAppStore()} />);
-    const pause = screen.getAllByRole("button", { name: "Pause" })[0]!;
-    await user.click(pause);
-    expect(screen.getByTestId("status-announcement").textContent).toMatch(
-      /INVALID_PROJECT_STATE/,
+    render(<App store={createAppStore(12_345, begunState(), true)} />);
+    await user.click(screen.getAllByRole("button", { name: "Projects" })[0]!);
+    await user.click(screen.getByRole("button", { name: "Start project" }));
+    expect(screen.getByRole("button", { name: "Pause project" })).toBeTruthy();
+    await user.click(screen.getByRole("button", { name: "Pause project" }));
+    await user.click(screen.getByRole("button", { name: "Cancel project" }));
+    const dialog = screen.getByRole("dialog", {
+      name: "Cancel this project?",
+    });
+    expect(
+      within(dialog).getByText(/returns every reserved input/i),
+    ).toBeTruthy();
+    await user.click(
+      within(dialog).getByRole("button", { name: "Keep project" }),
     );
-    expect(document.activeElement).toBe(pause);
+    expect(screen.queryByRole("dialog")).toBeNull();
   });
 
-  it("has semantic named controls and no raw mathematics markup", () => {
+  it("has named landmarks and controls with no raw mathematics markup", () => {
     const { container } = render(<App store={createAppStore()} />);
     expect(
-      screen.getByRole("heading", {
-        name: "Deterministic engine debug interface",
-      }),
+      screen.getByRole("heading", { name: "Natural Numbers", level: 1 }),
     ).toBeTruthy();
-    expect(
-      screen.getByRole("button", { name: "Advance 10 seconds" }),
-    ).toBeTruthy();
+    expect(screen.getByRole("navigation", { name: "Primary" })).toBeTruthy();
     expect(container.textContent).not.toContain("\\(");
-    expect(
-      container.querySelectorAll("button:not([aria-label])").length,
-    ).toBeGreaterThan(0);
+    expect(container.textContent).not.toContain("\\frac");
     expect(
       [...container.querySelectorAll("button")].every(
         (button) =>
@@ -130,5 +168,52 @@ describe("accessible debug UI", () => {
       events: [],
     });
     window.dispatchEvent(new Event("pagehide"));
+  });
+
+  it("reacquires and reloads the latest save after a bfcache restore", async () => {
+    const store = createAppStore();
+    await store.initialize();
+    expect(store.getSnapshot().writer).toBe(true);
+
+    window.dispatchEvent(
+      new PageTransitionEvent("pagehide", { persisted: true }),
+    );
+    expect(store.getSnapshot().writer).toBe(false);
+
+    const newer = createInitialState(naturalNumbersContent);
+    newer.resources.PRECISION = gameNumber(77);
+    localStorage.setItem(
+      SAVE_KEYS.current,
+      exportSave(
+        createSaveEnvelope(newer, {
+          generation: 50,
+          savedAtMs: Date.now(),
+          sessionId: "bfcache-newer",
+          buildId: "test",
+        }),
+      ),
+    );
+    window.dispatchEvent(
+      new PageTransitionEvent("pageshow", { persisted: true }),
+    );
+    await waitFor(() => {
+      expect(store.getSnapshot().writer).toBe(true);
+      expect(
+        store.getSnapshot().state.resources.PRECISION,
+      ).toBeGreaterThanOrEqual(77);
+      expect(store.getSnapshot().state.resources.PRECISION).toBeLessThan(78);
+    });
+    expect(
+      store.dispatch({
+        type: "advanceTime",
+        payload: { durationMs: 1_000, offline: false, safePolicy: false },
+      }).accepted,
+    ).toBe(true);
+
+    window.dispatchEvent(
+      new PageTransitionEvent("pagehide", { persisted: false }),
+    );
+    expect(store.getSnapshot().writer).toBe(false);
+    expect(localStorage.getItem(SAVE_KEYS.lease)).toBeNull();
   });
 });

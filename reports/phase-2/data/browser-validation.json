@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "engine": "Chromium (Codex in-app browser)",
+  "exactBuild": true,
+  "testedViewports": [
+    "desktop 1440x1000 (1425x990 content capture)",
+    "tablet 1024x900 (1009x887 content capture)",
+    "mobile 390x844 (375x812 content capture)"
+  ],
+  "checks": [
+    {
+      "id": "initial-load",
+      "passed": true,
+      "detail": "The exact production build loaded at the configured /Analysis-Idle/ base path with the expected Natural Numbers title."
+    },
+    {
+      "id": "console",
+      "passed": true,
+      "detail": "No error-level console messages were recorded across the exercised flows."
+    },
+    {
+      "id": "keyboard-critical-path",
+      "passed": true,
+      "detail": "Tab traversal reached the native Attention allocation control with a visible focus state; activation parity is also covered by the UI test suite."
+    },
+    {
+      "id": "mobile-layout",
+      "passed": true,
+      "detail": "Desktop, tablet, and mobile layouts reflowed without document-level horizontal overflow; the 375px mobile capture measured scrollWidth equal to clientWidth."
+    },
+    {
+      "id": "save-import-reload",
+      "passed": true,
+      "detail": "Save status, recovery selection, validated import preview, confirmed import, and reload restoration were exercised through the interface."
+    },
+    {
+      "id": "offline-return",
+      "passed": true,
+      "detail": "A credited return summary displayed elapsed time, resource changes, completion counts, and the policy trace."
+    },
+    {
+      "id": "chapter-critical-path",
+      "passed": true,
+      "detail": "Attention, second resource, project work, approach choice, technique artifact, upgrades, automation, Insight, Proof Map, capstone, Publication review, and post-Publication mastery were exercised."
+    },
+    {
+      "id": "publication-confirmation",
+      "passed": true,
+      "detail": "Publication was completed only through the explicit ledger and confirmation dialog; the resulting Induction Framework mastery card was verified."
+    },
+    {
+      "id": "accessibility-preferences",
+      "passed": true,
+      "detail": "Reduced motion and the persisted display/access settings were exercised in the browser."
+    }
+  ],
+  "untested": [
+    "Firefox",
+    "Microsoft Edge",
+    "Safari",
+    "Android Chrome on a physical device",
+    "iOS Safari on a physical device"
+  ],
+  "consoleErrors": [],
+  "notes": [
+    "Independent physical-device and non-Chromium browser sessions were not available in this local validation environment.",
+    "All screenshot evidence was manually inspected after capture; the browser matrix gaps remain explicit rather than inferred."
+  ]
+}

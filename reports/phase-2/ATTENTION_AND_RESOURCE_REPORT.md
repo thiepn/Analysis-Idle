@@ -1,0 +1,5 @@
+# Attention and Resource Report
+
+Generated from implementation SHA `fee4e13c9bf9d21b94bf1c18df884876f377604a` on branch `phase/02-natural-numbers-vertical-slice`.
+
+The production UI exposes only Precision and Intuition as stock resources, each with a distinct symbol, border/pattern identity, value, rate, and cap context. Technique is absent from stock displays. Attention begins at capacity 3, uses integer keyboard/touch steppers, and applies the configured exponent 0.8. Allocation feedback explains current production without exposing formulas. Non-finite values remain rejected by the canonical engine.

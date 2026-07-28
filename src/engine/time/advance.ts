@@ -7,6 +7,7 @@ import type {
 import type { GameEvent } from "../events/types";
 import {
   resolveActivityRate,
+  resolveProjectRequirements,
   resolveProjectSpeed,
   resolveResourceCap,
 } from "../effects/resolve";
@@ -17,6 +18,7 @@ import {
   type AutomationTraceEntry,
   type GameState,
 } from "../state/game-state";
+import { refreshRecords } from "../state/records";
 
 export interface OfflineCredit {
   requestedMs: number;
@@ -76,7 +78,8 @@ function completeProject(
     (candidate) => candidate.id === project.approachId,
   )!;
   project.progress = gameNumber(
-    definition.workRequired * approach.workMultiplier,
+    resolveProjectRequirements(definition, project.approachId, state, content)
+      .work,
   );
   project.progressSegmentElapsedMs = 0;
   project.progressSegmentStart = project.progress;
@@ -159,15 +162,17 @@ function startNextQueued(
   const approach = definition
     ? content.approaches.find((candidate) => candidate.id === next?.approachId)
     : undefined;
+  const requirements =
+    definition && next
+      ? resolveProjectRequirements(definition, next.approachId, state, content)
+      : null;
   const precisionRequired =
-    definition && approach
-      ? definition.precisionRequirement *
-        approach.precisionRequirementMultiplier
+    definition && approach && requirements
+      ? requirements.precision
       : Number.POSITIVE_INFINITY;
   const intuitionRequired =
-    definition && approach
-      ? definition.intuitionRequirement *
-        approach.intuitionRequirementMultiplier
+    definition && approach && requirements
+      ? requirements.intuition
       : Number.POSITIVE_INFINITY;
   const alreadyReserved =
     next !== undefined &&
@@ -300,16 +305,30 @@ function currentResourceRates(
 function nextResourceBoundary(
   state: GameState,
   content: GameContent,
-): { seconds: number; kind: "cap" | "threshold" } | null {
+): {
+  seconds: number;
+  kind: "cap" | "threshold";
+  resourceId: ResourceId;
+} | null {
   const rates = currentResourceRates(state, content);
-  const candidates: Array<{ seconds: number; kind: "cap" | "threshold" }> = [];
+  const candidates: Array<{
+    seconds: number;
+    kind: "cap" | "threshold";
+    resourceId: ResourceId;
+  }> = [];
   for (const resource of content.resources) {
     const rate = rates.get(resource.id) ?? 0;
     if (rate <= 0) continue;
     const current = state.resources[resource.id] ?? 0;
     const cap = resolveResourceCap(resource.id, state, content);
-    if (current >= cap) candidates.push({ seconds: 0, kind: "cap" });
-    else candidates.push({ seconds: (cap - current) / rate, kind: "cap" });
+    if (current >= cap)
+      candidates.push({ seconds: 0, kind: "cap", resourceId: resource.id });
+    else
+      candidates.push({
+        seconds: (cap - current) / rate,
+        kind: "cap",
+        resourceId: resource.id,
+      });
   }
   const conditions = [
     ...content.techniqueArtifacts.map((entry) => entry.prerequisites),
@@ -331,6 +350,7 @@ function nextResourceBoundary(
         candidates.push({
           seconds: (threshold.amount - current) / rate,
           kind: "threshold",
+          resourceId: threshold.resourceId,
         });
     }
   }
@@ -389,6 +409,7 @@ export function advanceDeterministicTime(
     const project = activeProject(next);
     let step = remainingSeconds;
     let resourceBoundaryKind: "cap" | "threshold" | null = null;
+    let resourceBoundaryId: ResourceId | null = null;
     const resourceBoundary = nextResourceBoundary(next, content);
     if (
       resourceBoundary &&
@@ -409,8 +430,10 @@ export function advanceDeterministicTime(
       if (resourceBoundary.seconds < step) {
         step = resourceBoundary.seconds;
         resourceBoundaryKind = resourceBoundary.kind;
+        resourceBoundaryId = resourceBoundary.resourceId;
       } else if (Math.abs(resourceBoundary.seconds - step) <= 1e-12) {
         resourceBoundaryKind = resourceBoundary.kind;
+        resourceBoundaryId = resourceBoundary.resourceId;
       }
     }
     const nextModifierExpiry = next.insightModifiers
@@ -428,10 +451,12 @@ export function advanceDeterministicTime(
       const definition = content.projects.find(
         (candidate) => candidate.id === project.id,
       )!;
-      const approach = content.approaches.find(
-        (candidate) => candidate.id === project.approachId,
-      )!;
-      const workRequired = definition.workRequired * approach.workMultiplier;
+      const workRequired = resolveProjectRequirements(
+        definition,
+        project.approachId,
+        next,
+        content,
+      ).work;
       const speed = resolveProjectSpeed(project.id, next, content);
       const untilCompletion =
         speed > 0
@@ -445,10 +470,12 @@ export function advanceDeterministicTime(
       const definition = content.projects.find(
         (candidate) => candidate.id === project.id,
       )!;
-      const approach = content.approaches.find(
-        (candidate) => candidate.id === project.approachId,
-      )!;
-      const workRequired = definition.workRequired * approach.workMultiplier;
+      const workRequired = resolveProjectRequirements(
+        definition,
+        project.approachId,
+        next,
+        content,
+      ).work;
       const speed = gameNumber(resolveProjectSpeed(project.id, next, content));
       if (project.progressRatePerSecond !== speed) {
         project.progressSegmentElapsedMs = 0;
@@ -474,20 +501,25 @@ export function advanceDeterministicTime(
     );
     for (const modifier of expired)
       events.push({ type: "insightModifierExpired", modifierId: modifier.id });
+    refreshRecords(next, content, events);
     boundaries += 1;
     const completed = activeProject(next);
     if (completed) {
       const definition = content.projects.find(
         (candidate) => candidate.id === completed.id,
       )!;
-      const approach = content.approaches.find(
-        (candidate) => candidate.id === completed.approachId,
-      )!;
       if (
-        completed.progress >=
-        definition.workRequired * approach.workMultiplier
+        resolveProjectRequirements(
+          definition,
+          completed.approachId,
+          next,
+          content,
+        ).work -
+          completed.progress <=
+        1e-9
       ) {
         completeProject(next, completed.id, content, events, offlineInsight);
+        refreshRecords(next, content, events);
         if (offline) {
           if (publicationIsReady(next, content)) {
             stoppedForDecision = true;
@@ -530,11 +562,27 @@ export function advanceDeterministicTime(
       }
     }
     if (offline && resourceBoundaryKind === "cap" && !stoppedForDecision) {
-      stoppedForDecision = true;
-      stopReason = "resourceCap";
-      policyTrace.push(
-        "Stopped at a resource cap; no reroute policy is configured.",
-      );
+      const confirmedCap = resourceBoundaryId
+        ? resolveResourceCap(resourceBoundaryId, next, content)
+        : Number.POSITIVE_INFINITY;
+      const confirmedRate = resourceBoundaryId
+        ? (currentResourceRates(next, content).get(resourceBoundaryId) ?? 0)
+        : 0;
+      if (
+        resourceBoundaryId &&
+        confirmedRate > 0 &&
+        (next.resources[resourceBoundaryId] ?? 0) >= confirmedCap - 1e-9
+      ) {
+        stoppedForDecision = true;
+        stopReason = "resourceCap";
+        policyTrace.push(
+          "Stopped at a resource cap; no reroute policy is configured.",
+        );
+      } else {
+        policyTrace.push(
+          "Continued because a transition raised the resource cap at this boundary.",
+        );
+      }
     }
     if (stoppedForDecision) break;
   }
