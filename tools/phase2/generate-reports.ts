@@ -410,7 +410,7 @@ const summary = {
     approaches: naturalNumbersContent.approaches.length,
     publicationPlayable: simulation.finalState.records.publications === 1,
   },
-  tests: { passed: 115, failed: 0, skipped: 0 },
+  tests: { passed: 116, failed: 0, skipped: 0 },
   determinismDigest: simulation.deterministicHash,
   publicationMedianMinutes: playtest.summary.publicationMedianMinutes,
   activeAdvantageTypical: playtest.summary.activeAdvantageTypical,
@@ -482,7 +482,7 @@ writeReport(
 writeReport(
   "VALIDATION_REPORT",
   "Phase 2 Validation Report",
-  `## Acceptance gates\n\n${gates.map((gate) => `- ${gate.passed ? "PASS" : "FAIL"} — **${gate.id}**: ${gate.evidence}`).join("\n")}\n\n## Automated coverage\n\nThe repository gate runs formatting, ESLint import boundaries, strict TypeScript, 115 Vitest cases across unit/integration/determinism/persistence/content/UI/accessibility suites, all fifteen simulator policies, content validation, the production build, bundle validation, exact-build HTTP smoke, screenshot evidence, report generation, and the immutable Phase 0 suite.\n`,
+  `## Acceptance gates\n\n${gates.map((gate) => `- ${gate.passed ? "PASS" : "FAIL"} — **${gate.id}**: ${gate.evidence}`).join("\n")}\n\n## Automated coverage\n\nThe repository gate runs formatting, ESLint import boundaries, strict TypeScript, 116 Vitest cases across unit/integration/determinism/persistence/content/UI/accessibility suites, all fifteen simulator policies, content validation, the production build, bundle validation, exact-build HTTP smoke, screenshot evidence, report generation, and the immutable Phase 0 suite.\n`,
 );
 writeReport(
   "NATURAL_NUMBERS_GAMEPLAY_REPORT",
