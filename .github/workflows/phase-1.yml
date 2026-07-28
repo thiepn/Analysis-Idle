@@ -16,8 +16,17 @@ jobs:
       - uses: actions/checkout@v4
         with:
           # Boundary validation compares the PR tree with the immutable v1
-          # commit. Fetch the history needed to make that comparison real.
+          # commit. Validate the exact PR head rather than GitHub's synthetic
+          # merge commit, and fetch the history needed for the comparison.
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Materialize validation refs
+        shell: bash
+        run: |
+          git fetch --no-tags origin \
+            main:refs/heads/main \
+            legacy/v1:refs/heads/legacy/v1
+          git switch -C "${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}" HEAD
       - uses: actions/setup-node@v4
         with:
           node-version: 22
