@@ -6,26 +6,26 @@
     "rationale": "Phase 2 adds a complete production UI and Proof Map over the 49.88 KiB Phase 1 JS baseline while retaining a sub-100 KiB application target."
   },
   "totals": {
-    "jsBytes": 229267,
-    "jsGzipBytes": 64822,
-    "cssBytes": 28466,
-    "cssGzipBytes": 6627
+    "jsBytes": 248674,
+    "jsGzipBytes": 69576,
+    "cssBytes": 29691,
+    "cssGzipBytes": 6858
   },
   "files": [
     {
       "file": "index.html",
       "bytes": 762,
-      "gzipBytes": 436
+      "gzipBytes": 435
     },
     {
-      "file": "assets/index-CrzdrqTP.css",
-      "bytes": 28466,
-      "gzipBytes": 6627
+      "file": "assets/index-BWTAmVsx.js",
+      "bytes": 248674,
+      "gzipBytes": 69576
     },
     {
-      "file": "assets/index-DVt3QLbL.js",
-      "bytes": 229267,
-      "gzipBytes": 64822
+      "file": "assets/index-DjIhXYTi.css",
+      "bytes": 29691,
+      "gzipBytes": 6858
     }
   ]
 }

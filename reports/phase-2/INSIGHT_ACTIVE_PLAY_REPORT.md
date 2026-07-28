@@ -1,5 +1,5 @@
 # Insight Active Play Report
 
-Generated from implementation SHA `12c59cecc03fe71d58f1d8cfe7f6e556688d0bf3` on branch `phase/02-natural-numbers-vertical-slice`.
+Generated from implementation SHA `8bf57ce9db09d20696a9db11da0e1e833515dc92` on branch `phase/02-natural-numbers-vertical-slice`.
 
-Insight is capped at 3; its sustained active advantage target is 10–15%, with a hard ceiling of 20%. Spending creates an explicit logical-time modifier of 0.1 for 60 seconds. Overflow is reported rather than hidden, and no click-production loop was added.
+Insight is capped at 3; its evidence-backed full-Publication sustained target is 1–3%, with a hard per-intervention ceiling of 20%. Paired identical-seed/policy Publication runs measure 1.5% sustained advantage. An owned Insight capability permits one intervention per project run: one charge removes 10% of remaining work, while the alternate reveal exposes direct downstream requirements without acceleration. The duration field remains serialized for Phase 1 save compatibility but creates no hidden activity-rate bonus. Overflow is reported, and no click-production loop was added.

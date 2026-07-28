@@ -11,8 +11,8 @@
   "finalState": {
     "schemaVersion": 1,
     "contentVersion": "phase1-nn-fixture-1",
-    "sequence": 253,
-    "logicalTimeMs": 5627250,
+    "sequence": 236,
+    "logicalTimeMs": 5220150,
     "resources": {
       "PRECISION": 0,
       "INTUITION": 0
@@ -40,170 +40,170 @@
     "projects": {
       "nn.project.zero_successor": {
         "id": "nn.project.zero_successor",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "FORMAL",
-        "progress": 0,
+        "progress": 42.75,
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": 0,
+        "progressSegmentStart": 42.75,
         "progressRatePerSecond": 0,
         "reservedPrecision": 0,
         "reservedIntuition": 0,
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL"],
         "insightSpentThisRun": false
       },
       "nn.project.peano_frame": {
         "id": "nn.project.peano_frame",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "EXPLORATORY",
-        "progress": 0,
+        "progress": 120,
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": 0,
+        "progressSegmentStart": 120,
         "progressRatePerSecond": 0,
         "reservedPrecision": 0,
         "reservedIntuition": 0,
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL", "EXPLORATORY"],
         "insightSpentThisRun": false
       },
       "nn.project.primitive_recursion": {
         "id": "nn.project.primitive_recursion",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "CONSTRUCTIVE",
-        "progress": 0,
+        "progress": 220.5,
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": 0,
+        "progressSegmentStart": 220.5,
         "progressRatePerSecond": 0,
         "reservedPrecision": 0,
         "reservedIntuition": 0,
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL", "CONSTRUCTIVE"],
         "insightSpentThisRun": false
       },
       "nn.project.addition": {
         "id": "nn.project.addition",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "FORMAL",
-        "progress": 0,
+        "progress": 256.5,
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": 0,
+        "progressSegmentStart": 256.5,
         "progressRatePerSecond": 0,
         "reservedPrecision": 0,
         "reservedIntuition": 0,
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL"],
         "insightSpentThisRun": false
       },
       "nn.project.addition_lemmas": {
         "id": "nn.project.addition_lemmas",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "EXPLORATORY",
-        "progress": 0,
+        "progress": 360,
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": 0,
+        "progressSegmentStart": 360,
         "progressRatePerSecond": 0,
         "reservedPrecision": 0,
         "reservedIntuition": 0,
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL", "EXPLORATORY"],
         "insightSpentThisRun": false
       },
       "nn.project.multiplication": {
         "id": "nn.project.multiplication",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "CONSTRUCTIVE",
-        "progress": 0,
+        "progress": 396.9,
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": 0,
+        "progressSegmentStart": 396.9,
         "progressRatePerSecond": 0,
         "reservedPrecision": 0,
         "reservedIntuition": 0,
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL", "CONSTRUCTIVE"],
         "insightSpentThisRun": false
       },
       "nn.project.induction_walkthrough": {
         "id": "nn.project.induction_walkthrough",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "FORMAL",
-        "progress": 0,
+        "progress": 456,
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": 0,
+        "progressSegmentStart": 456,
         "progressRatePerSecond": 0,
         "reservedPrecision": 0,
         "reservedIntuition": 0,
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL"],
         "insightSpentThisRun": false
       },
       "nn.project.counterexample_lab": {
         "id": "nn.project.counterexample_lab",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "EXPLORATORY",
-        "progress": 0,
+        "progress": 300,
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": 0,
+        "progressSegmentStart": 300,
         "progressRatePerSecond": 0,
         "reservedPrecision": 0,
         "reservedIntuition": 0,
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL", "EXPLORATORY"],
         "insightSpentThisRun": false
       },
       "nn.project.strong_induction": {
         "id": "nn.project.strong_induction",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "CONSTRUCTIVE",
-        "progress": 0,
+        "progress": 567,
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": 0,
+        "progressSegmentStart": 567,
         "progressRatePerSecond": 0,
         "reservedPrecision": 0,
         "reservedIntuition": 0,
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL", "CONSTRUCTIVE"],
         "insightSpentThisRun": false
       },
       "nn.project.well_ordering": {
         "id": "nn.project.well_ordering",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "FORMAL",
-        "progress": 0,
+        "progress": 570,
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": 0,
+        "progressSegmentStart": 570,
         "progressRatePerSecond": 0,
         "reservedPrecision": 0,
         "reservedIntuition": 0,
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL"],
         "insightSpentThisRun": false
       },
       "nn.project.least_counterexample": {
         "id": "nn.project.least_counterexample",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "EXPLORATORY",
-        "progress": 0,
+        "progress": 540,
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": 0,
+        "progressSegmentStart": 540,
         "progressRatePerSecond": 0,
         "reservedPrecision": 0,
         "reservedIntuition": 0,
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL", "EXPLORATORY"],
         "insightSpentThisRun": false
       },
       "nn.project.equivalence_capstone": {
         "id": "nn.project.equivalence_capstone",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "CONSTRUCTIVE",
-        "progress": 0,
+        "progress": 850.5,
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": 0,
+        "progressSegmentStart": 850.5,
         "progressRatePerSecond": 0,
         "reservedPrecision": 0,
         "reservedIntuition": 0,
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL", "CONSTRUCTIVE"],
         "insightSpentThisRun": false
       }
     },
@@ -229,39 +229,103 @@
       "nn.compression.publication_index"
     ],
     "ownedArtifacts": [
+      "nn.artifact.zero_successor",
+      "nn.artifact.peano_frame",
+      "nn.artifact.primitive_recursion",
+      "nn.artifact.addition",
       "nn.artifact.addition_lemmas",
+      "nn.artifact.multiplication",
+      "nn.artifact.induction_walkthrough",
+      "nn.artifact.counterexample_lab",
       "nn.artifact.strong_induction",
       "nn.artifact.well_ordering",
-      "nn.artifact.least_counterexample"
+      "nn.artifact.least_counterexample",
+      "nn.artifact.equivalence_capstone"
     ],
     "techniqueRecords": {
+      "nn.artifact.zero_successor": {
+        "artifactId": "nn.artifact.zero_successor",
+        "sourceProjectId": "nn.project.zero_successor",
+        "approachId": "FORMAL",
+        "outputKind": "lemma",
+        "acquiredAtLogicalTimeMs": 72750
+      },
+      "nn.artifact.peano_frame": {
+        "artifactId": "nn.artifact.peano_frame",
+        "sourceProjectId": "nn.project.peano_frame",
+        "approachId": "EXPLORATORY",
+        "outputKind": "reveal",
+        "acquiredAtLogicalTimeMs": 282750
+      },
+      "nn.artifact.primitive_recursion": {
+        "artifactId": "nn.artifact.primitive_recursion",
+        "sourceProjectId": "nn.project.primitive_recursion",
+        "approachId": "CONSTRUCTIVE",
+        "outputKind": "template",
+        "acquiredAtLogicalTimeMs": 503250
+      },
+      "nn.artifact.addition": {
+        "artifactId": "nn.artifact.addition",
+        "sourceProjectId": "nn.project.addition",
+        "approachId": "FORMAL",
+        "outputKind": "lemma",
+        "acquiredAtLogicalTimeMs": 759750
+      },
       "nn.artifact.addition_lemmas": {
         "artifactId": "nn.artifact.addition_lemmas",
         "sourceProjectId": "nn.project.addition_lemmas",
         "approachId": "EXPLORATORY",
         "outputKind": "reveal",
-        "acquiredAtLogicalTimeMs": 1178250
+        "acquiredAtLogicalTimeMs": 1119750
+      },
+      "nn.artifact.multiplication": {
+        "artifactId": "nn.artifact.multiplication",
+        "sourceProjectId": "nn.project.multiplication",
+        "approachId": "CONSTRUCTIVE",
+        "outputKind": "template",
+        "acquiredAtLogicalTimeMs": 1516650
+      },
+      "nn.artifact.induction_walkthrough": {
+        "artifactId": "nn.artifact.induction_walkthrough",
+        "sourceProjectId": "nn.project.induction_walkthrough",
+        "approachId": "FORMAL",
+        "outputKind": "lemma",
+        "acquiredAtLogicalTimeMs": 1972650
+      },
+      "nn.artifact.counterexample_lab": {
+        "artifactId": "nn.artifact.counterexample_lab",
+        "sourceProjectId": "nn.project.counterexample_lab",
+        "approachId": "EXPLORATORY",
+        "outputKind": "reveal",
+        "acquiredAtLogicalTimeMs": 2272650
       },
       "nn.artifact.strong_induction": {
         "artifactId": "nn.artifact.strong_induction",
         "sourceProjectId": "nn.project.strong_induction",
         "approachId": "CONSTRUCTIVE",
         "outputKind": "template",
-        "acquiredAtLogicalTimeMs": 3062250
+        "acquiredAtLogicalTimeMs": 2929650
       },
       "nn.artifact.well_ordering": {
         "artifactId": "nn.artifact.well_ordering",
         "sourceProjectId": "nn.project.well_ordering",
         "approachId": "FORMAL",
         "outputKind": "lemma",
-        "acquiredAtLogicalTimeMs": 3632250
+        "acquiredAtLogicalTimeMs": 3499650
       },
       "nn.artifact.least_counterexample": {
         "artifactId": "nn.artifact.least_counterexample",
         "sourceProjectId": "nn.project.least_counterexample",
         "approachId": "EXPLORATORY",
         "outputKind": "reveal",
-        "acquiredAtLogicalTimeMs": 4172250
+        "acquiredAtLogicalTimeMs": 4039650
+      },
+      "nn.artifact.equivalence_capstone": {
+        "artifactId": "nn.artifact.equivalence_capstone",
+        "sourceProjectId": "nn.project.equivalence_capstone",
+        "approachId": "CONSTRUCTIVE",
+        "outputKind": "template",
+        "acquiredAtLogicalTimeMs": 5220150
       }
     },
     "reachedMilestones": [
@@ -292,17 +356,29 @@
     "insight": 3,
     "insightSpent": 0,
     "insightModifiers": [],
-    "assembledCapstoneEdges": [],
+    "insightReveals": [],
+    "assembledCapstoneEdges": [
+      "nn.capstone.edge.1",
+      "nn.capstone.edge.2",
+      "nn.capstone.edge.3",
+      "nn.capstone.edge.4"
+    ],
     "chapters": {
       "nn.chapter.natural_numbers": "published"
     },
     "masteryArtifacts": ["mastery.induction_framework"],
     "settings": {
       "reducedMotion": false,
+      "animationIntensity": "full",
       "highContrast": false,
       "notation": "plain",
+      "updateRate": "standard",
+      "numberFormat": "standard",
+      "compactLayout": false,
       "textScale": "standard",
       "announcementVerbosity": "essential",
+      "offlineSummaryDetail": "detailed",
+      "mathExplanationDepth": "guided",
       "confirmations": true
     },
     "rng": {
@@ -311,7 +387,7 @@
       "draws": 0
     },
     "records": {
-      "totalActiveMs": 5627250,
+      "totalActiveMs": 5220150,
       "totalOfflineCreditedMs": 0,
       "publications": 1,
       "completedProjects": 12,
@@ -376,11 +452,6 @@
       "artifactIds": ["nn.artifact.zero_successor"]
     },
     {
-      "type": "timeAdvanced",
-      "durationMs": 12750,
-      "offline": false
-    },
-    {
       "type": "milestoneReached",
       "milestoneId": "nn.milestone.successor_closed"
     },
@@ -391,6 +462,11 @@
     {
       "type": "achievementRecorded",
       "achievementId": "nn.achievement.without_shortcut"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 12750,
+      "offline": false
     },
     {
       "type": "upgradePurchased",
@@ -490,7 +566,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.058258449441908,
+      "amount": 13.058258449441901,
       "reason": "activity production"
     },
     {
@@ -540,11 +616,6 @@
       "artifactIds": ["nn.artifact.peano_frame"]
     },
     {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
       "type": "milestoneReached",
       "milestoneId": "nn.milestone.peano_framed"
     },
@@ -553,9 +624,18 @@
       "achievementId": "nn.achievement.peano_frame"
     },
     {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
       "type": "projectApproachSwitched",
       "projectId": "nn.project.primitive_recursion",
       "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.primitive_recursion"
     },
     {
       "type": "resourceChanged",
@@ -575,10 +655,6 @@
       "offline": false
     },
     {
-      "type": "projectStarted",
-      "projectId": "nn.project.primitive_recursion"
-    },
-    {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
       "amount": 13.058258449442008,
@@ -587,7 +663,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "INTUITION",
-      "amount": 5.999999999999999,
+      "amount": 6,
       "reason": "activity production"
     },
     {
@@ -655,23 +731,6 @@
     {
       "type": "resourceChanged",
       "resourceId": "INTUITION",
-      "amount": 6.0000000000000036,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449442008,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
       "amount": 6,
       "reason": "activity production"
     },
@@ -716,17 +775,185 @@
       "artifactIds": ["nn.artifact.primitive_recursion"]
     },
     {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.recursion_available"
+    },
+    {
       "type": "timeAdvanced",
       "durationMs": 10500,
       "offline": false
     },
     {
-      "type": "milestoneReached",
-      "milestoneId": "nn.milestone.recursion_available"
+      "type": "projectStarted",
+      "projectId": "nn.project.addition"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449442008,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 5.999999999999998,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449440984,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449442008,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449442008,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449442008,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449442008,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449442008,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.05825844944195,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 7.1820421471930445,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 3.3000000000000114,
+      "reason": "activity production"
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.addition",
+      "approachId": "FORMAL",
+      "artifactIds": ["nn.artifact.addition"]
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 16500,
+      "offline": false
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.addition_lemmas",
+      "preservedFraction": 0.9
     },
     {
       "type": "projectStarted",
-      "projectId": "nn.project.addition"
+      "projectId": "nn.project.addition_lemmas"
     },
     {
       "type": "resourceChanged",
@@ -765,189 +992,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.058258449442008,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449442008,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
       "amount": 13.058258449442022,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449442008,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.05825844944195,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449441041,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 3.740078741990004,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 5.999999999999993,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "attentionChanged",
-      "activityId": "FORMALIZE",
-      "allocation": 0
-    },
-    {
-      "type": "attentionChanged",
-      "activityId": "EXPLORE",
-      "allocation": 3
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 7.224674055842073,
-      "reason": "activity production"
-    },
-    {
-      "type": "projectCompleted",
-      "projectId": "nn.project.addition",
-      "approachId": "FORMAL",
-      "artifactIds": ["nn.artifact.addition"]
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 15000,
-      "offline": false
-    },
-    {
-      "type": "projectApproachSwitched",
-      "projectId": "nn.project.addition_lemmas",
-      "preservedFraction": 0.9
-    },
-    {
-      "type": "projectStarted",
-      "projectId": "nn.project.addition_lemmas"
-    },
-    {
-      "type": "attentionChanged",
-      "activityId": "EXPLORE",
-      "allocation": 1
-    },
-    {
-      "type": "attentionChanged",
-      "activityId": "FORMALIZE",
-      "allocation": 2
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.05825844944195,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449442008,
       "reason": "activity production"
     },
     {
@@ -964,7 +1009,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.058258449442008,
+      "amount": 13.05825844944195,
       "reason": "activity production"
     },
     {
@@ -1015,24 +1060,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.058258449440984,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 4.450449303348989,
+      "amount": 3.2667443475870073,
       "reason": "activity production"
     },
     {
@@ -1139,6 +1167,40 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
+      "amount": 13.058258449440984,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449442008,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
       "amount": 13.058258449442008,
       "reason": "activity production"
     },
@@ -1173,24 +1235,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.058258449442022,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.05825844944195,
+      "amount": 13.058258449442008,
       "reason": "activity production"
     },
     {
@@ -1224,24 +1269,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.058258449441041,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 10.900449303349006,
+      "amount": 1.975449303348995,
       "reason": "activity production"
     },
     {
@@ -1290,7 +1318,18 @@
     {
       "type": "resourceChanged",
       "resourceId": "INTUITION",
-      "amount": 8.129889162369011,
+      "amount": 14.449348111684088,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 1.3752151065270084,
       "reason": "activity production"
     },
     {
@@ -1314,29 +1353,19 @@
       "offline": false
     },
     {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
       "type": "projectCompleted",
       "projectId": "nn.project.multiplication",
       "approachId": "CONSTRUCTIVE",
       "artifactIds": ["nn.artifact.multiplication"]
     },
     {
-      "type": "timeAdvanced",
-      "durationMs": 21000,
-      "offline": false
-    },
-    {
       "type": "milestoneReached",
       "milestoneId": "nn.milestone.operations_built"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 6900.00000000003,
+      "offline": false
     },
     {
       "type": "attentionChanged",
@@ -1359,74 +1388,6 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.058258449442064,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449441944,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449442064,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.05825844944195,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
       "amount": 13.05825844944195,
       "reason": "activity production"
     },
@@ -1461,24 +1422,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.05825844944195,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449442064,
+      "amount": 13.058258449442008,
       "reason": "activity production"
     },
     {
@@ -1529,7 +1473,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.05825844944195,
+      "amount": 13.058258449441965,
       "reason": "activity production"
     },
     {
@@ -1614,7 +1558,92 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 2.6116516898890723,
+      "amount": 13.05825844944195,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449442064,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.05825844944195,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449442064,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.05825844944195,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 2.611651689888049,
       "reason": "activity production"
     },
     {
@@ -1630,13 +1659,13 @@
       "artifactIds": ["nn.artifact.induction_walkthrough"]
     },
     {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.induction_template"
+    },
+    {
       "type": "timeAdvanced",
       "durationMs": 6000,
       "offline": false
-    },
-    {
-      "type": "milestoneReached",
-      "milestoneId": "nn.milestone.induction_template"
     },
     {
       "type": "projectApproachSwitched",
@@ -1650,7 +1679,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.058258449440928,
+      "amount": 13.05825844944195,
       "reason": "activity production"
     },
     {
@@ -1668,23 +1697,6 @@
       "type": "resourceChanged",
       "resourceId": "PRECISION",
       "amount": 13.058258449442064,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.05825844944195,
       "reason": "activity production"
     },
     {
@@ -1718,7 +1730,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.058258449442036,
+      "amount": 13.058258449441041,
       "reason": "activity production"
     },
     {
@@ -1758,6 +1770,23 @@
     {
       "type": "resourceChanged",
       "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.05825844944195,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
       "amount": 5.999999999999986,
       "reason": "activity production"
     },
@@ -1786,7 +1815,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.058258449441041,
+      "amount": 13.058258449442064,
       "reason": "activity production"
     },
     {
@@ -1824,90 +1853,18 @@
       "artifactIds": ["nn.artifact.counterexample_lab"]
     },
     {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.counterexample_found"
+    },
+    {
       "type": "timeAdvanced",
       "durationMs": 30000,
       "offline": false
-    },
-    {
-      "type": "achievementRecorded",
-      "achievementId": "nn.achievement.counterexample_found"
     },
     {
       "type": "projectApproachSwitched",
       "projectId": "nn.project.strong_induction",
       "preservedFraction": 0.9
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449442064,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.05825844944195,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449442064,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.05825844944195,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "projectStarted",
-      "projectId": "nn.project.strong_induction"
     },
     {
       "type": "resourceChanged",
@@ -1925,6 +1882,44 @@
       "type": "timeAdvanced",
       "durationMs": 30000,
       "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.05825844944195,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449442064,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.strong_induction"
     },
     {
       "type": "resourceChanged",
@@ -1980,57 +1975,6 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.05825844944195,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449442064,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6.0000000000000036,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.05825844944195,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
       "amount": 13.058258449442064,
       "reason": "activity production"
     },
@@ -2054,7 +1998,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "INTUITION",
-      "amount": 6,
+      "amount": 6.0000000000000036,
       "reason": "activity production"
     },
     {
@@ -2065,7 +2009,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.058258449446043,
+      "amount": 13.058258449442064,
       "reason": "activity production"
     },
     {
@@ -2078,6 +2022,230 @@
       "type": "timeAdvanced",
       "durationMs": 30000,
       "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.05825844944195,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.05825844944195,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449442064,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.05825844944195,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449442064,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449443997,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 10.933010332435003,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "attentionChanged",
+      "activityId": "FORMALIZE",
+      "allocation": 0
+    },
+    {
+      "type": "attentionChanged",
+      "activityId": "EXPLORE",
+      "allocation": 3
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 14.449348111684102,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 14.449348111684202,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 14.449348111684102,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 14.449348111684202,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 14.449348111684088,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 13.004413300515694,
+      "reason": "activity production"
+    },
+    {
+      "type": "insightGained",
+      "amount": 1,
+      "overflow": 0
+    },
+    {
+      "type": "projectCompleted",
+      "projectId": "nn.project.strong_induction",
+      "approachId": "CONSTRUCTIVE",
+      "artifactIds": ["nn.artifact.strong_induction"]
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.stronger_hypothesis"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 27000,
+      "offline": false
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.well_ordering"
+    },
+    {
+      "type": "attentionChanged",
+      "activityId": "EXPLORE",
+      "allocation": 1
+    },
+    {
+      "type": "attentionChanged",
+      "activityId": "FORMALIZE",
+      "allocation": 2
     },
     {
       "type": "resourceChanged",
@@ -2133,7 +2301,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
+      "amount": 13.058258449450022,
       "reason": "activity production"
     },
     {
@@ -2146,106 +2314,6 @@
       "type": "timeAdvanced",
       "durationMs": 30000,
       "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 4.633234984115006,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "attentionChanged",
-      "activityId": "FORMALIZE",
-      "allocation": 0
-    },
-    {
-      "type": "attentionChanged",
-      "activityId": "EXPLORE",
-      "allocation": 3
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 14.449348111684102,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 14.449348111684202,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 14.449348111684088,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 13.004413300515694,
-      "reason": "activity production"
-    },
-    {
-      "type": "insightGained",
-      "amount": 1,
-      "overflow": 0
-    },
-    {
-      "type": "projectCompleted",
-      "projectId": "nn.project.strong_induction",
-      "approachId": "CONSTRUCTIVE",
-      "artifactIds": ["nn.artifact.strong_induction"]
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 27000,
-      "offline": false
-    },
-    {
-      "type": "milestoneReached",
-      "milestoneId": "nn.milestone.stronger_hypothesis"
-    },
-    {
-      "type": "projectStarted",
-      "projectId": "nn.project.well_ordering"
-    },
-    {
-      "type": "attentionChanged",
-      "activityId": "EXPLORE",
-      "allocation": 1
-    },
-    {
-      "type": "attentionChanged",
-      "activityId": "FORMALIZE",
-      "allocation": 2
     },
     {
       "type": "resourceChanged",
@@ -2257,23 +2325,6 @@
       "type": "resourceChanged",
       "resourceId": "INTUITION",
       "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449440046,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6.000000000000007,
       "reason": "activity production"
     },
     {
@@ -2358,7 +2409,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "INTUITION",
-      "amount": 6,
+      "amount": 5.999999999999986,
       "reason": "activity production"
     },
     {
@@ -2403,92 +2454,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449450022,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 4.684381707820023,
+      "amount": 12.050898606700002,
       "reason": "activity production"
     },
     {
@@ -2538,246 +2504,6 @@
       "type": "resourceChanged",
       "resourceId": "INTUITION",
       "amount": 14.449348111684088,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 14.449348111684202,
-      "reason": "activity production"
-    },
-    {
-      "type": "projectCompleted",
-      "projectId": "nn.project.well_ordering",
-      "approachId": "FORMAL",
-      "artifactIds": ["nn.artifact.well_ordering"]
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "milestoneReached",
-      "milestoneId": "nn.milestone.least_element"
-    },
-    {
-      "type": "achievementRecorded",
-      "achievementId": "nn.achievement.least_of_all"
-    },
-    {
-      "type": "projectApproachSwitched",
-      "projectId": "nn.project.least_counterexample",
-      "preservedFraction": 0.9
-    },
-    {
-      "type": "projectStarted",
-      "projectId": "nn.project.least_counterexample"
-    },
-    {
-      "type": "attentionChanged",
-      "activityId": "EXPLORE",
-      "allocation": 1
-    },
-    {
-      "type": "attentionChanged",
-      "activityId": "FORMALIZE",
-      "allocation": 2
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449450022,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6.000000000000002,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.05825844943979,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6.0000000000000036,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449450022,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 3.5339324044600176,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "attentionChanged",
-      "activityId": "FORMALIZE",
-      "allocation": 0
-    },
-    {
-      "type": "attentionChanged",
-      "activityId": "EXPLORE",
-      "allocation": 3
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 14.449348111684102,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 14.449348111684202,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 14.449348111684102,
       "reason": "activity production"
     },
     {
@@ -2814,6 +2540,251 @@
       "reason": "activity production"
     },
     {
+      "type": "projectCompleted",
+      "projectId": "nn.project.well_ordering",
+      "approachId": "FORMAL",
+      "artifactIds": ["nn.artifact.well_ordering"]
+    },
+    {
+      "type": "milestoneReached",
+      "milestoneId": "nn.milestone.least_element"
+    },
+    {
+      "type": "achievementRecorded",
+      "achievementId": "nn.achievement.least_of_all"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "projectApproachSwitched",
+      "projectId": "nn.project.least_counterexample",
+      "preservedFraction": 0.9
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.least_counterexample"
+    },
+    {
+      "type": "attentionChanged",
+      "activityId": "EXPLORE",
+      "allocation": 1
+    },
+    {
+      "type": "attentionChanged",
+      "activityId": "FORMALIZE",
+      "allocation": 2
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449450022,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449440018,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449440018,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449440018,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449440018,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449440018,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449450022,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 5.792190853900024,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "attentionChanged",
+      "activityId": "FORMALIZE",
+      "allocation": 0
+    },
+    {
+      "type": "attentionChanged",
+      "activityId": "EXPLORE",
+      "allocation": 3
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 14.449348111684088,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 14.449348111684202,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 14.449348111684088,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 14.449348111684202,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 14.449348111684088,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 14.449348111684088,
+      "reason": "activity production"
+    },
+    {
       "type": "timeAdvanced",
       "durationMs": 30000,
       "offline": false
@@ -2843,7 +2814,18 @@
     {
       "type": "resourceChanged",
       "resourceId": "INTUITION",
-      "amount": 14.449348111684003,
+      "amount": 14.449348111683975,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 14.449348111684031,
       "reason": "activity production"
     },
     {
@@ -2921,6 +2903,23 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
+      "amount": 13.05825844943979,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
       "amount": 13.058258449440018,
       "reason": "activity production"
     },
@@ -2979,6 +2978,143 @@
       "type": "resourceChanged",
       "resourceId": "INTUITION",
       "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449440018,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449440018,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449450022,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 12.47567395502,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "attentionChanged",
+      "activityId": "FORMALIZE",
+      "allocation": 0
+    },
+    {
+      "type": "attentionChanged",
+      "activityId": "EXPLORE",
+      "allocation": 3
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 14.449348111684088,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "projectStarted",
+      "projectId": "nn.project.equivalence_capstone"
+    },
+    {
+      "type": "attentionChanged",
+      "activityId": "EXPLORE",
+      "allocation": 1
+    },
+    {
+      "type": "attentionChanged",
+      "activityId": "FORMALIZE",
+      "allocation": 2
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449440018,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 5.999999999999999,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449440018,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6.000000000000002,
       "reason": "activity production"
     },
     {
@@ -3057,124 +3193,6 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 12.47567395502,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "attentionChanged",
-      "activityId": "FORMALIZE",
-      "allocation": 0
-    },
-    {
-      "type": "attentionChanged",
-      "activityId": "EXPLORE",
-      "allocation": 3
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 14.449348111684102,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 14.449348111684202,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 14.449348111684088,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 14.449348111684202,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 14.449348111684088,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 14.449348111684088,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 14.449348111684202,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "projectStarted",
-      "projectId": "nn.project.equivalence_capstone"
-    },
-    {
-      "type": "attentionChanged",
-      "activityId": "EXPLORE",
-      "allocation": 1
-    },
-    {
-      "type": "attentionChanged",
-      "activityId": "FORMALIZE",
-      "allocation": 2
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
       "amount": 13.058258449440018,
       "reason": "activity production"
     },
@@ -3227,6 +3245,23 @@
       "type": "resourceChanged",
       "resourceId": "PRECISION",
       "amount": 13.058258449450022,
+      "reason": "activity production"
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "INTUITION",
+      "amount": 6,
+      "reason": "activity production"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 30000,
+      "offline": false
+    },
+    {
+      "type": "resourceChanged",
+      "resourceId": "PRECISION",
+      "amount": 13.058258449440018,
       "reason": "activity production"
     },
     {
@@ -3334,23 +3369,6 @@
     {
       "type": "resourceChanged",
       "resourceId": "INTUITION",
-      "amount": 6.000000000000007,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
       "amount": 6,
       "reason": "activity production"
     },
@@ -3362,149 +3380,13 @@
     {
       "type": "resourceChanged",
       "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
+      "amount": 4.809606359489976,
       "reason": "activity production"
     },
     {
       "type": "resourceChanged",
       "resourceId": "INTUITION",
       "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449450022,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 13.058258449440018,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 6,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "PRECISION",
-      "amount": 3.8930894606099855,
-      "reason": "activity production"
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 5.999999999999986,
       "reason": "activity production"
     },
     {
@@ -3525,7 +3407,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "INTUITION",
-      "amount": 14.449348111684088,
+      "amount": 14.449348111684102,
       "reason": "activity production"
     },
     {
@@ -3624,7 +3506,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "INTUITION",
-      "amount": 14.449348111684003,
+      "amount": 14.449348111684031,
       "reason": "activity production"
     },
     {
@@ -3635,18 +3517,7 @@
     {
       "type": "resourceChanged",
       "resourceId": "INTUITION",
-      "amount": 14.44934811168497,
-      "reason": "activity production"
-    },
-    {
-      "type": "timeAdvanced",
-      "durationMs": 30000,
-      "offline": false
-    },
-    {
-      "type": "resourceChanged",
-      "resourceId": "INTUITION",
-      "amount": 7.2246740558420015,
+      "amount": 5.057271839089992,
       "reason": "activity production"
     },
     {
@@ -3661,17 +3532,17 @@
       "artifactIds": ["nn.artifact.equivalence_capstone"]
     },
     {
-      "type": "timeAdvanced",
-      "durationMs": 15000,
-      "offline": false
-    },
-    {
       "type": "milestoneReached",
       "milestoneId": "nn.milestone.equivalent_foundations"
     },
     {
       "type": "achievementRecorded",
       "achievementId": "nn.achievement.exact_hypothesis"
+    },
+    {
+      "type": "timeAdvanced",
+      "durationMs": 10500,
+      "offline": false
     },
     {
       "type": "upgradePurchased",
@@ -4024,17 +3895,15 @@
     },
     {
       "envelope": {
-        "id": "simulator-19-advanceTime",
+        "id": "simulator-19-startProject",
         "sequence": 19,
         "logicalTimestampMs": 19,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "startProject",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "projectId": "nn.project.primitive_recursion"
           }
         }
       },
@@ -4043,15 +3912,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-20-startProject",
+        "id": "simulator-20-advanceTime",
         "sequence": 20,
         "logicalTimestampMs": 20,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "startProject",
+          "type": "advanceTime",
           "payload": {
-            "projectId": "nn.project.primitive_recursion"
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -4182,25 +4053,6 @@
         "command": {
           "type": "advanceTime",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-28-advanceTime",
-        "sequence": 28,
-        "logicalTimestampMs": 28,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
             "durationMs": 10500,
             "offline": false,
             "safePolicy": false
@@ -4212,15 +4064,34 @@
     },
     {
       "envelope": {
-        "id": "simulator-29-startProject",
-        "sequence": 29,
-        "logicalTimestampMs": 29,
+        "id": "simulator-28-startProject",
+        "sequence": 28,
+        "logicalTimestampMs": 28,
         "source": "simulator",
         "correlationId": null,
         "command": {
           "type": "startProject",
           "payload": {
             "projectId": "nn.project.addition"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-29-advanceTime",
+        "sequence": 29,
+        "logicalTimestampMs": 29,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -4370,7 +4241,7 @@
         "command": {
           "type": "advanceTime",
           "payload": {
-            "durationMs": 30000,
+            "durationMs": 16500,
             "offline": false,
             "safePolicy": false
           }
@@ -4381,9 +4252,44 @@
     },
     {
       "envelope": {
-        "id": "simulator-38-advanceTime",
+        "id": "simulator-38-switchProjectApproach",
         "sequence": 38,
         "logicalTimestampMs": 38,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "switchProjectApproach",
+          "payload": {
+            "projectId": "nn.project.addition_lemmas",
+            "approachId": "EXPLORATORY"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-39-startProject",
+        "sequence": 39,
+        "logicalTimestampMs": 39,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "startProject",
+          "payload": {
+            "projectId": "nn.project.addition_lemmas"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-40-advanceTime",
+        "sequence": 40,
+        "logicalTimestampMs": 40,
         "source": "simulator",
         "correlationId": null,
         "command": {
@@ -4392,42 +4298,6 @@
             "durationMs": 30000,
             "offline": false,
             "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-39-setAttention",
-        "sequence": 39,
-        "logicalTimestampMs": 39,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "setAttention",
-          "payload": {
-            "activityId": "FORMALIZE",
-            "allocation": 0
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-40-setAttention",
-        "sequence": 40,
-        "logicalTimestampMs": 40,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "setAttention",
-          "payload": {
-            "activityId": "EXPLORE",
-            "allocation": 3
           }
         }
       },
@@ -4444,7 +4314,7 @@
         "command": {
           "type": "advanceTime",
           "payload": {
-            "durationMs": 15000,
+            "durationMs": 30000,
             "offline": false,
             "safePolicy": false
           }
@@ -4455,16 +4325,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-42-switchProjectApproach",
+        "id": "simulator-42-advanceTime",
         "sequence": 42,
         "logicalTimestampMs": 42,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "switchProjectApproach",
+          "type": "advanceTime",
           "payload": {
-            "projectId": "nn.project.addition_lemmas",
-            "approachId": "EXPLORATORY"
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -4473,15 +4344,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-43-startProject",
+        "id": "simulator-43-advanceTime",
         "sequence": 43,
         "logicalTimestampMs": 43,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "startProject",
+          "type": "advanceTime",
           "payload": {
-            "projectId": "nn.project.addition_lemmas"
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -4490,16 +4363,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-44-setAttention",
+        "id": "simulator-44-advanceTime",
         "sequence": 44,
         "logicalTimestampMs": 44,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "EXPLORE",
-            "allocation": 1
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -4508,16 +4382,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-45-setAttention",
+        "id": "simulator-45-advanceTime",
         "sequence": 45,
         "logicalTimestampMs": 45,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "FORMALIZE",
-            "allocation": 2
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -4545,17 +4420,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-47-advanceTime",
+        "id": "simulator-47-setAttention",
         "sequence": 47,
         "logicalTimestampMs": 47,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "FORMALIZE",
+            "allocation": 0
           }
         }
       },
@@ -4564,17 +4438,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-48-advanceTime",
+        "id": "simulator-48-setAttention",
         "sequence": 48,
         "logicalTimestampMs": 48,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "EXPLORE",
+            "allocation": 3
           }
         }
       },
@@ -4659,16 +4532,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-53-setAttention",
+        "id": "simulator-53-advanceTime",
         "sequence": 53,
         "logicalTimestampMs": 53,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "FORMALIZE",
-            "allocation": 0
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -4677,16 +4551,51 @@
     },
     {
       "envelope": {
-        "id": "simulator-54-setAttention",
+        "id": "simulator-54-switchProjectApproach",
         "sequence": 54,
         "logicalTimestampMs": 54,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "switchProjectApproach",
+          "payload": {
+            "projectId": "nn.project.multiplication",
+            "approachId": "CONSTRUCTIVE"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-55-startProject",
+        "sequence": 55,
+        "logicalTimestampMs": 55,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "startProject",
+          "payload": {
+            "projectId": "nn.project.multiplication"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-56-setAttention",
+        "sequence": 56,
+        "logicalTimestampMs": 56,
         "source": "simulator",
         "correlationId": null,
         "command": {
           "type": "setAttention",
           "payload": {
             "activityId": "EXPLORE",
-            "allocation": 3
+            "allocation": 1
           }
         }
       },
@@ -4695,55 +4604,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-55-advanceTime",
-        "sequence": 55,
-        "logicalTimestampMs": 55,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-56-advanceTime",
-        "sequence": 56,
-        "logicalTimestampMs": 56,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-57-advanceTime",
+        "id": "simulator-57-setAttention",
         "sequence": 57,
         "logicalTimestampMs": 57,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "FORMALIZE",
+            "allocation": 2
           }
         }
       },
@@ -4790,16 +4660,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-60-switchProjectApproach",
+        "id": "simulator-60-advanceTime",
         "sequence": 60,
         "logicalTimestampMs": 60,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "switchProjectApproach",
+          "type": "advanceTime",
           "payload": {
-            "projectId": "nn.project.multiplication",
-            "approachId": "CONSTRUCTIVE"
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -4808,15 +4679,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-61-startProject",
+        "id": "simulator-61-advanceTime",
         "sequence": 61,
         "logicalTimestampMs": 61,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "startProject",
+          "type": "advanceTime",
           "payload": {
-            "projectId": "nn.project.multiplication"
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -4825,16 +4698,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-62-setAttention",
+        "id": "simulator-62-advanceTime",
         "sequence": 62,
         "logicalTimestampMs": 62,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "EXPLORE",
-            "allocation": 1
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -4843,16 +4717,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-63-setAttention",
+        "id": "simulator-63-advanceTime",
         "sequence": 63,
         "logicalTimestampMs": 63,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "FORMALIZE",
-            "allocation": 2
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -4880,17 +4755,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-65-advanceTime",
+        "id": "simulator-65-setAttention",
         "sequence": 65,
         "logicalTimestampMs": 65,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "FORMALIZE",
+            "allocation": 0
           }
         }
       },
@@ -4899,17 +4773,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-66-advanceTime",
+        "id": "simulator-66-setAttention",
         "sequence": 66,
         "logicalTimestampMs": 66,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "EXPLORE",
+            "allocation": 3
           }
         }
       },
@@ -5002,7 +4875,7 @@
         "command": {
           "type": "setAttention",
           "payload": {
-            "activityId": "FORMALIZE",
+            "activityId": "EXPLORE",
             "allocation": 0
           }
         }
@@ -5012,16 +4885,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-72-setAttention",
+        "id": "simulator-72-advanceTime",
         "sequence": 72,
         "logicalTimestampMs": 72,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "EXPLORE",
-            "allocation": 3
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -5057,7 +4931,7 @@
         "command": {
           "type": "advanceTime",
           "payload": {
-            "durationMs": 30000,
+            "durationMs": 6900.000000000035,
             "offline": false,
             "safePolicy": false
           }
@@ -5068,17 +4942,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-75-advanceTime",
+        "id": "simulator-75-setAttention",
         "sequence": 75,
         "logicalTimestampMs": 75,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "FORMALIZE",
+            "allocation": 2
           }
         }
       },
@@ -5096,7 +4969,7 @@
           "type": "setAttention",
           "payload": {
             "activityId": "EXPLORE",
-            "allocation": 0
+            "allocation": 1
           }
         }
       },
@@ -5105,17 +4978,15 @@
     },
     {
       "envelope": {
-        "id": "simulator-77-advanceTime",
+        "id": "simulator-77-startProject",
         "sequence": 77,
         "logicalTimestampMs": 77,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "startProject",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "projectId": "nn.project.induction_walkthrough"
           }
         }
       },
@@ -5189,7 +5060,7 @@
         "command": {
           "type": "advanceTime",
           "payload": {
-            "durationMs": 21000,
+            "durationMs": 30000,
             "offline": false,
             "safePolicy": false
           }
@@ -5200,16 +5071,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-82-setAttention",
+        "id": "simulator-82-advanceTime",
         "sequence": 82,
         "logicalTimestampMs": 82,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "FORMALIZE",
-            "allocation": 2
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -5218,16 +5090,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-83-setAttention",
+        "id": "simulator-83-advanceTime",
         "sequence": 83,
         "logicalTimestampMs": 83,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "EXPLORE",
-            "allocation": 1
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -5236,15 +5109,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-84-startProject",
+        "id": "simulator-84-advanceTime",
         "sequence": 84,
         "logicalTimestampMs": 84,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "startProject",
+          "type": "advanceTime",
           "payload": {
-            "projectId": "nn.project.induction_walkthrough"
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -5413,7 +5288,7 @@
         "command": {
           "type": "advanceTime",
           "payload": {
-            "durationMs": 30000,
+            "durationMs": 6000,
             "offline": false,
             "safePolicy": false
           }
@@ -5424,17 +5299,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-94-advanceTime",
+        "id": "simulator-94-switchProjectApproach",
         "sequence": 94,
         "logicalTimestampMs": 94,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "switchProjectApproach",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "projectId": "nn.project.counterexample_lab",
+            "approachId": "EXPLORATORY"
           }
         }
       },
@@ -5443,17 +5317,15 @@
     },
     {
       "envelope": {
-        "id": "simulator-95-advanceTime",
+        "id": "simulator-95-startProject",
         "sequence": 95,
         "logicalTimestampMs": 95,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "startProject",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "projectId": "nn.project.counterexample_lab"
           }
         }
       },
@@ -5546,7 +5418,7 @@
         "command": {
           "type": "advanceTime",
           "payload": {
-            "durationMs": 6000,
+            "durationMs": 30000,
             "offline": false,
             "safePolicy": false
           }
@@ -5557,16 +5429,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-101-switchProjectApproach",
+        "id": "simulator-101-advanceTime",
         "sequence": 101,
         "logicalTimestampMs": 101,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "switchProjectApproach",
+          "type": "advanceTime",
           "payload": {
-            "projectId": "nn.project.counterexample_lab",
-            "approachId": "EXPLORATORY"
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -5575,15 +5448,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-102-startProject",
+        "id": "simulator-102-advanceTime",
         "sequence": 102,
         "logicalTimestampMs": 102,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "startProject",
+          "type": "advanceTime",
           "payload": {
-            "projectId": "nn.project.counterexample_lab"
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -5649,17 +5524,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-106-advanceTime",
+        "id": "simulator-106-switchProjectApproach",
         "sequence": 106,
         "logicalTimestampMs": 106,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "switchProjectApproach",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "projectId": "nn.project.strong_induction",
+            "approachId": "CONSTRUCTIVE"
           }
         }
       },
@@ -5725,17 +5599,15 @@
     },
     {
       "envelope": {
-        "id": "simulator-110-advanceTime",
+        "id": "simulator-110-startProject",
         "sequence": 110,
         "logicalTimestampMs": 110,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "startProject",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "projectId": "nn.project.strong_induction"
           }
         }
       },
@@ -5782,16 +5654,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-113-switchProjectApproach",
+        "id": "simulator-113-advanceTime",
         "sequence": 113,
         "logicalTimestampMs": 113,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "switchProjectApproach",
+          "type": "advanceTime",
           "payload": {
-            "projectId": "nn.project.strong_induction",
-            "approachId": "CONSTRUCTIVE"
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -5876,15 +5749,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-118-startProject",
+        "id": "simulator-118-advanceTime",
         "sequence": 118,
         "logicalTimestampMs": 118,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "startProject",
+          "type": "advanceTime",
           "payload": {
-            "projectId": "nn.project.strong_induction"
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -5988,17 +5863,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-124-advanceTime",
+        "id": "simulator-124-setAttention",
         "sequence": 124,
         "logicalTimestampMs": 124,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "FORMALIZE",
+            "allocation": 0
           }
         }
       },
@@ -6007,17 +5881,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-125-advanceTime",
+        "id": "simulator-125-setAttention",
         "sequence": 125,
         "logicalTimestampMs": 125,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "EXPLORE",
+            "allocation": 3
           }
         }
       },
@@ -6129,7 +6002,7 @@
         "command": {
           "type": "advanceTime",
           "payload": {
-            "durationMs": 30000,
+            "durationMs": 27000,
             "offline": false,
             "safePolicy": false
           }
@@ -6140,17 +6013,15 @@
     },
     {
       "envelope": {
-        "id": "simulator-132-advanceTime",
+        "id": "simulator-132-startProject",
         "sequence": 132,
         "logicalTimestampMs": 132,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "startProject",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "projectId": "nn.project.well_ordering"
           }
         }
       },
@@ -6159,17 +6030,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-133-advanceTime",
+        "id": "simulator-133-setAttention",
         "sequence": 133,
         "logicalTimestampMs": 133,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "EXPLORE",
+            "allocation": 1
           }
         }
       },
@@ -6187,7 +6057,7 @@
           "type": "setAttention",
           "payload": {
             "activityId": "FORMALIZE",
-            "allocation": 0
+            "allocation": 2
           }
         }
       },
@@ -6196,16 +6066,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-135-setAttention",
+        "id": "simulator-135-advanceTime",
         "sequence": 135,
         "logicalTimestampMs": 135,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "EXPLORE",
-            "allocation": 3
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -6279,7 +6150,7 @@
         "command": {
           "type": "advanceTime",
           "payload": {
-            "durationMs": 27000,
+            "durationMs": 30000,
             "offline": false,
             "safePolicy": false
           }
@@ -6290,15 +6161,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-140-startProject",
+        "id": "simulator-140-advanceTime",
         "sequence": 140,
         "logicalTimestampMs": 140,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "startProject",
+          "type": "advanceTime",
           "payload": {
-            "projectId": "nn.project.well_ordering"
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -6307,16 +6180,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-141-setAttention",
+        "id": "simulator-141-advanceTime",
         "sequence": 141,
         "logicalTimestampMs": 141,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "EXPLORE",
-            "allocation": 1
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -6325,16 +6199,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-142-setAttention",
+        "id": "simulator-142-advanceTime",
         "sequence": 142,
         "logicalTimestampMs": 142,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "FORMALIZE",
-            "allocation": 2
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -6438,17 +6313,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-148-advanceTime",
+        "id": "simulator-148-setAttention",
         "sequence": 148,
         "logicalTimestampMs": 148,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "FORMALIZE",
+            "allocation": 0
           }
         }
       },
@@ -6457,17 +6331,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-149-advanceTime",
+        "id": "simulator-149-setAttention",
         "sequence": 149,
         "logicalTimestampMs": 149,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "EXPLORE",
+            "allocation": 3
           }
         }
       },
@@ -6590,17 +6463,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-156-advanceTime",
+        "id": "simulator-156-switchProjectApproach",
         "sequence": 156,
         "logicalTimestampMs": 156,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "switchProjectApproach",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "projectId": "nn.project.least_counterexample",
+            "approachId": "EXPLORATORY"
           }
         }
       },
@@ -6609,17 +6481,15 @@
     },
     {
       "envelope": {
-        "id": "simulator-157-advanceTime",
+        "id": "simulator-157-startProject",
         "sequence": 157,
         "logicalTimestampMs": 157,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "startProject",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "projectId": "nn.project.least_counterexample"
           }
         }
       },
@@ -6636,8 +6506,8 @@
         "command": {
           "type": "setAttention",
           "payload": {
-            "activityId": "FORMALIZE",
-            "allocation": 0
+            "activityId": "EXPLORE",
+            "allocation": 1
           }
         }
       },
@@ -6654,8 +6524,8 @@
         "command": {
           "type": "setAttention",
           "payload": {
-            "activityId": "EXPLORE",
-            "allocation": 3
+            "activityId": "FORMALIZE",
+            "allocation": 2
           }
         }
       },
@@ -6740,16 +6610,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-164-switchProjectApproach",
+        "id": "simulator-164-advanceTime",
         "sequence": 164,
         "logicalTimestampMs": 164,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "switchProjectApproach",
+          "type": "advanceTime",
           "payload": {
-            "projectId": "nn.project.least_counterexample",
-            "approachId": "EXPLORATORY"
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -6758,15 +6629,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-165-startProject",
+        "id": "simulator-165-advanceTime",
         "sequence": 165,
         "logicalTimestampMs": 165,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "startProject",
+          "type": "advanceTime",
           "payload": {
-            "projectId": "nn.project.least_counterexample"
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -6775,16 +6648,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-166-setAttention",
+        "id": "simulator-166-advanceTime",
         "sequence": 166,
         "logicalTimestampMs": 166,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "EXPLORE",
-            "allocation": 1
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -6793,16 +6667,35 @@
     },
     {
       "envelope": {
-        "id": "simulator-167-setAttention",
+        "id": "simulator-167-advanceTime",
         "sequence": 167,
         "logicalTimestampMs": 167,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-168-setAttention",
+        "sequence": 168,
+        "logicalTimestampMs": 168,
         "source": "simulator",
         "correlationId": null,
         "command": {
           "type": "setAttention",
           "payload": {
             "activityId": "FORMALIZE",
-            "allocation": 2
+            "allocation": 0
           }
         }
       },
@@ -6811,36 +6704,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-168-advanceTime",
-        "sequence": 168,
-        "logicalTimestampMs": 168,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-169-advanceTime",
+        "id": "simulator-169-setAttention",
         "sequence": 169,
         "logicalTimestampMs": 169,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "EXPLORE",
+            "allocation": 3
           }
         }
       },
@@ -6982,16 +6855,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-177-setAttention",
+        "id": "simulator-177-advanceTime",
         "sequence": 177,
         "logicalTimestampMs": 177,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "FORMALIZE",
-            "allocation": 0
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -7000,16 +6874,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-178-setAttention",
+        "id": "simulator-178-advanceTime",
         "sequence": 178,
         "logicalTimestampMs": 178,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "EXPLORE",
-            "allocation": 3
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -7037,161 +6912,9 @@
     },
     {
       "envelope": {
-        "id": "simulator-180-advanceTime",
+        "id": "simulator-180-purchaseUpgrade",
         "sequence": 180,
         "logicalTimestampMs": 180,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-181-advanceTime",
-        "sequence": 181,
-        "logicalTimestampMs": 181,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-182-advanceTime",
-        "sequence": 182,
-        "logicalTimestampMs": 182,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-183-advanceTime",
-        "sequence": 183,
-        "logicalTimestampMs": 183,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-184-advanceTime",
-        "sequence": 184,
-        "logicalTimestampMs": 184,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-185-advanceTime",
-        "sequence": 185,
-        "logicalTimestampMs": 185,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-186-advanceTime",
-        "sequence": 186,
-        "logicalTimestampMs": 186,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-187-advanceTime",
-        "sequence": 187,
-        "logicalTimestampMs": 187,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-188-purchaseUpgrade",
-        "sequence": 188,
-        "logicalTimestampMs": 188,
         "source": "simulator",
         "correlationId": null,
         "command": {
@@ -7206,9 +6929,9 @@
     },
     {
       "envelope": {
-        "id": "simulator-189-setAttention",
-        "sequence": 189,
-        "logicalTimestampMs": 189,
+        "id": "simulator-181-setAttention",
+        "sequence": 181,
+        "logicalTimestampMs": 181,
         "source": "simulator",
         "correlationId": null,
         "command": {
@@ -7224,9 +6947,9 @@
     },
     {
       "envelope": {
-        "id": "simulator-190-setAttention",
-        "sequence": 190,
-        "logicalTimestampMs": 190,
+        "id": "simulator-182-setAttention",
+        "sequence": 182,
+        "logicalTimestampMs": 182,
         "source": "simulator",
         "correlationId": null,
         "command": {
@@ -7242,9 +6965,9 @@
     },
     {
       "envelope": {
-        "id": "simulator-191-assembleCapstoneEdge",
-        "sequence": 191,
-        "logicalTimestampMs": 191,
+        "id": "simulator-183-assembleCapstoneEdge",
+        "sequence": 183,
+        "logicalTimestampMs": 183,
         "source": "simulator",
         "correlationId": null,
         "command": {
@@ -7260,9 +6983,9 @@
     },
     {
       "envelope": {
-        "id": "simulator-192-assembleCapstoneEdge",
-        "sequence": 192,
-        "logicalTimestampMs": 192,
+        "id": "simulator-184-assembleCapstoneEdge",
+        "sequence": 184,
+        "logicalTimestampMs": 184,
         "source": "simulator",
         "correlationId": null,
         "command": {
@@ -7278,9 +7001,9 @@
     },
     {
       "envelope": {
-        "id": "simulator-193-assembleCapstoneEdge",
-        "sequence": 193,
-        "logicalTimestampMs": 193,
+        "id": "simulator-185-assembleCapstoneEdge",
+        "sequence": 185,
+        "logicalTimestampMs": 185,
         "source": "simulator",
         "correlationId": null,
         "command": {
@@ -7296,9 +7019,9 @@
     },
     {
       "envelope": {
-        "id": "simulator-194-assembleCapstoneEdge",
-        "sequence": 194,
-        "logicalTimestampMs": 194,
+        "id": "simulator-186-assembleCapstoneEdge",
+        "sequence": 186,
+        "logicalTimestampMs": 186,
         "source": "simulator",
         "correlationId": null,
         "command": {
@@ -7314,9 +7037,9 @@
     },
     {
       "envelope": {
-        "id": "simulator-195-switchProjectApproach",
-        "sequence": 195,
-        "logicalTimestampMs": 195,
+        "id": "simulator-187-switchProjectApproach",
+        "sequence": 187,
+        "logicalTimestampMs": 187,
         "source": "simulator",
         "correlationId": null,
         "command": {
@@ -7324,6 +7047,158 @@
           "payload": {
             "projectId": "nn.project.equivalence_capstone",
             "approachId": "CONSTRUCTIVE"
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-188-advanceTime",
+        "sequence": 188,
+        "logicalTimestampMs": 188,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-189-advanceTime",
+        "sequence": 189,
+        "logicalTimestampMs": 189,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-190-advanceTime",
+        "sequence": 190,
+        "logicalTimestampMs": 190,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-191-advanceTime",
+        "sequence": 191,
+        "logicalTimestampMs": 191,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-192-advanceTime",
+        "sequence": 192,
+        "logicalTimestampMs": 192,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-193-advanceTime",
+        "sequence": 193,
+        "logicalTimestampMs": 193,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-194-advanceTime",
+        "sequence": 194,
+        "logicalTimestampMs": 194,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
+          }
+        }
+      },
+      "accepted": true,
+      "rejectionCode": null
+    },
+    {
+      "envelope": {
+        "id": "simulator-195-advanceTime",
+        "sequence": 195,
+        "logicalTimestampMs": 195,
+        "source": "simulator",
+        "correlationId": null,
+        "command": {
+          "type": "advanceTime",
+          "payload": {
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -7370,17 +7245,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-198-advanceTime",
+        "id": "simulator-198-setAttention",
         "sequence": 198,
         "logicalTimestampMs": 198,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "FORMALIZE",
+            "allocation": 0
           }
         }
       },
@@ -7389,17 +7263,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-199-advanceTime",
+        "id": "simulator-199-setAttention",
         "sequence": 199,
         "logicalTimestampMs": 199,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "EXPLORE",
+            "allocation": 3
           }
         }
       },
@@ -7427,17 +7300,15 @@
     },
     {
       "envelope": {
-        "id": "simulator-201-advanceTime",
+        "id": "simulator-201-startProject",
         "sequence": 201,
         "logicalTimestampMs": 201,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "startProject",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "projectId": "nn.project.equivalence_capstone"
           }
         }
       },
@@ -7446,17 +7317,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-202-advanceTime",
+        "id": "simulator-202-setAttention",
         "sequence": 202,
         "logicalTimestampMs": 202,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "EXPLORE",
+            "allocation": 1
           }
         }
       },
@@ -7465,17 +7335,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-203-advanceTime",
+        "id": "simulator-203-setAttention",
         "sequence": 203,
         "logicalTimestampMs": 203,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "FORMALIZE",
+            "allocation": 2
           }
         }
       },
@@ -7522,16 +7391,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-206-setAttention",
+        "id": "simulator-206-advanceTime",
         "sequence": 206,
         "logicalTimestampMs": 206,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "FORMALIZE",
-            "allocation": 0
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -7540,16 +7410,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-207-setAttention",
+        "id": "simulator-207-advanceTime",
         "sequence": 207,
         "logicalTimestampMs": 207,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "EXPLORE",
-            "allocation": 3
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -7691,15 +7562,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-215-startProject",
+        "id": "simulator-215-advanceTime",
         "sequence": 215,
         "logicalTimestampMs": 215,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "startProject",
+          "type": "advanceTime",
           "payload": {
-            "projectId": "nn.project.equivalence_capstone"
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -7708,16 +7581,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-216-setAttention",
+        "id": "simulator-216-advanceTime",
         "sequence": 216,
         "logicalTimestampMs": 216,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "EXPLORE",
-            "allocation": 1
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -7726,16 +7600,17 @@
     },
     {
       "envelope": {
-        "id": "simulator-217-setAttention",
+        "id": "simulator-217-advanceTime",
         "sequence": 217,
         "logicalTimestampMs": 217,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "setAttention",
+          "type": "advanceTime",
           "payload": {
-            "activityId": "FORMALIZE",
-            "allocation": 2
+            "durationMs": 30000,
+            "offline": false,
+            "safePolicy": false
           }
         }
       },
@@ -7820,17 +7695,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-222-advanceTime",
+        "id": "simulator-222-setAttention",
         "sequence": 222,
         "logicalTimestampMs": 222,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "FORMALIZE",
+            "allocation": 0
           }
         }
       },
@@ -7839,17 +7713,16 @@
     },
     {
       "envelope": {
-        "id": "simulator-223-advanceTime",
+        "id": "simulator-223-setAttention",
         "sequence": 223,
         "logicalTimestampMs": 223,
         "source": "simulator",
         "correlationId": null,
         "command": {
-          "type": "advanceTime",
+          "type": "setAttention",
           "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
+            "activityId": "EXPLORE",
+            "allocation": 3
           }
         }
       },
@@ -8056,7 +7929,7 @@
         "command": {
           "type": "advanceTime",
           "payload": {
-            "durationMs": 30000,
+            "durationMs": 10500,
             "offline": false,
             "safePolicy": false
           }
@@ -8067,330 +7940,9 @@
     },
     {
       "envelope": {
-        "id": "simulator-235-advanceTime",
+        "id": "simulator-235-purchaseUpgrade",
         "sequence": 235,
         "logicalTimestampMs": 235,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-236-advanceTime",
-        "sequence": 236,
-        "logicalTimestampMs": 236,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-237-advanceTime",
-        "sequence": 237,
-        "logicalTimestampMs": 237,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-238-setAttention",
-        "sequence": 238,
-        "logicalTimestampMs": 238,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "setAttention",
-          "payload": {
-            "activityId": "FORMALIZE",
-            "allocation": 0
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-239-setAttention",
-        "sequence": 239,
-        "logicalTimestampMs": 239,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "setAttention",
-          "payload": {
-            "activityId": "EXPLORE",
-            "allocation": 3
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-240-advanceTime",
-        "sequence": 240,
-        "logicalTimestampMs": 240,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-241-advanceTime",
-        "sequence": 241,
-        "logicalTimestampMs": 241,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-242-advanceTime",
-        "sequence": 242,
-        "logicalTimestampMs": 242,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-243-advanceTime",
-        "sequence": 243,
-        "logicalTimestampMs": 243,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-244-advanceTime",
-        "sequence": 244,
-        "logicalTimestampMs": 244,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-245-advanceTime",
-        "sequence": 245,
-        "logicalTimestampMs": 245,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-246-advanceTime",
-        "sequence": 246,
-        "logicalTimestampMs": 246,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-247-advanceTime",
-        "sequence": 247,
-        "logicalTimestampMs": 247,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-248-advanceTime",
-        "sequence": 248,
-        "logicalTimestampMs": 248,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-249-advanceTime",
-        "sequence": 249,
-        "logicalTimestampMs": 249,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-250-advanceTime",
-        "sequence": 250,
-        "logicalTimestampMs": 250,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 30000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-251-advanceTime",
-        "sequence": 251,
-        "logicalTimestampMs": 251,
-        "source": "simulator",
-        "correlationId": null,
-        "command": {
-          "type": "advanceTime",
-          "payload": {
-            "durationMs": 15000,
-            "offline": false,
-            "safePolicy": false
-          }
-        }
-      },
-      "accepted": true,
-      "rejectionCode": null
-    },
-    {
-      "envelope": {
-        "id": "simulator-252-purchaseUpgrade",
-        "sequence": 252,
-        "logicalTimestampMs": 252,
         "source": "simulator",
         "correlationId": null,
         "command": {
@@ -8405,9 +7957,9 @@
     },
     {
       "envelope": {
-        "id": "simulator-253-publishChapter",
-        "sequence": 253,
-        "logicalTimestampMs": 253,
+        "id": "simulator-236-publishChapter",
+        "sequence": 236,
+        "logicalTimestampMs": 236,
         "source": "simulator",
         "correlationId": null,
         "command": {
@@ -8480,7 +8032,7 @@
     },
     {
       "timeMs": 162750,
-      "precision": 42.7743618118682,
+      "precision": 45.2943618118682,
       "intuition": 3,
       "activeProject": "nn.project.peano_frame",
       "completedProjects": 1,
@@ -8488,142 +8040,110 @@
     },
     {
       "timeMs": 282750,
-      "precision": 95.0073956096356,
+      "precision": 97.5273956096356,
       "intuition": 27,
       "activeProject": null,
       "completedProjects": 2,
       "upgrades": 2
     },
     {
-      "timeMs": 312750,
-      "precision": 60.815654059078,
-      "intuition": 5.7,
+      "timeMs": 282750,
+      "precision": 50.2773956096356,
+      "intuition": 2.43,
       "activeProject": "nn.project.primitive_recursion",
       "completedProjects": 2,
       "upgrades": 2
     },
     {
-      "timeMs": 533250,
-      "precision": 71.793853662476,
-      "intuition": 15.6,
+      "timeMs": 503250,
+      "precision": 61.255595213034,
+      "intuition": 12.33,
       "activeProject": "nn.project.addition",
       "completedProjects": 3,
       "upgrades": 2
     },
     {
-      "timeMs": 803250,
-      "precision": 180,
-      "intuition": 69.6,
-      "activeProject": "nn.project.addition",
-      "completedProjects": 3,
-      "upgrades": 2
-    },
-    {
-      "timeMs": 803250,
-      "precision": 180,
-      "intuition": 69.6,
-      "activeProject": "nn.project.addition",
-      "completedProjects": 3,
-      "upgrades": 2
-    },
-    {
-      "timeMs": 818250,
-      "precision": 180,
-      "intuition": 76.8246740558421,
+      "timeMs": 759750,
+      "precision": 172.903704955762,
+      "intuition": 63.63,
       "activeProject": null,
       "completedProjects": 4,
       "upgrades": 2
     },
     {
-      "timeMs": 818250,
-      "precision": 97.2,
-      "intuition": 21.8246740558421,
+      "timeMs": 759750,
+      "precision": 98.383704955762,
+      "intuition": 14.13,
       "activeProject": "nn.project.addition_lemmas",
       "completedProjects": 4,
       "upgrades": 2
     },
     {
-      "timeMs": 818250,
-      "precision": 97.2,
-      "intuition": 21.8246740558421,
-      "activeProject": "nn.project.addition_lemmas",
-      "completedProjects": 4,
-      "upgrades": 2
-    },
-    {
-      "timeMs": 818250,
-      "precision": 97.2,
-      "intuition": 21.8246740558421,
-      "activeProject": "nn.project.addition_lemmas",
-      "completedProjects": 4,
-      "upgrades": 2
-    },
-    {
-      "timeMs": 1028250,
+      "timeMs": 969750,
       "precision": 180,
-      "intuition": 63.8246740558421,
+      "intuition": 56.13,
       "activeProject": "nn.project.addition_lemmas",
       "completedProjects": 4,
       "upgrades": 2
     },
     {
-      "timeMs": 1028250,
+      "timeMs": 969750,
       "precision": 180,
-      "intuition": 63.8246740558421,
+      "intuition": 56.13,
       "activeProject": "nn.project.addition_lemmas",
       "completedProjects": 4,
       "upgrades": 2
     },
     {
-      "timeMs": 1178250,
+      "timeMs": 1119750,
       "precision": 180,
-      "intuition": 136.071414614263,
+      "intuition": 128.376740558421,
       "activeProject": null,
       "completedProjects": 5,
       "upgrades": 2
     },
     {
-      "timeMs": 1178250,
-      "precision": 90.75,
-      "intuition": 70.971414614263,
+      "timeMs": 1119750,
+      "precision": 99.675,
+      "intuition": 63.276740558421,
       "activeProject": "nn.project.multiplication",
       "completedProjects": 5,
       "upgrades": 2
     },
     {
-      "timeMs": 1178250,
-      "precision": 90.75,
-      "intuition": 70.971414614263,
+      "timeMs": 1119750,
+      "precision": 99.675,
+      "intuition": 63.276740558421,
       "activeProject": "nn.project.multiplication",
       "completedProjects": 5,
       "upgrades": 2
     },
     {
-      "timeMs": 1178250,
-      "precision": 90.75,
-      "intuition": 70.971414614263,
+      "timeMs": 1119750,
+      "precision": 99.675,
+      "intuition": 63.276740558421,
       "activeProject": "nn.project.multiplication",
       "completedProjects": 5,
       "upgrades": 2
     },
     {
-      "timeMs": 1388250,
+      "timeMs": 1329750,
       "precision": 180,
-      "intuition": 112.971414614263,
+      "intuition": 105.276740558421,
       "activeProject": "nn.project.multiplication",
       "completedProjects": 5,
       "upgrades": 2
     },
     {
-      "timeMs": 1388250,
+      "timeMs": 1329750,
       "precision": 180,
-      "intuition": 112.971414614263,
+      "intuition": 105.276740558421,
       "activeProject": "nn.project.multiplication",
       "completedProjects": 5,
       "upgrades": 2
     },
     {
-      "timeMs": 1478250,
+      "timeMs": 1449750,
       "precision": 180,
       "intuition": 150,
       "activeProject": "nn.project.multiplication",
@@ -8631,7 +8151,7 @@
       "upgrades": 2
     },
     {
-      "timeMs": 1619250,
+      "timeMs": 1516650,
       "precision": 180,
       "intuition": 150,
       "activeProject": null,
@@ -8639,7 +8159,7 @@
       "upgrades": 2
     },
     {
-      "timeMs": 1619250,
+      "timeMs": 1516650,
       "precision": 180,
       "intuition": 150,
       "activeProject": null,
@@ -8647,279 +8167,279 @@
       "upgrades": 2
     },
     {
-      "timeMs": 1619250,
-      "precision": 42.5,
-      "intuition": 82.5,
+      "timeMs": 1516650,
+      "precision": 56.25,
+      "intuition": 89.25,
       "activeProject": "nn.project.induction_walkthrough",
       "completedProjects": 6,
       "upgrades": 2
     },
     {
-      "timeMs": 2075250,
-      "precision": 240.985528431517,
-      "intuition": 173.7,
+      "timeMs": 1972650,
+      "precision": 254.735528431516,
+      "intuition": 180.45,
       "activeProject": null,
       "completedProjects": 7,
       "upgrades": 2
     },
     {
-      "timeMs": 2075250,
-      "precision": 191.485528431517,
-      "intuition": 17.45,
+      "timeMs": 1972650,
+      "precision": 210.185528431516,
+      "intuition": 24.2,
       "activeProject": "nn.project.counterexample_lab",
       "completedProjects": 7,
       "upgrades": 2
     },
     {
-      "timeMs": 2375250,
-      "precision": 322.068112925935,
-      "intuition": 77.45,
+      "timeMs": 2272650,
+      "precision": 340.768112925935,
+      "intuition": 84.2,
       "activeProject": null,
       "completedProjects": 8,
       "upgrades": 2
     },
     {
-      "timeMs": 2495250,
-      "precision": 232.551146723703,
-      "intuition": 1.7,
+      "timeMs": 2362650,
+      "precision": 252.36788827426,
+      "intuition": 2.45,
       "activeProject": "nn.project.strong_induction",
       "completedProjects": 8,
       "upgrades": 2
     },
     {
-      "timeMs": 2945250,
+      "timeMs": 2752650,
       "precision": 420,
-      "intuition": 91.7,
+      "intuition": 80.45,
       "activeProject": "nn.project.strong_induction",
       "completedProjects": 8,
       "upgrades": 2
     },
     {
-      "timeMs": 2945250,
+      "timeMs": 2752650,
       "precision": 420,
-      "intuition": 91.7,
+      "intuition": 80.45,
       "activeProject": "nn.project.strong_induction",
       "completedProjects": 8,
       "upgrades": 2
     },
     {
-      "timeMs": 3062250,
-      "precision": 232.5,
-      "intuition": 53.552457635568,
+      "timeMs": 2929650,
+      "precision": 251.25,
+      "intuition": 71.201153858936,
       "activeProject": "nn.project.well_ordering",
       "completedProjects": 9,
       "upgrades": 2
     },
     {
-      "timeMs": 3062250,
-      "precision": 232.5,
-      "intuition": 53.552457635568,
+      "timeMs": 2929650,
+      "precision": 251.25,
+      "intuition": 71.201153858936,
       "activeProject": "nn.project.well_ordering",
       "completedProjects": 9,
       "upgrades": 2
     },
     {
-      "timeMs": 3062250,
-      "precision": 232.5,
-      "intuition": 53.552457635568,
+      "timeMs": 2929650,
+      "precision": 251.25,
+      "intuition": 71.201153858936,
       "activeProject": "nn.project.well_ordering",
       "completedProjects": 9,
       "upgrades": 2
     },
     {
-      "timeMs": 3512250,
+      "timeMs": 3319650,
       "precision": 420,
-      "intuition": 143.552457635568,
+      "intuition": 149.201153858936,
       "activeProject": "nn.project.well_ordering",
       "completedProjects": 9,
       "upgrades": 2
     },
     {
-      "timeMs": 3512250,
+      "timeMs": 3319650,
       "precision": 420,
-      "intuition": 143.552457635568,
+      "intuition": 149.201153858936,
       "activeProject": "nn.project.well_ordering",
       "completedProjects": 9,
       "upgrades": 2
     },
     {
-      "timeMs": 3632250,
+      "timeMs": 3499650,
       "precision": 420,
-      "intuition": 201.349850082304,
+      "intuition": 235.89724252904,
       "activeProject": null,
       "completedProjects": 10,
       "upgrades": 2
     },
     {
-      "timeMs": 3632250,
-      "precision": 312,
-      "intuition": 13.849850082304,
+      "timeMs": 3499650,
+      "precision": 322.8,
+      "intuition": 67.14724252904,
       "activeProject": "nn.project.least_counterexample",
       "completedProjects": 10,
       "upgrades": 2
     },
     {
-      "timeMs": 3632250,
-      "precision": 312,
-      "intuition": 13.849850082304,
+      "timeMs": 3499650,
+      "precision": 322.8,
+      "intuition": 67.14724252904,
       "activeProject": "nn.project.least_counterexample",
       "completedProjects": 10,
       "upgrades": 2
     },
     {
-      "timeMs": 3632250,
-      "precision": 312,
-      "intuition": 13.849850082304,
+      "timeMs": 3499650,
+      "precision": 322.8,
+      "intuition": 67.14724252904,
       "activeProject": "nn.project.least_counterexample",
       "completedProjects": 10,
       "upgrades": 2
     },
     {
-      "timeMs": 3902250,
+      "timeMs": 3739650,
       "precision": 420,
-      "intuition": 67.849850082304,
+      "intuition": 115.14724252904,
       "activeProject": "nn.project.least_counterexample",
       "completedProjects": 10,
       "upgrades": 2
     },
     {
-      "timeMs": 3902250,
+      "timeMs": 3739650,
       "precision": 420,
-      "intuition": 67.849850082304,
+      "intuition": 115.14724252904,
       "activeProject": "nn.project.least_counterexample",
       "completedProjects": 10,
       "upgrades": 2
     },
     {
-      "timeMs": 4172250,
+      "timeMs": 4039650,
       "precision": 290,
-      "intuition": 67.89398308746,
+      "intuition": 129.64072364588,
       "activeProject": null,
       "completedProjects": 11,
       "upgrades": 3
     },
     {
-      "timeMs": 4172250,
+      "timeMs": 4039650,
       "precision": 290,
-      "intuition": 67.89398308746,
+      "intuition": 129.64072364588,
       "activeProject": null,
       "completedProjects": 11,
       "upgrades": 3
     },
     {
-      "timeMs": 4172250,
+      "timeMs": 4039650,
       "precision": 290,
-      "intuition": 67.89398308746,
+      "intuition": 129.64072364588,
       "activeProject": null,
       "completedProjects": 11,
       "upgrades": 3
     },
     {
-      "timeMs": 4172250,
+      "timeMs": 4039650,
       "precision": 290,
-      "intuition": 67.89398308746,
+      "intuition": 129.64072364588,
       "activeProject": null,
       "completedProjects": 11,
       "upgrades": 3
     },
     {
-      "timeMs": 4172250,
+      "timeMs": 4039650,
       "precision": 290,
-      "intuition": 67.89398308746,
+      "intuition": 129.64072364588,
       "activeProject": null,
       "completedProjects": 11,
       "upgrades": 3
     },
     {
-      "timeMs": 4172250,
+      "timeMs": 4039650,
       "precision": 290,
-      "intuition": 67.89398308746,
+      "intuition": 129.64072364588,
       "activeProject": null,
       "completedProjects": 11,
       "upgrades": 3
     },
     {
-      "timeMs": 4172250,
+      "timeMs": 4039650,
       "precision": 290,
-      "intuition": 67.89398308746,
+      "intuition": 129.64072364588,
       "activeProject": null,
       "completedProjects": 11,
       "upgrades": 3
     },
     {
-      "timeMs": 4172250,
+      "timeMs": 4039650,
       "precision": 290,
-      "intuition": 67.89398308746,
+      "intuition": 129.64072364588,
       "activeProject": null,
       "completedProjects": 11,
       "upgrades": 3
     },
     {
-      "timeMs": 4472250,
+      "timeMs": 4339650,
       "precision": 420,
-      "intuition": 127.89398308746,
+      "intuition": 189.64072364588,
       "activeProject": null,
       "completedProjects": 11,
       "upgrades": 3
     },
     {
-      "timeMs": 4472250,
+      "timeMs": 4339650,
       "precision": 420,
-      "intuition": 127.89398308746,
+      "intuition": 189.64072364588,
       "activeProject": null,
       "completedProjects": 11,
       "upgrades": 3
     },
     {
-      "timeMs": 4682250,
-      "precision": 168,
-      "intuition": 8.53941986924801,
+      "timeMs": 4369650,
+      "precision": 193.2,
+      "intuition": 5.64007175756402,
       "activeProject": "nn.project.equivalence_capstone",
       "completedProjects": 11,
       "upgrades": 3
     },
     {
-      "timeMs": 4682250,
-      "precision": 168,
-      "intuition": 8.53941986924801,
+      "timeMs": 4369650,
+      "precision": 193.2,
+      "intuition": 5.64007175756402,
       "activeProject": "nn.project.equivalence_capstone",
       "completedProjects": 11,
       "upgrades": 3
     },
     {
-      "timeMs": 4682250,
-      "precision": 168,
-      "intuition": 8.53941986924801,
+      "timeMs": 4369650,
+      "precision": 193.2,
+      "intuition": 5.64007175756402,
       "activeProject": "nn.project.equivalence_capstone",
       "completedProjects": 11,
       "upgrades": 3
     },
     {
-      "timeMs": 5282250,
+      "timeMs": 4909650,
       "precision": 420,
-      "intuition": 128.539419869248,
+      "intuition": 113.640071757564,
       "activeProject": "nn.project.equivalence_capstone",
       "completedProjects": 11,
       "upgrades": 3
     },
     {
-      "timeMs": 5282250,
+      "timeMs": 4909650,
       "precision": 420,
-      "intuition": 128.539419869248,
+      "intuition": 113.640071757564,
       "activeProject": "nn.project.equivalence_capstone",
       "completedProjects": 11,
       "upgrades": 3
     },
     {
-      "timeMs": 5627250,
+      "timeMs": 5220150,
       "precision": 420,
-      "intuition": 294.706923153615,
+      "intuition": 263.190824713494,
       "activeProject": null,
       "completedProjects": 12,
       "upgrades": 4
     },
     {
-      "timeMs": 5627250,
+      "timeMs": 5220150,
       "precision": 0,
       "intuition": 0,
       "activeProject": null,
@@ -9197,18 +8717,18 @@
     "words": [17989553, 518065051, 325355099, 307957491],
     "draws": 0
   },
-  "publicationTimingMs": 5627250,
-  "idleAdvanceMs": 780000,
+  "publicationTimingMs": 5220150,
+  "idleAdvanceMs": 540000,
   "offlineAdvanceMs": 0,
   "rejectedActions": [],
   "invariantViolations": [],
   "policySummary": {
     "name": "balanced",
-    "commands": 253,
-    "accepted": 253,
+    "commands": 236,
+    "accepted": 236,
     "rejected": 0,
     "completedProjects": 12,
     "publications": 1
   },
-  "deterministicHash": "3e5460f1a9434744ffba7b698ed51c070482ac44e5406b344942d51d6d9bf15e"
+  "deterministicHash": "65002d9fe5cbac0b90bb2b72f06c459f0f63f834dad15141d8d6fe82112bad38"
 }

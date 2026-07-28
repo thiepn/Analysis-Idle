@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "sha": null,
+  "url": null,
+  "reason": "The Phase 2 branch has not yet been pushed and exact-SHA remote CI has not run."
+}

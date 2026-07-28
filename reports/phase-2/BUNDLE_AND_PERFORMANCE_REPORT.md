@@ -1,5 +1,5 @@
 # Bundle and Performance Report
 
-Generated from implementation SHA `12c59cecc03fe71d58f1d8cfe7f6e556688d0bf3` on branch `phase/02-natural-numbers-vertical-slice`.
+Generated from implementation SHA `8bf57ce9db09d20696a9db11da0e1e833515dc92` on branch `phase/02-natural-numbers-vertical-slice`.
 
-Initial JavaScript is 223.89 KiB raw / 63.30 KiB gzip against a 90.00 KiB gzip budget. CSS is 27.80 KiB raw / 6.47 KiB gzip against a 15.00 KiB budget. Production source maps are excluded. The economy advances on a bounded monotonic 250 ms command timer, never animation frames; event and automation displays are capped. Preact limits DOM mutations through virtual-tree diffing, while selector calculations remain deterministic and bounded. Low-memory hardware profiling remains a Phase 3 follow-up.
+Initial JavaScript is 242.85 KiB raw / 67.95 KiB gzip against a 90.00 KiB gzip budget. CSS is 29.00 KiB raw / 6.70 KiB gzip against a 15.00 KiB budget. Production source maps are excluded. A 250 ms scheduler checks elapsed monotonic time, but canonical state and UI update only once per configured one- or two-second interval; elapsed time is never discarded and no animation frame drives the economy. Event and automation displays are capped. Low-memory hardware profiling remains a Phase 3 follow-up.

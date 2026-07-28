@@ -9,8 +9,8 @@
   "state": {
     "schemaVersion": 1,
     "contentVersion": "phase1-nn-fixture-1",
-    "sequence": 253,
-    "logicalTimeMs": 5627250,
+    "sequence": 236,
+    "logicalTimeMs": 5220150,
     "resources": {
       "PRECISION": "0",
       "INTUITION": "0"
@@ -38,170 +38,170 @@
     "projects": {
       "nn.project.zero_successor": {
         "id": "nn.project.zero_successor",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "FORMAL",
-        "progress": "0",
+        "progress": "42.75",
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": "0",
+        "progressSegmentStart": "42.75",
         "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL"],
         "insightSpentThisRun": false
       },
       "nn.project.peano_frame": {
         "id": "nn.project.peano_frame",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "EXPLORATORY",
-        "progress": "0",
+        "progress": "120",
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": "0",
+        "progressSegmentStart": "120",
         "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL", "EXPLORATORY"],
         "insightSpentThisRun": false
       },
       "nn.project.primitive_recursion": {
         "id": "nn.project.primitive_recursion",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "CONSTRUCTIVE",
-        "progress": "0",
+        "progress": "220.5",
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": "0",
+        "progressSegmentStart": "220.5",
         "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL", "CONSTRUCTIVE"],
         "insightSpentThisRun": false
       },
       "nn.project.addition": {
         "id": "nn.project.addition",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "FORMAL",
-        "progress": "0",
+        "progress": "256.5",
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": "0",
+        "progressSegmentStart": "256.5",
         "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL"],
         "insightSpentThisRun": false
       },
       "nn.project.addition_lemmas": {
         "id": "nn.project.addition_lemmas",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "EXPLORATORY",
-        "progress": "0",
+        "progress": "360",
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": "0",
+        "progressSegmentStart": "360",
         "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL", "EXPLORATORY"],
         "insightSpentThisRun": false
       },
       "nn.project.multiplication": {
         "id": "nn.project.multiplication",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "CONSTRUCTIVE",
-        "progress": "0",
+        "progress": "396.9",
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": "0",
+        "progressSegmentStart": "396.9",
         "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL", "CONSTRUCTIVE"],
         "insightSpentThisRun": false
       },
       "nn.project.induction_walkthrough": {
         "id": "nn.project.induction_walkthrough",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "FORMAL",
-        "progress": "0",
+        "progress": "456",
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": "0",
+        "progressSegmentStart": "456",
         "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL"],
         "insightSpentThisRun": false
       },
       "nn.project.counterexample_lab": {
         "id": "nn.project.counterexample_lab",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "EXPLORATORY",
-        "progress": "0",
+        "progress": "300",
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": "0",
+        "progressSegmentStart": "300",
         "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL", "EXPLORATORY"],
         "insightSpentThisRun": false
       },
       "nn.project.strong_induction": {
         "id": "nn.project.strong_induction",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "CONSTRUCTIVE",
-        "progress": "0",
+        "progress": "567",
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": "0",
+        "progressSegmentStart": "567",
         "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL", "CONSTRUCTIVE"],
         "insightSpentThisRun": false
       },
       "nn.project.well_ordering": {
         "id": "nn.project.well_ordering",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "FORMAL",
-        "progress": "0",
+        "progress": "570",
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": "0",
+        "progressSegmentStart": "570",
         "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL"],
         "insightSpentThisRun": false
       },
       "nn.project.least_counterexample": {
         "id": "nn.project.least_counterexample",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "EXPLORATORY",
-        "progress": "0",
+        "progress": "540",
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": "0",
+        "progressSegmentStart": "540",
         "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL", "EXPLORATORY"],
         "insightSpentThisRun": false
       },
       "nn.project.equivalence_capstone": {
         "id": "nn.project.equivalence_capstone",
-        "status": "cancelled",
+        "status": "completed",
         "approachId": "CONSTRUCTIVE",
-        "progress": "0",
+        "progress": "850.5",
         "progressSegmentElapsedMs": 0,
-        "progressSegmentStart": "0",
+        "progressSegmentStart": "850.5",
         "progressRatePerSecond": "0",
         "reservedPrecision": "0",
         "reservedIntuition": "0",
         "starts": 1,
-        "approachesSeen": [],
+        "approachesSeen": ["FORMAL", "CONSTRUCTIVE"],
         "insightSpentThisRun": false
       }
     },
@@ -227,39 +227,103 @@
       "nn.compression.publication_index"
     ],
     "ownedArtifacts": [
+      "nn.artifact.zero_successor",
+      "nn.artifact.peano_frame",
+      "nn.artifact.primitive_recursion",
+      "nn.artifact.addition",
       "nn.artifact.addition_lemmas",
+      "nn.artifact.multiplication",
+      "nn.artifact.induction_walkthrough",
+      "nn.artifact.counterexample_lab",
       "nn.artifact.strong_induction",
       "nn.artifact.well_ordering",
-      "nn.artifact.least_counterexample"
+      "nn.artifact.least_counterexample",
+      "nn.artifact.equivalence_capstone"
     ],
     "techniqueRecords": {
+      "nn.artifact.zero_successor": {
+        "artifactId": "nn.artifact.zero_successor",
+        "sourceProjectId": "nn.project.zero_successor",
+        "approachId": "FORMAL",
+        "outputKind": "lemma",
+        "acquiredAtLogicalTimeMs": 72750
+      },
+      "nn.artifact.peano_frame": {
+        "artifactId": "nn.artifact.peano_frame",
+        "sourceProjectId": "nn.project.peano_frame",
+        "approachId": "EXPLORATORY",
+        "outputKind": "reveal",
+        "acquiredAtLogicalTimeMs": 282750
+      },
+      "nn.artifact.primitive_recursion": {
+        "artifactId": "nn.artifact.primitive_recursion",
+        "sourceProjectId": "nn.project.primitive_recursion",
+        "approachId": "CONSTRUCTIVE",
+        "outputKind": "template",
+        "acquiredAtLogicalTimeMs": 503250
+      },
+      "nn.artifact.addition": {
+        "artifactId": "nn.artifact.addition",
+        "sourceProjectId": "nn.project.addition",
+        "approachId": "FORMAL",
+        "outputKind": "lemma",
+        "acquiredAtLogicalTimeMs": 759750
+      },
       "nn.artifact.addition_lemmas": {
         "artifactId": "nn.artifact.addition_lemmas",
         "sourceProjectId": "nn.project.addition_lemmas",
         "approachId": "EXPLORATORY",
         "outputKind": "reveal",
-        "acquiredAtLogicalTimeMs": 1178250
+        "acquiredAtLogicalTimeMs": 1119750
+      },
+      "nn.artifact.multiplication": {
+        "artifactId": "nn.artifact.multiplication",
+        "sourceProjectId": "nn.project.multiplication",
+        "approachId": "CONSTRUCTIVE",
+        "outputKind": "template",
+        "acquiredAtLogicalTimeMs": 1516650
+      },
+      "nn.artifact.induction_walkthrough": {
+        "artifactId": "nn.artifact.induction_walkthrough",
+        "sourceProjectId": "nn.project.induction_walkthrough",
+        "approachId": "FORMAL",
+        "outputKind": "lemma",
+        "acquiredAtLogicalTimeMs": 1972650
+      },
+      "nn.artifact.counterexample_lab": {
+        "artifactId": "nn.artifact.counterexample_lab",
+        "sourceProjectId": "nn.project.counterexample_lab",
+        "approachId": "EXPLORATORY",
+        "outputKind": "reveal",
+        "acquiredAtLogicalTimeMs": 2272650
       },
       "nn.artifact.strong_induction": {
         "artifactId": "nn.artifact.strong_induction",
         "sourceProjectId": "nn.project.strong_induction",
         "approachId": "CONSTRUCTIVE",
         "outputKind": "template",
-        "acquiredAtLogicalTimeMs": 3062250
+        "acquiredAtLogicalTimeMs": 2929650
       },
       "nn.artifact.well_ordering": {
         "artifactId": "nn.artifact.well_ordering",
         "sourceProjectId": "nn.project.well_ordering",
         "approachId": "FORMAL",
         "outputKind": "lemma",
-        "acquiredAtLogicalTimeMs": 3632250
+        "acquiredAtLogicalTimeMs": 3499650
       },
       "nn.artifact.least_counterexample": {
         "artifactId": "nn.artifact.least_counterexample",
         "sourceProjectId": "nn.project.least_counterexample",
         "approachId": "EXPLORATORY",
         "outputKind": "reveal",
-        "acquiredAtLogicalTimeMs": 4172250
+        "acquiredAtLogicalTimeMs": 4039650
+      },
+      "nn.artifact.equivalence_capstone": {
+        "artifactId": "nn.artifact.equivalence_capstone",
+        "sourceProjectId": "nn.project.equivalence_capstone",
+        "approachId": "CONSTRUCTIVE",
+        "outputKind": "template",
+        "acquiredAtLogicalTimeMs": 5220150
       }
     },
     "reachedMilestones": [
@@ -290,15 +354,30 @@
     "insight": "3",
     "insightSpent": "0",
     "insightModifiers": [],
-    "assembledCapstoneEdges": [],
+    "insightReveals": [],
+    "assembledCapstoneEdges": [
+      "nn.capstone.edge.1",
+      "nn.capstone.edge.2",
+      "nn.capstone.edge.3",
+      "nn.capstone.edge.4"
+    ],
     "chapters": {
       "nn.chapter.natural_numbers": "published"
     },
     "masteryArtifacts": ["mastery.induction_framework"],
     "settings": {
       "reducedMotion": false,
+      "animationIntensity": "full",
       "highContrast": false,
-      "notation": "plain"
+      "notation": "plain",
+      "updateRate": "standard",
+      "numberFormat": "standard",
+      "compactLayout": false,
+      "textScale": "standard",
+      "announcementVerbosity": "essential",
+      "offlineSummaryDetail": "detailed",
+      "mathExplanationDepth": "guided",
+      "confirmations": true
     },
     "rng": {
       "algorithm": "xoshiro128ss",
@@ -306,7 +385,7 @@
       "draws": 0
     },
     "records": {
-      "totalActiveMs": 5627250,
+      "totalActiveMs": 5220150,
       "totalOfflineCreditedMs": 0,
       "publications": 1,
       "completedProjects": 12,
@@ -329,8 +408,8 @@
     "applied": []
   },
   "replayMetadata": {
-    "lastCommandSequence": 253,
+    "lastCommandSequence": 236,
     "eventDigest": null
   },
-  "checksum": "fnv1a32:edb6633e"
+  "checksum": "fnv1a32:5b1ef1f3"
 }

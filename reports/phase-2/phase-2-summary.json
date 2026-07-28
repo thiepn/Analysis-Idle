@@ -1,9 +1,9 @@
 {
   "phase": 2,
   "version": "0.3.0-v2-natural-numbers",
-  "status": "PASS_WITH_DEFERRED_NON_CRITICAL_ITEMS",
+  "status": "BLOCKED",
   "startingSha": "12aed959183efffdc2468791d322b56da499b8be",
-  "finalSha": "12c59cecc03fe71d58f1d8cfe7f6e556688d0bf3",
+  "finalSha": "8bf57ce9db09d20696a9db11da0e1e833515dc92",
   "finalShaMeaning": "implementation-and-tooling HEAD used to generate the completion evidence; report-only commits may follow",
   "branch": "phase/02-natural-numbers-vertical-slice",
   "base": "v2/integration",
@@ -20,22 +20,24 @@
     "publicationPlayable": true
   },
   "tests": {
-    "passed": 105,
+    "passed": 116,
     "failed": 0,
     "skipped": 0
   },
-  "determinismDigest": "3e5460f1a9434744ffba7b698ed51c070482ac44e5406b344942d51d6d9bf15e",
-  "publicationMedianMinutes": 103.75,
-  "activeAdvantageTypical": 0,
-  "activeAdvantageMaximum": 0,
+  "determinismDigest": "65002d9fe5cbac0b90bb2b72f06c459f0f63f834dad15141d8d6fe82112bad38",
+  "publicationMedianMinutes": 100.205,
+  "activeAdvantageTypical": 0.014814182702564321,
+  "activeAdvantageMaximum": 0.2,
   "offlineEquivalent": true,
   "saveMigrationPassed": true,
   "keyboardCriticalPathPassed": true,
   "mobileCriticalPathPassed": true,
   "browserMatrixPassed": true,
   "browserCoverageComplete": false,
+  "screenReaderCriticalPathPassed": false,
+  "remoteCiPassed": false,
   "criticalBalanceGatesPassed": true,
-  "phase3Ready": true,
+  "phase3Ready": false,
   "provisionalConfiguration": {
     "attention": {
       "startingCapacity": 3,
@@ -44,8 +46,8 @@
     },
     "insight": {
       "cap": 3,
-      "sustainedTargetMin": 0.1,
-      "sustainedTargetMax": 0.15,
+      "sustainedTargetMin": 0.01,
+      "sustainedTargetMax": 0.03,
       "ceiling": 0.2,
       "modifierPerInsight": 0.1,
       "modifierDurationSeconds": 60
@@ -66,7 +68,12 @@
     },
     "projects": {
       "approachSwitchPreservation": 0.9,
-      "baseSpeedPerSecond": 1
+      "baseSpeedPerSecond": 1,
+      "techniqueOutputBonuses": {
+        "lemmaPrecisionDiscount": 0.1,
+        "revealIntuitionDiscount": 0.1,
+        "templateWorkDiscount": 0.1
+      }
     }
   },
   "knownRisks": [
@@ -74,10 +81,13 @@
     "Approach value is downstream and may be undervalued when a player optimizes only the current ETA.",
     "Long-session memory was bounded by review and capped logs, but not profiled on low-memory mobile hardware."
   ],
+  "blockers": [
+    "accessibility: Required manual screen-reader critical-path sessions have not been run in this environment.",
+    "remote-ci: The Phase 2 branch has not yet been pushed and exact-SHA remote CI has not run."
+  ],
   "deferred": [
     "Independent human comprehension and fun testing; six separated self-play personas were used.",
-    "Firefox, Edge, Safari, Android Chrome, and iOS Safari on real devices were unavailable; current Chromium desktop/tablet/mobile emulation passed.",
-    "Independent assistive-technology sessions remain a Phase 3 validation task."
+    "Firefox, Edge, Safari, Android Chrome, and iOS Safari on real devices were unavailable; current Chromium desktop/tablet/mobile emulation passed."
   ],
   "artifacts": [
     "reports/phase-2/PHASE_2_COMPLETION_REPORT.md",
@@ -106,6 +116,9 @@
     "reports/phase-2/data/artifact-validation.json",
     "reports/phase-2/data/bundle-metrics.json",
     "reports/phase-2/data/browser-validation.json",
+    "reports/phase-2/data/manual-accessibility.json",
+    "reports/phase-2/data/remote-ci-verification.json",
+    "reports/phase-2/review/INDEPENDENT_ULTRA_REVIEW.md",
     "reports/phase-2/screenshots/manifest.json"
   ]
 }

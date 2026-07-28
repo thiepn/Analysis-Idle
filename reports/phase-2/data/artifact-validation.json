@@ -55,12 +55,12 @@
     {
       "id": "phase2-js-budget",
       "passed": true,
-      "detail": "64822 gzip bytes against a realistic 90 KiB Phase 2 budget"
+      "detail": "69576 gzip bytes against a realistic 90 KiB Phase 2 budget"
     },
     {
       "id": "phase2-css-budget",
       "passed": true,
-      "detail": "6627 gzip bytes against a 15 KiB Phase 2 budget"
+      "detail": "6858 gzip bytes against a 15 KiB Phase 2 budget"
     },
     {
       "id": "source-maps-excluded",

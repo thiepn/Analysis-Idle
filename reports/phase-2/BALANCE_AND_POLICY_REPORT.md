@@ -1,10 +1,10 @@
 # Balance and Policy Report
 
-Generated from implementation SHA `12c59cecc03fe71d58f1d8cfe7f6e556688d0bf3` on branch `phase/02-natural-numbers-vertical-slice`.
+Generated from implementation SHA `8bf57ce9db09d20696a9db11da0e1e833515dc92` on branch `phase/02-natural-numbers-vertical-slice`.
 
 ## Policy audit
 
-15/15 policies publish without invariant violations. Formal, Exploratory, Constructive, balanced, mostly-idle, active, weak-but-plausible, random-reasonable, long-offline, and ignore-one-system strategies remain distinguishable. Typical active advantage is 0.0%; maximum observed active advantage is 0.0%.
+15/15 policies publish without invariant violations. Formal, Exploratory, Constructive, balanced, mostly-idle, active, weak-but-plausible, random-reasonable, long-offline, and ignore-one-system strategies remain distinguishable. Paired full-Publication sustained active advantage is 1.5%; the theoretical per-intervention ceiling is 20.0%.
 
 ## Dominance and dead content
 

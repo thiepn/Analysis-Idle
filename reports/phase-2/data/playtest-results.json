@@ -18,8 +18,8 @@
         "nn.milestone.peano_framed"
       ],
       "resources": {
-        "PRECISION": 102.515894218065,
-        "INTUITION": 30.45
+        "PRECISION": 57.7858942180647,
+        "INTUITION": 5.88
       },
       "understanding": 2,
       "nextDecision": null
@@ -36,8 +36,8 @@
         "nn.milestone.recursion_available"
       ],
       "resources": {
-        "PRECISION": 132.783754274729,
-        "INTUITION": 38.1746740558421
+        "PRECISION": 159.431063206902,
+        "INTUITION": 42.18
       },
       "understanding": 4,
       "nextDecision": null
@@ -56,8 +56,8 @@
         "nn.milestone.approach_selected"
       ],
       "resources": {
-        "PRECISION": 121.176007157888,
-        "INTUITION": 118.65
+        "PRECISION": 179.585251054978,
+        "INTUITION": 145.92
       },
       "understanding": 6,
       "nextDecision": null
@@ -66,111 +66,33 @@
   "policies": [
     {
       "name": "cheapestAvailable",
-      "publicationMinutes": 104.8875,
+      "publicationMinutes": 103.1775,
       "completedProjects": 12,
       "publications": 1,
       "rejectedCommands": 0,
       "invariantViolations": [],
       "insightSpent": 0,
       "automationTraceEntries": 5,
-      "idleAdvanceMinutes": 25,
+      "idleAdvanceMinutes": 24.5,
       "offlineAdvanceMinutes": 0,
-      "deterministicHash": "009817e17ce7f261dd8807a219557f5ef0307af7d3d652d903513bfc161ad08e"
+      "deterministicHash": "11093c73bbd82cc534f17a0e5fdc70c4b3a60b63cf20544ef2c70b3be8f546ec"
     },
     {
       "name": "immediatePayback",
-      "publicationMinutes": 100.2375,
+      "publicationMinutes": 98.57083333333334,
       "completedProjects": 12,
       "publications": 1,
       "rejectedCommands": 0,
       "invariantViolations": [],
       "insightSpent": 0,
       "automationTraceEntries": 5,
-      "idleAdvanceMinutes": 24,
+      "idleAdvanceMinutes": 22.333333333333332,
       "offlineAdvanceMinutes": 0,
-      "deterministicHash": "03a733cedc093ad32288a13cd26963be68c408a3ea043fb4bbec215561a31b0a"
+      "deterministicHash": "f25b15a60527b22bf41f6bf5bbe72660a252be59e5283e4860f567b527d45e9d"
     },
     {
       "name": "futureValue",
-      "publicationMinutes": 103.2625,
-      "completedProjects": 12,
-      "publications": 1,
-      "rejectedCommands": 0,
-      "invariantViolations": [],
-      "insightSpent": 0,
-      "automationTraceEntries": 5,
-      "idleAdvanceMinutes": 19,
-      "offlineAdvanceMinutes": 0,
-      "deterministicHash": "7559f14202d6cf54548ca4c93b21c83dff2907e2ba5141950776058a7a1b2012"
-    },
-    {
-      "name": "nearestMilestone",
-      "publicationMinutes": 93.0375,
-      "completedProjects": 12,
-      "publications": 1,
-      "rejectedCommands": 0,
-      "invariantViolations": [],
-      "insightSpent": 0,
-      "automationTraceEntries": 0,
-      "idleAdvanceMinutes": 12.25,
-      "offlineAdvanceMinutes": 0,
-      "deterministicHash": "ec6fbde7335a86963187614dfb448611bcf31cd20a6311aa44b418f1b2f8eab8"
-    },
-    {
-      "name": "balanced",
-      "publicationMinutes": 93.7875,
-      "completedProjects": 12,
-      "publications": 1,
-      "rejectedCommands": 0,
-      "invariantViolations": [],
-      "insightSpent": 0,
-      "automationTraceEntries": 0,
-      "idleAdvanceMinutes": 13,
-      "offlineAdvanceMinutes": 0,
-      "deterministicHash": "3e5460f1a9434744ffba7b698ed51c070482ac44e5406b344942d51d6d9bf15e"
-    },
-    {
-      "name": "formalSpecialist",
-      "publicationMinutes": 100.2375,
-      "completedProjects": 12,
-      "publications": 1,
-      "rejectedCommands": 0,
-      "invariantViolations": [],
-      "insightSpent": 0,
-      "automationTraceEntries": 5,
-      "idleAdvanceMinutes": 24,
-      "offlineAdvanceMinutes": 0,
-      "deterministicHash": "e1b8348eb4bd3315c64219c9cb55badc0e5b666e2dc8fdc434c633ca17d8faac"
-    },
-    {
-      "name": "exploratorySpecialist",
-      "publicationMinutes": 103.75,
-      "completedProjects": 12,
-      "publications": 1,
-      "rejectedCommands": 0,
-      "invariantViolations": [],
-      "insightSpent": 0,
-      "automationTraceEntries": 5,
-      "idleAdvanceMinutes": 24,
-      "offlineAdvanceMinutes": 0,
-      "deterministicHash": "a135f3946c68763cddeecc4003f30c1cb3bf7f3a86223a8dc135fdafac03cd9c"
-    },
-    {
-      "name": "constructiveSpecialist",
-      "publicationMinutes": 104.8625,
-      "completedProjects": 12,
-      "publications": 1,
-      "rejectedCommands": 0,
-      "invariantViolations": [],
-      "insightSpent": 0,
-      "automationTraceEntries": 5,
-      "idleAdvanceMinutes": 22.5,
-      "offlineAdvanceMinutes": 0,
-      "deterministicHash": "8058f440aa0d323539f44e9258caf2e65409aa23e4e55cd18480fb703d6501d6"
-    },
-    {
-      "name": "hybrid",
-      "publicationMinutes": 105.3875,
+      "publicationMinutes": 101.415,
       "completedProjects": 12,
       "publications": 1,
       "rejectedCommands": 0,
@@ -179,63 +101,141 @@
       "automationTraceEntries": 5,
       "idleAdvanceMinutes": 25.5,
       "offlineAdvanceMinutes": 0,
-      "deterministicHash": "7387a50669837fc0e17abd2b510d81f758906a99979f3d899d20b2a525706f74"
+      "deterministicHash": "84560d1f352b0c905f4c021fa4c420b279666826b33d54a8cc6fc1f269474f87"
+    },
+    {
+      "name": "nearestMilestone",
+      "publicationMinutes": 86.7525,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 0,
+      "idleAdvanceMinutes": 8.75,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "39042fd7b698b2042ab939475e9a3ef9cc7c39a9d178cb26efa5dd9f8438378e"
+    },
+    {
+      "name": "balanced",
+      "publicationMinutes": 87.0025,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 0,
+      "idleAdvanceMinutes": 9,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "65002d9fe5cbac0b90bb2b72f06c459f0f63f834dad15141d8d6fe82112bad38"
+    },
+    {
+      "name": "formalSpecialist",
+      "publicationMinutes": 98.7375,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 5,
+      "idleAdvanceMinutes": 22.5,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "91b927bd2232ee0485bb64edf463f2315b4c0b0f4d932e9a4a91de99f0c2c2c3"
+    },
+    {
+      "name": "exploratorySpecialist",
+      "publicationMinutes": 101.75,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 5,
+      "idleAdvanceMinutes": 21.5,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "fdda358586f0b30b717dc58a3ffc57ea38bca6da6002efc14578fdfd39f615d6"
+    },
+    {
+      "name": "constructiveSpecialist",
+      "publicationMinutes": 100.205,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 5,
+      "idleAdvanceMinutes": 26,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "2b52e2ccfe54eccb72a0dbc3cd4cf1f08850e3adba02bca63abb88161c22d352"
+    },
+    {
+      "name": "hybrid",
+      "publicationMinutes": 103.4275,
+      "completedProjects": 12,
+      "publications": 1,
+      "rejectedCommands": 0,
+      "invariantViolations": [],
+      "insightSpent": 0,
+      "automationTraceEntries": 5,
+      "idleAdvanceMinutes": 24.75,
+      "offlineAdvanceMinutes": 0,
+      "deterministicHash": "231c4ad3f4452ff72c82201b2a27c38452b2503984ab9d74b2a64416329d9e31"
     },
     {
       "name": "activeOptimizer",
-      "publicationMinutes": 98.0075,
+      "publicationMinutes": 96.2075,
       "completedProjects": 12,
       "publications": 1,
       "rejectedCommands": 0,
       "invariantViolations": [],
-      "insightSpent": 3,
+      "insightSpent": 2,
       "automationTraceEntries": 5,
-      "idleAdvanceMinutes": 25,
+      "idleAdvanceMinutes": 22.25,
       "offlineAdvanceMinutes": 0,
-      "deterministicHash": "095cb8f1d05b0804f00574bfd3223db46f3b0c54e958d8532efa3da9ffa80a85"
+      "deterministicHash": "6423d9984cc9652100564271b56a65e465390658afed8730b08871ec9c95ebcd"
     },
     {
       "name": "mostlyIdle",
-      "publicationMinutes": 104.22311663011587,
+      "publicationMinutes": 99.41393647020004,
       "completedProjects": 12,
       "publications": 1,
       "rejectedCommands": 0,
       "invariantViolations": [],
       "insightSpent": 0,
       "automationTraceEntries": 0,
-      "idleAdvanceMinutes": 20,
-      "offlineAdvanceMinutes": 130.40205192510575,
-      "deterministicHash": "a0b0ccbbcf41cd9d3862fc714540651bd69c56f8d605ed3f89c86d30e968acfb"
+      "idleAdvanceMinutes": 25,
+      "offlineAdvanceMinutes": 123.4423992286591,
+      "deterministicHash": "5b34deba7934ef17e2b76c0c9a6c55acde1091ded6cf488813553e17e7536e55"
     },
     {
       "name": "weakButPlausible",
-      "publicationMinutes": 113.7875,
+      "publicationMinutes": 108.0025,
       "completedProjects": 12,
       "publications": 1,
       "rejectedCommands": 0,
       "invariantViolations": [],
       "insightSpent": 0,
       "automationTraceEntries": 0,
-      "idleAdvanceMinutes": 33,
+      "idleAdvanceMinutes": 30,
       "offlineAdvanceMinutes": 0,
-      "deterministicHash": "f56ad7423df8696751f0b9bb18407ce1a20dcedf7cc88078495636aac9c14857"
+      "deterministicHash": "3d11f212d41bb8a53cedec83f82c047e83a60322d03a0e9ed44b19250dde753b"
     },
     {
       "name": "randomReasonable",
-      "publicationMinutes": 107.80416666666666,
+      "publicationMinutes": 101.1225,
       "completedProjects": 12,
       "publications": 1,
       "rejectedCommands": 0,
       "invariantViolations": [],
       "insightSpent": 0,
       "automationTraceEntries": 6,
-      "idleAdvanceMinutes": 26.516666666666666,
+      "idleAdvanceMinutes": 25.9,
       "offlineAdvanceMinutes": 0,
-      "deterministicHash": "1ba0dfd4087f20045acd119aa3f43d62fd9880e3f00f886aaf051b83675d769e"
+      "deterministicHash": "0a520ebe523d4b4e632fdb3087c094bc9a294caa904641f054ee4888d6c9ceba"
     },
     {
       "name": "longOffline",
-      "publicationMinutes": 110.03899886664473,
+      "publicationMinutes": 106.15480183289552,
       "completedProjects": 12,
       "publications": 1,
       "rejectedCommands": 0,
@@ -243,23 +243,46 @@
       "insightSpent": 0,
       "automationTraceEntries": 4,
       "idleAdvanceMinutes": 50,
-      "offlineAdvanceMinutes": 157.83170640540538,
-      "deterministicHash": "bd28129e1c34ba27677ec787767dc9d649d9e75d57ccbf1f3dcfa4a2a2c2092a"
+      "offlineAdvanceMinutes": 156.57669765718515,
+      "deterministicHash": "56df0c956fa7542f44aecb663e60a87d7dc4e895d9ac868acdc95271e1ed1411"
     },
     {
       "name": "ignoreOneSystem",
-      "publicationMinutes": 97.25,
+      "publicationMinutes": 92.25,
       "completedProjects": 12,
       "publications": 1,
       "rejectedCommands": 0,
       "invariantViolations": [],
       "insightSpent": 0,
       "automationTraceEntries": 0,
-      "idleAdvanceMinutes": 17,
+      "idleAdvanceMinutes": 12,
       "offlineAdvanceMinutes": 0,
-      "deterministicHash": "7870870954370c17139da83faec616c9a67cb077fd8bcb20ffb50d6b668659b2"
+      "deterministicHash": "35992695d05329c1743ffb369981cdb3c66dad90e4db7389f434e606a0ddc1b0"
     }
   ],
+  "activeInterventionFixtures": [
+    {
+      "amount": 1,
+      "baselineSeconds": 42.75,
+      "activeSeconds": 38.475,
+      "advantage": 0.09999999999999996
+    },
+    {
+      "amount": 2,
+      "baselineSeconds": 42.75,
+      "activeSeconds": 34.2,
+      "advantage": 0.19999999999999993
+    }
+  ],
+  "sustainedActiveFixture": {
+    "method": "Paired full-Publication activeOptimizer runs with identical seed and policy; baseline sets only modifierPerInsight to zero while retaining the same accepted Insight commands.",
+    "activePublicationMs": 5772450,
+    "waitingPublicationMs": 5859250,
+    "activeInsightSpent": 2,
+    "baselineInsightSpent": 2,
+    "advantage": 0.014814182702564321,
+    "theoreticalSingleInterventionCeiling": 0.2
+  },
   "personaSessions": [
     {
       "persona": "idle-game veteran",
@@ -349,11 +372,11 @@
   "summary": {
     "policyCount": 15,
     "policiesPublished": 15,
-    "publicationMedianMinutes": 103.75,
-    "publicationMinMinutes": 93.0375,
-    "publicationMaxMinutes": 113.7875,
-    "activeAdvantageTypical": 0,
-    "activeAdvantageMaximum": 0,
+    "publicationMedianMinutes": 100.205,
+    "publicationMinMinutes": 86.7525,
+    "publicationMaxMinutes": 108.0025,
+    "activeAdvantageTypical": 0.014814182702564321,
+    "activeAdvantageMaximum": 0.2,
     "rejectedCommands": 0,
     "invariantViolations": []
   }
