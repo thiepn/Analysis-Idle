@@ -20,9 +20,9 @@ jobs:
       - name: Materialize validation refs
         shell: bash
         run: |
-          git fetch --no-tags origin \
-            main:refs/heads/main \
-            legacy/v1:refs/heads/legacy/v1
+          git fetch --no-tags origin main:refs/heads/main
+          git cat-file -e 239d75fd0e223e91703e261d2196953a896609cb^{commit}
+          git branch -f legacy/v1 239d75fd0e223e91703e261d2196953a896609cb
           git switch -C "${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}" HEAD
       - uses: actions/setup-node@v4
         with:
