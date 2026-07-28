@@ -18,7 +18,7 @@ Generated from implementation SHA `fee4e13c9bf9d21b94bf1c18df884876f377604a` on 
 - PASS — **performance**: 67.95 KiB JS gzip / 6.70 KiB CSS gzip; no critical console errors
 - PASS — **screenshots**: 18/18 manually inspected
 - PASS — **v1-deployment-safety**: main and legacy/v1 remain on the immutable v1 baseline; no deployment changed
-- FAIL — **remote-ci**: The Phase 2 branch has not yet been pushed and exact-SHA remote CI has not run.
+- PASS — **remote-ci**: 72c9d7840f8df476241fd832f1dad5e364f2d323 covers implementation fee4e13c9bf9d21b94bf1c18df884876f377604a — https://github.com/thiepn/Analysis-Idle/actions/runs/30402404390
 - PASS — **implementation-tree**: implementation and tooling tree clean before generated evidence commit
 
 ## Automated coverage

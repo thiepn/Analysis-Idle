@@ -75,8 +75,8 @@
     },
     {
       "id": "remote-ci",
-      "passed": false,
-      "evidence": "The Phase 2 branch has not yet been pushed and exact-SHA remote CI has not run."
+      "passed": true,
+      "evidence": "72c9d7840f8df476241fd832f1dad5e364f2d323 covers implementation fee4e13c9bf9d21b94bf1c18df884876f377604a — https://github.com/thiepn/Analysis-Idle/actions/runs/30402404390"
     },
     {
       "id": "implementation-tree",
@@ -86,8 +86,7 @@
   ],
   "criticalPassed": false,
   "blockers": [
-    "accessibility: Required manual screen-reader critical-path sessions have not been run in this environment.",
-    "remote-ci: The Phase 2 branch has not yet been pushed and exact-SHA remote CI has not run."
+    "accessibility: Required manual screen-reader critical-path sessions have not been run in this environment."
   ],
   "deferred": [
     "Independent human comprehension and fun testing; six separated self-play personas were used.",

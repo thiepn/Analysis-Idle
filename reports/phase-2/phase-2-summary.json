@@ -35,7 +35,7 @@
   "browserMatrixPassed": true,
   "browserCoverageComplete": false,
   "screenReaderCriticalPathPassed": false,
-  "remoteCiPassed": false,
+  "remoteCiPassed": true,
   "criticalBalanceGatesPassed": true,
   "phase3Ready": false,
   "provisionalConfiguration": {
@@ -82,8 +82,7 @@
     "Long-session memory was bounded by review and capped logs, but not profiled on low-memory mobile hardware."
   ],
   "blockers": [
-    "accessibility: Required manual screen-reader critical-path sessions have not been run in this environment.",
-    "remote-ci: The Phase 2 branch has not yet been pushed and exact-SHA remote CI has not run."
+    "accessibility: Required manual screen-reader critical-path sessions have not been run in this environment."
   ],
   "deferred": [
     "Independent human comprehension and fun testing; six separated self-play personas were used.",

@@ -4,12 +4,11 @@ Generated from implementation SHA `fee4e13c9bf9d21b94bf1c18df884876f377604a` on 
 
 ## Verdict
 
-**BLOCKED**. 14/16 critical evidence groups pass. Phase 3 readiness is blocked.
+**BLOCKED**. 15/16 critical evidence groups pass. Phase 3 readiness is blocked.
 
 ## Blocking evidence
 
 - accessibility: Required manual screen-reader critical-path sessions have not been run in this environment.
-- remote-ci: The Phase 2 branch has not yet been pushed and exact-SHA remote CI has not run.
 
 ## Delivered
 
