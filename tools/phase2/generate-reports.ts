@@ -222,8 +222,7 @@ const gates = [
       playtest.summary.activeAdvantageTypical <=
         naturalNumbersContent.configuration.insight.sustainedTargetMax &&
       playtest.summary.activeAdvantageMaximum <=
-        naturalNumbersContent.configuration.insight.ceiling +
-          balanceTolerance,
+        naturalNumbersContent.configuration.insight.ceiling + balanceTolerance,
     evidence: `typical ${(playtest.summary.activeAdvantageTypical * 100).toFixed(0)}%; maximum ${(playtest.summary.activeAdvantageMaximum * 100).toFixed(0)}%`,
   },
   {
@@ -348,8 +347,7 @@ const summary = {
     playtest.summary.activeAdvantageTypical <=
       naturalNumbersContent.configuration.insight.sustainedTargetMax &&
     playtest.summary.activeAdvantageMaximum <=
-      naturalNumbersContent.configuration.insight.ceiling +
-        balanceTolerance &&
+      naturalNumbersContent.configuration.insight.ceiling + balanceTolerance &&
     playtest.summary.invariantViolations.length === 0,
   phase3Ready: criticalPassed,
   provisionalConfiguration: naturalNumbersContent.configuration,
@@ -423,12 +421,12 @@ writeReport(
 writeReport(
   "PROJECT_AND_APPROACH_REPORT",
   "Project and Approach Report",
-  `Projects expose prerequisite state, exact input vectors, estimated work, current progress, method, output, and downstream relevance. Start, pause, resume, queue, switch, and cancellation remain typed commands. Cancellation uses a pre-confirmation ledger and switching states the configured ${(naturalNumbersContent.configuration.projects.approachSwitchPreservation * 100).toFixed(0)}% progress preservation. Formal, Exploratory, and Constructive comparisons use selector-derived speed/output information and never bypass the engine.\n`,
+  `Projects expose prerequisite state, exact input vectors, estimated work, current progress, method, output, and downstream relevance. Start, pause, resume, queue, switch, and cancellation remain typed commands. Cancellation uses a pre-confirmation ledger, clamps refunds to current caps, and switching states the configured ${(naturalNumbersContent.configuration.projects.approachSwitchPreservation * 100).toFixed(0)}% progress preservation. Compatible Formal lemmas, Exploratory reveals, and Constructive templates have distinct selector-derived requirement effects that are shown in the project ledger and never bypass the engine.\n`,
 );
 writeReport(
   "TECHNIQUE_ARTIFACT_REPORT",
   "Technique Artifact Report",
-  `Technique acquisitions are immutable typed records containing artifact ID, source project, approach, output kind, and logical acquisition time. The UI presents named learned methods with provenance and compatible uses. No Technique counter, currency, hidden percentage, or unattached effect exists. The capstone verifies required owned artifacts through explicit implication edges.\n`,
+  `Technique acquisitions are immutable typed records containing artifact ID, source project, approach, output kind, and logical acquisition time. The UI presents named learned methods with provenance, compatible uses, and their exact 10% requirement effect: lemmas reduce Precision, reveals reduce Intuition, and templates reduce work. Each kind applies at most once per compatible project. No Technique counter, currency, hidden effect, or unattached effect exists. The capstone verifies required owned artifacts through explicit implication edges.\n`,
 );
 writeReport(
   "AUTOMATION_REPORT",
@@ -438,7 +436,7 @@ writeReport(
 writeReport(
   "INSIGHT_ACTIVE_PLAY_REPORT",
   "Insight Active Play Report",
-  `Insight is capped at ${naturalNumbersContent.configuration.insight.cap}; its sustained active advantage target is ${(naturalNumbersContent.configuration.insight.sustainedTargetMin * 100).toFixed(0)}–${(naturalNumbersContent.configuration.insight.sustainedTargetMax * 100).toFixed(0)}%, with a hard ceiling of ${(naturalNumbersContent.configuration.insight.ceiling * 100).toFixed(0)}%. Spending creates an explicit logical-time modifier of ${naturalNumbersContent.configuration.insight.modifierPerInsight} for ${naturalNumbersContent.configuration.insight.modifierDurationSeconds} seconds. Overflow is reported rather than hidden, and no click-production loop was added.\n`,
+  `Insight is capped at ${naturalNumbersContent.configuration.insight.cap}; its sustained active advantage target is ${(naturalNumbersContent.configuration.insight.sustainedTargetMin * 100).toFixed(0)}–${(naturalNumbersContent.configuration.insight.sustainedTargetMax * 100).toFixed(0)}%, with a hard ceiling of ${(naturalNumbersContent.configuration.insight.ceiling * 100).toFixed(0)}%. An owned Insight capability permits one intervention per project run; one charge removes ${(naturalNumbersContent.configuration.insight.modifierPerInsight * 100).toFixed(0)}% of remaining work and two charges reach the tested ${(naturalNumbersContent.configuration.insight.ceiling * 100).toFixed(0)}% ceiling. The duration field remains serialized for Phase 1 save compatibility but creates no hidden activity-rate bonus. Overflow is reported, and no click-production loop was added.\n`,
 );
 writeReport(
   "PROOF_MAP_REPORT",
@@ -448,17 +446,17 @@ writeReport(
 writeReport(
   "OFFLINE_RETURN_REPORT",
   "Offline Return Report",
-  `Offline progression preserves the accepted policy: ${naturalNumbersContent.configuration.offline.fullEfficiencyHours} hours at full rate, then ${(naturalNumbersContent.configuration.offline.tailEfficiency * 100).toFixed(0)}% through ${naturalNumbersContent.configuration.offline.maximumCreditedHours} hours. The return dialog reports elapsed, credited and discarded time, resource deltas, projects, milestones, achievements, stop reason, and policy trace. The Phase 1 online/offline economy projection remains exactly equivalent: ${offline.equivalent === true ? "PASS" : "FAIL"}.\n`,
+  `Offline progression preserves the accepted policy: ${naturalNumbersContent.configuration.offline.fullEfficiencyHours} hours at full rate, then ${(naturalNumbersContent.configuration.offline.tailEfficiency * 100).toFixed(0)}% through ${naturalNumbersContent.configuration.offline.maximumCreditedHours} hours. The return dialog reports elapsed, effective full/tail credit, discarded time, resource/Insight/Technique changes, projects, milestones, achievements, reserves, automation decisions, and stop reason. Its review action uses the objective captured at reconciliation time. The Phase 1 online/offline economy projection remains exactly equivalent: ${offline.equivalent === true ? "PASS" : "FAIL"}.\n`,
 );
 writeReport(
   "PUBLICATION_REPORT",
   "Publication Report",
-  `Publication is a typed, deterministic boundary available only after all required projects and capstone edges. The confirmation ledger separates reset, preserved, and transformed state. Chapter resources, Attention, project runtime, chapter-scoped upgrades, queue, and reserves reset; history and settings persist; solved work transforms into \`mastery.induction_framework\`. The post-Publication UI is a readable method record, with no Phase 3 gameplay exposed.\n`,
+  `Publication is a typed, deterministic boundary available only after all required projects and capstone edges. The confirmation ledger separates reset, preserved, archived, and transformed state. Chapter resources, Attention allocations, chapter-scoped upgrades, queue, and reserves reset; all completed project runtimes, approach histories, Technique acquisitions, capstone edges, records, and settings remain a read-only archive; solved work also transforms into \`mastery.induction_framework\`. The post-Publication UI exposes the archive without enabling Phase 3 gameplay.\n`,
 );
 writeReport(
   "SAVE_UX_REPORT",
   "Save and Recovery UX Report",
-  `The UI shows saved/dirty/saving/error state, generation, writer ownership, recovery source, export, import preview, and legacy-v1 detection. Import is previewed before replacement; invalid/corrupt/future/oversized saves receive typed errors. Rotated local backups, IndexedDB history, page-hide saving, a 15-second writer lease, and the existing Phase 1 migration path are retained. Save payloads use the isolated \`analysis-idle:v2\` namespace and a ${MAX_IMPORT_BYTES}-byte import ceiling.\n`,
+  `The UI shows saved/dirty/saving/error state, generation, writer ownership, recovery source, export, import preview, and legacy-v1 detection. Import and manual recovery show source/version/generation/timestamp metadata before replacement; invalid/corrupt/future/oversized saves receive typed live-region errors. A tab begins passive, and a lease takeover reloads the newest validated local/IndexedDB generation before enabling simulation. Cross-session stale generations are rejected before rotation. Rotated local backups, IndexedDB history, page-hide saving, a 15-second writer lease, and the existing Phase 1 migration path are retained. Save payloads use the isolated \`analysis-idle:v2\` namespace and a ${MAX_IMPORT_BYTES}-byte import ceiling.\n`,
 );
 writeReport(
   "ACCESSIBILITY_REPORT",

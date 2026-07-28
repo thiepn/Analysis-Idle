@@ -50,7 +50,7 @@ Offline progress uses deterministic event-driven catch-up. It runs the saved pla
 
 ## Publication
 
-Publication is a typed chapter transformation. It archives the dependency workspace; resets chapter stocks, allocations, active/queued projects, and chapter modifiers; retains settings, accessibility, records, automation capabilities/templates, Insight, and published methods; and exposes a compressed theorem/method card to later chapters. Published chapters do not passively farm raw currency.
+Publication is a typed chapter transformation. It archives completed project runtimes, approach histories, Technique acquisitions, and capstone edges as read-only records; resets chapter stocks, allocations, active/queued operational state, and chapter modifiers; retains settings, accessibility, records, automation capabilities/templates, Insight, and published methods; and exposes a compressed theorem/method card to later chapters. Published chapters do not passively farm raw currency.
 
 ## Progression and scope
 
