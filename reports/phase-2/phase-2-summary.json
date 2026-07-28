@@ -3,7 +3,7 @@
   "version": "0.3.0-v2-natural-numbers",
   "status": "BLOCKED",
   "startingSha": "12aed959183efffdc2468791d322b56da499b8be",
-  "finalSha": "6143512f761f70bd4ac08b51de57badff3bddabc",
+  "finalSha": "b76e2e5ba171f53f68ac3c04d71864b59ef03d1e",
   "finalShaMeaning": "implementation-and-tooling HEAD used to generate the completion evidence; report-only commits may follow",
   "branch": "phase/02-natural-numbers-vertical-slice",
   "base": "v2/integration",

@@ -1,5 +1,5 @@
 # Publication Report
 
-Generated from implementation SHA `6143512f761f70bd4ac08b51de57badff3bddabc` on branch `phase/02-natural-numbers-vertical-slice`.
+Generated from implementation SHA `b76e2e5ba171f53f68ac3c04d71864b59ef03d1e` on branch `phase/02-natural-numbers-vertical-slice`.
 
 Publication is a typed, deterministic boundary available only after all required projects and capstone edges. The confirmation ledger separates reset, preserved, archived, and transformed state. Chapter resources, Attention allocations, chapter-scoped upgrades, queue, and reserves reset; all completed project runtimes, approach histories, Technique acquisitions, capstone edges, records, and settings remain a read-only archive; solved work also transforms into `mastery.induction_framework`. The post-Publication UI exposes the archive without enabling Phase 3 gameplay.
