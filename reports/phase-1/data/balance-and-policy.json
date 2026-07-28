@@ -67,7 +67,7 @@
       "automationTraceEntries": 5,
       "insightSpent": 0,
       "policyRngDraws": 0,
-      "hash": "2a95cac19ee44be13cbe883305cfe5b56efa6a17c9435e3b8ee90545f99bde05"
+      "hash": "4b91a1a80b5ecb6e9fa73f288d0999977673dde01c1ddd73ec0e90dade855146"
     },
     {
       "name": "immediatePayback",
@@ -134,7 +134,7 @@
       "automationTraceEntries": 5,
       "insightSpent": 0,
       "policyRngDraws": 0,
-      "hash": "eb7ca220d2c467f78231ba2275b287532c21106e5f1a3a6db0508895b3a6f0b1"
+      "hash": "f8aba1c217847dabae58297c44d32d07c1e5b386408bd64ad54bd54faf3ee2f5"
     },
     {
       "name": "futureValue",
@@ -201,7 +201,7 @@
       "automationTraceEntries": 5,
       "insightSpent": 0,
       "policyRngDraws": 0,
-      "hash": "bd7291e4b1fa798f5675a20794074ef6c38d9a4f7bd96fbe08b2de566ba7310e"
+      "hash": "2ad349a84d07d2356cde09c9f6a13c0a82cb0fcb712bc9d9f0eb44b2122359e1"
     },
     {
       "name": "nearestMilestone",
@@ -257,7 +257,7 @@
       "automationTraceEntries": 0,
       "insightSpent": 0,
       "policyRngDraws": 0,
-      "hash": "bc72ae52b2ca9e6569a9b4f91ec2e03059a9fa360550e84bb016dbd15def5ce3"
+      "hash": "a2e01ac9405f6a41c1cadfaa6e3340d10559f7c5486fc6769e77b68846ec24fa"
     },
     {
       "name": "balanced",
@@ -313,7 +313,7 @@
       "automationTraceEntries": 0,
       "insightSpent": 0,
       "policyRngDraws": 0,
-      "hash": "42d678f49e6eef789572fc60e691d0f76187359d31e0683d3af6350392068fa7"
+      "hash": "dd93c47831e6410acd226dfe4ffdb69ae9f3358993d91c5acfba6f4da6022724"
     },
     {
       "name": "formalSpecialist",
@@ -380,7 +380,7 @@
       "automationTraceEntries": 5,
       "insightSpent": 0,
       "policyRngDraws": 0,
-      "hash": "b3da518276b268f057184d6db68a8236c109f0b81093ff2b1d03772ad0e27b6c"
+      "hash": "66723bdfaab8b9d43a1d211c51f252e2a30ffcc9a82771696b586bb5a94239bb"
     },
     {
       "name": "exploratorySpecialist",
@@ -447,7 +447,7 @@
       "automationTraceEntries": 5,
       "insightSpent": 0,
       "policyRngDraws": 0,
-      "hash": "e91660ccd7ebf3141d7b2427781f11bbac4b160dc02b057c636a1e73e2839e23"
+      "hash": "3c6f862f43439cb8bcab23a40a4eb6729dc88e791ca239d4c70f9a3f9055d9dd"
     },
     {
       "name": "constructiveSpecialist",
@@ -514,7 +514,7 @@
       "automationTraceEntries": 5,
       "insightSpent": 0,
       "policyRngDraws": 0,
-      "hash": "2dff9f28fb5ec977a0ff74f90a558e91de631cc20a62e8349f28e95179be3e76"
+      "hash": "24452e0ff0dfa599861eeca8a6a8a9f4097de2753304b1caab495f11df1b4d40"
     },
     {
       "name": "hybrid",
@@ -581,7 +581,7 @@
       "automationTraceEntries": 5,
       "insightSpent": 0,
       "policyRngDraws": 0,
-      "hash": "a8bba06bdca5425dd170ce481a33cfb59f895e49569d5e1725b6d39b47f0c685"
+      "hash": "1800e835e557c8fc05ddb8b82be739816c58add47a02353eb52e0cc93547fe98"
     },
     {
       "name": "activeOptimizer",
@@ -648,7 +648,7 @@
       "automationTraceEntries": 5,
       "insightSpent": 3,
       "policyRngDraws": 0,
-      "hash": "6b425e9aabe93dc4c85394718ee835b3a3f3b6d9289f3f2d73089bf5f05493f6"
+      "hash": "ee7e2e09df18ae58a002a01a0c6ca5a51cca18d3f7e869c1c47c5cb087ec9fb2"
     },
     {
       "name": "mostlyIdle",
@@ -704,7 +704,7 @@
       "automationTraceEntries": 0,
       "insightSpent": 0,
       "policyRngDraws": 0,
-      "hash": "013930977dd0ecc6073267b6e42543bfa69d87094aa70931e9fce876fe274d51"
+      "hash": "a08e98f30f5b6f1c8e0fa2770e039df879c5db734cbc7b57237b417eb4dd2119"
     },
     {
       "name": "weakButPlausible",
@@ -760,7 +760,7 @@
       "automationTraceEntries": 0,
       "insightSpent": 0,
       "policyRngDraws": 0,
-      "hash": "71f27aaa028a5aef2bfd8be43ed3d9e88eb42b5e25471cefb0ebc0b97eab911b"
+      "hash": "7176dc52595f34ef269693ff03c3e25bd0f0782e2277b6a1cbe33e88468ce65c"
     },
     {
       "name": "randomReasonable",
@@ -827,7 +827,7 @@
       "automationTraceEntries": 6,
       "insightSpent": 0,
       "policyRngDraws": 166,
-      "hash": "f7395f047f250887286bb02b84eb04e0441c298871640de59e20ba5499c3f94b"
+      "hash": "f0b1efe0e1d60ee90fd82e65a661567780f9bcbd0224bfd40ba2c89c6b99d3a2"
     },
     {
       "name": "longOffline",
@@ -894,7 +894,7 @@
       "automationTraceEntries": 4,
       "insightSpent": 0,
       "policyRngDraws": 0,
-      "hash": "eaccc8465c59c567877cf029cb4179ce0e691cdc25443e111c406e5a717e524d"
+      "hash": "b94cb8ba5559d19263aebf518694bf253fab9c33f686a77c5f9d1aa5fde1c22a"
     },
     {
       "name": "ignoreOneSystem",
@@ -950,7 +950,7 @@
       "automationTraceEntries": 0,
       "insightSpent": 0,
       "policyRngDraws": 0,
-      "hash": "6e5289b895735ec3b8f94b098bc9b23401b3f4ee5cf96845bb6528e9403c8581"
+      "hash": "a690063578b2c960fe3ecc43d095192cae8301c67ca5ee041a555a2826408c59"
     }
   ],
   "attentionExponents": [

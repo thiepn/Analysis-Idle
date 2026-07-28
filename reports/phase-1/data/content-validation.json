@@ -22,6 +22,9 @@
     "achievements": 10,
     "approaches": 3
   },
-  "primaryStocks": ["PRECISION", "INTUITION"],
+  "primaryStocks": [
+    "PRECISION",
+    "INTUITION"
+  ],
   "techniqueRepresentation": "typed-artifacts-not-stock"
 }

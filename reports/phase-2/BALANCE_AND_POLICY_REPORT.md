@@ -1,0 +1,11 @@
+# Balance and Policy Report
+
+Generated from implementation SHA `c1c7e4eb8dfddd286f325916dde70045a8137baa` on branch `phase/02-natural-numbers-vertical-slice`.
+
+## Policy audit
+
+15/15 policies publish without invariant violations. Formal, Exploratory, Constructive, balanced, mostly-idle, active, weak-but-plausible, random-reasonable, long-offline, and ignore-one-system strategies remain distinguishable. Typical active advantage is 0.0%; maximum observed active advantage is 0.0%.
+
+## Dominance and dead content
+
+Every project is required by the dependency network or Publication; every Technique artifact is owned by a project and participates in downstream method matching or capstone requirements; all automation stages have explicit ownership and UI; achievements are reachable but non-power. The simulator does not prove fun, comprehension, or long-term retention, so independent playtesting remains deferred.

@@ -20,12 +20,12 @@
       "detail": "No error-level console messages were recorded across the exercised flows."
     },
     {
-      "id": "keyboard-focus-path",
+      "id": "keyboard-critical-path",
       "passed": true,
       "detail": "Tab traversal reached the native Attention allocation control with a visible focus state; activation parity is also covered by the UI test suite."
     },
     {
-      "id": "responsive-layout",
+      "id": "mobile-layout",
       "passed": true,
       "detail": "Desktop, tablet, and mobile layouts reflowed without document-level horizontal overflow; the 375px mobile capture measured scrollWidth equal to clientWidth."
     },

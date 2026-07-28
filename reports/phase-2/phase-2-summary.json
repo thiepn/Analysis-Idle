@@ -1,0 +1,111 @@
+{
+  "phase": 2,
+  "version": "0.3.0-v2-natural-numbers",
+  "status": "PASS_WITH_DEFERRED_NON_CRITICAL_ITEMS",
+  "startingSha": "12aed959183efffdc2468791d322b56da499b8be",
+  "finalSha": "c1c7e4eb8dfddd286f325916dde70045a8137baa",
+  "finalShaMeaning": "implementation-and-tooling HEAD used to generate the completion evidence; report-only commits may follow",
+  "branch": "phase/02-natural-numbers-vertical-slice",
+  "base": "v2/integration",
+  "phase1Ancestor": "511a03b40eef243ca3c77ff69083ae9d5632758a",
+  "mainUnchanged": true,
+  "deploymentChanged": false,
+  "chapter": {
+    "id": "natural-numbers",
+    "projects": 12,
+    "upgrades": 15,
+    "milestones": 11,
+    "achievements": 10,
+    "approaches": 3,
+    "publicationPlayable": true
+  },
+  "tests": {
+    "passed": 105,
+    "failed": 0,
+    "skipped": 0
+  },
+  "determinismDigest": "3e5460f1a9434744ffba7b698ed51c070482ac44e5406b344942d51d6d9bf15e",
+  "publicationMedianMinutes": 103.75,
+  "activeAdvantageTypical": 0,
+  "activeAdvantageMaximum": 0,
+  "offlineEquivalent": true,
+  "saveMigrationPassed": true,
+  "keyboardCriticalPathPassed": true,
+  "mobileCriticalPathPassed": true,
+  "browserMatrixPassed": true,
+  "browserCoverageComplete": false,
+  "criticalBalanceGatesPassed": true,
+  "phase3Ready": true,
+  "provisionalConfiguration": {
+    "attention": {
+      "startingCapacity": 3,
+      "maximumCapacity": 4,
+      "activityExponent": 0.8
+    },
+    "insight": {
+      "cap": 3,
+      "sustainedTargetMin": 0.1,
+      "sustainedTargetMax": 0.15,
+      "ceiling": 0.2,
+      "modifierPerInsight": 0.1,
+      "modifierDurationSeconds": 60
+    },
+    "automation": {
+      "queueCapacity": 1
+    },
+    "offline": {
+      "fullEfficiencyHours": 12,
+      "tailEfficiency": 0.25,
+      "maximumCreditedHours": 72
+    },
+    "pacing": {
+      "firstPublicationMinMinutes": 60,
+      "firstPublicationMaxMinutes": 120,
+      "campaignMinHours": 30,
+      "campaignMaxHours": 50
+    },
+    "projects": {
+      "approachSwitchPreservation": 0.9,
+      "baseSpeedPerSecond": 1
+    }
+  },
+  "knownRisks": [
+    "Dense late-project information needs independent comprehension testing.",
+    "Approach value is downstream and may be undervalued when a player optimizes only the current ETA.",
+    "Long-session memory was bounded by review and capped logs, but not profiled on low-memory mobile hardware."
+  ],
+  "deferred": [
+    "Independent human comprehension and fun testing; six separated self-play personas were used.",
+    "Firefox, Edge, Safari, Android Chrome, and iOS Safari on real devices were unavailable; current Chromium desktop/tablet/mobile emulation passed.",
+    "Independent assistive-technology sessions remain a Phase 3 validation task."
+  ],
+  "artifacts": [
+    "reports/phase-2/PHASE_2_COMPLETION_REPORT.md",
+    "reports/phase-2/VALIDATION_REPORT.md",
+    "reports/phase-2/NATURAL_NUMBERS_GAMEPLAY_REPORT.md",
+    "reports/phase-2/PROGRESSION_AND_PACING_REPORT.md",
+    "reports/phase-2/BALANCE_AND_POLICY_REPORT.md",
+    "reports/phase-2/PLAYTEST_REPORT.md",
+    "reports/phase-2/ATTENTION_AND_RESOURCE_REPORT.md",
+    "reports/phase-2/PROJECT_AND_APPROACH_REPORT.md",
+    "reports/phase-2/TECHNIQUE_ARTIFACT_REPORT.md",
+    "reports/phase-2/AUTOMATION_REPORT.md",
+    "reports/phase-2/INSIGHT_ACTIVE_PLAY_REPORT.md",
+    "reports/phase-2/PROOF_MAP_REPORT.md",
+    "reports/phase-2/OFFLINE_RETURN_REPORT.md",
+    "reports/phase-2/PUBLICATION_REPORT.md",
+    "reports/phase-2/SAVE_UX_REPORT.md",
+    "reports/phase-2/ACCESSIBILITY_REPORT.md",
+    "reports/phase-2/BROWSER_MATRIX_REPORT.md",
+    "reports/phase-2/BUNDLE_AND_PERFORMANCE_REPORT.md",
+    "reports/phase-2/ASSET_AND_LICENSE_REPORT.md",
+    "reports/phase-2/SPEC_CONFLICTS.md",
+    "reports/phase-2/PHASE_3_HANDOFF.md",
+    "reports/phase-2/validation-results.json",
+    "reports/phase-2/data/playtest-results.json",
+    "reports/phase-2/data/artifact-validation.json",
+    "reports/phase-2/data/bundle-metrics.json",
+    "reports/phase-2/data/browser-validation.json",
+    "reports/phase-2/screenshots/manifest.json"
+  ]
+}
