@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import {
   cleanup,
+  fireEvent,
   render,
   screen,
   waitFor,
@@ -69,7 +70,7 @@ describe("player accessibility contracts", () => {
     const state = mapState();
     state.resources.PRECISION = gameNumber(100);
     state.resources.INTUITION = gameNumber(100);
-    render(<App store={createAppStore(12_345, state)} />);
+    render(<App store={createAppStore(12_345, state, true)} />);
     await user.click(screen.getAllByRole("button", { name: "Projects" })[0]!);
     await user.click(
       screen.getByRole("button", { name: /Primitive Recursion/ }),
@@ -96,5 +97,36 @@ describe("player accessibility contracts", () => {
     await user.click(screen.getAllByRole("button", { name: "Projects" })[0]!);
     expect(screen.getAllByText("completed").length).toBeGreaterThan(0);
     expect(screen.getAllByText("available").length).toBeGreaterThan(0);
+  });
+
+  it("keeps late destinations reachable from the mobile More menu", async () => {
+    const user = userEvent.setup();
+    render(<App store={createAppStore(12_345, mapState())} />);
+    await user.click(screen.getByRole("button", { name: "More" }));
+    const menu = screen.getByRole("navigation", {
+      name: "More destinations",
+    });
+    expect(within(menu).getByRole("button", { name: "Records" })).toBeTruthy();
+    expect(within(menu).getByRole("button", { name: "Settings" })).toBeTruthy();
+    await user.click(within(menu).getByRole("button", { name: "Records" }));
+    expect(screen.getByRole("heading", { name: "Records" })).toBeTruthy();
+  });
+
+  it("announces invalid imports even with essential verbosity", async () => {
+    const user = userEvent.setup();
+    render(<App store={createAppStore(12_345, undefined, true)} />);
+    await user.click(
+      screen.getByRole("button", { name: "Open settings and save tools" }),
+    );
+    fireEvent.input(
+      screen.getByRole("textbox", { name: "Versioned JSON text" }),
+      { target: { value: "{" } },
+    );
+    await user.click(
+      screen.getByRole("button", { name: "Validate and preview import" }),
+    );
+    expect(screen.getByTestId("status-announcement").textContent).toMatch(
+      /CORRUPT_JSON/,
+    );
   });
 });

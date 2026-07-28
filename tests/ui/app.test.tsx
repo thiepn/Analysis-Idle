@@ -27,7 +27,7 @@ function begunState() {
 
 describe("Natural Numbers production UI", () => {
   it("begins with one guided action and hides future systems", () => {
-    render(<App store={createAppStore()} />);
+    render(<App store={createAppStore(12_345, undefined, true)} />);
     expect(
       screen.getByRole("heading", { name: "Begin with zero" }),
     ).toBeTruthy();
@@ -41,7 +41,7 @@ describe("Natural Numbers production UI", () => {
 
   it("reveals Study, operates Attention with keyboard, and preserves focus", async () => {
     const user = userEvent.setup();
-    render(<App store={createAppStore()} />);
+    render(<App store={createAppStore(12_345, undefined, true)} />);
     await user.click(
       screen.getByRole("button", { name: "Use zero as the beginning" }),
     );
@@ -62,7 +62,7 @@ describe("Natural Numbers production UI", () => {
 
   it("starts, pauses, and cancellation-confirms through typed commands", async () => {
     const user = userEvent.setup();
-    render(<App store={createAppStore(12_345, begunState())} />);
+    render(<App store={createAppStore(12_345, begunState(), true)} />);
     await user.click(screen.getAllByRole("button", { name: "Projects" })[0]!);
     await user.click(screen.getByRole("button", { name: "Start project" }));
     expect(screen.getByRole("button", { name: "Pause project" })).toBeTruthy();

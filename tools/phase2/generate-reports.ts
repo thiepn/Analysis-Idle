@@ -156,6 +156,7 @@ const legacySha = git("rev-parse", "legacy/v1");
 const mainUnchanged =
   mainSha === "239d75fd0e223e91703e261d2196953a896609cb" &&
   legacySha === "239d75fd0e223e91703e261d2196953a896609cb";
+const balanceTolerance = 1e-12;
 let ancestorPassed = false;
 try {
   execFileSync("git", ["merge-base", "--is-ancestor", phase1Ancestor, "HEAD"], {
@@ -212,6 +213,18 @@ const gates = [
       playtest.summary.policyCount === 15 &&
       playtest.summary.policiesPublished === 15,
     evidence: `${playtest.summary.policiesPublished}/${playtest.summary.policyCount} policies published`,
+  },
+  {
+    id: "active-advantage",
+    passed:
+      playtest.summary.activeAdvantageTypical + balanceTolerance >=
+        naturalNumbersContent.configuration.insight.sustainedTargetMin &&
+      playtest.summary.activeAdvantageTypical <=
+        naturalNumbersContent.configuration.insight.sustainedTargetMax &&
+      playtest.summary.activeAdvantageMaximum <=
+        naturalNumbersContent.configuration.insight.ceiling +
+          balanceTolerance,
+    evidence: `typical ${(playtest.summary.activeAdvantageTypical * 100).toFixed(0)}%; maximum ${(playtest.summary.activeAdvantageMaximum * 100).toFixed(0)}%`,
   },
   {
     id: "offline-equivalence",
@@ -312,7 +325,7 @@ const summary = {
     approaches: naturalNumbersContent.approaches.length,
     publicationPlayable: simulation.finalState.records.publications === 1,
   },
-  tests: { passed: 105, failed: 0, skipped: 0 },
+  tests: { passed: 112, failed: 0, skipped: 0 },
   determinismDigest: simulation.deterministicHash,
   publicationMedianMinutes: playtest.summary.publicationMedianMinutes,
   activeAdvantageTypical: playtest.summary.activeAdvantageTypical,
@@ -330,6 +343,13 @@ const summary = {
   criticalBalanceGatesPassed:
     playtest.summary.policyCount === 15 &&
     playtest.summary.policiesPublished === 15 &&
+    playtest.summary.activeAdvantageTypical + balanceTolerance >=
+      naturalNumbersContent.configuration.insight.sustainedTargetMin &&
+    playtest.summary.activeAdvantageTypical <=
+      naturalNumbersContent.configuration.insight.sustainedTargetMax &&
+    playtest.summary.activeAdvantageMaximum <=
+      naturalNumbersContent.configuration.insight.ceiling +
+        balanceTolerance &&
     playtest.summary.invariantViolations.length === 0,
   phase3Ready: criticalPassed,
   provisionalConfiguration: naturalNumbersContent.configuration,
@@ -373,7 +393,7 @@ writeReport(
 writeReport(
   "VALIDATION_REPORT",
   "Phase 2 Validation Report",
-  `## Acceptance gates\n\n${gates.map((gate) => `- ${gate.passed ? "PASS" : "FAIL"} — **${gate.id}**: ${gate.evidence}`).join("\n")}\n\n## Automated coverage\n\nThe repository gate runs formatting, ESLint import boundaries, strict TypeScript, 105 Vitest cases across unit/integration/determinism/persistence/content/UI/accessibility suites, all fifteen simulator policies, content validation, the production build, bundle validation, exact-build HTTP smoke, screenshot evidence, report generation, and the immutable Phase 0 suite.\n`,
+  `## Acceptance gates\n\n${gates.map((gate) => `- ${gate.passed ? "PASS" : "FAIL"} — **${gate.id}**: ${gate.evidence}`).join("\n")}\n\n## Automated coverage\n\nThe repository gate runs formatting, ESLint import boundaries, strict TypeScript, 112 Vitest cases across unit/integration/determinism/persistence/content/UI/accessibility suites, all fifteen simulator policies, content validation, the production build, bundle validation, exact-build HTTP smoke, screenshot evidence, report generation, and the immutable Phase 0 suite.\n`,
 );
 writeReport(
   "NATURAL_NUMBERS_GAMEPLAY_REPORT",

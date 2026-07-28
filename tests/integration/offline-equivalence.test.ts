@@ -97,4 +97,31 @@ describe("online/offline equivalence", () => {
     expect(result.creditedMs).toBeGreaterThan(0);
     expect(result.creditedMs).toBeLessThan(60_000);
   });
+
+  it("applies milestone effects at the exact completion boundary", () => {
+    const base = createInitialState(naturalNumbersContent);
+    base.attention.allocations[naturalNumbersIds.FORMALIZE] = 3;
+    base.resources.PRECISION = gameNumber(179.9);
+    base.projects["nn.project.addition"]!.status = "completed";
+    const multiplication = base.projects["nn.project.multiplication"]!;
+    multiplication.status = "active";
+    multiplication.progress = gameNumber(399);
+    const result = reduceCommand(
+      base,
+      envelope(
+        {
+          type: "advanceTime",
+          payload: { durationMs: 10_000, offline: false, safePolicy: false },
+        },
+        1,
+      ),
+      naturalNumbersContent,
+    );
+    expect(result.accepted).toBe(true);
+    if (!result.accepted) return;
+    expect(result.state.reachedMilestones).toContain(
+      "nn.milestone.operations_built",
+    );
+    expect(result.state.resources.PRECISION).toBeGreaterThan(180);
+  });
 });

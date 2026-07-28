@@ -10,6 +10,7 @@ import { evaluateCondition } from "../conditions/evaluate";
 import {
   activeEffects,
   resolveActivityRate,
+  resolveProjectRequirements,
   resolveProjectSpeed,
 } from "../effects/resolve";
 import type { GameState } from "../state/game-state";
@@ -80,21 +81,20 @@ export function selectProjectDeficits(
     approachId ??
     state.projects[projectId]?.approachId ??
     definition.allowedApproachIds[0]!;
-  const approach = content.approaches.find(
-    (candidate) => candidate.id === selected,
-  )!;
+  const requirements = resolveProjectRequirements(
+    definition,
+    selected,
+    state,
+    content,
+  );
   return {
     PRECISION: Math.max(
       0,
-      definition.precisionRequirement *
-        approach.precisionRequirementMultiplier -
-        (state.resources.PRECISION ?? 0),
+      requirements.precision - (state.resources.PRECISION ?? 0),
     ),
     INTUITION: Math.max(
       0,
-      definition.intuitionRequirement *
-        approach.intuitionRequirementMultiplier -
-        (state.resources.INTUITION ?? 0),
+      requirements.intuition - (state.resources.INTUITION ?? 0),
     ),
   };
 }
@@ -111,10 +111,12 @@ export function selectProjectProgress(
   if (!runtime || !definition)
     return { fraction: 0, etaSeconds: null, progress: 0, required: 0 };
   const speed = resolveProjectSpeed(projectId, state, content);
-  const approach = content.approaches.find(
-    (candidate) => candidate.id === runtime.approachId,
-  )!;
-  const required = definition.workRequired * approach.workMultiplier;
+  const required = resolveProjectRequirements(
+    definition,
+    runtime.approachId,
+    state,
+    content,
+  ).work;
   return {
     fraction: required === 0 ? 1 : runtime.progress / required,
     etaSeconds:
@@ -135,18 +137,17 @@ export function selectApproachComparison(
     (candidate) => candidate.id === projectId,
   );
   return (definition?.allowedApproachIds ?? []).map((approachId) => {
-    const approach = content.approaches.find(
-      (candidate) => candidate.id === approachId,
-    )!;
+    const requirements = resolveProjectRequirements(
+      definition!,
+      approachId,
+      state,
+      content,
+    );
     return {
       approachId,
-      precisionRequirement:
-        (definition?.precisionRequirement ?? 0) *
-        approach.precisionRequirementMultiplier,
-      intuitionRequirement:
-        (definition?.intuitionRequirement ?? 0) *
-        approach.intuitionRequirementMultiplier,
-      workRequired: (definition?.workRequired ?? 0) * approach.workMultiplier,
+      precisionRequirement: requirements.precision,
+      intuitionRequirement: requirements.intuition,
+      workRequired: requirements.work,
     };
   });
 }

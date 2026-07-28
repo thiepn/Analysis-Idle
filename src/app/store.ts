@@ -25,6 +25,8 @@ import { createBrowserOwnershipAdapter } from "../platform/ownership/browser-ser
 import { sanitizeElapsed } from "../platform/time/clock";
 import { advanceOffline } from "../platform/time/offline";
 import { importantEventMessage } from "../ui/notifications";
+import { selectCurrentObjective, type AppView } from "../ui/view-models";
+import type { ProjectId } from "../shared/contracts";
 
 export interface StoreSnapshot {
   state: GameState;
@@ -38,20 +40,41 @@ export interface StoreSnapshot {
   writer: boolean;
   legacyFound: boolean;
   recoverySource: string | null;
+  recoveryPreview: RecoveryPreview | null;
+  importPreview: {
+    generation: number;
+    savedAtMs: number;
+    contentVersion: string;
+  } | null;
   offlineSummary: OfflineSummary | null;
+}
+
+export interface RecoveryPreview {
+  source: string;
+  generation: number;
+  savedAtMs: number;
+  contentVersion: string;
 }
 
 export interface OfflineSummary {
   elapsedMs: number;
   creditedMs: number;
   discardedMs: number;
+  fullEfficiencyMs: number;
+  tailEfficiencyCreditedMs: number;
   resourceChanges: Record<string, number>;
+  insightChange: number;
+  acquiredArtifactIds: string[];
   completedProjectIds: string[];
   reachedMilestoneIds: string[];
   recordedAchievementIds: string[];
   stoppedForDecision: boolean;
   stopReason: string | null;
   policyTrace: string[];
+  automationTrace: string[];
+  reserves: Record<string, number>;
+  targetView: AppView;
+  targetProjectId: ProjectId | null;
 }
 
 export interface AppStore {
@@ -60,6 +83,7 @@ export interface AppStore {
   dispatch(command: GameCommand): CommandResult;
   save(): Promise<void>;
   load(): void;
+  confirmRecovery(): void;
   export(): void;
   exportLegacy(): string | null;
   previewImport(text: string): SaveValidationResult;
@@ -76,15 +100,25 @@ export function summarizeOffline(
   discardedMs: number,
   policyTrace: string[],
 ): OfflineSummary {
+  const fullWindow =
+    naturalNumbersContent.configuration.offline.fullEfficiencyHours * 3_600_000;
+  const objective = selectCurrentObjective(after);
+  const fullEfficiencyMs = Math.min(elapsedMs, creditedMs, fullWindow);
   return {
     elapsedMs,
     creditedMs,
     discardedMs,
+    fullEfficiencyMs,
+    tailEfficiencyCreditedMs: Math.max(0, creditedMs - fullEfficiencyMs),
     resourceChanges: Object.fromEntries(
       Object.keys(after.resources).map((id) => [
         id,
         (after.resources[id] ?? 0) - (before.resources[id] ?? 0),
       ]),
+    ),
+    insightChange: after.insight - before.insight,
+    acquiredArtifactIds: after.ownedArtifacts.filter(
+      (id) => !before.ownedArtifacts.includes(id),
     ),
     completedProjectIds: Object.values(after.projects)
       .filter(
@@ -102,12 +136,24 @@ export function summarizeOffline(
     stoppedForDecision: after.diagnostics.unresolvedDecision !== null,
     stopReason: after.diagnostics.unresolvedDecision,
     policyTrace,
+    automationTrace: after.automationTrace
+      .slice(before.automationTrace.length)
+      .map((entry) => `${entry.action}: ${entry.result} (${entry.stopReason})`),
+    reserves: Object.fromEntries(
+      Object.entries(after.resourceReserves).map(([id, amount]) => [
+        id,
+        amount,
+      ]),
+    ),
+    targetView: objective.targetView,
+    targetProjectId: objective.projectId,
   };
 }
 
 export function createAppStore(
   seed = 12_345,
   initialState?: GameState,
+  standaloneWriter = false,
 ): AppStore {
   let snapshot: StoreSnapshot = {
     state: initialState
@@ -120,14 +166,25 @@ export function createAppStore(
     saveState: "saved",
     lastSavedAtMs: null,
     generation: 0,
-    writer: true,
+    writer: standaloneWriter,
     legacyFound: false,
     recoverySource: null,
+    recoveryPreview: null,
+    importPreview: null,
     offlineSummary: null,
   };
   let generation = 0;
   let indexedDbHistory: IndexedDbHistory | null = null;
-  let writer = true;
+  let indexedDbCandidates: string[] = [];
+  let pendingRecovery: Extract<
+    ReturnType<typeof loadBestSave>,
+    { status: "LOADED" }
+  > | null = null;
+  let writer = standaloneWriter;
+  const sessionId =
+    typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+      ? crypto.randomUUID()
+      : `tab-${Date.now()}-${seed}`;
   let simulationTimer: number | null = null;
   let hiddenAtMs: number | null = null;
   let lastMonotonicMs =
@@ -145,7 +202,7 @@ export function createAppStore(
     const saveEnvelope = createSaveEnvelope(snapshot.state, {
       generation: generation + 1,
       savedAtMs: Date.now(),
-      sessionId: "player-ui",
+      sessionId,
       buildId: "phase-2",
     });
     try {
@@ -267,6 +324,7 @@ export function createAppStore(
       lastSavedAtMs: result.envelope.savedAtMs,
       saveState: "saved",
       recoverySource: result.source,
+      recoveryPreview: null,
     });
   };
 
@@ -286,9 +344,23 @@ export function createAppStore(
       }
     },
     load() {
-      const result = loadBestSave(localStorage, naturalNumbersContent);
-      if (result.status === "LOADED") applyLoaded(result);
-      else if (result.status === "LEGACY_V1_FOUND")
+      const result = loadBestSave(
+        localStorage,
+        naturalNumbersContent,
+        indexedDbCandidates,
+      );
+      if (result.status === "LOADED") {
+        pendingRecovery = result;
+        update({
+          recoveryPreview: {
+            source: result.source,
+            generation: result.envelope.generation,
+            savedAtMs: result.envelope.savedAtMs,
+            contentVersion: result.envelope.contentVersion,
+          },
+          statusMessage: `Recovery candidate found: generation ${result.envelope.generation} from ${result.source}. Review before replacing the current game.`,
+        });
+      } else if (result.status === "LEGACY_V1_FOUND")
         update({
           statusMessage: "LEGACY_V1_FOUND: legacy data remains untouched.",
           legacyFound: true,
@@ -298,12 +370,22 @@ export function createAppStore(
           statusMessage: "No valid v2 save found; current new state retained.",
         });
     },
+    confirmRecovery() {
+      if (!pendingRecovery) {
+        update({
+          statusMessage: "No validated recovery candidate is pending.",
+        });
+        return;
+      }
+      applyLoaded(pendingRecovery);
+      pendingRecovery = null;
+    },
     export() {
       const text = exportSave(
         createSaveEnvelope(snapshot.state, {
           generation: generation + 1,
           savedAtMs: Date.now(),
-          sessionId: "player-ui",
+          sessionId,
           buildId: "phase-2",
         }),
       );
@@ -330,6 +412,7 @@ export function createAppStore(
         statusMessage: result.valid
           ? `Import validated: generation ${result.envelope.generation}, content ${result.envelope.contentVersion}. Confirm to replace the current game.`
           : `${result.code}: ${result.message}`,
+        importPreview: result.valid ? (result.preview ?? null) : null,
       });
       return result;
     },
@@ -351,7 +434,7 @@ export function createAppStore(
           const imported = createSaveEnvelope(result.state, {
             generation: Math.max(generation, result.envelope.generation) + 1,
             savedAtMs: Date.now(),
-            sessionId: "player-ui-import",
+            sessionId,
             buildId: "phase-2",
           });
           promoteLocalSave(localStorage, imported, naturalNumbersContent);
@@ -370,6 +453,7 @@ export function createAppStore(
             lastSavedAtMs: imported.savedAtMs,
             saveState: "saved",
             recoverySource: "import",
+            importPreview: null,
           });
         } catch (error) {
           localStorage.removeItem(SAVE_KEYS.staging);
@@ -387,18 +471,15 @@ export function createAppStore(
       update({ offlineSummary: null });
     },
     async initialize() {
-      let candidates: string[] = [];
       try {
         const database = await openPersistenceDatabase(indexedDB);
         indexedDbHistory = new IndexedDbHistory(database);
-        candidates = await indexedDbHistory.listSaveTexts();
+        indexedDbCandidates = await indexedDbHistory.listSaveTexts();
       } catch {
         indexedDbHistory = null;
+        indexedDbCandidates = [];
       }
-      const tabId =
-        typeof crypto.randomUUID === "function"
-          ? crypto.randomUUID()
-          : `tab-${Date.now()}`;
+      const tabId = sessionId;
       const ownershipAdapter = createBrowserOwnershipAdapter(
         tabId,
         localStorage,
@@ -409,9 +490,7 @@ export function createAppStore(
         ownershipAdapter.services,
       );
       const ownership = await coordinator.acquire();
-      writer = ownership.writer;
-      ownershipAdapter.setWriter(writer);
-      update({ writer });
+      ownershipAdapter.setWriter(false);
       let ownershipRefreshInFlight = false;
       const renewal = window.setInterval(() => {
         if (ownershipRefreshInFlight) return;
@@ -429,12 +508,23 @@ export function createAppStore(
         ownershipRefreshInFlight = true;
         void coordinator
           .acquire()
-          .then((takeover) => {
-            writer = takeover.writer;
-            ownershipAdapter.setWriter(writer);
+          .then(async (takeover) => {
+            if (!takeover.writer) return;
+            const latestIndexed = indexedDbHistory
+              ? await indexedDbHistory.listSaveTexts().catch(() => [])
+              : [];
+            indexedDbCandidates = latestIndexed;
+            const latest = loadBestSave(
+              localStorage,
+              naturalNumbersContent,
+              latestIndexed,
+            );
+            if (latest.status === "LOADED") applyLoaded(latest);
+            writer = true;
+            ownershipAdapter.setWriter(true);
             update({
-              writer,
-              ...(writer ? { statusMessage: takeover.diagnostic } : {}),
+              writer: true,
+              statusMessage: `${takeover.diagnostic}. Latest validated save reloaded before writer activation.`,
             });
           })
           .finally(() => {
@@ -454,7 +544,7 @@ export function createAppStore(
       const result = loadBestSave(
         localStorage,
         naturalNumbersContent,
-        candidates,
+        indexedDbCandidates,
       );
       if (result.status === "LOADED") applyLoaded(result);
       else if (result.status === "LEGACY_V1_FOUND")
@@ -463,6 +553,9 @@ export function createAppStore(
           legacyFound: true,
         });
       else update({ statusMessage: ownership.diagnostic });
+      writer = ownership.writer;
+      ownershipAdapter.setWriter(writer);
+      update({ writer });
 
       const advanceVisibleTime = () => {
         if (!writer || document.visibilityState === "hidden") return;

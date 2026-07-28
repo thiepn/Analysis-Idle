@@ -50,7 +50,12 @@ export function ProofMap({
   selectedProjectId,
   onSelect,
 }: ProofMapProperties) {
-  const [mode, setMode] = useState<"visual" | "list">("visual");
+  const [mode, setMode] = useState<"visual" | "list">(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(max-width: 820px)").matches
+      ? "list"
+      : "visual",
+  );
   const visible = useMemo(() => {
     const completed = new Set(
       naturalNumbersContent.projects

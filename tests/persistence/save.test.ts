@@ -104,6 +104,18 @@ describe("save envelope and recovery", () => {
     expect(
       validateSaveText(exportSave(incompatible), naturalNumbersContent).code,
     ).toBe("INVALID_STATE");
+
+    const invalidSettings = makeEnvelope();
+    (invalidSettings.state.settings as Record<string, unknown>).notation =
+      "raw-latex";
+    const invalidSettingsUnsigned: Partial<typeof invalidSettings> = {
+      ...invalidSettings,
+    };
+    delete invalidSettingsUnsigned.checksum;
+    invalidSettings.checksum = corruptionChecksum(invalidSettingsUnsigned);
+    expect(
+      validateSaveText(exportSave(invalidSettings), naturalNumbersContent).code,
+    ).toBe("INVALID_STATE");
   });
 
   it("migrates a schema-zero envelope that predates replay metadata", () => {
@@ -133,6 +145,27 @@ describe("save envelope and recovery", () => {
     const loaded = loadBestSave(storage, naturalNumbersContent);
     expect(loaded.status).toBe("LOADED");
     if (loaded.status === "LOADED") expect(loaded.envelope.generation).toBe(2);
+  });
+
+  it("rejects a stale cross-session rotation before overwriting current", async () => {
+    const storage = new MemoryStorage();
+    await saveWithRotation(storage, makeEnvelope(3), naturalNumbersContent);
+    const stale = createSaveEnvelope(
+      createInitialState(naturalNumbersContent),
+      {
+        generation: 3,
+        savedAtMs: 2_000,
+        sessionId: "other-tab",
+        buildId: "test",
+      },
+    );
+    await expect(
+      saveWithRotation(storage, stale, naturalNumbersContent),
+    ).rejects.toThrow(/Stale save generation/);
+    const loaded = loadBestSave(storage, naturalNumbersContent);
+    expect(loaded.status).toBe("LOADED");
+    if (loaded.status === "LOADED")
+      expect(loaded.envelope.sessionId).toBe("test");
   });
 
   it("uses valid fallback and detects legacy without conversion", () => {

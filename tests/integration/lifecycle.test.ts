@@ -14,7 +14,7 @@ describe("integrated lifecycle", () => {
     expect(result.finalState.attention.allocations).toEqual({});
     expect(
       Object.values(result.finalState.projects).every(
-        (project) => project.status === "cancelled",
+        (project) => project.status === "completed",
       ),
     ).toBe(true);
     expect(result.finalState.activityEnabled.FORMALIZE).toBe(false);

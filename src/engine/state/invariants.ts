@@ -166,6 +166,15 @@ export function collectInvariantViolations(
     state.completionBehavior !== "startNextFunded"
   )
     violations.push("completion behavior is invalid");
+  if (
+    typeof state.settings?.reducedMotion !== "boolean" ||
+    typeof state.settings?.highContrast !== "boolean" ||
+    typeof state.settings?.confirmations !== "boolean" ||
+    !["plain", "unicode"].includes(state.settings?.notation) ||
+    !["standard", "large"].includes(state.settings?.textScale) ||
+    !["essential", "all"].includes(state.settings?.announcementVerbosity)
+  )
+    violations.push("settings contain invalid values");
 
   if (!unique(state.projectQueue))
     violations.push("project queue contains duplicates");

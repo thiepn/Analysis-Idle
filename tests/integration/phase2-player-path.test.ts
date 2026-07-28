@@ -53,6 +53,13 @@ describe("Phase 2 complete player path", () => {
       ),
     ).toBe(true);
     expect(result.finalState.records.publications).toBe(1);
+    expect(
+      Object.values(result.finalState.projects).filter(
+        (project) => project.status === "completed",
+      ),
+    ).toHaveLength(12);
+    expect(result.finalState.ownedArtifacts).toHaveLength(12);
+    expect(result.finalState.assembledCapstoneEdges).toHaveLength(4);
 
     const envelope = createSaveEnvelope(result.finalState, {
       generation: 1,

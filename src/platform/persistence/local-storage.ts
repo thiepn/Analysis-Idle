@@ -37,6 +37,18 @@ export function promoteLocalSave(
   envelope: SaveEnvelope,
   content: GameContent,
 ): void {
+  const currentText = storage.getItem(SAVE_KEYS.current);
+  if (currentText !== null) {
+    const current = validateSaveText(currentText, content);
+    if (
+      current.valid &&
+      current.envelope.generation >= envelope.generation &&
+      current.envelope.sessionId !== envelope.sessionId
+    )
+      throw new Error(
+        `Stale save generation ${envelope.generation}; current generation is ${current.envelope.generation}`,
+      );
+  }
   const serialized = exportSave(envelope);
   storage.setItem(SAVE_KEYS.staging, serialized);
   const staged = storage.getItem(SAVE_KEYS.staging);

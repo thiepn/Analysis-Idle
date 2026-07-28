@@ -829,16 +829,27 @@ function ProjectDetail({
         <h3 id="technique-match-title">Technique and output</h3>
         <p>
           This project records <strong>{project.short} method</strong> as a
-          typed artifact. Technique is reusable knowledge, never a stock or
-          hidden percentage.
+          typed artifact. Technique is reusable knowledge, never a stock; every
+          matching effect is shown here and in the requirement ledger.
         </p>
-        <p>
-          Compatible earned methods:{" "}
-          {matches.length > 0
-            ? matches.map(({ artifact }) => artifact.short).join(", ")
-            : "none yet"}
-          .
-        </p>
+        {matches.length > 0 ? (
+          <ul>
+            {matches.map(({ artifact, acquisition }) => (
+              <li key={artifact.id}>
+                <strong>{artifact.short}</strong>:{" "}
+                {acquisition?.outputKind === "lemma"
+                  ? "lemma output reduces this project's Precision requirement by 10%."
+                  : acquisition?.outputKind === "reveal"
+                    ? "reveal output reduces this project's Intuition requirement by 10%."
+                    : acquisition?.outputKind === "template"
+                      ? "template output reduces this project's work requirement by 10%."
+                      : "owned, with no recorded output effect."}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>Compatible earned methods: none yet.</p>
+        )}
       </section>
 
       <details class="math-note">
@@ -904,7 +915,7 @@ function ProjectDetail({
           </button>
         ) : null}
       </div>
-      <p id="project-action-reason" class="control-reason" aria-live="polite">
+      <p id="project-action-reason" class="control-reason">
         {!availability.available
           ? availability.reasons.join(". ")
           : deficits.PRECISION > 0 || deficits.INTUITION > 0
@@ -1845,12 +1856,28 @@ function SettingsView({
               Save now
             </button>
             <button type="button" onClick={() => store.load()}>
-              Recover best save
+              Preview best recovery
             </button>
             <button type="button" onClick={() => store.export()}>
               Prepare export
             </button>
           </div>
+          {snapshot.recoveryPreview ? (
+            <aside class="legacy-note" aria-labelledby="recovery-preview-title">
+              <strong id="recovery-preview-title">
+                Validated recovery candidate
+              </strong>
+              <p>
+                {snapshot.recoveryPreview.source}, generation{" "}
+                {snapshot.recoveryPreview.generation}, content{" "}
+                {snapshot.recoveryPreview.contentVersion}, saved{" "}
+                {new Date(snapshot.recoveryPreview.savedAtMs).toLocaleString()}.
+              </p>
+              <button type="button" onClick={() => store.confirmRecovery()}>
+                Replace with this recovery
+              </button>
+            </aside>
+          ) : null}
           {snapshot.legacyFound ? (
             <aside class="legacy-note">
               <strong>Legacy v1 save detected</strong>
@@ -1955,6 +1982,14 @@ function OfflineSummaryDialog({
           <dd>{formatElapsed(summary.creditedMs)}</dd>
         </div>
         <div>
+          <dt>Full-rate credit</dt>
+          <dd>{formatElapsed(summary.fullEfficiencyMs)}</dd>
+        </div>
+        <div>
+          <dt>Tail credit</dt>
+          <dd>{formatElapsed(summary.tailEfficiencyCreditedMs)}</dd>
+        </div>
+        <div>
           <dt>Precision change</dt>
           <dd>{formatGameNumber(summary.resourceChanges.PRECISION ?? 0)}</dd>
         </div>
@@ -1970,6 +2005,18 @@ function OfflineSummaryDialog({
           <dt>Milestones</dt>
           <dd>{summary.reachedMilestoneIds.length}</dd>
         </div>
+        <div>
+          <dt>Achievements</dt>
+          <dd>{summary.recordedAchievementIds.length}</dd>
+        </div>
+        <div>
+          <dt>Technique gained</dt>
+          <dd>{summary.acquiredArtifactIds.length}</dd>
+        </div>
+        <div>
+          <dt>Insight change</dt>
+          <dd>{formatGameNumber(summary.insightChange)}</dd>
+        </div>
       </dl>
       <section class="offline-policy">
         <h3>Policy trace</h3>
@@ -1983,6 +2030,25 @@ function OfflineSummaryDialog({
             {formatElapsed(summary.discardedMs)} exceeded the configured maximum
             credited window.
           </p>
+        ) : null}
+        <p>
+          <strong>Stop reason:</strong>{" "}
+          {summary.stopReason ?? "credited window completed"}
+        </p>
+        <p>
+          <strong>Protected reserves:</strong> Precision{" "}
+          {formatGameNumber(summary.reserves.PRECISION ?? 0)}, Intuition{" "}
+          {formatGameNumber(summary.reserves.INTUITION ?? 0)}.
+        </p>
+        {summary.automationTrace.length > 0 ? (
+          <>
+            <h3>Automation decisions</h3>
+            <ul>
+              {summary.automationTrace.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </>
         ) : null}
       </section>
       <div class="dialog-actions">
@@ -2020,6 +2086,7 @@ export function App({ store }: AppProperties) {
   const [publicationConfirm, setPublicationConfirm] = useState(false);
   const [importConfirm, setImportConfirm] = useState(false);
   const [importText, setImportText] = useState("");
+  const [mobileMoreOpen, setMobileMoreOpen] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
 
   useEffect(
@@ -2033,6 +2100,7 @@ export function App({ store }: AppProperties) {
   const dispatch = (command: GameCommand) => store.dispatch(command);
   const navigate = (next: AppView, projectId?: ProjectId | null) => {
     if (projectId) setSelectedProjectId(projectId);
+    setMobileMoreOpen(false);
     setView(next);
     queueMicrotask(() => mainRef.current?.focus());
   };
@@ -2287,6 +2355,24 @@ export function App({ store }: AppProperties) {
         </aside>
       </div>
 
+      {mobileMoreOpen ? (
+        <nav
+          id="mobile-more-menu"
+          class="mobile-more-menu"
+          aria-label="More destinations"
+        >
+          {[...views.slice(5), "settings" as const].map((item) => (
+            <button
+              type="button"
+              key={item}
+              aria-current={view === item ? "page" : undefined}
+              onClick={() => navigate(item)}
+            >
+              {viewLabels[item]}
+            </button>
+          ))}
+        </nav>
+      ) : null}
       <nav class="mobile-nav" aria-label="Primary mobile navigation">
         {views.slice(0, 5).map((item) => (
           <button
@@ -2300,8 +2386,9 @@ export function App({ store }: AppProperties) {
         ))}
         <button
           type="button"
-          aria-current={view === "settings" ? "page" : undefined}
-          onClick={() => navigate("settings")}
+          aria-expanded={mobileMoreOpen}
+          aria-controls="mobile-more-menu"
+          onClick={() => setMobileMoreOpen((open) => !open)}
         >
           More
         </button>
@@ -2315,7 +2402,7 @@ export function App({ store }: AppProperties) {
         data-testid="status-announcement"
       >
         {state.settings.announcementVerbosity === "all" ||
-        /completed|milestone|achievement|published|FAILED|INVALID|decision/i.test(
+        /completed|milestone|achievement|published|failed|error|invalid|corrupt|future|oversized|incompatible|rejected|decision/i.test(
           snapshot.statusMessage,
         )
           ? snapshot.statusMessage
@@ -2327,9 +2414,9 @@ export function App({ store }: AppProperties) {
           snapshot={snapshot}
           onClose={() => store.dismissOfflineSummary()}
           onReview={() => {
+            const summary = snapshot.offlineSummary;
             store.dismissOfflineSummary();
-            const objective = selectCurrentObjective(state);
-            navigate(objective.targetView, objective.projectId);
+            if (summary) navigate(summary.targetView, summary.targetProjectId);
           }}
         />
       ) : null}
@@ -2471,6 +2558,24 @@ export function App({ store }: AppProperties) {
           description="The validated import will receive a new generation. Your current game is preserved in rotating recovery history first."
           onClose={() => setImportConfirm(false)}
         >
+          {snapshot.importPreview ? (
+            <dl class="dialog-ledger">
+              <div>
+                <dt>Imported generation</dt>
+                <dd>{snapshot.importPreview.generation}</dd>
+              </div>
+              <div>
+                <dt>Content version</dt>
+                <dd>{snapshot.importPreview.contentVersion}</dd>
+              </div>
+              <div>
+                <dt>Saved</dt>
+                <dd>
+                  {new Date(snapshot.importPreview.savedAtMs).toLocaleString()}
+                </dd>
+              </div>
+            </dl>
+          ) : null}
           <div class="dialog-actions">
             <button
               type="button"

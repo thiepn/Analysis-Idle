@@ -261,7 +261,15 @@ export interface ProvisionalConfiguration {
     campaignMinHours: number;
     campaignMaxHours: number;
   };
-  projects: { approachSwitchPreservation: number; baseSpeedPerSecond: number };
+  projects: {
+    approachSwitchPreservation: number;
+    baseSpeedPerSecond: number;
+    techniqueOutputBonuses: {
+      lemmaPrecisionDiscount: number;
+      revealIntuitionDiscount: number;
+      templateWorkDiscount: number;
+    };
+  };
 }
 
 export interface GameContent {

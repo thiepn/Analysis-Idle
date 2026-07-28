@@ -950,7 +950,15 @@ export const naturalNumbersContent: GameContent = {
       campaignMinHours: 30,
       campaignMaxHours: 50,
     },
-    projects: { approachSwitchPreservation: 0.9, baseSpeedPerSecond: 1 },
+    projects: {
+      approachSwitchPreservation: 0.9,
+      baseSpeedPerSecond: 1,
+      techniqueOutputBonuses: {
+        lemmaPrecisionDiscount: 0.1,
+        revealIntuitionDiscount: 0.1,
+        templateWorkDiscount: 0.1,
+      },
+    },
   },
   resources,
   activities,

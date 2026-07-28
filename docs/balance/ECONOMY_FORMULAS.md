@@ -41,7 +41,7 @@ W' = max(0, W − s × namedMethodFactor × Δt)
 
 Completion consumes reserved inputs, validates artifacts, grants configured `U`, emits domain events, then runs explicit completion policy. Approach transforms requirement vector/artifact schema and may transform work, but is normalized against downstream value. Cancellation returns reserved inputs; a mid-project approach change preserves ≥90% work (`P`).
 
-Technique has no scalar formula. Named exercise completion and Constructive preparation emit typed `preparedStep`/`template` artifacts; only explicit matching rules can use them.
+Technique has no stock formula. For a compatible owned acquisition, a `lemma` multiplies the displayed Precision requirement by `0.90`, a `reveal` multiplies the displayed Intuition requirement by `0.90`, and a `template` multiplies displayed project work by `0.90`. Each output kind applies at most once; the factors are centralized provisional configuration and only explicit artifact compatibility can activate them.
 
 ## Insight and offline
 

@@ -7,6 +7,7 @@ import type {
 import type { GameEvent } from "../events/types";
 import {
   resolveActivityRate,
+  resolveProjectRequirements,
   resolveProjectSpeed,
   resolveResourceCap,
 } from "../effects/resolve";
@@ -17,6 +18,7 @@ import {
   type AutomationTraceEntry,
   type GameState,
 } from "../state/game-state";
+import { refreshRecords } from "../state/records";
 
 export interface OfflineCredit {
   requestedMs: number;
@@ -76,7 +78,8 @@ function completeProject(
     (candidate) => candidate.id === project.approachId,
   )!;
   project.progress = gameNumber(
-    definition.workRequired * approach.workMultiplier,
+    resolveProjectRequirements(definition, project.approachId, state, content)
+      .work,
   );
   project.progressSegmentElapsedMs = 0;
   project.progressSegmentStart = project.progress;
@@ -159,15 +162,17 @@ function startNextQueued(
   const approach = definition
     ? content.approaches.find((candidate) => candidate.id === next?.approachId)
     : undefined;
+  const requirements =
+    definition && next
+      ? resolveProjectRequirements(definition, next.approachId, state, content)
+      : null;
   const precisionRequired =
-    definition && approach
-      ? definition.precisionRequirement *
-        approach.precisionRequirementMultiplier
+    definition && approach && requirements
+      ? requirements.precision
       : Number.POSITIVE_INFINITY;
   const intuitionRequired =
-    definition && approach
-      ? definition.intuitionRequirement *
-        approach.intuitionRequirementMultiplier
+    definition && approach && requirements
+      ? requirements.intuition
       : Number.POSITIVE_INFINITY;
   const alreadyReserved =
     next !== undefined &&
@@ -428,10 +433,12 @@ export function advanceDeterministicTime(
       const definition = content.projects.find(
         (candidate) => candidate.id === project.id,
       )!;
-      const approach = content.approaches.find(
-        (candidate) => candidate.id === project.approachId,
-      )!;
-      const workRequired = definition.workRequired * approach.workMultiplier;
+      const workRequired = resolveProjectRequirements(
+        definition,
+        project.approachId,
+        next,
+        content,
+      ).work;
       const speed = resolveProjectSpeed(project.id, next, content);
       const untilCompletion =
         speed > 0
@@ -445,10 +452,12 @@ export function advanceDeterministicTime(
       const definition = content.projects.find(
         (candidate) => candidate.id === project.id,
       )!;
-      const approach = content.approaches.find(
-        (candidate) => candidate.id === project.approachId,
-      )!;
-      const workRequired = definition.workRequired * approach.workMultiplier;
+      const workRequired = resolveProjectRequirements(
+        definition,
+        project.approachId,
+        next,
+        content,
+      ).work;
       const speed = gameNumber(resolveProjectSpeed(project.id, next, content));
       if (project.progressRatePerSecond !== speed) {
         project.progressSegmentElapsedMs = 0;
@@ -474,20 +483,25 @@ export function advanceDeterministicTime(
     );
     for (const modifier of expired)
       events.push({ type: "insightModifierExpired", modifierId: modifier.id });
+    refreshRecords(next, content, events);
     boundaries += 1;
     const completed = activeProject(next);
     if (completed) {
       const definition = content.projects.find(
         (candidate) => candidate.id === completed.id,
       )!;
-      const approach = content.approaches.find(
-        (candidate) => candidate.id === completed.approachId,
-      )!;
       if (
-        completed.progress >=
-        definition.workRequired * approach.workMultiplier
+        resolveProjectRequirements(
+          definition,
+          completed.approachId,
+          next,
+          content,
+        ).work -
+          completed.progress <=
+        1e-9
       ) {
         completeProject(next, completed.id, content, events, offlineInsight);
+        refreshRecords(next, content, events);
         if (offline) {
           if (publicationIsReady(next, content)) {
             stoppedForDecision = true;

@@ -259,7 +259,12 @@ export function runSimulation(
       continue;
     }
     if (active) {
-      if (profile.name === "activeOptimizer" && state.insight >= 1) {
+      if (
+        profile.name === "activeOptimizer" &&
+        state.insight >= 1 &&
+        !active.insightSpentThisRun &&
+        hasInformationCapability(state, content, "insightActions")
+      ) {
         dispatch({
           type: "spendInsight",
           payload: { amount: 1, purpose: "traceStep" },

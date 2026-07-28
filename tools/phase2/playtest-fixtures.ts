@@ -2,6 +2,11 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { runSimulation } from "../simulator/core";
 import { policyNames } from "../simulator/policies";
+import { naturalNumbersContent } from "../../src/content";
+import { envelope, reduceCommand } from "../../src/engine";
+import { gameNumber } from "../../src/engine/numbers/game-number";
+import { selectProjectProgress } from "../../src/engine/selectors";
+import { createInitialState } from "../../src/engine/state/game-state";
 
 const root = resolve(import.meta.dirname, "../..");
 const dataDirectory = resolve(root, "reports/phase-2/data");
@@ -142,13 +147,46 @@ const median =
   values.length % 2 === 0
     ? (values[values.length / 2 - 1]! + values[values.length / 2]!) / 2
     : values[Math.floor(values.length / 2)]!;
-const balanced = policies.find((policy) => policy.name === "balanced")!;
-const active = policies.find((policy) => policy.name === "activeOptimizer")!;
-const activeAdvantage = Math.max(
-  0,
-  (balanced.publicationMinutes! - active.publicationMinutes!) /
-    balanced.publicationMinutes!,
-);
+const interventionFixture = (amount: 1 | 2) => {
+  const state = createInitialState(naturalNumbersContent);
+  state.insight = gameNumber(amount);
+  state.ownedUpgrades.push("nn.active.insight_notebook" as never);
+  state.projects["nn.project.zero_successor"]!.status = "active";
+  const baselineSeconds = selectProjectProgress(
+    state,
+    naturalNumbersContent,
+    "nn.project.zero_successor" as never,
+  ).etaSeconds!;
+  const result = reduceCommand(
+    state,
+    envelope(
+      {
+        type: "spendInsight",
+        payload: { amount, purpose: "traceStep" },
+      },
+      1,
+      "simulator",
+    ),
+    naturalNumbersContent,
+  );
+  if (!result.accepted)
+    throw new Error(`Active fixture rejected: ${result.reason.message}`);
+  const activeSeconds = selectProjectProgress(
+    result.state,
+    naturalNumbersContent,
+    "nn.project.zero_successor" as never,
+  ).etaSeconds!;
+  return {
+    amount,
+    baselineSeconds,
+    activeSeconds,
+    advantage: (baselineSeconds - activeSeconds) / baselineSeconds,
+  };
+};
+const activeInterventionFixtures = [
+  interventionFixture(1),
+  interventionFixture(2),
+];
 
 const output = {
   schemaVersion: 1,
@@ -161,6 +199,7 @@ const output = {
   ],
   checkpoints,
   policies,
+  activeInterventionFixtures,
   personaSessions,
   summary: {
     policyCount: policies.length,
@@ -169,8 +208,8 @@ const output = {
     publicationMedianMinutes: median,
     publicationMinMinutes: Math.min(...values),
     publicationMaxMinutes: Math.max(...values),
-    activeAdvantageTypical: activeAdvantage,
-    activeAdvantageMaximum: activeAdvantage,
+    activeAdvantageTypical: activeInterventionFixtures[0]!.advantage,
+    activeAdvantageMaximum: activeInterventionFixtures[1]!.advantage,
     rejectedCommands: policies.reduce(
       (sum, policy) => sum + policy.rejectedCommands,
       0,
