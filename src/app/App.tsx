@@ -73,7 +73,12 @@ const viewLabels: Record<AppView, string> = {
   settings: "Settings",
 };
 
-function resourceSymbol(resourceId: string) {
+function resourceSymbol(
+  resourceId: string,
+  notation: GameState["settings"]["notation"],
+) {
+  if (notation === "plain")
+    return resourceId === naturalNumbersIds.PRECISION ? "P" : "I";
   return resourceId === naturalNumbersIds.PRECISION ? "□" : "◯";
 }
 
@@ -114,7 +119,7 @@ function ResourceCard({
     <article class={`resource-card resource-${resource.id.toLowerCase()}`}>
       <div class="resource-title">
         <span class="resource-symbol" aria-hidden="true">
-          {resourceSymbol(resource.id)}
+          {resourceSymbol(resource.id, state.settings.notation)}
         </span>
         <div>
           <span class="resource-label">{resource.short}</span>
@@ -127,16 +132,18 @@ function ResourceCard({
           ) : null}
         </div>
       </div>
-      <strong class="resource-value">{formatGameNumber(selected.total)}</strong>
+      <strong class="resource-value">
+        {formatGameNumber(selected.total, state.settings.numberFormat)}
+      </strong>
       <span class="resource-rate">{formatRate(selected.rate)}</span>
       {!compact ? (
         <>
           <ProgressBar
             value={selected.total / cap}
-            label={`${resource.short}: ${formatGameNumber(selected.total)} of ${formatGameNumber(cap)}`}
+            label={`${resource.short}: ${formatGameNumber(selected.total, state.settings.numberFormat)} of ${formatGameNumber(cap, state.settings.numberFormat)}`}
           />
           <small>
-            Cap {formatGameNumber(cap)} ·{" "}
+            Cap {formatGameNumber(cap, state.settings.numberFormat)} ·{" "}
             {resource.id === naturalNumbersIds.PRECISION
               ? "used by formal project obligations"
               : "used by discovery project requirements"}
@@ -186,6 +193,7 @@ function AttentionControl({
       >
         <button
           type="button"
+          id={`attention-${activity.id}-decrease`}
           aria-label={`Decrease ${activity.short} Attention`}
           disabled={allocation === 0}
           onClick={() =>
@@ -879,6 +887,7 @@ function ProjectDetail({
           <button
             type="button"
             class="primary-action"
+            id={`project-${project.id}-start`}
             disabled={!canStart}
             aria-describedby="project-action-reason"
             onClick={() =>
@@ -1276,6 +1285,7 @@ function AutomationView({
                 <legend>When a project completes</legend>
                 <label>
                   <input
+                    id="completion-start-next"
                     type="radio"
                     name="completion-rule"
                     checked={state.completionBehavior === "pause"}
@@ -1374,6 +1384,17 @@ function InsightPanel({
   const active = Object.values(state.projects).find(
     (project) => project.status === "active",
   );
+  const unlocked = hasInformationCapability(
+    state,
+    naturalNumbersContent,
+    "insightActions",
+  );
+  const revealed = active ? state.insightReveals.includes(active.id) : false;
+  const downstream = active
+    ? naturalNumbersContent.projects.filter((project) =>
+        project.prerequisiteProjectIds.includes(active.id),
+      )
+    : [];
   if (insight.value === 0 && !active) return null;
   return (
     <section class="insight-panel" aria-labelledby="insight-title">
@@ -1392,7 +1413,12 @@ function InsightPanel({
       </div>
       <button
         type="button"
-        disabled={insight.value < 1 || !active}
+        disabled={insight.value < 1 || !active || !unlocked}
+        title={
+          !unlocked
+            ? "Purchase the Insight notebook upgrade to use stored charges"
+            : undefined
+        }
         onClick={() =>
           dispatch({
             type: "spendInsight",
@@ -1402,9 +1428,40 @@ function InsightPanel({
       >
         Trace the current step
       </button>
+      <button
+        type="button"
+        disabled={insight.value < 1 || !active || !unlocked || revealed}
+        onClick={() =>
+          dispatch({
+            type: "spendInsight",
+            payload: { amount: 1, purpose: "revealDownstream" },
+          })
+        }
+      >
+        {revealed ? "Downstream revealed" : "Reveal downstream"}
+      </button>
       <small>
-        Removes 10% of remaining work; total active advantage is capped at 20%.
+        Trace removes 10% of remaining work. Reveal spends one charge to show
+        the current project’s direct dependents without accelerating progress.
       </small>
+      {revealed ? (
+        <div class="insight-reveal">
+          <strong>Direct downstream work</strong>
+          {downstream.length > 0 ? (
+            <ul>
+              {downstream.map((project) => (
+                <li key={project.id}>
+                  {project.short}: Precision {project.precisionRequirement},
+                  Intuition {project.intuitionRequirement}, work{" "}
+                  {project.workRequired}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>This project has no direct dependent project.</p>
+          )}
+        </div>
+      ) : null}
     </section>
   );
 }
@@ -1628,16 +1685,25 @@ function PublicationView({
         </section>
       </div>
       {published ? (
-        <article class="mastery-card">
-          <p class="kicker">Mastery method card</p>
-          <h3>Induction Framework</h3>
-          <p>
-            A compressed record of base cases, induction steps, least elements
-            and equivalent proof methods. It grants no generic production
-            multiplier.
-          </p>
-          <strong>Natural Numbers · published</strong>
-        </article>
+        <>
+          <article class="mastery-card">
+            <p class="kicker">Mastery method card</p>
+            <h3>Induction Framework</h3>
+            <p>
+              A compressed record of base cases, induction steps, least elements
+              and equivalent proof methods. It grants no generic production
+              multiplier.
+            </p>
+            <strong>Natural Numbers · published</strong>
+          </article>
+          <aside class="publication-readiness">
+            <strong>Next chapter boundary</strong>
+            <p>
+              The Integers chapter is reserved for Phase 3. No hidden production
+              or unavailable action runs beyond this archive.
+            </p>
+          </aside>
+        </>
       ) : (
         <>
           {!readiness.ready ? (
@@ -1655,6 +1721,7 @@ function PublicationView({
           ) : null}
           <button
             type="button"
+            id="publication-review-action"
             class="primary-action publication-action"
             disabled={!readiness.ready}
             onClick={onPublish}
@@ -1674,6 +1741,7 @@ function SettingsView({
   importText,
   setImportText,
   onImportConfirm,
+  onResetConfirm,
 }: {
   state: GameState;
   snapshot: StoreSnapshot;
@@ -1681,6 +1749,7 @@ function SettingsView({
   importText: string;
   setImportText: (text: string) => void;
   onImportConfirm: () => void;
+  onResetConfirm: () => void;
 }) {
   const dispatch = (command: GameCommand) => store.dispatch(command);
   const diagnostics = selectEffectDecomposition(state, naturalNumbersContent);
@@ -1723,6 +1792,25 @@ function SettingsView({
               }
             />
           </label>
+          <label>
+            Animation intensity
+            <select
+              value={state.settings.animationIntensity}
+              onChange={(event) =>
+                dispatch({
+                  type: "changeSetting",
+                  payload: {
+                    setting: "animationIntensity",
+                    value: event.currentTarget.value,
+                  },
+                })
+              }
+            >
+              <option value="full">Full</option>
+              <option value="subtle">Subtle</option>
+              <option value="none">None</option>
+            </select>
+          </label>
           <label
             class="switch-row"
             htmlFor="setting-high-contrast"
@@ -1741,6 +1829,30 @@ function SettingsView({
                   type: "changeSetting",
                   payload: {
                     setting: "highContrast",
+                    value: event.currentTarget.checked,
+                  },
+                })
+              }
+            />
+          </label>
+          <label
+            class="switch-row"
+            htmlFor="setting-compact-layout"
+            aria-label="Compact layout"
+          >
+            <span>
+              <strong>Compact layout</strong>
+              <small>Reduces spacing while preserving target sizes.</small>
+            </span>
+            <input
+              id="setting-compact-layout"
+              type="checkbox"
+              checked={state.settings.compactLayout}
+              onChange={(event) =>
+                dispatch({
+                  type: "changeSetting",
+                  payload: {
+                    setting: "compactLayout",
                     value: event.currentTarget.checked,
                   },
                 })
@@ -1766,6 +1878,24 @@ function SettingsView({
             </select>
           </label>
           <label>
+            Number format
+            <select
+              value={state.settings.numberFormat}
+              onChange={(event) =>
+                dispatch({
+                  type: "changeSetting",
+                  payload: {
+                    setting: "numberFormat",
+                    value: event.currentTarget.value,
+                  },
+                })
+              }
+            >
+              <option value="standard">Standard</option>
+              <option value="compact">Compact at 10,000</option>
+            </select>
+          </label>
+          <label>
             Mathematical notation
             <select
               value={state.settings.notation}
@@ -1781,6 +1911,60 @@ function SettingsView({
             >
               <option value="plain">Plain language</option>
               <option value="unicode">Unicode symbols with prose</option>
+            </select>
+          </label>
+          <label>
+            Offline summary detail
+            <select
+              value={state.settings.offlineSummaryDetail}
+              onChange={(event) =>
+                dispatch({
+                  type: "changeSetting",
+                  payload: {
+                    setting: "offlineSummaryDetail",
+                    value: event.currentTarget.value,
+                  },
+                })
+              }
+            >
+              <option value="summary">Summary</option>
+              <option value="detailed">Detailed ledger</option>
+            </select>
+          </label>
+          <label>
+            Mathematical explanation depth
+            <select
+              value={state.settings.mathExplanationDepth}
+              onChange={(event) =>
+                dispatch({
+                  type: "changeSetting",
+                  payload: {
+                    setting: "mathExplanationDepth",
+                    value: event.currentTarget.value,
+                  },
+                })
+              }
+            >
+              <option value="guided">Guided</option>
+              <option value="expanded">Expanded</option>
+            </select>
+          </label>
+          <label>
+            Display update rate
+            <select
+              value={state.settings.updateRate}
+              onChange={(event) =>
+                dispatch({
+                  type: "changeSetting",
+                  payload: {
+                    setting: "updateRate",
+                    value: event.currentTarget.value,
+                  },
+                })
+              }
+            >
+              <option value="standard">Standard (once per second)</option>
+              <option value="reduced">Reduced (once every two seconds)</option>
             </select>
           </label>
           <label>
@@ -1923,6 +2107,13 @@ function SettingsView({
             Imports are size-limited, checksum-checked and validated before they
             can replace the current state. The current save is retained as a
             backup.
+          </p>
+          <button type="button" class="danger-action" onClick={onResetConfirm}>
+            Reset game…
+          </button>
+          <p class="control-reason">
+            Reset requires confirmation and preserves the current generation in
+            rotating recovery history. Accessibility preferences remain.
           </p>
         </section>
         {import.meta.env.DEV ? (
@@ -2085,6 +2276,7 @@ export function App({ store }: AppProperties) {
   } | null>(null);
   const [publicationConfirm, setPublicationConfirm] = useState(false);
   const [importConfirm, setImportConfirm] = useState(false);
+  const [resetConfirm, setResetConfirm] = useState(false);
   const [importText, setImportText] = useState("");
   const [mobileMoreOpen, setMobileMoreOpen] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
@@ -2112,6 +2304,14 @@ export function App({ store }: AppProperties) {
     "app",
     state.settings.highContrast ? "high-contrast" : "",
     state.settings.reducedMotion ? "reduced-motion" : "",
+    `animation-${state.settings.animationIntensity}`,
+    state.settings.compactLayout ? "compact-layout" : "",
+    state.settings.mathExplanationDepth === "guided"
+      ? "guided-explanations"
+      : "expanded-explanations",
+    state.settings.offlineSummaryDetail === "summary"
+      ? "offline-summary-compact"
+      : "",
     state.settings.textScale === "large" ? "large-text" : "",
   ]
     .filter(Boolean)
@@ -2219,6 +2419,7 @@ export function App({ store }: AppProperties) {
             importText={importText}
             setImportText={setImportText}
             onImportConfirm={() => setImportConfirm(true)}
+            onResetConfirm={() => setResetConfirm(true)}
           />
         );
       default:
@@ -2402,7 +2603,7 @@ export function App({ store }: AppProperties) {
         data-testid="status-announcement"
       >
         {state.settings.announcementVerbosity === "all" ||
-        /completed|milestone|achievement|published|failed|error|invalid|corrupt|future|oversized|incompatible|rejected|decision/i.test(
+        /completed|milestone|achievement|published|failed|error|invalid|corrupt|future|oversized|incompatible|rejected|decision|passive|insufficient|missing|unavailable|cannot|requires|unknown|lost/i.test(
           snapshot.statusMessage,
         )
           ? snapshot.statusMessage
@@ -2416,7 +2617,15 @@ export function App({ store }: AppProperties) {
           onReview={() => {
             const summary = snapshot.offlineSummary;
             store.dismissOfflineSummary();
-            if (summary) navigate(summary.targetView, summary.targetProjectId);
+            if (summary) {
+              navigate(summary.targetView, summary.targetProjectId);
+              if (summary.targetControlId)
+                window.setTimeout(
+                  () =>
+                    document.getElementById(summary.targetControlId!)?.focus(),
+                  0,
+                );
+            }
           }}
         />
       ) : null}
@@ -2569,6 +2778,28 @@ export function App({ store }: AppProperties) {
                 <dd>{snapshot.importPreview.contentVersion}</dd>
               </div>
               <div>
+                <dt>App build</dt>
+                <dd>{snapshot.importPreview.buildId}</dd>
+              </div>
+              <div>
+                <dt>Save schema</dt>
+                <dd>{snapshot.importPreview.schemaVersion}</dd>
+              </div>
+              <div>
+                <dt>Chapter status</dt>
+                <dd>{snapshot.importPreview.chapterStatus}</dd>
+              </div>
+              <div>
+                <dt>Logical play time</dt>
+                <dd>{formatElapsed(snapshot.importPreview.logicalTimeMs)}</dd>
+              </div>
+              <div>
+                <dt>Checksum</dt>
+                <dd>
+                  {snapshot.importPreview.checksumValid ? "Valid" : "Invalid"}
+                </dd>
+              </div>
+              <div>
                 <dt>Saved</dt>
                 <dd>
                   {new Date(snapshot.importPreview.savedAtMs).toLocaleString()}
@@ -2594,6 +2825,35 @@ export function App({ store }: AppProperties) {
               }}
             >
               Confirm import
+            </button>
+          </div>
+        </Dialog>
+      ) : null}
+      {resetConfirm ? (
+        <Dialog
+          title="Reset this game?"
+          description="A new Natural Numbers run will replace the current state. The current generation is saved to recovery history first, and accessibility preferences remain."
+          onClose={() => setResetConfirm(false)}
+        >
+          <div class="dialog-actions">
+            <button
+              type="button"
+              data-dialog-cancel
+              onClick={() => setResetConfirm(false)}
+            >
+              Keep current game
+            </button>
+            <button
+              type="button"
+              class="danger-action"
+              data-dialog-confirm
+              onClick={() => {
+                void store.reset();
+                setResetConfirm(false);
+                navigate("overview");
+              }}
+            >
+              Confirm reset
             </button>
           </div>
         </Dialog>

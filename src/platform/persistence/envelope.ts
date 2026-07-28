@@ -147,6 +147,9 @@ function decodeState(encoded: Record<string, unknown>): GameState {
   ) as GameState["activityProduction"];
   decoded.insight = deserializeGameNumber(encoded.insight as string);
   decoded.insightSpent = deserializeGameNumber(encoded.insightSpent as string);
+  decoded.insightReveals = Array.isArray(encoded.insightReveals)
+    ? (encoded.insightReveals as GameState["insightReveals"])
+    : [];
   decoded.understanding = deserializeGameNumber(
     encoded.understanding as string,
   );
@@ -201,11 +204,17 @@ function decodeState(encoded: Record<string, unknown>): GameState {
   };
   decoded.settings = {
     reducedMotion: decoded.settings?.reducedMotion ?? false,
+    animationIntensity: decoded.settings?.animationIntensity ?? "full",
     highContrast: decoded.settings?.highContrast ?? false,
     notation: decoded.settings?.notation ?? "plain",
+    updateRate: decoded.settings?.updateRate ?? "standard",
+    numberFormat: decoded.settings?.numberFormat ?? "standard",
+    compactLayout: decoded.settings?.compactLayout ?? false,
     textScale: decoded.settings?.textScale ?? "standard",
     announcementVerbosity:
       decoded.settings?.announcementVerbosity ?? "essential",
+    offlineSummaryDetail: decoded.settings?.offlineSummaryDetail ?? "detailed",
+    mathExplanationDepth: decoded.settings?.mathExplanationDepth ?? "guided",
     confirmations: decoded.settings?.confirmations ?? true,
   };
   return decoded;
@@ -351,7 +360,16 @@ export function previewImport(
   text: string,
   content: GameContent,
 ): SaveValidationResult & {
-  preview?: { generation: number; savedAtMs: number; contentVersion: string };
+  preview?: {
+    generation: number;
+    savedAtMs: number;
+    contentVersion: string;
+    buildId: string;
+    schemaVersion: number;
+    chapterStatus: string;
+    logicalTimeMs: number;
+    checksumValid: true;
+  };
 } {
   const result = validateSaveText(text, content);
   return result.valid
@@ -361,6 +379,12 @@ export function previewImport(
           generation: result.envelope.generation,
           savedAtMs: result.envelope.savedAtMs,
           contentVersion: result.envelope.contentVersion,
+          buildId: result.envelope.buildId,
+          schemaVersion: result.envelope.schemaVersion,
+          chapterStatus:
+            Object.values(result.state.chapters)[0] ?? "unavailable",
+          logicalTimeMs: result.state.logicalTimeMs,
+          checksumValid: true,
         },
       }
     : result;

@@ -932,8 +932,8 @@ export const naturalNumbersContent: GameContent = {
     },
     insight: {
       cap: 3,
-      sustainedTargetMin: 0.1,
-      sustainedTargetMax: 0.15,
+      sustainedTargetMin: 0.01,
+      sustainedTargetMax: 0.03,
       ceiling: 0.2,
       modifierPerInsight: 0.1,
       modifierDurationSeconds: 60,

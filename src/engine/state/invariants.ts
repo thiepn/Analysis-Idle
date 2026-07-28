@@ -157,6 +157,11 @@ export function collectInvariantViolations(
     state.insightSpent < 0
   )
     violations.push("Insight values must be bounded whole charge counts");
+  if (
+    !unique(state.insightReveals ?? []) ||
+    (state.insightReveals ?? []).some((projectId) => !state.projects[projectId])
+  )
+    violations.push("Insight reveals must reference unique known projects");
   if (!Number.isFinite(state.understanding) || state.understanding < 0)
     violations.push(
       "Understanding must be finite, non-negative, and monotonic",
@@ -168,11 +173,17 @@ export function collectInvariantViolations(
     violations.push("completion behavior is invalid");
   if (
     typeof state.settings?.reducedMotion !== "boolean" ||
+    !["full", "subtle", "none"].includes(state.settings?.animationIntensity) ||
     typeof state.settings?.highContrast !== "boolean" ||
+    typeof state.settings?.compactLayout !== "boolean" ||
     typeof state.settings?.confirmations !== "boolean" ||
     !["plain", "unicode"].includes(state.settings?.notation) ||
+    !["standard", "reduced"].includes(state.settings?.updateRate) ||
+    !["standard", "compact"].includes(state.settings?.numberFormat) ||
     !["standard", "large"].includes(state.settings?.textScale) ||
-    !["essential", "all"].includes(state.settings?.announcementVerbosity)
+    !["essential", "all"].includes(state.settings?.announcementVerbosity) ||
+    !["summary", "detailed"].includes(state.settings?.offlineSummaryDetail) ||
+    !["guided", "expanded"].includes(state.settings?.mathExplanationDepth)
   )
     violations.push("settings contain invalid values");
 

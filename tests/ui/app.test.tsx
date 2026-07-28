@@ -1,5 +1,11 @@
 // @vitest-environment jsdom
-import { cleanup, render, screen, within } from "@testing-library/preact";
+import {
+  cleanup,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/preact";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it } from "vitest";
 import { App } from "../../src/app/App";
@@ -162,5 +168,52 @@ describe("Natural Numbers production UI", () => {
       events: [],
     });
     window.dispatchEvent(new Event("pagehide"));
+  });
+
+  it("reacquires and reloads the latest save after a bfcache restore", async () => {
+    const store = createAppStore();
+    await store.initialize();
+    expect(store.getSnapshot().writer).toBe(true);
+
+    window.dispatchEvent(
+      new PageTransitionEvent("pagehide", { persisted: true }),
+    );
+    expect(store.getSnapshot().writer).toBe(false);
+
+    const newer = createInitialState(naturalNumbersContent);
+    newer.resources.PRECISION = gameNumber(77);
+    localStorage.setItem(
+      SAVE_KEYS.current,
+      exportSave(
+        createSaveEnvelope(newer, {
+          generation: 50,
+          savedAtMs: Date.now(),
+          sessionId: "bfcache-newer",
+          buildId: "test",
+        }),
+      ),
+    );
+    window.dispatchEvent(
+      new PageTransitionEvent("pageshow", { persisted: true }),
+    );
+    await waitFor(() => {
+      expect(store.getSnapshot().writer).toBe(true);
+      expect(
+        store.getSnapshot().state.resources.PRECISION,
+      ).toBeGreaterThanOrEqual(77);
+      expect(store.getSnapshot().state.resources.PRECISION).toBeLessThan(78);
+    });
+    expect(
+      store.dispatch({
+        type: "advanceTime",
+        payload: { durationMs: 1_000, offline: false, safePolicy: false },
+      }).accepted,
+    ).toBe(true);
+
+    window.dispatchEvent(
+      new PageTransitionEvent("pagehide", { persisted: false }),
+    );
+    expect(store.getSnapshot().writer).toBe(false);
+    expect(localStorage.getItem(SAVE_KEYS.lease)).toBeNull();
   });
 });

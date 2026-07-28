@@ -514,6 +514,12 @@ export function reduceCommand(
         return reject(state, "INVALID_AMOUNT", "Unknown Insight intervention");
       if (next.insight < amount)
         return reject(state, "INSIGHT_INSUFFICIENT", "Insufficient Insight");
+      if (purpose === "revealDownstream" && amount !== 1)
+        return reject(
+          state,
+          "INVALID_AMOUNT",
+          "A downstream reveal uses exactly one Insight charge",
+        );
       const project = activeProject(next);
       if (!project)
         return reject(
@@ -540,28 +546,33 @@ export function reduceCommand(
       next.insightSpent = gnAdd(next.insightSpent, gameNumber(amount));
       {
         project.insightSpentThisRun = true;
-        const definition = content.projects.find(
-          (candidate) => candidate.id === project.id,
-        )!;
-        const required = resolveProjectRequirements(
-          definition,
-          project.approachId,
-          next,
-          content,
-        ).work;
-        const fraction = Math.min(
-          content.configuration.insight.ceiling,
-          amount * content.configuration.insight.modifierPerInsight,
-        );
-        project.progress = gameNumber(
-          Math.min(
-            required,
-            project.progress + (required - project.progress) * fraction,
-          ),
-        );
-        project.progressSegmentElapsedMs = 0;
-        project.progressSegmentStart = project.progress;
-        project.progressRatePerSecond = gameNumber(0);
+        if (purpose === "revealDownstream") {
+          if (!next.insightReveals.includes(project.id))
+            next.insightReveals.push(project.id);
+        } else {
+          const definition = content.projects.find(
+            (candidate) => candidate.id === project.id,
+          )!;
+          const required = resolveProjectRequirements(
+            definition,
+            project.approachId,
+            next,
+            content,
+          ).work;
+          const fraction = Math.min(
+            content.configuration.insight.ceiling,
+            amount * content.configuration.insight.modifierPerInsight,
+          );
+          project.progress = gameNumber(
+            Math.min(
+              required,
+              project.progress + (required - project.progress) * fraction,
+            ),
+          );
+          project.progressSegmentElapsedMs = 0;
+          project.progressSegmentStart = project.progress;
+          project.progressRatePerSecond = gameNumber(0);
+        }
       }
       events.push({ type: "insightSpent", amount, purpose });
       break;
@@ -622,6 +633,7 @@ export function reduceCommand(
         next.resources[resourceId] = gameNumber(0);
       next.attention.allocations = {};
       next.insightModifiers = [];
+      next.insightReveals = [];
       next.projectQueue = [];
       for (const resourceId of chapter.publication.resetResourceIds)
         next.resourceReserves[resourceId] = gameNumber(0);
@@ -661,6 +673,7 @@ export function reduceCommand(
       if (
         (setting === "reducedMotion" ||
           setting === "highContrast" ||
+          setting === "compactLayout" ||
           setting === "confirmations") &&
         typeof value !== "boolean"
       )
@@ -674,6 +687,55 @@ export function reduceCommand(
           state,
           "INVALID_SETTINGS_VALUE",
           "Notation must be plain or unicode",
+        );
+      if (
+        setting === "updateRate" &&
+        value !== "standard" &&
+        value !== "reduced"
+      )
+        return reject(
+          state,
+          "INVALID_SETTINGS_VALUE",
+          "Update rate must be standard or reduced",
+        );
+      if (
+        setting === "animationIntensity" &&
+        !["full", "subtle", "none"].includes(value as string)
+      )
+        return reject(
+          state,
+          "INVALID_SETTINGS_VALUE",
+          "Animation intensity must be full, subtle, or none",
+        );
+      if (
+        setting === "numberFormat" &&
+        value !== "standard" &&
+        value !== "compact"
+      )
+        return reject(
+          state,
+          "INVALID_SETTINGS_VALUE",
+          "Number format must be standard or compact",
+        );
+      if (
+        setting === "offlineSummaryDetail" &&
+        value !== "summary" &&
+        value !== "detailed"
+      )
+        return reject(
+          state,
+          "INVALID_SETTINGS_VALUE",
+          "Offline summary detail must be summary or detailed",
+        );
+      if (
+        setting === "mathExplanationDepth" &&
+        value !== "guided" &&
+        value !== "expanded"
+      )
+        return reject(
+          state,
+          "INVALID_SETTINGS_VALUE",
+          "Mathematical explanation depth must be guided or expanded",
         );
       if (setting === "textScale" && value !== "standard" && value !== "large")
         return reject(

@@ -8,10 +8,13 @@ const ordinaryNumber = new Intl.NumberFormat("en", {
   maximumFractionDigits: 2,
 });
 
-export function formatGameNumber(value: number): string {
+export function formatGameNumber(
+  value: number,
+  format: "standard" | "compact" = "standard",
+): string {
   if (!Number.isFinite(value)) return "Unavailable";
   const absolute = Math.abs(value);
-  return absolute >= 10_000
+  return format === "compact" && absolute >= 10_000
     ? compactNumber.format(value)
     : ordinaryNumber.format(value);
 }

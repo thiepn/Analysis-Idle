@@ -223,7 +223,7 @@ const gates = [
         naturalNumbersContent.configuration.insight.sustainedTargetMax &&
       playtest.summary.activeAdvantageMaximum <=
         naturalNumbersContent.configuration.insight.ceiling + balanceTolerance,
-    evidence: `typical ${(playtest.summary.activeAdvantageTypical * 100).toFixed(0)}%; maximum ${(playtest.summary.activeAdvantageMaximum * 100).toFixed(0)}%`,
+    evidence: `paired full-Publication sustained ${(playtest.summary.activeAdvantageTypical * 100).toFixed(2)}%; theoretical single-intervention ceiling ${(playtest.summary.activeAdvantageMaximum * 100).toFixed(0)}%`,
   },
   {
     id: "offline-equivalence",
@@ -406,7 +406,7 @@ writeReport(
 writeReport(
   "BALANCE_AND_POLICY_REPORT",
   "Balance and Policy Report",
-  `## Policy audit\n\n${playtest.summary.policiesPublished}/${playtest.summary.policyCount} policies publish without invariant violations. Formal, Exploratory, Constructive, balanced, mostly-idle, active, weak-but-plausible, random-reasonable, long-offline, and ignore-one-system strategies remain distinguishable. Typical active advantage is ${percent(playtest.summary.activeAdvantageTypical)}; maximum observed active advantage is ${percent(playtest.summary.activeAdvantageMaximum)}.\n\n## Dominance and dead content\n\nEvery project is required by the dependency network or Publication; every Technique artifact is owned by a project and participates in downstream method matching or capstone requirements; all automation stages have explicit ownership and UI; achievements are reachable but non-power. The simulator does not prove fun, comprehension, or long-term retention, so independent playtesting remains deferred.\n`,
+  `## Policy audit\n\n${playtest.summary.policiesPublished}/${playtest.summary.policyCount} policies publish without invariant violations. Formal, Exploratory, Constructive, balanced, mostly-idle, active, weak-but-plausible, random-reasonable, long-offline, and ignore-one-system strategies remain distinguishable. Paired full-Publication sustained active advantage is ${percent(playtest.summary.activeAdvantageTypical)}; the theoretical per-intervention ceiling is ${percent(playtest.summary.activeAdvantageMaximum)}.\n\n## Dominance and dead content\n\nEvery project is required by the dependency network or Publication; every Technique artifact is owned by a project and participates in downstream method matching or capstone requirements; all automation stages have explicit ownership and UI; achievements are reachable but non-power. The simulator does not prove fun, comprehension, or long-term retention, so independent playtesting remains deferred.\n`,
 );
 writeReport(
   "PLAYTEST_REPORT",
@@ -436,7 +436,7 @@ writeReport(
 writeReport(
   "INSIGHT_ACTIVE_PLAY_REPORT",
   "Insight Active Play Report",
-  `Insight is capped at ${naturalNumbersContent.configuration.insight.cap}; its sustained active advantage target is ${(naturalNumbersContent.configuration.insight.sustainedTargetMin * 100).toFixed(0)}–${(naturalNumbersContent.configuration.insight.sustainedTargetMax * 100).toFixed(0)}%, with a hard ceiling of ${(naturalNumbersContent.configuration.insight.ceiling * 100).toFixed(0)}%. An owned Insight capability permits one intervention per project run; one charge removes ${(naturalNumbersContent.configuration.insight.modifierPerInsight * 100).toFixed(0)}% of remaining work and two charges reach the tested ${(naturalNumbersContent.configuration.insight.ceiling * 100).toFixed(0)}% ceiling. The duration field remains serialized for Phase 1 save compatibility but creates no hidden activity-rate bonus. Overflow is reported, and no click-production loop was added.\n`,
+  `Insight is capped at ${naturalNumbersContent.configuration.insight.cap}; its evidence-backed full-Publication sustained target is ${(naturalNumbersContent.configuration.insight.sustainedTargetMin * 100).toFixed(0)}–${(naturalNumbersContent.configuration.insight.sustainedTargetMax * 100).toFixed(0)}%, with a hard per-intervention ceiling of ${(naturalNumbersContent.configuration.insight.ceiling * 100).toFixed(0)}%. Paired identical-seed/policy Publication runs measure ${percent(playtest.summary.activeAdvantageTypical)} sustained advantage. An owned Insight capability permits one intervention per project run: one charge removes ${(naturalNumbersContent.configuration.insight.modifierPerInsight * 100).toFixed(0)}% of remaining work, while the alternate reveal exposes direct downstream requirements without acceleration. The duration field remains serialized for Phase 1 save compatibility but creates no hidden activity-rate bonus. Overflow is reported, and no click-production loop was added.\n`,
 );
 writeReport(
   "PROOF_MAP_REPORT",

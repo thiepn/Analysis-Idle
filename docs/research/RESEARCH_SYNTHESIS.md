@@ -38,7 +38,7 @@ The Foundation is a design hypothesis backed by cited literature and genre examp
 - **Resources and Technique:** use Precision and Intuition as the two primary stocks. Technique is retained as visible exercise/method preparation and typed step/template artifacts, especially through Constructive work, but is not a third stock, hidden efficiency score, or automation tax.
 - **Projects:** projects do not consume Attention merely to run. Opportunity cost comes from reserved inputs, ordering, the single work slot, approach output, and downstream artifacts. Phase 1 must simulate the contrary competing-Attention project model before this becomes irreversible.
 - **Branches:** use temporary project approaches rather than permanent Natural Numbers branches. Automation remains available to every approach.
-- **Insight:** use deterministic stored charges with a provisional cap of 3, a 10–15% sustained target, and a 20% ceiling.
+- **Insight:** use deterministic stored charges with a provisional cap of 3. Phase 2 evidence retunes the full-Publication sustained target to 1–3%, retains a 10% typical per-use effect, and keeps the 20% intervention ceiling.
 - **Offline:** use event-driven catch-up with a decision-aware stop and explicit safe policies. The 12-hour/full, 72-hour/maximum, 25% tail schedule is provisional and must be compared with alternatives.
 - **Publication pacing:** target 60–120 active-equivalent minutes over 1–3 sessions, not the inherited 120–180-minute band.
 - **Achievements:** keep seven as badge/history records and allow three non-power unlocks for records, visual information, and post-Publication challenge access. None may affect production, costs, caps, work, or formulas.
@@ -47,7 +47,7 @@ The Foundation is a design hypothesis backed by cited literature and genre examp
 
 ## Provisional values
 
-The following are visible validated configuration, never hidden engine constants: starting/max Attention 3/4; activity exponent 0.80; Insight cap 3; active target 10–15% and ceiling 20%; offline 12-hour full window, 25% tail, and 72-hour maximum; first Publication 60–120 active-equivalent minutes; campaign 30–50 active-equivalent hours; approach-switch preservation floor 90%; all project costs, work, rates, caps, and approach modifiers. The machine-readable reconciliation register records a config path for every provisional cross-cutting value.
+The following are visible validated configuration, never hidden engine constants: starting/max Attention 3/4; activity exponent 0.80; Insight cap 3; Phase 2 full-Publication active target 1–3%, typical per-use effect 10%, and ceiling 20%; offline 12-hour full window, 25% tail, and 72-hour maximum; first Publication 60–120 active-equivalent minutes; campaign 30–50 active-equivalent hours; approach-switch preservation floor 90%; all project costs, work, rates, caps, and approach modifiers. The machine-readable reconciliation register records a config path for every provisional cross-cutting value.
 
 ## Deferred
 

@@ -109,15 +109,22 @@ export interface GameState {
   insight: GameNumber;
   insightSpent: GameNumber;
   insightModifiers: InsightModifierState[];
+  insightReveals: ProjectId[];
   assembledCapstoneEdges: CapstoneEdgeId[];
   chapters: Record<string, ChapterRuntimeStatus>;
   masteryArtifacts: string[];
   settings: {
     reducedMotion: boolean;
+    animationIntensity: "full" | "subtle" | "none";
     highContrast: boolean;
     notation: "plain" | "unicode";
+    updateRate: "standard" | "reduced";
+    numberFormat: "standard" | "compact";
+    compactLayout: boolean;
     textScale: "standard" | "large";
     announcementVerbosity: "essential" | "all";
+    offlineSummaryDetail: "summary" | "detailed";
+    mathExplanationDepth: "guided" | "expanded";
     confirmations: boolean;
   };
   rng: RngState;
@@ -240,15 +247,22 @@ export function createInitialState(
     insight: gameNumber(0),
     insightSpent: gameNumber(0),
     insightModifiers: [],
+    insightReveals: [],
     assembledCapstoneEdges: [],
     chapters,
     masteryArtifacts: [],
     settings: {
       reducedMotion: false,
+      animationIntensity: "full",
       highContrast: false,
       notation: "plain",
+      updateRate: "standard",
+      numberFormat: "standard",
+      compactLayout: false,
       textScale: "standard",
       announcementVerbosity: "essential",
+      offlineSummaryDetail: "detailed",
+      mathExplanationDepth: "guided",
       confirmations: true,
     },
     rng: createRng(seed),

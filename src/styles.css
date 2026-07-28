@@ -209,6 +209,38 @@ textarea {
   font-size: 1.125rem;
 }
 
+.app.compact-layout .app-main,
+.app.compact-layout .view-section,
+.app.compact-layout .settings-grid {
+  gap: 0.75rem;
+}
+
+.app.compact-layout .resource-card,
+.app.compact-layout .project-detail,
+.app.compact-layout .settings-panel {
+  padding: 0.75rem;
+}
+
+.app.guided-explanations .explanation-card {
+  display: none;
+}
+
+.app.offline-summary-compact .offline-ledger > div:nth-child(n + 3) {
+  display: none;
+}
+
+.app.animation-subtle {
+  --motion-medium: 140ms;
+}
+
+.app.animation-none *,
+.app.animation-none *::before,
+.app.animation-none *::after {
+  scroll-behavior: auto !important;
+  transition-duration: 0.01ms !important;
+  animation-duration: 0.01ms !important;
+}
+
 .app.high-contrast {
   --paper: #fff;
   --paper-deep: #ececec;

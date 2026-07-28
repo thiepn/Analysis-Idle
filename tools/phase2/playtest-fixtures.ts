@@ -187,6 +187,39 @@ const activeInterventionFixtures = [
   interventionFixture(1),
   interventionFixture(2),
 ];
+const activePublication = runSimulation({
+  policy: "activeOptimizer",
+  horizonSeconds: 7_200,
+  stopCondition: "publication",
+});
+const noInsightContent = structuredClone(naturalNumbersContent);
+noInsightContent.configuration.insight.modifierPerInsight = 0;
+const waitingPublication = runSimulation({
+  policy: "activeOptimizer",
+  horizonSeconds: 7_200,
+  stopCondition: "publication",
+  content: noInsightContent,
+});
+if (
+  activePublication.publicationTimingMs === null ||
+  waitingPublication.publicationTimingMs === null
+)
+  throw new Error("Paired active-advantage simulations must both publish");
+const sustainedActiveAdvantage =
+  (waitingPublication.publicationTimingMs -
+    activePublication.publicationTimingMs) /
+  waitingPublication.publicationTimingMs;
+const sustainedActiveFixture = {
+  method:
+    "Paired full-Publication activeOptimizer runs with identical seed and policy; baseline sets only modifierPerInsight to zero while retaining the same accepted Insight commands.",
+  activePublicationMs: activePublication.publicationTimingMs,
+  waitingPublicationMs: waitingPublication.publicationTimingMs,
+  activeInsightSpent: activePublication.finalState.insightSpent,
+  baselineInsightSpent: waitingPublication.finalState.insightSpent,
+  advantage: sustainedActiveAdvantage,
+  theoreticalSingleInterventionCeiling:
+    naturalNumbersContent.configuration.insight.ceiling,
+};
 
 const output = {
   schemaVersion: 1,
@@ -200,6 +233,7 @@ const output = {
   checkpoints,
   policies,
   activeInterventionFixtures,
+  sustainedActiveFixture,
   personaSessions,
   summary: {
     policyCount: policies.length,
@@ -208,8 +242,8 @@ const output = {
     publicationMedianMinutes: median,
     publicationMinMinutes: Math.min(...values),
     publicationMaxMinutes: Math.max(...values),
-    activeAdvantageTypical: activeInterventionFixtures[0]!.advantage,
-    activeAdvantageMaximum: activeInterventionFixtures[1]!.advantage,
+    activeAdvantageTypical: sustainedActiveAdvantage,
+    activeAdvantageMaximum: naturalNumbersContent.configuration.insight.ceiling,
     rejectedCommands: policies.reduce(
       (sum, policy) => sum + policy.rejectedCommands,
       0,

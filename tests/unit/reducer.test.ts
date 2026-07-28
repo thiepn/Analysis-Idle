@@ -322,4 +322,28 @@ describe("typed reducer", () => {
     );
     expect(twice.accepted).toBe(false);
   });
+
+  it("reveals downstream requirements without accelerating project work", () => {
+    const state = createInitialState(naturalNumbersContent);
+    state.insight = gameNumber(1);
+    state.ownedUpgrades.push("nn.active.insight_notebook" as never);
+    state.projects["nn.project.zero_successor"]!.status = "active";
+    const result = reduceCommand(
+      state,
+      envelope(
+        {
+          type: "spendInsight",
+          payload: { amount: 1, purpose: "revealDownstream" },
+        },
+        1,
+      ),
+      naturalNumbersContent,
+    );
+    expect(result.accepted).toBe(true);
+    if (!result.accepted) return;
+    expect(result.state.projects["nn.project.zero_successor"]!.progress).toBe(
+      0,
+    );
+    expect(result.state.insightReveals).toEqual(["nn.project.zero_successor"]);
+  });
 });

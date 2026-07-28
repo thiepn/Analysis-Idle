@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { naturalNumbersContent, naturalNumbersIds } from "../../src/content";
-import { envelope, reduceCommand } from "../../src/engine";
+import { envelope, reduceCommand, resolveActivityRate } from "../../src/engine";
 import { createInitialState } from "../../src/engine/state/game-state";
 import { gameNumber } from "../../src/engine/numbers/game-number";
 import { advanceOffline } from "../../src/platform/time/offline";
@@ -123,5 +123,54 @@ describe("online/offline equivalence", () => {
       "nn.milestone.operations_built",
     );
     expect(result.state.resources.PRECISION).toBeGreaterThan(180);
+  });
+
+  it("continues past a stale cap boundary when completion raises the cap", () => {
+    const base = createInitialState(naturalNumbersContent);
+    base.attention.allocations[naturalNumbersIds.FORMALIZE] = 3;
+    const formalRate = resolveActivityRate(
+      naturalNumbersIds.FORMALIZE,
+      base,
+      naturalNumbersContent,
+    ).rate;
+    base.resources.PRECISION = gameNumber(180 - formalRate * 0.1);
+    base.resources.INTUITION = gameNumber(150);
+    base.projects["nn.project.peano_frame"]!.status = "completed";
+    base.projects["nn.project.addition"]!.status = "completed";
+    const multiplication = base.projects["nn.project.multiplication"]!;
+    multiplication.status = "active";
+    multiplication.progress = gameNumber(398.9);
+    base.ownedUpgrades.push(
+      "nn.automation.queue_one" as never,
+      "nn.automation.completion_rule" as never,
+    );
+    base.completionBehavior = "startNextFunded";
+    base.projects["nn.project.induction_walkthrough"]!.status = "queued";
+    base.projectQueue = ["nn.project.induction_walkthrough" as never];
+
+    const offline = advanceOffline(base, naturalNumbersContent, 10_000, true);
+    const online = reduceCommand(
+      base,
+      envelope(
+        {
+          type: "advanceTime",
+          payload: { durationMs: 10_000, offline: false, safePolicy: false },
+        },
+        1,
+      ),
+      naturalNumbersContent,
+    );
+    expect(online.accepted).toBe(true);
+    if (!online.accepted) return;
+    expect(offline.stoppedForDecision).toBe(false);
+    expect(offline.creditedMs).toBe(10_000);
+    expect(offline.state.logicalTimeMs).toBe(online.state.logicalTimeMs);
+    expect(offline.state.resources).toEqual(online.state.resources);
+    expect(
+      offline.state.projects["nn.project.induction_walkthrough"]!.progress,
+    ).toBeCloseTo(
+      online.state.projects["nn.project.induction_walkthrough"]!.progress,
+      10,
+    );
   });
 });

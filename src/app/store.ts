@@ -2,6 +2,7 @@ import { naturalNumbersContent } from "../content";
 import {
   envelope,
   reduceCommand,
+  resolveResourceCap,
   type CommandResult,
   type GameCommand,
   type GameEvent,
@@ -45,6 +46,11 @@ export interface StoreSnapshot {
     generation: number;
     savedAtMs: number;
     contentVersion: string;
+    buildId: string;
+    schemaVersion: number;
+    chapterStatus: string;
+    logicalTimeMs: number;
+    checksumValid: true;
   } | null;
   offlineSummary: OfflineSummary | null;
 }
@@ -75,6 +81,7 @@ export interface OfflineSummary {
   reserves: Record<string, number>;
   targetView: AppView;
   targetProjectId: ProjectId | null;
+  targetControlId: string | null;
 }
 
 export interface AppStore {
@@ -88,6 +95,7 @@ export interface AppStore {
   exportLegacy(): string | null;
   previewImport(text: string): SaveValidationResult;
   import(text: string): SaveValidationResult;
+  reset(): Promise<void>;
   dismissOfflineSummary(): void;
   initialize(): Promise<void>;
 }
@@ -103,6 +111,33 @@ export function summarizeOffline(
   const fullWindow =
     naturalNumbersContent.configuration.offline.fullEfficiencyHours * 3_600_000;
   const objective = selectCurrentObjective(after);
+  const stopReason = after.diagnostics.unresolvedDecision;
+  const cappedResource = naturalNumbersContent.resources.find(
+    (resource) =>
+      (after.resources[resource.id] ?? 0) >=
+      resolveResourceCap(resource.id, after, naturalNumbersContent) - 1e-9,
+  );
+  const cappedActivity = naturalNumbersContent.activities.find(
+    (activity) => activity.resourceId === cappedResource?.id,
+  );
+  const targetControlId =
+    stopReason === "publicationReady"
+      ? "publication-review-action"
+      : stopReason === "automationFailure"
+        ? "completion-start-next"
+        : stopReason === "resourceCap" && cappedActivity
+          ? `attention-${cappedActivity.id}-decrease`
+          : objective.projectId
+            ? `project-${objective.projectId}-start`
+            : null;
+  const targetView: AppView =
+    stopReason === "resourceCap"
+      ? "study"
+      : stopReason === "automationFailure"
+        ? "automation"
+        : stopReason === "publicationReady"
+          ? "publication"
+          : objective.targetView;
   const fullEfficiencyMs = Math.min(elapsedMs, creditedMs, fullWindow);
   return {
     elapsedMs,
@@ -134,7 +169,7 @@ export function summarizeOffline(
       (id) => !before.recordedAchievements.includes(id),
     ),
     stoppedForDecision: after.diagnostics.unresolvedDecision !== null,
-    stopReason: after.diagnostics.unresolvedDecision,
+    stopReason,
     policyTrace,
     automationTrace: after.automationTrace
       .slice(before.automationTrace.length)
@@ -145,8 +180,9 @@ export function summarizeOffline(
         amount,
       ]),
     ),
-    targetView: objective.targetView,
+    targetView,
     targetProjectId: objective.projectId,
+    targetControlId,
   };
 }
 
@@ -344,31 +380,48 @@ export function createAppStore(
       }
     },
     load() {
-      const result = loadBestSave(
-        localStorage,
-        naturalNumbersContent,
-        indexedDbCandidates,
-      );
-      if (result.status === "LOADED") {
-        pendingRecovery = result;
-        update({
-          recoveryPreview: {
-            source: result.source,
-            generation: result.envelope.generation,
-            savedAtMs: result.envelope.savedAtMs,
-            contentVersion: result.envelope.contentVersion,
-          },
-          statusMessage: `Recovery candidate found: generation ${result.envelope.generation} from ${result.source}. Review before replacing the current game.`,
-        });
-      } else if (result.status === "LEGACY_V1_FOUND")
-        update({
-          statusMessage: "LEGACY_V1_FOUND: legacy data remains untouched.",
-          legacyFound: true,
-        });
-      else
-        update({
-          statusMessage: "No valid v2 save found; current new state retained.",
-        });
+      const presentRecovery = (candidates: string[]) => {
+        const result = loadBestSave(
+          localStorage,
+          naturalNumbersContent,
+          candidates,
+        );
+        if (result.status === "LOADED") {
+          pendingRecovery = result;
+          update({
+            recoveryPreview: {
+              source: result.source,
+              generation: result.envelope.generation,
+              savedAtMs: result.envelope.savedAtMs,
+              contentVersion: result.envelope.contentVersion,
+            },
+            statusMessage: `Recovery candidate found: generation ${result.envelope.generation} from ${result.source}. Review before replacing the current game.`,
+          });
+        } else if (result.status === "LEGACY_V1_FOUND")
+          update({
+            statusMessage: "LEGACY_V1_FOUND: legacy data remains untouched.",
+            legacyFound: true,
+          });
+        else
+          update({
+            statusMessage:
+              "No valid v2 save found; current new state retained.",
+          });
+      };
+      presentRecovery(indexedDbCandidates);
+      if (indexedDbHistory)
+        void indexedDbHistory
+          .listSaveTexts()
+          .then((latest) => {
+            indexedDbCandidates = latest;
+            presentRecovery(latest);
+          })
+          .catch(() =>
+            update({
+              statusMessage:
+                "Local recovery checked; IndexedDB backup refresh failed.",
+            }),
+          );
     },
     confirmRecovery() {
       if (!pendingRecovery) {
@@ -467,6 +520,35 @@ export function createAppStore(
       } else update({ statusMessage: `${result.code}: ${result.message}` });
       return result;
     },
+    async reset() {
+      if (!writer) {
+        update({
+          statusMessage:
+            "This tab is passive; only the writer tab can reset the game.",
+        });
+        return;
+      }
+      try {
+        await persist();
+        const settings = structuredClone(snapshot.state.settings);
+        const fresh = createInitialState(naturalNumbersContent, seed);
+        fresh.settings = settings;
+        update({
+          state: fresh,
+          events: [],
+          lastResult: null,
+          offlineSummary: null,
+          recoverySource: "confirmed reset",
+          statusMessage:
+            "New game created. The previous generation remains in recovery history.",
+          saveState: "dirty",
+        });
+        saveScheduler.markAcceptedCommand();
+        await saveScheduler.flush();
+      } catch {
+        // persist exposes an actionable error and leaves the prior state intact.
+      }
+    },
     dismissOfflineSummary() {
       update({ offlineSummary: null });
     },
@@ -492,6 +574,57 @@ export function createAppStore(
       const ownership = await coordinator.acquire();
       ownershipAdapter.setWriter(false);
       let ownershipRefreshInFlight = false;
+      const advanceVisibleTime = () => {
+        if (!writer || document.visibilityState === "hidden") return;
+        const now = performance.now();
+        const durationMs = Math.max(0, now - lastMonotonicMs);
+        const updateIntervalMs =
+          snapshot.state.settings.updateRate === "reduced" ? 2_000 : 1_000;
+        if (durationMs < updateIntervalMs) return;
+        lastMonotonicMs = now;
+        dispatch({
+          type: "advanceTime",
+          payload: { durationMs, offline: false, safePolicy: false },
+        });
+      };
+      const stopSimulation = () => {
+        if (simulationTimer === null) return;
+        window.clearInterval(simulationTimer);
+        simulationTimer = null;
+      };
+      const startSimulation = () => {
+        stopSimulation();
+        lastMonotonicMs = performance.now();
+        simulationTimer = window.setInterval(advanceVisibleTime, 250);
+      };
+      const acquireLatest = async (reason: string): Promise<boolean> => {
+        if (ownershipRefreshInFlight) return writer;
+        ownershipRefreshInFlight = true;
+        try {
+          const takeover = await coordinator.acquire();
+          if (!takeover.writer) return false;
+          const latestIndexed = indexedDbHistory
+            ? await indexedDbHistory.listSaveTexts().catch(() => [])
+            : [];
+          indexedDbCandidates = latestIndexed;
+          const latest = loadBestSave(
+            localStorage,
+            naturalNumbersContent,
+            latestIndexed,
+          );
+          if (latest.status === "LOADED") applyLoaded(latest);
+          writer = true;
+          ownershipAdapter.setWriter(true);
+          hiddenAtMs = null;
+          update({
+            writer: true,
+            statusMessage: `${takeover.diagnostic}. Latest validated save reloaded before writer activation (${reason}).`,
+          });
+          return true;
+        } finally {
+          ownershipRefreshInFlight = false;
+        }
+      };
       const renewal = window.setInterval(() => {
         if (ownershipRefreshInFlight) return;
         if (writer) {
@@ -505,42 +638,8 @@ export function createAppStore(
           }
           return;
         }
-        ownershipRefreshInFlight = true;
-        void coordinator
-          .acquire()
-          .then(async (takeover) => {
-            if (!takeover.writer) return;
-            const latestIndexed = indexedDbHistory
-              ? await indexedDbHistory.listSaveTexts().catch(() => [])
-              : [];
-            indexedDbCandidates = latestIndexed;
-            const latest = loadBestSave(
-              localStorage,
-              naturalNumbersContent,
-              latestIndexed,
-            );
-            if (latest.status === "LOADED") applyLoaded(latest);
-            writer = true;
-            ownershipAdapter.setWriter(true);
-            update({
-              writer: true,
-              statusMessage: `${takeover.diagnostic}. Latest validated save reloaded before writer activation.`,
-            });
-          })
-          .finally(() => {
-            ownershipRefreshInFlight = false;
-          });
+        void acquireLatest("lease takeover");
       }, 5_000);
-      window.addEventListener(
-        "pagehide",
-        () => {
-          window.clearInterval(renewal);
-          if (simulationTimer !== null) window.clearInterval(simulationTimer);
-          coordinator.release();
-          ownershipAdapter.close();
-        },
-        { once: true },
-      );
       const result = loadBestSave(
         localStorage,
         naturalNumbersContent,
@@ -557,18 +656,7 @@ export function createAppStore(
       ownershipAdapter.setWriter(writer);
       update({ writer });
 
-      const advanceVisibleTime = () => {
-        if (!writer || document.visibilityState === "hidden") return;
-        const now = performance.now();
-        const durationMs = Math.min(1_000, Math.max(0, now - lastMonotonicMs));
-        lastMonotonicMs = now;
-        if (durationMs < 1) return;
-        dispatch({
-          type: "advanceTime",
-          payload: { durationMs, offline: false, safePolicy: false },
-        });
-      };
-      simulationTimer = window.setInterval(advanceVisibleTime, 250);
+      startSimulation();
 
       const onVisibilityChange = () => {
         if (document.visibilityState === "hidden") {
@@ -606,12 +694,34 @@ export function createAppStore(
         saveScheduler.markAcceptedCommand();
       };
       document.addEventListener("visibilitychange", onVisibilityChange);
-      window.addEventListener(
-        "pagehide",
-        () =>
-          document.removeEventListener("visibilitychange", onVisibilityChange),
-        { once: true },
-      );
+      const onPageHide = (event: PageTransitionEvent) => {
+        void saveScheduler.flush().catch(() => undefined);
+        stopSimulation();
+        coordinator.release();
+        writer = false;
+        ownershipAdapter.setWriter(false);
+        update({
+          writer: false,
+          statusMessage: event.persisted
+            ? "Page suspended safely; writer ownership released."
+            : "Page closing; writer ownership released.",
+        });
+        if (!event.persisted) {
+          window.clearInterval(renewal);
+          document.removeEventListener("visibilitychange", onVisibilityChange);
+          window.removeEventListener("pageshow", onPageShow);
+          ownershipAdapter.close();
+        }
+      };
+      const onPageShow = (event: PageTransitionEvent) => {
+        if (!event.persisted) return;
+        lastMonotonicMs = performance.now();
+        void acquireLatest("back-forward cache restore").then((acquired) => {
+          if (acquired) startSimulation();
+        });
+      };
+      window.addEventListener("pagehide", onPageHide);
+      window.addEventListener("pageshow", onPageShow);
     },
   };
 }

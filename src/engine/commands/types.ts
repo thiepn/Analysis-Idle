@@ -52,10 +52,16 @@ export type GameCommand =
       payload: {
         setting:
           | "reducedMotion"
+          | "animationIntensity"
           | "highContrast"
           | "notation"
+          | "updateRate"
+          | "numberFormat"
+          | "compactLayout"
           | "textScale"
           | "announcementVerbosity"
+          | "offlineSummaryDetail"
+          | "mathExplanationDepth"
           | "confirmations";
         value: boolean | string;
       };
