@@ -48,7 +48,8 @@ describe("Phase 2 player-facing models", () => {
   });
 
   it("formats finite numbers, rates, and durations centrally", () => {
-    expect(formatGameNumber(12_345)).toBe("12.35K");
+    expect(formatGameNumber(12_345)).toBe("12,345");
+    expect(formatGameNumber(12_345, "compact")).toBe("12.35K");
     expect(formatGameNumber(Number.POSITIVE_INFINITY)).toBe("Unavailable");
     expect(formatRate(0.005)).toBe("0.005 / second");
     expect(formatDuration(125)).toBe("2 min 5 sec");
